@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Music</title>
+</head>
+    <body>
+        
+
+        <div>
+            @{
+                var filename = Request["filename"];
+            }
+        
+            @*<object data="/Content/Music/dewplayer.swf" width="200" height="20" name="dewplayer" id="dewplayer" type="application/x-shockwave-flash">
+                <param name="movie" value="dewplayer.swf" />
+                <param name="flashvars" value="mp3=/Content/Music/mp3/@filename" />
+                <param name="wmode" value="transparent" />
+            </object>*@
+        </div>
+        
+        
+        <div id="dewplayer_content">
+            <object data="/Content/Music/dewplayer.swf" width="200" height="20" name="dewplayer-js" id="dewplayer-js" type="application/x-shockwave-flash">
+                <param name="movie" value="dewplayer.swf" />
+                <param name="flashvars" value="mp3=/Content/Music/mp3/@filename" />
+                <param name="wmode" value="transparent" />
+            </object>
+        </div>
+        
+        
+
+
+    </body>
+</html>

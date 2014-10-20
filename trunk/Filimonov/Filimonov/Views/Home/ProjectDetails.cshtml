@@ -99,11 +99,11 @@
                 @foreach (var song in Model.Songs)
                 {
                     <div class="music-item">
-                        <object data="/Content/Music/dewplayer.swf" width="200" height="20" name="dewplayer" id="dewplayer" type="application/x-shockwave-flash">
+                        @*<object data="/Content/Music/dewplayer.swf" width="200" height="20" name="dewplayer" id="dewplayer" type="application/x-shockwave-flash">
                             <param name="movie" value="dewplayer.swf" />
                             <param name="flashvars" value="mp3=/Content/Music/mp3/@song.FileName" />
                             <param name="wmode" value="transparent" />
-                        </object>                        @song.Title                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                        </object>*@                        @Html.ActionLink(song.Title,"Music","Home",new{filename=song.FileName},new{target="_blank"})                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                             {
                                 @Html.ActionLink("Удалить", "DeleteSong", "Project", new {area = "Admin", id = song.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить mp3?')"})
                             }                    </div>
@@ -118,7 +118,7 @@
                     
                     @Html.ActionLink("Добавить флеш", "AddFlashToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })&nbsp;
                     
-                    @*@Html.ActionLink("Добавить mp3", "AddSongToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })&nbsp;*@
+                    @Html.ActionLink("Добавить mp3", "AddSongToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })&nbsp;
                     
                     @Html.ActionLink("Удалить проект", "Delete", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить проект?')" })
                 </div>
