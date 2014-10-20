@@ -226,7 +226,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             Response.ContentType = "text/plain";
             //Response.ContentType = "application/vnd.ms-excel";
             //Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            Response.AppendHeader("content-disposition", "attachment;filename=\"output.txt\"");
+            Response.AppendHeader("content-disposition", "attachment;filename=\"output."+DateTime.Now+".txt\"");
             //Response.AppendHeader("content-disposition", "attachment;filename=\"output.xls\"");
             Response.Write(text);
             Response.End();
