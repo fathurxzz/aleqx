@@ -17,6 +17,7 @@ namespace Leo.Models
         public IEnumerable<SpecialContent> SpecialContents { get; set; }
         public string SpecialContentJson { get; set; }
         public string RandomImageFromProductImages { get; set; }
+        public string RandomImageSource { get; set; }
         public Article Article { get; set; }
         public string NextCategoryName { get; set; }
         public string NextCategoryTitle { get; set; }
@@ -93,6 +94,7 @@ namespace Leo.Models
                         var productImages = _context.ProductImages.ToList();
                         var randomInage = productImages.OrderBy(x => Guid.NewGuid()).Take(1).First().ImageSource;
                         RandomImageFromProductImages = "settings.randomImageFromProductImages = '" + randomInage + "'";
+                        RandomImageSource = randomInage;
                     }
                 }
 
