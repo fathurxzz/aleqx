@@ -355,22 +355,36 @@ namespace SiteExtensions.Graphics
 
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, string className)
         {
-            StringBuilder sb = new StringBuilder();
-            string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" />";
-            //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
-            string imageSrc = GetCachedImage(originalPath, fileName, thumbnail);
-            if (string.IsNullOrEmpty(imageSrc))
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" />";
+                //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
+                string imageSrc = GetCachedImage(originalPath, fileName, thumbnail);
+                if (string.IsNullOrEmpty(imageSrc))
+                    return "image file not found";
+                sb.AppendFormat(formatString, VirtualPathUtility.ToAbsolute(imageSrc ?? ""), fileName, className ?? "", _width, _height);
+                return sb.ToString();
+            }
+            catch (Exception)
+            {
                 return "image file not found";
-            sb.AppendFormat(formatString, VirtualPathUtility.ToAbsolute(imageSrc??""), fileName, className??"", _width, _height);
-            return sb.ToString();
+            }
         }
 
         public static string CachedImage2(this HtmlHelper helper, string originalPath, string fileName, string fileName2, ThumbnailPicture thumbnail)
         {
+            try
+            {
             StringBuilder sb = new StringBuilder();
             string formatString = "<img src=\"{0}\" alt=\"{1}\" width=\"{2}\" height=\"{3}\" />";
             sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail), fileName2, _width, _height);
             return sb.ToString();
+            }
+            catch (Exception)
+            {
+                return "image file not found";
+            }
         }
 
 
