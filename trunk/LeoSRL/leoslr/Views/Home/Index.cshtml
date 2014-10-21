@@ -191,7 +191,7 @@
         {
             <div>
                 <ul class="products-contents">
-                    @foreach (var product in Model.Category.Products)
+                    @foreach (var product in Model.Category.Products.OrderBy(c => c.SortOrder))
                     {
                         if (product.Name == Model.Product.Name)
                         {
@@ -213,7 +213,7 @@
         <div class="text">
             @Html.Raw(Model.Product.Text)
             
-            @foreach (var textBlock in Model.Product.ProductTextBlocks)
+            @foreach (var textBlock in Model.Product.ProductTextBlocks.OrderBy(c => c.SortOrder))
             {
                 <div class="text-box-title">
                     @textBlock.Title
@@ -233,7 +233,7 @@
                         @foreach (var file in textBlock.ProductTextBlockFiles)
                         {
                             <div class="text-box-file">
-                                <a href="~/Content/Files/@file.FileName">
+                                <a href="~/Content/Files/@file.FileName" target="_blank">
                                 @Html.Raw(Html.CachedImage("~/Content/Images/", file.ImageSource, SiteSettings.GetThumbnail("documentPreview")))
                                 <div>@file.Title</div>
                                 </a>

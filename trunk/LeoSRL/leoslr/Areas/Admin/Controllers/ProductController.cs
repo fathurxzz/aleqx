@@ -26,9 +26,9 @@ namespace Leo.Areas.Admin.Controllers
             return View(products);
         }
 
-        public ActionResult Create(int id)
+        public ActionResult Create(int id, bool isContentPage)
         {
-            return View(new Product { CategoryId = id, CurrentLang = CurrentLang.Id });
+            return View(new Product { CategoryId = id, CurrentLang = CurrentLang.Id, IsContentPage = isContentPage});
         }
 
         [HttpPost]
@@ -46,7 +46,7 @@ namespace Leo.Areas.Admin.Controllers
                     Category = category,
                     Title = model.Title,
                     Text = model.Text,
-                    IsContentPage = model.IsContentPage
+                    IsContentPage = model.IsContentPage,
                     
                 };
 
