@@ -115,8 +115,17 @@
                 }
                 else
                 {
-                    @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { id = item.Id }, null) <text>|</text>
-                    @Html.ActionLink("Добавить раздел", "Create", "Product", new { id = item.Id }, null) 
+                    if (item.CategoryLevel == 0)
+                    {
+                        @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new {id = item.Id}, null)
+                        
+                    }
+                    else
+                    {
+                    @Html.ActionLink("Добавить раздел", "Create", "Product", new { id = item.Id, isContentPage = true }, null) <text>|</text>
+                    @Html.ActionLink("Добавить проект", "Create", "Product", new { id = item.Id, isContentPage = false }, null)
+                    }
+                    
                 }
             </td>
         </tr>
@@ -166,7 +175,7 @@
                         </td>
                     </tr>
         
-                    foreach (var textBlock in product.ProductTextBlocks)
+                    foreach (var textBlock in product.ProductTextBlocks.OrderBy(c => c.SortOrder))
                     {
                         
                         <tr>
