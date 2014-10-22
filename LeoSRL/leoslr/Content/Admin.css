@@ -170,3 +170,8 @@ table.table tr.item {
 table.table tr.alt-item {
     background-color: #ffffff !important;
 }
+
+.attention {
+    color: #ff0000;
+    font-weight: bold;
+}

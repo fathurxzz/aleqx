@@ -16,6 +16,12 @@
             @Html.HiddenFor(model => model.CategoryId)
             @Html.HiddenFor(model => model.CurrentLang)
             
+            @if (!Model.IsCorrectLang)
+            {
+                <div class="attention">
+                    !!! Введите описание для текущего языка !!!
+                </div>
+            }
             <div class="editor-label">
                 @Html.LabelFor(model => model.Date)
             </div>
