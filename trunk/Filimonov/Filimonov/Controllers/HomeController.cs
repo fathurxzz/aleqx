@@ -77,7 +77,10 @@ namespace Filimonov.Controllers
 
         public ActionResult Music(string filename)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                return View(context.MusicItem.ToList());
+            }
         }
 
 

@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/22/2014 21:58:20
+-- Date Created: 10/22/2014 23:05:46
 -- Generated from EDMX file: C:\vsp\Filimonov\Filimonov\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -105,6 +105,15 @@ CREATE TABLE `SiteBackground`(
 	`ImageSource` varchar (200) NOT NULL);
 
 ALTER TABLE `SiteBackground` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `MusicItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`FileName` varchar (200) NOT NULL);
+
+ALTER TABLE `MusicItem` ADD PRIMARY KEY (Id);
 
 
 

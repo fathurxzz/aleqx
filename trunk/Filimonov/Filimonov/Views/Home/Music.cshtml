@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Filimonov.Models.MusicItem>
+@{
     Layout = null;
 }
 
@@ -6,7 +7,7 @@
 
 <html>
 <head>
-    <title>Music</title>
+    <title>FILIMONOV INTERIOR LAB</title>
     <script src="@Url.Content("~/Content/audiojs/audio.min.js")" type="text/javascript"></script>
     <script src="/content/audiojs/audio.min.js"></script>
     <script>
@@ -18,11 +19,11 @@
     <body>
         
 
-        <div>
+        @*<div>
             @{
                 var filename = Request["filename"];
             }
-        </div>
+        </div>*@
         
         
         @*<div id="dewplayer_content">
@@ -33,16 +34,17 @@
             </object>
         </div>*@
         
-        <audio src="/Content/Music/mp3/@filename" autoplay >
+        @*<audio src="/Content/Music/mp3/@filename" autoplay >
             
-        </audio>
-        
-       @* <audio controls autoplay>
-            <source src="/Content/Music/mp3/@filename" type="audio/mpeg"/>
-            <source src="/Content/Music/mp3/@filename" type="audio/mpeg"/>
-            <source src="/Content/Music/mp3/@filename" type="audio/mpeg"/>
         </audio>*@
-        
+        <div>
+        <audio autoplay>
+            @foreach (var item in Model)
+            {
+                <source src="/Content/Music/mp3/@item.FileName" type="audio/mpeg"/>
+            }
+        </audio>
+        </div>
 
 
     </body>

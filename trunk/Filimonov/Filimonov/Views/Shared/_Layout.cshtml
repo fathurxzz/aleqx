@@ -48,11 +48,17 @@
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 <div class="adminLinkContainer">
-                    @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", null, new { @class = "adminLink" })
+                    @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new{area=""}, new { @class = "adminLink" })
                     <br/>
                     @Html.ActionLink("Фоновые изображения сайта", "Index", "SiteBackground", new{area="Admin"}, new { @class = "adminLink" })
+                    
+                    @Html.ActionLink("Музыка", "Index", "Music", new{area="Admin"}, new { @class = "adminLink" })
+                    
                 </div>
             }
+            <div class="musicLink">
+                @Html.ActionLink("Музыка","Music","Home",null,new{ target="_blank", onclick="window.open('#','_blank');window.open(this.href,'_self');"})
+            </div>
             
 
         </div>

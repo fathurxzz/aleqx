@@ -360,3 +360,15 @@ body
     float: left;
     padding: 20px;
 }
+
+.musicLink {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-top: 15px;
+    
+}
+
+.musicLink a {
+    color: #000;
+}
