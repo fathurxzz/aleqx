@@ -271,9 +271,11 @@
     <Content Include="Content\Fonts.css" />
     <Content Include="Content\img\cross.png" />
     <Content Include="Content\img\em.png" />
+    <Content Include="Content\img\fb.png" />
     <Content Include="Content\img\hand.png" />
     <Content Include="Content\img\intro.png" />
     <Content Include="Content\img\left-arrow.png" />
+    <Content Include="Content\img\li.png" />
     <Content Include="Content\img\logo-intro-big.png" />
     <Content Include="Content\img\logo-intro.png" />
     <Content Include="Content\img\logo-menu-intro.png" />
@@ -281,6 +283,7 @@
     <Content Include="Content\img\right-arrow.png" />
     <Content Include="Content\img\select-bg-big.png" />
     <Content Include="Content\img\select-bg.png" />
+    <Content Include="Content\img\twi.png" />
     <Content Include="Content\img\zoom.png" />
     <Content Include="Content\index.css" />
     <Content Include="Content\intro.css" />

@@ -285,3 +285,33 @@ table td, table th {
 .text-box-text {
     padding-bottom: 35px;
 }
+
+.socials {
+    height: 18px;
+    width: 200px;
+    position: absolute;
+    margin-left: 140px;
+    margin-top: 10px;
+}
+
+.socials .fb,
+.socials .twitter,
+.socials .linkedin {
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.socials .fb {
+    background: url(img/fb.png);
+}
+
+.socials .twitter {
+    background: url(img/twi.png);
+}
+
+.socials .linkedin{
+    background: url(img/li.png);
+}
