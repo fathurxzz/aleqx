@@ -154,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\audiojs\audio.min.js" />
+    <Content Include="Content\audiojs\audiojs.swf" />
+    <Content Include="Content\audiojs\player-graphics.gif" />
     <Content Include="Content\fancybox\blank.gif" />
     <Content Include="Content\fancybox\fancybox-x.png" />
     <Content Include="Content\fancybox\fancybox-y.png" />

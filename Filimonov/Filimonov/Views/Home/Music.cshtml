@@ -7,6 +7,13 @@
 <html>
 <head>
     <title>Music</title>
+    <script src="@Url.Content("~/Content/audiojs/audio.min.js")" type="text/javascript"></script>
+    <script src="/content/audiojs/audio.min.js"></script>
+    <script>
+        audiojs.events.ready(function () {
+            var as = audiojs.createAll();
+        });
+</script>
 </head>
     <body>
         
@@ -15,22 +22,20 @@
             @{
                 var filename = Request["filename"];
             }
-        
-            @*<object data="/Content/Music/dewplayer.swf" width="200" height="20" name="dewplayer" id="dewplayer" type="application/x-shockwave-flash">
-                <param name="movie" value="dewplayer.swf" />
-                <param name="flashvars" value="mp3=/Content/Music/mp3/@filename" />
-                <param name="wmode" value="transparent" />
-            </object>*@
         </div>
         
         
-        <div id="dewplayer_content">
+        @*<div id="dewplayer_content">
             <object data="/Content/Music/dewplayer.swf" width="200" height="20" name="dewplayer-js" id="dewplayer-js" type="application/x-shockwave-flash">
                 <param name="movie" value="dewplayer.swf" />
                 <param name="flashvars" value="mp3=/Content/Music/mp3/@filename" />
                 <param name="wmode" value="transparent" />
             </object>
-        </div>
+        </div>*@
+        
+        <audio src="/Content/Music/mp3/@filename" autoplay >
+            
+        </audio>
         
         
 
