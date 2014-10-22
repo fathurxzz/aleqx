@@ -14,6 +14,7 @@
     }
 </style>
 <div class="adminContentContainer">
+    <div style="width: 750px; margin: 0 auto">
     @using (Html.BeginForm("Create", "SiteBackground", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.ValidationSummary(true)
@@ -26,7 +27,7 @@
                     @*<input type="file" name="fileUpload" class="photoFileInput" />*@
                     <input type="file" id="files" name="files[]" multiple />
                     <div>
-                    <output id="list"></output>
+                        <output id="list"></output>
                     </div>
                     <script>
                         function handleFileSelect(evt) {
@@ -48,7 +49,7 @@
                                         // Render thumbnail.
                                         var span = document.createElement('span');
                                         span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
+                                            '" title="', escape(theFile.name), '"/>'].join('');
                                         document.getElementById('list').insertBefore(span, null);
                                     };
                                 })(f);
@@ -68,4 +69,5 @@
             @Html.ActionLink("Назад", "Index", "SiteBackground", new { Area = "Admin" }, null)
         </div>
     }
+</div>
 </div>

@@ -14,7 +14,7 @@
     }
 </style>
 <div class="adminContentContainer">
-    
+    <div style="width: 750px; margin: 0 auto">
     @ViewBag.Errormessage
     @using (Html.BeginForm("AddFlashToProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -44,4 +44,5 @@
             @Html.ActionLink("Назад", "Projects", "Home", new { Area = "", id = ViewBag.projectName }, null)
         </div>
     }
+</div>
 </div>

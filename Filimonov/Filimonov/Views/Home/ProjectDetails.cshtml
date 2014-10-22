@@ -4,7 +4,7 @@
 <div class="container">
     <div class="page">
         <div class="menu menuItem projectMenuItem">
-            <a href="#" class="showLink">Проекты</a>
+            <a href="#" class="showLink">@Model.Content.Title</a>
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 <div>
@@ -26,7 +26,7 @@
                     <div class="titleContainerLeft">
                         <div class="titleContainerRight">
                             <div class="title">
-                                @Html.ActionLink("Проекты", "Projects", "Home", new { id = "" }, null) &laquo;
+                                @Html.ActionLink(@Model.Content.Title, "Projects", "Home", new { id = "",contentId = Model.ContentId }, null) &laquo;
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                             <param name="movie" value="dewplayer.swf" />
                             <param name="flashvars" value="mp3=/Content/Music/mp3/@song.FileName" />
                             <param name="wmode" value="transparent" />
-                        </object>*@                        @Html.ActionLink(song.Title,"Music","Home",new{filename=song.FileName},new{target="_blank"})                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                        </object>*@                                                @Html.ActionLink(song.Title,"Music","Home",new{filename=song.FileName},new{target="_blank", onclick="window.open('#','_blank');window.open(this.href,'_self');"})                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                             {
                                 @Html.ActionLink("Удалить", "DeleteSong", "Project", new {area = "Admin", id = song.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить mp3?')"})
                             }                    </div>

@@ -14,6 +14,7 @@
     }
 </style>
 <div class="adminContentContainer">
+    <div style="width: 750px; margin: 0 auto">
     @using (Html.BeginForm("AddSongToProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.ValidationSummary(true)
@@ -42,4 +43,5 @@
             @Html.ActionLink("Назад", "Projects", "Home", new { Area = "", id = ViewBag.projectName }, null)
         </div>
     }
+</div>
 </div>

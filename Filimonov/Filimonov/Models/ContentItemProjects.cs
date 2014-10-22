@@ -8,5 +8,6 @@ namespace Filimonov.Models
     public class ContentItemProjects:ContentItem
     {
         public IEnumerable<Project> Projects { get; set; }
+        public bool Visible { get; set; }
     }
 }

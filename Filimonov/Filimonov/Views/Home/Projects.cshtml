@@ -21,7 +21,7 @@ break;
         case ContentType.Projects:
             @(Model.Project != null 
             ? Html.Partial("ProjectDetails", Model.Project) 
-            : Html.Partial("ContentItemProjects", new ContentItemProjects {Title = item.Title, Projects = Model.Projects}))
+            : Html.Partial("ContentItemProjects", new ContentItemProjects {Title = item.Title, Projects = item.Projects, Visible = Model.ContentId == item.Id.ToString()}))
             break;
     }
 }

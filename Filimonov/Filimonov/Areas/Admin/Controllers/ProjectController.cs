@@ -14,24 +14,26 @@ namespace Filimonov.Areas.Admin.Controllers
     [Authorize]
     public class ProjectController : Controller
     {
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             using (var context = new SiteContainer())
             {
-                var projects = context.Project.ToList();
+                var content = context.Content.First(c => c.Id == id);
+                var projects = content.Projects.ToList();
                 var sortOrder = projects.Any() ? projects.Max(p => p.SortOrder) : 0;
-                return View(new Project { SortOrder = sortOrder + 1 });
+                return View(new Project { SortOrder = sortOrder + 1, Content = content});
             }
         }
 
         [HttpPost]
         [ValidateInput(false)] 
-        public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload, Project model)
         {
             try
             {
                 using (var context = new SiteContainer())
                 {
+                    var content = context.Content.First(c => c.Id == model.ContentId);
                     var project = new Project();
                     TryUpdateModel(project, new[] { "Name", "Title", "DescriptionTitle", "SortOrder" });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
@@ -44,7 +46,8 @@ namespace Filimonov.Areas.Admin.Controllers
                         fileUpload.SaveAs(filePath);
                         project.ImageSource = fileName;
                     }
-                    context.AddToProject(project);
+                    content.Projects.Add(project);
+                    //context.AddToProject(project);
                     context.SaveChanges();
                     return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
                 }
