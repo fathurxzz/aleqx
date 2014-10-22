@@ -91,7 +91,8 @@ a.adminLink:hover {
 {
     text-align: center;
     margin-top: 20px;
-    font-family: Verdana;
+    /*font-family: Verdana;*/
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .adminContentContainer h2

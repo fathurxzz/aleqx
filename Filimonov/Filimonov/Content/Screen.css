@@ -1,5 +1,6 @@
 ﻿body {
-    font-family: FreeSetC;
+    /*font-family: FreeSetC;*/
+    font-family: 'Noto Sans', sans-serif;
 }
 .header, .presentationMenu, .hidden, .admin, #newLine, #aside {
     display: none;
