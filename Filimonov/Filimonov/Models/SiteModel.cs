@@ -20,7 +20,7 @@ namespace Filimonov.Models
 
         public SiteModel(SiteContainer context)
         {
-            Title = "Filimonov";
+            Title = "FILIMONOV INTERIOR LAB";
             Contents = context.Content.Include("Projects").ToList();
 
             //Projects = context.Project.ToList();

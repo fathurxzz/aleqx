@@ -169,6 +169,22 @@ namespace Filimonov.Models
             }
         }
         private ObjectSet<SiteBackground> _SiteBackground;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MusicItem> MusicItem
+        {
+            get
+            {
+                if ((_MusicItem == null))
+                {
+                    _MusicItem = base.CreateObjectSet<MusicItem>("MusicItem");
+                }
+                return _MusicItem;
+            }
+        }
+        private ObjectSet<MusicItem> _MusicItem;
 
         #endregion
 
@@ -220,6 +236,14 @@ namespace Filimonov.Models
         public void AddToSiteBackground(SiteBackground siteBackground)
         {
             base.AddObject("SiteBackground", siteBackground);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MusicItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMusicItem(MusicItem musicItem)
+        {
+            base.AddObject("MusicItem", musicItem);
         }
 
         #endregion
@@ -638,6 +662,89 @@ namespace Filimonov.Models
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="MusicItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MusicItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MusicItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="fileName">Initial value of the FileName property.</param>
+        public static MusicItem CreateMusicItem(global::System.Int32 id, global::System.String fileName)
+        {
+            MusicItem musicItem = new MusicItem();
+            musicItem.Id = id;
+            musicItem.FileName = fileName;
+            return musicItem;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FileName
+        {
+            get
+            {
+                return _FileName;
+            }
+            set
+            {
+                OnFileNameChanging(value);
+                ReportPropertyChanging("FileName");
+                _FileName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FileName");
+                OnFileNameChanged();
+            }
+        }
+        private global::System.String _FileName;
+        partial void OnFileNameChanging(global::System.String value);
+        partial void OnFileNameChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>
