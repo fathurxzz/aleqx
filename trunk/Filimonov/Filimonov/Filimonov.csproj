@@ -201,6 +201,7 @@
     <Content Include="Content\img\main-frame-top.png" />
     <Content Include="Content\img\notes.gif" />
     <Content Include="Content\img\pictures-lib.gif" />
+    <Content Include="Content\img\player.png" />
     <Content Include="Content\img\presentation-footer.gif" />
     <Content Include="Content\img\presentation-header.gif" />
     <Content Include="Content\img\product-checked-default.png" />
