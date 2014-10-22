@@ -18,6 +18,13 @@
 
         <fieldset>
             <legend>редактировать продукт</legend>
+            @if (!Model.IsCorrectLang)
+            {
+                <div class="attention">
+                    !!! Введите описание для текущего языка !!!
+                </div>
+            }
+            
               <div class="editor-label">
                 @Html.LabelFor(model => model.Name)
             </div>

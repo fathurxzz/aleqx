@@ -16,6 +16,12 @@
     
         <fieldset>
             <legend>Редактировать текстовый блок</legend>
+            @if (!Model.IsCorrectLang)
+            {
+                <div class="attention">
+                    !!! Введите описание для текущего языка !!!
+                </div>
+            }
               <div class="editor-label">
                 @Html.LabelFor(model => model.Title)
             </div>

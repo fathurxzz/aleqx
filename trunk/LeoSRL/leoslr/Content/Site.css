@@ -246,11 +246,12 @@ table td, table th {
 }
 
 .text-box-file {
-    width: 210px;
-    height: 43px;
+    width: 325px;
+    height: 66px;
     float: left;
     margin-right: 20px;
     margin-bottom: 22px;
+    font-size: 18px;
 }
 
 .text-box-file a {
@@ -259,7 +260,7 @@ table td, table th {
     color: #000;
     height: 100%;
     font-family: 'Lato', sans-serif;
-    font-size: 11px;
+    
 }
 
 .text-box-file a:hover {
