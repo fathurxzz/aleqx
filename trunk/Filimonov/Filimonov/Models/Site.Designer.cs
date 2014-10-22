@@ -22,6 +22,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Site", "ProjectProjectImage", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Project), "ProjectImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProjectImage), true)]
 [assembly: EdmRelationshipAttribute("Site", "ProjectFlashContent", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Project), "FlashContent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.FlashContent), true)]
 [assembly: EdmRelationshipAttribute("Site", "ProjectSong", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Project), "Song", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Song), true)]
+[assembly: EdmRelationshipAttribute("Site", "ContentProject", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Content), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Project), true)]
 
 #endregion
 
@@ -434,6 +435,32 @@ namespace Filimonov.Models
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ContentProject", "Project")]
+        public EntityCollection<Project> Projects
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Project>("Site.ContentProject", "Project");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Project>("Site.ContentProject", "Project", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -630,13 +657,15 @@ namespace Filimonov.Models
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Project CreateProject(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder)
+        /// <param name="contentId">Initial value of the ContentId property.</param>
+        public static Project CreateProject(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder, global::System.Int32 contentId)
         {
             Project project = new Project();
             project.Id = id;
             project.Name = name;
             project.Title = title;
             project.SortOrder = sortOrder;
+            project.ContentId = contentId;
             return project;
         }
 
@@ -838,6 +867,30 @@ namespace Filimonov.Models
         private global::System.String _VideoSource;
         partial void OnVideoSourceChanging(global::System.String value);
         partial void OnVideoSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ContentId
+        {
+            get
+            {
+                return _ContentId;
+            }
+            set
+            {
+                OnContentIdChanging(value);
+                ReportPropertyChanging("ContentId");
+                _ContentId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContentId");
+                OnContentIdChanged();
+            }
+        }
+        private global::System.Int32 _ContentId;
+        partial void OnContentIdChanging(global::System.Int32 value);
+        partial void OnContentIdChanged();
 
         #endregion
 
@@ -906,6 +959,44 @@ namespace Filimonov.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Song>("Site.ProjectSong", "Song", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ContentProject", "Content")]
+        public Content Content
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Site.ContentProject", "Content").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Site.ContentProject", "Content").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Content> ContentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Site.ContentProject", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Content>("Site.ContentProject", "Content", value);
                 }
             }
         }

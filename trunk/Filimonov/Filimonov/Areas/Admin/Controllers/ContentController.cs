@@ -15,7 +15,7 @@ namespace Filimonov.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Content{SortOrder = 0});
         } 
 
         //
@@ -31,6 +31,7 @@ namespace Filimonov.Areas.Admin.Controllers
                     var content = new Content();
                     TryUpdateModel(content, new[] { "Title", "SeoDescription", "SeoKeywords","SortOrder" });
                     content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                    content.ContentType = form["isProject"]=="on" ? 1 : 0;
                     context.AddToContent(content);
                     context.SaveChanges();
                     return RedirectToAction("Index", "Home", new {area = ""});
@@ -50,6 +51,7 @@ namespace Filimonov.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var content = context.Content.First(c => c.Id == id);
+
                 return View(content);
             }
         }
@@ -67,6 +69,7 @@ namespace Filimonov.Areas.Admin.Controllers
                     var content = context.Content.First(c => c.Id == id);
                     TryUpdateModel(content, new[] { "Title", "SeoDescription", "SeoKeywords","SortOrder" });
                     content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                    content.ContentType = form["isProject"] == "on" ? 1 : 0;
                     context.SaveChanges();
                     return RedirectToAction("Index", "Home", new { area = "" });
                 }

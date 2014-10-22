@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/30/2014 23:34:01
+-- Date Created: 10/22/2014 21:58:20
 -- Generated from EDMX file: C:\vsp\Filimonov\Filimonov\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -19,6 +19,7 @@
 --    ALTER TABLE `ProjectImage` DROP CONSTRAINT `FK_ProjectProjectImage`;
 --    ALTER TABLE `FlashContent` DROP CONSTRAINT `FK_ProjectFlashContent`;
 --    ALTER TABLE `Song` DROP CONSTRAINT `FK_ProjectSong`;
+--    ALTER TABLE `Project` DROP CONSTRAINT `FK_ContentProject`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -29,6 +30,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ProjectImage`;
     DROP TABLE IF EXISTS `FlashContent`;
     DROP TABLE IF EXISTS `Song`;
+    DROP TABLE IF EXISTS `SiteBackground`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -57,7 +59,8 @@ CREATE TABLE `Project`(
 	`Description` longtext, 
 	`SortOrder` int NOT NULL, 
 	`ImageSource` char (200), 
-	`VideoSource` longtext);
+	`VideoSource` longtext, 
+	`ContentId` int NOT NULL);
 
 ALTER TABLE `Project` ADD PRIMARY KEY (Id);
 
@@ -156,6 +159,21 @@ ADD CONSTRAINT `FK_ProjectSong`
 CREATE INDEX `IX_FK_ProjectSong` 
     ON `Song`
     (`ProjectId`);
+
+-- Creating foreign key on `ContentId` in table 'Project'
+
+ALTER TABLE `Project`
+ADD CONSTRAINT `FK_ContentProject`
+    FOREIGN KEY (`ContentId`)
+    REFERENCES `Content`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ContentProject'
+
+CREATE INDEX `IX_FK_ContentProject` 
+    ON `Project`
+    (`ContentId`);
 
 -- --------------------------------------------------
 -- Script has ended

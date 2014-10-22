@@ -9,10 +9,12 @@ namespace Filimonov.Models
     public class ProjectModel : SiteModel
     {
         public Project Project { get; set; }
+        public string ContentId { get; set; }
 
-        public ProjectModel(SiteContainer context, string id)
+        public ProjectModel(SiteContainer context, string id, string contentId=null)
             : base(context)
         {
+            ContentId = contentId;
             if (!string.IsNullOrEmpty(id))
             {
                 Project = context.Project

@@ -24,11 +24,11 @@ namespace Filimonov.Controllers
             }
         }
 
-        public ActionResult Projects(string id)
+        public ActionResult Projects(string id, string contentId)
         {
             using (var context = new SiteContainer())
             {
-                var model = new ProjectModel(context, id);
+                var model = new ProjectModel(context, id, contentId);
                 ViewBag.SiteBgFileName = model.RandomSiteBgFileName;
                 return View(model);
             }

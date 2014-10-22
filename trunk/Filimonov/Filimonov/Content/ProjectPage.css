@@ -1,9 +1,7 @@
-﻿  .projectFrame
-        {
-            display: block;
+﻿.projectFrame {
+    display: block;
+}
 
-        }
-        .projectMenuItem
-        {
-            display: none;
-        }
+.projectMenuItem {
+    display: none;
+}

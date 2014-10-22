@@ -16,13 +16,14 @@ namespace Filimonov.Models
         public string RandomSiteBgFileName { get; set; }
 
         public IEnumerable<Content> Contents { get; set; }
-        public IEnumerable<Project> Projects { get; set; }
+        //public IEnumerable<Project> Projects { get; set; }
 
         public SiteModel(SiteContainer context)
         {
             Title = "Filimonov";
-            Contents = context.Content.ToList();
-            Projects = context.Project.ToList();
+            Contents = context.Content.Include("Projects").ToList();
+
+            //Projects = context.Project.ToList();
 
             SeoDescription = Contents.First().SeoDescription;
             SeoKeywords = Contents.First().SeoKeywords;
