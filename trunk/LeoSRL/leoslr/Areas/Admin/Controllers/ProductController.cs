@@ -60,8 +60,8 @@ namespace Leo.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Images");
 
                     filePath = Path.Combine(filePath, fileName);
-                    file.SaveAs(filePath);
-                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file);
+                    //file.SaveAs(filePath);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file);
                     pi.ImageSource = fileName;
                     cache.ProductImages.Add(pi);
                 }
@@ -118,8 +118,8 @@ namespace Leo.Areas.Admin.Controllers
                         string filePath = Server.MapPath("~/Content/Images");
 
                         filePath = Path.Combine(filePath, fileName);
-                        file.SaveAs(filePath);
-                        //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                        //file.SaveAs(filePath);
+                        GraphicsHelper.SaveOriginalImage(filePath, fileName, file);
                         pi.ImageSource = fileName;
                         cache.ProductImages.Add(pi);
                     }

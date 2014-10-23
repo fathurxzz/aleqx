@@ -13,11 +13,13 @@
         font-weight: bold;
         padding: 0 45px;
         text-align: center;
+        padding-bottom: 35px;
     }
 
     .site-content-container .text {
         padding-top: 10px;
         font-size: 13px;
         /*font-style: italic;*/
-        padding: 10px 45px;
+        padding: 0px 45px;
+        padding-bottom: 35px;
     }

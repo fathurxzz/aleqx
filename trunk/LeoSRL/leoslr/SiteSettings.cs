@@ -41,7 +41,7 @@ namespace Leo
 
         public static string Version
         {
-            get { return "0.0.11"; }
+            get { return "0.0.14"; }
         }
 
     }
