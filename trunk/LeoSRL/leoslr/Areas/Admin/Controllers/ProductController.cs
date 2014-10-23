@@ -61,7 +61,7 @@ namespace Leo.Areas.Admin.Controllers
 
                     filePath = Path.Combine(filePath, fileName);
                     file.SaveAs(filePath);
-                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file);
                     pi.ImageSource = fileName;
                     cache.ProductImages.Add(pi);
                 }
