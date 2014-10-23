@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Shop.DataAccess.Entities;
 using Shop.DataAccess.Repositories;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
@@ -19,9 +21,11 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string errorCode, string message)
         {
             var categories = _repository.GetCategories();
+            ViewBag.Message = message;
+            ViewBag.ErrorCode = errorCode;
             return View(categories);
         }
 
@@ -40,7 +44,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             var sb = new StringBuilder();
 
 
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 15; i++)
             {
                 switch (i)
                 {
@@ -77,6 +81,18 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     case 10:
                         sb.Append("IsActive");
                         break;
+                    case 11:
+                        sb.Append("ProductStock.StockNumber");
+                        break;
+                    case 12:
+                        sb.Append("ProductStock.Size");
+                        break;
+                    case 13:
+                        sb.Append("ProductStock.Color");
+                        break;
+                    case 14:
+                        sb.Append("ProductStock.IsAvailable");
+                        break;
 
                 }
                 sb.Append(";");
@@ -92,7 +108,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             sb.Append("\r\n");
 
 
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 15; i++)
             {
                 switch (i)
                 {
@@ -129,6 +145,18 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     case 10:
                         sb.Append("Активный");
                         break;
+                    case 11:
+                        sb.Append("Артикул");
+                        break;
+                    case 12:
+                        sb.Append("Размер");
+                        break;
+                    case 13:
+                        sb.Append("Цвет");
+                        break;
+                    case 14:
+                        sb.Append("Наличие");
+                        break;
 
                 }
                 sb.Append(";");
@@ -142,56 +170,48 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             }
 
             sb.Append("\r\n");
-
+            //Product currentProduct = null;
+            //Product oldProduct = null;
             foreach (var product in products)
             {
                 product.CurrentLang = CurrentLangId;
-                for (int i = 0; i < 11; i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            sb.Append(product.ExternalId);
-                            break;
-                        case 1:
-                            sb.Append(product.Id);
-                            break;
-                        case 2:
-                            sb.Append(product.Name);
-                            break;
-                        case 3:
-                            sb.Append(product.Title);
-                            break;
-                        case 4:
-                            sb.Append(product.Category.Name);
-                            break;
-                        case 5:
-                            sb.Append(product.OldPrice);
-                            break;
-                        case 6:
-                            sb.Append(product.Price);
-                            break;
-                        case 7:
-                            sb.Append(product.IsNew);
-                            break;
-                        case 8:
-                            sb.Append(product.IsDiscount);
-                            break;
-                        case 9:
-                            sb.Append(product.IsTopSale);
-                            break;
-                        case 10:
-                            sb.Append(product.IsActive);
-                            break;
 
-                    }
-                    sb.Append(";");
-                    
-                }
+
+
+
+                sb.Append(product.ExternalId);
+                sb.Append(";");
+                sb.Append(product.Id);
+                sb.Append(";");
+                sb.Append(product.Name);
+                sb.Append(";");
+                sb.Append(product.Title);
+                sb.Append(";");
+                sb.Append(product.Category.Name);
+                sb.Append(";");
+                sb.Append(product.OldPrice);
+                sb.Append(";");
+                sb.Append(product.Price);
+                sb.Append(";");
+                sb.Append(product.IsNew);
+                sb.Append(";");
+                sb.Append(product.IsDiscount);
+                sb.Append(";");
+                sb.Append(product.IsTopSale);
+                sb.Append(";");
+                sb.Append(product.IsActive);
+                sb.Append(";");
+                // 
+                sb.Append(";");
+                sb.Append(";");
+                sb.Append(";");
+                sb.Append(";");
+
+
 
                 foreach (var productAttribute in attributes)
                 {
-                     var result = new List<string>();
+                    var result = new List<string>();
 
                     foreach (var pav in product.ProductAttributeValues)
                     {
@@ -218,6 +238,78 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
 
                 sb.Append("\r\n");
+
+
+                foreach (var ps in product.ProductStocks)
+                {
+                    sb.Append(product.ExternalId);
+                    sb.Append(";");
+                    sb.Append(product.Id);
+                    sb.Append(";");
+                    sb.Append(product.Name);
+                    sb.Append(";");
+                    sb.Append(product.Title);
+                    sb.Append(";");
+                    sb.Append(product.Category.Name);
+                    sb.Append(";");
+                    sb.Append(product.OldPrice);
+                    sb.Append(";");
+                    sb.Append(product.Price);
+                    sb.Append(";");
+                    sb.Append(product.IsNew);
+                    sb.Append(";");
+                    sb.Append(product.IsDiscount);
+                    sb.Append(";");
+                    sb.Append(product.IsTopSale);
+                    sb.Append(";");
+                    sb.Append(product.IsActive);
+                    sb.Append(";");
+
+
+
+                    sb.Append(ps.StockNumber);
+                    sb.Append(";");
+                    sb.Append(ps.Size);
+                    sb.Append(";");
+                    sb.Append(ps.Color);
+                    sb.Append(";");
+                    sb.Append(ps.IsAvailable);
+                    sb.Append(";");
+
+
+
+                    foreach (var productAttribute in attributes)
+                    {
+                        var result = new List<string>();
+
+                        foreach (var pav in product.ProductAttributeValues)
+                        {
+                            pav.CurrentLang = CurrentLangId;
+                            if (productAttribute.ProductAttributeValues.Contains(pav))
+                            {
+                                result.Add(pav.Title);
+                            }
+                        }
+
+                        //foreach (var s in result)
+                        //{
+                        //    sb.Append(s);
+                        //}
+
+                        var res = ConvertToStringWithSeparators(result);
+                        if (res != null)
+                        {
+                            sb.Append(res);
+                        }
+
+                        sb.Append(";");
+                    }
+
+                    sb.Append("\r\n");
+
+                }
+
+
             }
             string text = sb.ToString();
             Response.Clear();
@@ -226,7 +318,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             Response.ContentType = "text/plain";
             //Response.ContentType = "application/vnd.ms-excel";
             //Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            Response.AppendHeader("content-disposition", "attachment;filename=\"output."+DateTime.Now+".txt\"");
+            Response.AppendHeader("content-disposition", "attachment;filename=\"output." + DateTime.Now + ".csv\"");
+            Response.ContentEncoding = System.Text.Encoding.GetEncoding(1251);
             //Response.AppendHeader("content-disposition", "attachment;filename=\"output.xls\"");
             Response.Write(text);
             Response.End();
@@ -248,15 +341,61 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 }
                 else
                 {
-                    sb.Append(source[i]+"#");
+                    sb.Append(source[i] + "#");
                 }
             }
             return sb.ToString();
+        }
+
+
+        public ActionResult Import(HttpPostedFileBase fileUpload)
+        {
+            var products = new List<Product>();
+            string message = string.Empty;
+            int errorCode = 0;
+            if (fileUpload != null)
+            {
+                try
+                {
+
+                    int counter = 0;
+                    string line;
+
+                    var file = new StreamReader(fileUpload.InputStream, Encoding.GetEncoding(1251));
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        counter++;
+                        string[] x = line.Split(new[] {";"}, StringSplitOptions.None);
+
+                        if (counter > 2)
+                        {
+                            var product = new Product
+                            {
+                                ExternalId = x[0],
+                                Id = int.Parse(x[1]),
+                                Name = x[2]
+                            };
+
+                            products.Add(product);
+                        }
+                    }
+
+                    file.Close();
+                    message = string.Format("Файл успешно загружен. Получено {0} товаров", counter);
+                }
+                catch (Exception ex)
+                {
+                    message = string.Format("Ошибка чтения файла. {0}", ex.Message);
+                    errorCode = 1;
+                }
+            }
+            return RedirectToAction("Index",new{message = message, errorCode = errorCode});
+            
         }
 
     }
 
 
 
-    
+
 }
