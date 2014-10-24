@@ -19,7 +19,7 @@
     @Html.Partial("ContentItem", new ContentItem { Title = item.Title, Text = item.Text, Id=item.Id, ContentType = (ContentType)item.ContentType})
 break;
         case ContentType.Projects:
-            @(Model.Project != null 
+            @(Model.Project != null && Model.Project.ContentId==item.Id
             ? Html.Partial("ProjectDetails", Model.Project) 
             : Html.Partial("ContentItemProjects", new ContentItemProjects {Title = item.Title, Projects = item.Projects, Visible = Model.ContentId == item.Id.ToString()}))
             break;
