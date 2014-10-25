@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,11 @@ namespace Shop.Api.DataSynchronization.Export
     {
         public static string Execute(IShopRepository repository, int currentLangId, string categoryName)
         {
-            //var products = _repository.GetAllProducts().ToList();
+            
+            
             var products = repository.GetProductsByCategory(categoryName).ToList();
-
             var attributes = repository.GetProductAttributes(categoryName).ToList();
+
             foreach (var productAttribute in attributes)
             {
                 productAttribute.CurrentLang = currentLangId;
@@ -23,124 +25,38 @@ namespace Shop.Api.DataSynchronization.Export
 
             var sb = new StringBuilder();
 
-
-            for (int i = 0; i < 15; i++)
+            string[] fields =
             {
-                switch (i)
-                {
-                    case 0:
-                        sb.Append("ExternalId");
-                        break;
-                    case 1:
-                        sb.Append("Id");
-                        break;
-                    case 2:
-                        sb.Append("Name");
-                        break;
-                    case 3:
-                        sb.Append("Title");
-                        break;
-                    case 4:
-                        sb.Append("Category.Name");
-                        break;
-                    case 5:
-                        sb.Append("OldPrice");
-                        break;
-                    case 6:
-                        sb.Append("Price");
-                        break;
-                    case 7:
-                        sb.Append("IsNew");
-                        break;
-                    case 8:
-                        sb.Append("IsDiscount");
-                        break;
-                    case 9:
-                        sb.Append("IsTopSale");
-                        break;
-                    case 10:
-                        sb.Append("IsActive");
-                        break;
-                    case 11:
-                        sb.Append("ProductStock.StockNumber");
-                        break;
-                    case 12:
-                        sb.Append("ProductStock.Size");
-                        break;
-                    case 13:
-                        sb.Append("ProductStock.Color");
-                        break;
-                    case 14:
-                        sb.Append("ProductStock.IsAvailable");
-                        break;
+                "ExternalId", "Name", "Title", "Category.Name", "OldPrice", "Price", "IsNew",
+                "IsDiscount", "IsTopSale", "IsActive", "ProductStock.StockNumber", "ProductStock.Size",
+                "ProductStock.Color"
+            };
 
-                }
+            string[] fieldsTitleRu =
+            {
+                "Внешний Id", "Id в строке адреса", "Заголовок", "Категория", "Старая цена", "Цена", "Новый",
+                "Скидка", "Хит продаж", "Активный", "Артикул", "Размер",
+                "Цвет"
+            };
+
+            foreach (string t in fields)
+            {
+                sb.Append(t);
                 sb.Append(";");
-
             }
 
             foreach (var productAttribute in attributes)
             {
-                sb.Append(productAttribute.Id);
+                sb.Append(productAttribute.ExternalId);
                 sb.Append(";");
             }
 
             sb.Append("\r\n");
 
-
-            for (int i = 0; i < 15; i++)
+            foreach (string t in fieldsTitleRu)
             {
-                switch (i)
-                {
-                    case 0:
-                        sb.Append("Внешний Id");
-                        break;
-                    case 1:
-                        sb.Append("Внутренний Id");
-                        break;
-                    case 2:
-                        sb.Append("Id в строке адреса");
-                        break;
-                    case 3:
-                        sb.Append("Заголовок");
-                        break;
-                    case 4:
-                        sb.Append("Категория");
-                        break;
-                    case 5:
-                        sb.Append("Старая цена");
-                        break;
-                    case 6:
-                        sb.Append("Цена");
-                        break;
-                    case 7:
-                        sb.Append("Новый");
-                        break;
-                    case 8:
-                        sb.Append("Скидка");
-                        break;
-                    case 9:
-                        sb.Append("Хит продаж");
-                        break;
-                    case 10:
-                        sb.Append("Активный");
-                        break;
-                    case 11:
-                        sb.Append("Артикул");
-                        break;
-                    case 12:
-                        sb.Append("Размер");
-                        break;
-                    case 13:
-                        sb.Append("Цвет");
-                        break;
-                    case 14:
-                        sb.Append("Наличие");
-                        break;
-
-                }
+                sb.Append(t);
                 sb.Append(";");
-
             }
 
             foreach (var productAttribute in attributes)
@@ -156,12 +72,7 @@ namespace Shop.Api.DataSynchronization.Export
             {
                 product.CurrentLang = currentLangId;
 
-
-
-
                 sb.Append(product.ExternalId);
-                sb.Append(";");
-                sb.Append(product.Id);
                 sb.Append(";");
                 sb.Append(product.Name);
                 sb.Append(";");
@@ -181,11 +92,28 @@ namespace Shop.Api.DataSynchronization.Export
                 sb.Append(";");
                 sb.Append(product.IsActive);
                 sb.Append(";");
-                // 
-                sb.Append(";");
-                sb.Append(";");
-                sb.Append(";");
-                sb.Append(";");
+                
+
+                
+                var firstProductStock = product.ProductStocks.OrderBy(ps => ps.StockNumber).FirstOrDefault();
+                if (firstProductStock != null)
+                {
+
+                    sb.Append(firstProductStock.StockNumber);
+                    sb.Append(";");
+                    sb.Append(firstProductStock.Size);
+                    sb.Append(";");
+                    sb.Append(firstProductStock.Color);
+                    sb.Append(";");
+                }
+                else
+                {
+                    sb.Append(";");
+                    sb.Append(";");
+                    sb.Append(";");
+                }
+
+                
 
 
 
@@ -214,12 +142,9 @@ namespace Shop.Api.DataSynchronization.Export
 
                 sb.Append("\r\n");
 
-
-                foreach (var ps in product.ProductStocks)
+                foreach (var ps in product.ProductStocks.OrderBy(ps => ps.StockNumber).Skip(1))
                 {
                     sb.Append(product.ExternalId);
-                    sb.Append(";");
-                    sb.Append(product.Id);
                     sb.Append(";");
                     sb.Append(product.Name);
                     sb.Append(";");
@@ -248,9 +173,6 @@ namespace Shop.Api.DataSynchronization.Export
                     sb.Append(";");
                     sb.Append(ps.Color);
                     sb.Append(";");
-                    sb.Append(ps.IsAvailable);
-                    sb.Append(";");
-
 
 
                     foreach (var productAttribute in attributes)
@@ -265,11 +187,6 @@ namespace Shop.Api.DataSynchronization.Export
                                 result.Add(pav.Title);
                             }
                         }
-
-                        //foreach (var s in result)
-                        //{
-                        //    sb.Append(s);
-                        //}
 
                         var res = DataSynchronizationHelper.ConvertToStringWithSeparators(result);
                         if (res != null)
