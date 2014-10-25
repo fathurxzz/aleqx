@@ -13,8 +13,8 @@ namespace Shop.Api.DataSynchronization.Export
     {
         public static string Execute(IShopRepository repository, int currentLangId, string categoryName)
         {
-            
-            
+
+
             var products = repository.GetProductsByCategory(categoryName).ToList();
             var attributes = repository.GetProductAttributes(categoryName).ToList();
 
@@ -25,23 +25,28 @@ namespace Shop.Api.DataSynchronization.Export
 
             var sb = new StringBuilder();
 
-            string[] fields =
+
+            // Генерация заголовков begin
+            var productFields = new Dictionary<string, string>()
             {
-                "ExternalId", "Name", "Title", "Category.Name", "OldPrice", "Price", "IsNew",
-                "IsDiscount", "IsTopSale", "IsActive", "ProductStock.StockNumber", "ProductStock.Size",
-                "ProductStock.Color"
+                {"ExternalId", "Внешний Id"},
+                {"Name", "Id в строке адреса"},
+                {"Title", "Заголовок"},
+                {"Category.Name", "Категория"},
+                {"OldPrice", "Старая цена"},
+                {"Price", "Цена"},
+                {"IsNew", "Новый"},
+                {"IsDiscount", "Скидка"},
+                {"IsTopSale", "Хит продаж"},
+                {"IsActive", "Активный"},
+                {"ProductStock.StockNumber", "Артикул"},
+                {"ProductStock.Size", "Размер"},
+                {"ProductStock.Color", "Цвет"}
             };
 
-            string[] fieldsTitleRu =
+            foreach (var field in productFields)
             {
-                "Внешний Id", "Id в строке адреса", "Заголовок", "Категория", "Старая цена", "Цена", "Новый",
-                "Скидка", "Хит продаж", "Активный", "Артикул", "Размер",
-                "Цвет"
-            };
-
-            foreach (string t in fields)
-            {
-                sb.Append(t);
+                sb.Append(field.Key);
                 sb.Append(";");
             }
 
@@ -53,9 +58,9 @@ namespace Shop.Api.DataSynchronization.Export
 
             sb.Append("\r\n");
 
-            foreach (string t in fieldsTitleRu)
+            foreach (var field in productFields)
             {
-                sb.Append(t);
+                sb.Append(field.Value);
                 sb.Append(";");
             }
 
@@ -64,10 +69,10 @@ namespace Shop.Api.DataSynchronization.Export
                 sb.Append(productAttribute.Title);
                 sb.Append(";");
             }
-
             sb.Append("\r\n");
-            //Product currentProduct = null;
-            //Product oldProduct = null;
+            // Генерация заголовков end
+
+            
             foreach (var product in products)
             {
                 product.CurrentLang = currentLangId;
@@ -92,9 +97,9 @@ namespace Shop.Api.DataSynchronization.Export
                 sb.Append(";");
                 sb.Append(product.IsActive);
                 sb.Append(";");
-                
 
-                
+
+
                 var firstProductStock = product.ProductStocks.OrderBy(ps => ps.StockNumber).FirstOrDefault();
                 if (firstProductStock != null)
                 {
@@ -113,7 +118,7 @@ namespace Shop.Api.DataSynchronization.Export
                     sb.Append(";");
                 }
 
-                
+
 
 
 
@@ -139,8 +144,10 @@ namespace Shop.Api.DataSynchronization.Export
                     sb.Append(";");
                 }
 
-
                 sb.Append("\r\n");
+
+
+
 
                 foreach (var ps in product.ProductStocks.OrderBy(ps => ps.StockNumber).Skip(1))
                 {
@@ -207,9 +214,5 @@ namespace Shop.Api.DataSynchronization.Export
             return sb.ToString();
         }
 
-
-
-
-        
     }
 }
