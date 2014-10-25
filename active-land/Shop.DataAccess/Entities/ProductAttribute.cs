@@ -15,6 +15,7 @@ namespace Shop.DataAccess.Entities
         }
 
         public int Id { get; set; }
+        public string ExternalId { get; set; }
         public int SortOrder { get; set; }
         public bool IsStatic { get; set; }
         public bool DisplayOnPreview { get; set; }

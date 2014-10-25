@@ -28,6 +28,7 @@ namespace Shop.DatabaseModel
         public bool DisplayOnPreview { get; set; }
         public bool IsFilterable { get; set; }
         public bool IsPublic { get; set; }
+        public string ExternalId { get; set; }
     
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }

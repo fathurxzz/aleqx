@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/13/2014 14:52:46
--- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 10/25/2014 11:44:34
+-- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -167,7 +167,8 @@ CREATE TABLE `ProductAttribute`(
 	`IsStatic` bool NOT NULL, 
 	`DisplayOnPreview` bool NOT NULL, 
 	`IsFilterable` bool NOT NULL, 
-	`IsPublic` bool NOT NULL);
+	`IsPublic` bool NOT NULL, 
+	`ExternalId` varchar (200));
 
 ALTER TABLE `ProductAttribute` ADD PRIMARY KEY (Id);
 

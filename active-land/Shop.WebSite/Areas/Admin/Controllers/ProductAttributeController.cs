@@ -38,6 +38,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 model.Id = 0;
                 var productAttibute = new ProductAttribute()
                 {
+                    ExternalId = model.ExternalId,
                     Title = model.Title,
                     UnitTitle = model.UnitTitle,
                     IsStatic = model.IsStatic,
@@ -78,7 +79,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             try
             {
                 var productAttribute = _repository.GetProductAttribute(model.Id);
-                TryUpdateModel(productAttribute, new[] { "Title", "UnitTitle", "IsStatic", "IsPublic", "DisplayOnPreview", "IsFilterable", "SortOrder" });
+                TryUpdateModel(productAttribute, new[] { "Title", "ExternalId", "UnitTitle", "IsStatic", "IsPublic", "DisplayOnPreview", "IsFilterable", "SortOrder" });
                 _repository.SaveProductAttribute(productAttribute);
             }
             catch (Exception ex)

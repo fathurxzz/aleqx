@@ -15,6 +15,7 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             // Table & Column Mappings
             this.ToTable("ProductAttribute", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.ExternalId).HasColumnName("ExternalId");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.IsStatic).HasColumnName("IsStatic");
             this.Property(t => t.IsPublic).HasColumnName("IsPublic");

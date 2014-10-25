@@ -22,6 +22,12 @@ namespace Shop.DataAccess.Entities
         [Display(Name = "Единицы измерения")]
         public string UnitTitle { get; set; }
 
+        //[Display(Name = "Внешний идентификатор")]
+        //public string ExternalId { get; set; }
+        
+        //[Display(Name = "Внешний идентификатор")]
+        //public string ExternalId { get; set; }
+
         [Display(Name = "Прописной")]
         public bool IsStatic { get; set; }
 
