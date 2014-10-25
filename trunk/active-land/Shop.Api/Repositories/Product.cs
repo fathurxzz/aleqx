@@ -118,6 +118,43 @@ namespace Shop.Api.Repositories
             return product;
         }
 
+        public Product GetProductByExternalId(string externalId)
+        {
+            var product = _store.Products.SingleOrDefault(p => p.ExternalId == externalId);
+            if (product == null)
+            {
+                throw new ObjectNotFoundException(string.Format("Product with externalId={0} not found", externalId));
+            }
+            product.CurrentLang = LangId;
+
+            foreach (var productAttributeValue in product.ProductAttributeValues)
+            {
+                productAttributeValue.CurrentLang = LangId;
+
+                if (productAttributeValue.ProductAttributeValueTag != null)
+                {
+                    productAttributeValue.ProductAttributeValueTag.CurrentLang = LangId;
+                }
+            }
+
+            foreach (var productAttributeStaticValue in product.ProductAttributeStaticValues)
+            {
+                productAttributeStaticValue.CurrentLang = LangId;
+            }
+
+            foreach (var productAttribute in product.Category.ProductAttributes)
+            {
+                productAttribute.CurrentLang = LangId;
+            }
+
+            foreach (var image in product.ProductImages.Where(pi => pi.IsDefault))
+            {
+                product.ImageSource = image.ImageSource;
+            }
+
+            return product;
+        }
+
         public void DeleteProduct(int id, Action<String> deleteImages)
         {
             var product = _store.Products.SingleOrDefault(c => c.Id == id);

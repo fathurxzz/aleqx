@@ -16,11 +16,12 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public DataTrasferController(IShopRepository repository)
             : base(repository)
         {
-
+            
         }
 
         public ActionResult Index(string errorCode, string message)
         {
+            _repository.LangId = CurrentLangId;
             var categories = _repository.GetCategories();
             ViewBag.Message = message;
             ViewBag.ErrorCode = errorCode;
@@ -29,30 +30,35 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
         public void Export(string categoryName)
         {
+            _repository.LangId = CurrentLangId;
             string content = ExportToFile.Execute(_repository, CurrentLangId, categoryName);
-            SaveToFile(content);
+            SaveToFile(content, categoryName);
         }
 
         public ActionResult Import(HttpPostedFileBase fileUpload)
         {
-            ImportResult result = new ImportResult { ErrorCode = 1, ErrorMessage = "Не выбран файл для загрузки" };
+            _repository.LangId = CurrentLangId;
+            var result = new ImportResult { ErrorCode = 1, ErrorMessage = "Не выбран файл для загрузки" };
             if (fileUpload != null)
             {
-                StreamReader reader = new StreamReader(fileUpload.InputStream, System.Text.Encoding.GetEncoding(1251));
-                result = ImportFromFile.Execute(reader);
+                var reader = new StreamReader(fileUpload.InputStream, System.Text.Encoding.GetEncoding(1251));
+                var categoryName = fileUpload.FileName.Split(new[] {"."}, StringSplitOptions.None)[1];
+                result = ImportFromFile.Execute(_repository, reader, categoryName, CurrentLangId);
             }
             return RedirectToAction("Index", new { message = result.ErrorMessage, errorCode = result.ErrorCode });
         }
 
-        private void SaveToFile(string text)
+        private void SaveToFile(string text, string categoryName)
         {
+            string fileName = "output." + categoryName + "." + DateTime.Now + ".csv";
+
             Response.Clear();
             Response.ClearHeaders();
             Response.AddHeader("Content-Length", text.Length.ToString());
             Response.ContentType = "text/plain";
             //Response.ContentType = "application/vnd.ms-excel";
             //Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            Response.AppendHeader("content-disposition", "attachment;filename=\"output." + DateTime.Now + ".csv\"");
+            Response.AppendHeader("content-disposition", "attachment;filename=\"" + fileName + "\"");
             Response.ContentEncoding = System.Text.Encoding.GetEncoding(1251);
             Response.Write(text);
             Response.End();

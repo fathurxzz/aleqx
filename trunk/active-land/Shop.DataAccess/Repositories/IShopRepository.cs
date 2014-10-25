@@ -58,6 +58,7 @@ namespace Shop.DataAccess.Repositories
         IEnumerable<Product> GetProductsByCategory(string categoryName);
         Product GetProduct(int id);
         Product GetProduct(string name);
+        Product GetProductByExternalId(string externalId);
         void DeleteProduct(int id, Action<String> deleteImages);
         int AddProduct(Product product);
         void SaveProduct(Product product);
