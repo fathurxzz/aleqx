@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\Exceptions\UserException.cs" />
+    <Compile Include="DataSynchronization\Export\ExportToFile.cs" />
+    <Compile Include="DataSynchronization\Helpers\DataSynchronizationHelper.cs" />
+    <Compile Include="DataSynchronization\Import\ImportFromFile.cs" />
+    <Compile Include="DataSynchronization\Import\ImportResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Article.cs" />
     <Compile Include="Repositories\ArticleItem.cs" />
@@ -78,6 +82,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
