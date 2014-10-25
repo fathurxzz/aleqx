@@ -19,6 +19,12 @@
 <table class="table table-striped">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExternalId)
+        </th>
+        <th>
             Категории
         </th>
         <th>
@@ -55,6 +61,12 @@
     @foreach (var item in Model.OrderBy(m=>m.SortOrder))
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExternalId)
+            </td>
             <td>
                 @foreach (var cat in item.Categories)
                 {

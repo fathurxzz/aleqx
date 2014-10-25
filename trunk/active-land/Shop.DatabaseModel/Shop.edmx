@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -257,6 +257,7 @@
     <Property Name="DisplayOnPreview" Type="bool" Nullable="false" />
     <Property Name="IsFilterable" Type="bool" Nullable="false" />
     <Property Name="IsPublic" Type="bool" Nullable="false" />
+    <Property Name="ExternalId" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="ProductImage">
     <Key>
@@ -1264,6 +1265,7 @@
           <NavigationProperty Name="ProductAttributeStaticValues" Relationship="Shop.ProductAttributeProductAttributeStaticValue" FromRole="ProductAttribute" ToRole="ProductAttributeStaticValue" />
           <NavigationProperty Name="ProductAttributeLangs" Relationship="Shop.ProductAttributeProductAttributeLang" FromRole="ProductAttribute" ToRole="ProductAttributeLang" />
           <Property Type="Boolean" Name="IsPublic" Nullable="false" />
+          <Property Type="String" Name="ExternalId" MaxLength="200" />
         </EntityType>
         <EntityType Name="ProductImage">
           <Key>
@@ -2058,6 +2060,7 @@
           <ScalarProperty Name="DisplayOnPreview" ColumnName="DisplayOnPreview" />
           <ScalarProperty Name="IsFilterable" ColumnName="IsFilterable" />
           <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+          <ScalarProperty Name="ExternalId" ColumnName="ExternalId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
