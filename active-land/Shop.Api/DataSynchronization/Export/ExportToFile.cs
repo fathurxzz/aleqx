@@ -32,7 +32,6 @@ namespace Shop.Api.DataSynchronization.Export
                 {"ExternalId", "Внешний Id"},
                 {"Name", "Id в строке адреса"},
                 {"Title", "Заголовок"},
-                {"Category.Name", "Категория"},
                 {"OldPrice", "Старая цена"},
                 {"Price", "Цена"},
                 {"IsNew", "Новый"},
@@ -72,7 +71,7 @@ namespace Shop.Api.DataSynchronization.Export
             sb.Append("\r\n");
             // Генерация заголовков end
 
-            
+
             foreach (var product in products)
             {
                 product.CurrentLang = currentLangId;
@@ -82,8 +81,6 @@ namespace Shop.Api.DataSynchronization.Export
                 sb.Append(product.Name);
                 sb.Append(";");
                 sb.Append(product.Title);
-                sb.Append(";");
-                sb.Append(product.Category.Name);
                 sb.Append(";");
                 sb.Append(product.OldPrice);
                 sb.Append(";");
@@ -156,8 +153,6 @@ namespace Shop.Api.DataSynchronization.Export
                     sb.Append(product.Name);
                     sb.Append(";");
                     sb.Append(product.Title);
-                    sb.Append(";");
-                    sb.Append(product.Category.Name);
                     sb.Append(";");
                     sb.Append(product.OldPrice);
                     sb.Append(";");
