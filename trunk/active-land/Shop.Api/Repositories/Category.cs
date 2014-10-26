@@ -36,6 +36,22 @@ namespace Shop.Api.Repositories
             return category;
         }
 
+        public Category GetCategory(string categoryName)
+        {
+            var category = _store.Categories.SingleOrDefault(c => c.Name == categoryName);
+            if (category == null)
+            {
+                throw new Exception(string.Format("Category with name={0} not found", categoryName));
+            }
+            category.CurrentLang = LangId;
+
+            foreach (var productAttribute in category.ProductAttributes)
+            {
+                productAttribute.CurrentLang = LangId;
+            }
+            return category;
+        }
+
         public void DeleteCategory(int id, Action<string> deleteImages)
         {
             var category = _store.Categories.SingleOrDefault(c => c.Id == id);

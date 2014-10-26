@@ -19,6 +19,7 @@ namespace Shop.DataAccess.Repositories
         // Categories
         IEnumerable<Category> GetCategories();
         Category GetCategory(int id);
+        Category GetCategory(string categoryName);
         void DeleteCategory(int id, Action<string> deleteImages);
         int AddCategory(Category category);
         void SaveCategory(Category category);

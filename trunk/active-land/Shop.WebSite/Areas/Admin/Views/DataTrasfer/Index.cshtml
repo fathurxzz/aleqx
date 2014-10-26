@@ -16,7 +16,7 @@
 
 @if (!string.IsNullOrEmpty(ViewBag.Message))
     {
-        <div style="padding: 20px 0; text-align: center; width: 600px; position: relative; margin: 0 auto;">
+        <div style="padding: 20px 0; text-align: center; position: relative; margin: 0 auto;">
             @if (ViewBag.ErrorCode == "0")
             {
                 <h3><span class="label label-success">@ViewBag.Message</span></h3>
