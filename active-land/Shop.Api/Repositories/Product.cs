@@ -54,6 +54,34 @@ namespace Shop.Api.Repositories
             return _store.Products.Where(p => p.Category.Name == categoryName);
         }
 
+        public Product FindProduct(int id)
+        {
+            var product = _store.Products.SingleOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return null;
+                throw new ObjectNotFoundException(string.Format("Product with id={0} not found", id));
+            }
+            product.CurrentLang = LangId;
+
+            foreach (var productAttributeValue in product.ProductAttributeValues)
+            {
+                productAttributeValue.CurrentLang = LangId;
+            }
+
+            foreach (var productAttributeStaticValue in product.ProductAttributeStaticValues)
+            {
+                productAttributeStaticValue.CurrentLang = LangId;
+            }
+            if (product.ProductImages.Any())
+            {
+                var pi = product.ProductImages.FirstOrDefault(c => c.IsDefault) ?? product.ProductImages.First();
+                product.ImageSource = pi.ImageSource;
+            }
+
+            return product;
+        }
+
         public Product GetProduct(int id)
         {
             var product = _store.Products.SingleOrDefault(p => p.Id == id);

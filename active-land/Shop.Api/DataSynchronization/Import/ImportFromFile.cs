@@ -51,23 +51,24 @@ namespace Shop.Api.DataSynchronization.Import
                             var product = new ImportedProduct
                             {
                                 ExternalId = x[0],
-                                Name = x[1],
-                                Title = x[2],
-                                OldPrice = ConvertToDecimalValue(x[3]),
-                                Price = ConvertToDecimalValue(x[4]),
-                                IsNew = ConvertToBooleanValue(x[5]),
-                                IsDiscount = ConvertToBooleanValue(x[6]),
-                                IsTopSale = ConvertToBooleanValue(x[7]),
-                                IsActive = ConvertToBooleanValue(x[8])
+                                Id = int.Parse(x[1]),
+                                Name = x[2],
+                                Title = x[3],
+                                OldPrice = ConvertToDecimalValue(x[4]),
+                                Price = ConvertToDecimalValue(x[5]),
+                                IsNew = ConvertToBooleanValue(x[6]),
+                                IsDiscount = ConvertToBooleanValue(x[7]),
+                                IsTopSale = ConvertToBooleanValue(x[8]),
+                                IsActive = ConvertToBooleanValue(x[9])
                             };
 
-                            if (!string.IsNullOrEmpty(x[9]))
+                            if (!string.IsNullOrEmpty(x[10]))
                             {
                                 var productStock = new ImportedProductStock
                                 {
-                                    StockNumber = x[9],
-                                    Size = x[10],
-                                    Color = x[11]
+                                    StockNumber = x[10],
+                                    Size = x[11],
+                                    Color = x[12]
 
                                 };
 
@@ -81,13 +82,13 @@ namespace Shop.Api.DataSynchronization.Import
                         }
                         else
                         {
-                            if (!string.IsNullOrEmpty(x[9]))
+                            if (!string.IsNullOrEmpty(x[10]))
                             {
                                 var productStock = new ImportedProductStock
                                 {
-                                    StockNumber = x[9],
-                                    Size = x[10],
-                                    Color = x[11]
+                                    StockNumber = x[10],
+                                    Size = x[11],
+                                    Color = x[12]
 
                                 };
                                 if (currentProduct != null)
@@ -115,27 +116,45 @@ namespace Shop.Api.DataSynchronization.Import
 
 
 
-                //var siteProducts = repository.GetProductsByCategory(categoryName);
-
                 int updatedProducts = 0;
 
                 foreach (var importedProduct in products)
                 {
-                    var siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
+                    //var siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
+                    var siteProduct = repository.FindProduct(importedProduct.Id);
                     if (siteProduct != null)
                     {
-                        if(siteProduct.InjectFromImportProduct(importedProduct))
-                        {
+                        //if (siteProduct.InjectFromImportProduct(importedProduct))
+                        //{
+                            if (siteProduct.ProductStocks == null)
+                            {
+                                siteProduct.ProductStocks = new LinkedList<ProductStock>();
+                            }
+
+                            if (importedProduct.ImportedProductStocks!=null)
+                            foreach (var importedProductStock in importedProduct.ImportedProductStocks)
+                            {
+                                if (siteProduct.ProductStocks.FirstOrDefault(ps => ps.StockNumber == importedProductStock.StockNumber) == null)
+                                {
+                                    siteProduct.ProductStocks.Add(new ProductStock
+                                    {
+                                        StockNumber = importedProductStock.StockNumber,
+                                        Color = importedProductStock.Color,
+                                        Size = importedProductStock.Size
+                                    });
+                                }
+                            }
+
                             repository.SaveProduct(siteProduct);
                             updatedProducts++;
-                        }
+                        //}
                     }
                     else
                     {
                         // добавляем новый товар
                         var product = new Product();
                         product.InjectFromImportProduct(importedProduct);
-                        repository.AddProduct(product);
+                        //repository.AddProduct(product);
                     }
                 }
 
