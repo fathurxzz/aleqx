@@ -58,6 +58,8 @@
       
         <th title="Количество изображений">Из.
         </th>
+        <th title="Наличие">Нал.
+        </th>
         <th title="@Html.DisplayNameFor(model => model.IsActive)">
             Акт
         </th>
@@ -108,6 +110,9 @@
         
             <td>
                 @item.ProductImages.Count()
+            </td>
+            <td>
+                @item.ProductStocks.Count()
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)

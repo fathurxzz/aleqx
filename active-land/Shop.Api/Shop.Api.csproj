@@ -54,6 +54,7 @@
     <Compile Include="DataSynchronization\Model\ImportedProduct.cs" />
     <Compile Include="DataSynchronization\Model\ImportedProductStock.cs" />
     <Compile Include="DataSynchronization\Model\ProductExtension.cs" />
+    <Compile Include="DataSynchronization\Model\TransferData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Article.cs" />
     <Compile Include="Repositories\ArticleItem.cs" />

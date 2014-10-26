@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Shop.Api.DataSynchronization.Export;
 using Shop.Api.DataSynchronization.Import;
 using Shop.DataAccess.Repositories;
+using Shop.WebSite.Areas.Admin.Models;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
 {
@@ -23,9 +25,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             _repository.LangId = CurrentLangId;
             var categories = _repository.GetCategories();
-            ViewBag.Message = message;
-            ViewBag.ErrorCode = errorCode;
-            return View(categories);
+            return View(new DataTransferModel{Categories = categories,ImportResult = new ImportResult{ErrorCode = 0}} );
         }
 
         public void Export(string categoryName)
@@ -38,6 +38,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public ActionResult Import(HttpPostedFileBase fileUpload)
         {
             _repository.LangId = CurrentLangId;
+            var categories = _repository.GetCategories();
             var result = new ImportResult { ErrorCode = 1, ErrorMessage = "Не выбран файл для загрузки" };
             if (fileUpload != null)
             {
@@ -45,7 +46,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 var categoryName = fileUpload.FileName.Split(new[] {"."}, StringSplitOptions.None)[1];
                 result = ImportFromFile.Execute(_repository, reader, categoryName, CurrentLangId);
             }
-            return RedirectToAction("Index", new { message = result.ErrorMessage, errorCode = result.ErrorCode });
+            return View("Index", new DataTransferModel {Categories = categories, ImportResult = result});
+            //return RedirectToAction("Index", new { message = result.ErrorMessage, errorCode = result.ErrorCode });
         }
 
         private void SaveToFile(string text, string categoryName)

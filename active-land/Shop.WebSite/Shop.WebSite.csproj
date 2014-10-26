@@ -176,6 +176,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductStockController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuickAdviceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShopSettingController.cs" />
+    <Compile Include="Areas\Admin\Models\DataTransferModel.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -526,7 +527,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Content\tmpImages\" />
   </ItemGroup>
