@@ -151,7 +151,7 @@ namespace Shop.Api.Repositories
             var product = _store.Products.SingleOrDefault(p => p.ExternalId == externalId);
             if (product == null)
             {
-                throw new ObjectNotFoundException(string.Format("Product with externalId={0} not found", externalId));
+                return null;
             }
             product.CurrentLang = LangId;
 
@@ -261,6 +261,7 @@ namespace Shop.Api.Repositories
             string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " ")) + " " + product.Name;
 
             product.SearchCriteria = searchCriteria;
+            
             
             _store.SaveChanges();
             return product.Id;
