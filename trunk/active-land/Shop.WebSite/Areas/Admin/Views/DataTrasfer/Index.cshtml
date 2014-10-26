@@ -14,7 +14,7 @@
     var list = Model.Categories.Select(category => new SelectListItem { Selected = false, Text = category.Title, Value = category.Name }).ToList();
 }
 
-@if (!string.IsNullOrEmpty(Model.ImportResult.ErrorMessage))
+@if (Model.ImportResult.ErrorCode!=-1)
     {
         <div style="padding: 20px 0 10px 0; text-align: center; width: 500px; position: relative; margin: 0 auto;">
             
@@ -29,32 +29,40 @@
 
                 <table class="table table-striped">
                     <tr>
-                        <td style="text-align: left">Всего строк</td>
-                        <td>@Model.ImportResult.TotalRows</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left">Всего товаров</td>
+                        <td style="text-align: left">Всего товаров:</td>
                         <td>@Model.ImportResult.ProductCount</td>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Обновлено товаров</td>
+                        <td style="text-align: left">Обновлено товаров:</td>
                         <td>@Model.ImportResult.UpdatedProductCount</td>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Добавлено товаров</td>
+                        <td style="text-align: left">Добавлено товаров:</td>
                         <td>@Model.ImportResult.NewProductCount</td>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Не удалось добавить товаров</td>
+                        <td style="text-align: left">Не удалось добавить товаров:</td>
                         <td>@Model.ImportResult.AddProductFailedCount</td>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Не удолось обновить товаров</td>
+                        <td style="text-align: left">Не удолось обновить товаров:</td>
                         <td>@Model.ImportResult.UpdateProductFailedCount</td>
                     </tr>
                     <tr>
-                        <td style="text-align: left">Не удалось распознать External Id</td>
+                        <td style="text-align: left">Не удалось распознать External Id:</td>
                         <td>@Model.ImportResult.ReadProductFailedCount</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Добавлено позиций товара:</td>
+                        <td>@Model.ImportResult.AddedArticles</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Обновлено позиций товара:</td>
+                        <td>@Model.ImportResult.UpdatedArticles</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Удалено позиций товара:</td>
+                        <td>@Model.ImportResult.DeletedArticles</td>
                     </tr>
                 </table>
 
