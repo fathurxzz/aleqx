@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Shop.DataAccess.Entities.Category>
+﻿@model Shop.WebSite.Areas.Admin.Models.DataTransferModel
 
 @{
     ViewBag.Title = "Index";
@@ -11,19 +11,53 @@
 }
 
 @{
-    var list = Model.Select(category => new SelectListItem { Selected = false, Text = category.Title, Value = category.Name }).ToList();
+    var list = Model.Categories.Select(category => new SelectListItem { Selected = false, Text = category.Title, Value = category.Name }).ToList();
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.Message))
+@if (!string.IsNullOrEmpty(Model.ImportResult.ErrorMessage))
     {
-        <div style="padding: 20px 0; text-align: center; position: relative; margin: 0 auto;">
-            @if (ViewBag.ErrorCode == "0")
+        <div style="padding: 20px 0 10px 0; text-align: center; width: 500px; position: relative; margin: 0 auto;">
+            
+            @if (Model.ImportResult.ErrorCode != 0)
             {
-                <h3><span class="label label-success">@ViewBag.Message</span></h3>
+                <h3><span class="label label-danger">@Model.ImportResult.ErrorMessage</span></h3>
             }
             else
             {
-                <h3><span class="label label-danger">@ViewBag.Message</span></h3>
+
+                <h3><span class="label label-success">Файл успешно загружен.</span></h3>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td style="text-align: left">Всего строк</td>
+                        <td>@Model.ImportResult.TotalRows</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Всего товаров</td>
+                        <td>@Model.ImportResult.ProductCount</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Обновлено товаров</td>
+                        <td>@Model.ImportResult.UpdatedProductCount</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Добавлено товаров</td>
+                        <td>@Model.ImportResult.NewProductCount</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Не удалось добавить товаров</td>
+                        <td>@Model.ImportResult.AddProductFailedCount</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Не удолось обновить товаров</td>
+                        <td>@Model.ImportResult.UpdateProductFailedCount</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">Не удалось распознать External Id</td>
+                        <td>@Model.ImportResult.ReadProductFailedCount</td>
+                    </tr>
+                </table>
+
             }
             
         </div>

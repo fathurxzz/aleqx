@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Shop.Api.DataSynchronization.Helpers;
+using Shop.Api.DataSynchronization.Model;
 using Shop.DataAccess.Repositories;
 
 namespace Shop.Api.DataSynchronization.Export
@@ -27,22 +28,7 @@ namespace Shop.Api.DataSynchronization.Export
 
 
             // Генерация заголовков begin
-            var productFields = new Dictionary<string, string>()
-            {
-                {"ExternalId", "Внешний Id"},
-                {"Id", "Внутренний Id"},
-                {"Name", "Id в строке адреса"},
-                {"Title", "Заголовок"},
-                {"OldPrice", "Старая цена"},
-                {"Price", "Цена"},
-                {"IsNew", "Новый"},
-                {"IsDiscount", "Скидка"},
-                {"IsTopSale", "Хит продаж"},
-                {"IsActive", "Активный"},
-                {"ProductStock.StockNumber", "Артикул"},
-                {"ProductStock.Size", "Размер"},
-                {"ProductStock.Color", "Цвет"}
-            };
+            var productFields = TransferData.ProductFields;
 
             foreach (var field in productFields)
             {
@@ -50,10 +36,13 @@ namespace Shop.Api.DataSynchronization.Export
                 sb.Append(";");
             }
 
+            int attrCnt = 0;
             foreach (var productAttribute in attributes)
             {
+                attrCnt++;
                 sb.Append(productAttribute.ExternalId);
-                sb.Append(";");
+                if (attrCnt != attributes.Count())
+                    sb.Append(";");
             }
 
             sb.Append("\r\n");
@@ -64,10 +53,13 @@ namespace Shop.Api.DataSynchronization.Export
                 sb.Append(";");
             }
 
+            attrCnt = 0;
             foreach (var productAttribute in attributes)
             {
+                attrCnt++;
                 sb.Append(productAttribute.Title);
-                sb.Append(";");
+                if (attrCnt != attributes.Count())
+                    sb.Append(";");
             }
             sb.Append("\r\n");
             // Генерация заголовков end
@@ -78,8 +70,6 @@ namespace Shop.Api.DataSynchronization.Export
                 product.CurrentLang = currentLangId;
 
                 sb.Append(product.ExternalId);
-                sb.Append(";");
-                sb.Append(product.Id);
                 sb.Append(";");
                 sb.Append(product.Name);
                 sb.Append(";");
@@ -121,9 +111,10 @@ namespace Shop.Api.DataSynchronization.Export
 
 
 
-
+                attrCnt = 0;
                 foreach (var productAttribute in attributes)
                 {
+                    attrCnt++;
                     var result = new List<string>();
 
                     foreach (var pav in product.ProductAttributeValues)
@@ -140,8 +131,8 @@ namespace Shop.Api.DataSynchronization.Export
                     {
                         sb.Append(res);
                     }
-
-                    sb.Append(";");
+                    if (attrCnt != attributes.Count())
+                        sb.Append(";");
                 }
 
                 sb.Append("\r\n");
@@ -152,8 +143,6 @@ namespace Shop.Api.DataSynchronization.Export
                 foreach (var ps in product.ProductStocks.OrderBy(ps => ps.StockNumber).Skip(1))
                 {
                     sb.Append(product.ExternalId);
-                    sb.Append(";");
-                    sb.Append(product.Id);
                     sb.Append(";");
                     sb.Append(product.Name);
                     sb.Append(";");
@@ -181,9 +170,10 @@ namespace Shop.Api.DataSynchronization.Export
                     sb.Append(ps.Color);
                     sb.Append(";");
 
-
+                    attrCnt = 0;
                     foreach (var productAttribute in attributes)
                     {
+                        attrCnt++;
                         var result = new List<string>();
 
                         foreach (var pav in product.ProductAttributeValues)
@@ -200,8 +190,8 @@ namespace Shop.Api.DataSynchronization.Export
                         {
                             sb.Append(res);
                         }
-
-                        sb.Append(";");
+                        if (attrCnt != attributes.Count())
+                            sb.Append(";");
                     }
 
                     sb.Append("\r\n");
