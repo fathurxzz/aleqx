@@ -56,6 +56,7 @@ namespace Shop.DataAccess.Repositories
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetActiveProducts();
         IEnumerable<Product> GetProductsByCategory(string categoryName);
+        Product FindProduct(int id);
         Product GetProduct(int id);
         Product GetProduct(string name);
         Product GetProductByExternalId(string externalId);

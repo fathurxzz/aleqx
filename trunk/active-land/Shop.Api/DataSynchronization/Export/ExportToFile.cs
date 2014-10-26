@@ -30,6 +30,7 @@ namespace Shop.Api.DataSynchronization.Export
             var productFields = new Dictionary<string, string>()
             {
                 {"ExternalId", "Внешний Id"},
+                {"Id", "Внутренний Id"},
                 {"Name", "Id в строке адреса"},
                 {"Title", "Заголовок"},
                 {"OldPrice", "Старая цена"},
@@ -77,6 +78,8 @@ namespace Shop.Api.DataSynchronization.Export
                 product.CurrentLang = currentLangId;
 
                 sb.Append(product.ExternalId);
+                sb.Append(";");
+                sb.Append(product.Id);
                 sb.Append(";");
                 sb.Append(product.Name);
                 sb.Append(";");
@@ -149,6 +152,8 @@ namespace Shop.Api.DataSynchronization.Export
                 foreach (var ps in product.ProductStocks.OrderBy(ps => ps.StockNumber).Skip(1))
                 {
                     sb.Append(product.ExternalId);
+                    sb.Append(";");
+                    sb.Append(product.Id);
                     sb.Append(";");
                     sb.Append(product.Name);
                     sb.Append(";");

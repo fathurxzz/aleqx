@@ -20,15 +20,15 @@ namespace Shop.DataAccess.Entities
         public string StockNumber { get; set; }
 
         [Display(Name = "Размер")]
-        [Required(ErrorMessage = "Введите артикул")]
+        //[Required(ErrorMessage = "Введите артикул")]
         public string Size { get; set; }
 
         [Display(Name = "Цвет")]
-        [Required(ErrorMessage = "Введите артикул")]
+        //[Required(ErrorMessage = "Введите артикул")]
         public string Color { get; set; }
 
         [Display(Name = "Доступен")]
-        [Required(ErrorMessage = "Введите артикул")]
+        //[Required(ErrorMessage = "Введите артикул")]
         public bool IsAvailable { get; set; }
     }
 }
