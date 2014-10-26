@@ -25,7 +25,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             _repository.LangId = CurrentLangId;
             var categories = _repository.GetCategories();
-            return View(new DataTransferModel{Categories = categories,ImportResult = new ImportResult{ErrorCode = 0}} );
+            return View(new DataTransferModel{Categories = categories,ImportResult = new ImportResult{ErrorCode = -1}} );
         }
 
         public void Export(string categoryName)

@@ -79,6 +79,34 @@ namespace Shop.Api.Repositories
             return productAttibute;
         }
 
+        public ProductAttribute GetProductAttribute(string externalId)
+        {
+            var productAttibute = _store.ProductAttributes.SingleOrDefault(c => c.ExternalId == externalId);
+            if (productAttibute == null)
+            {
+                throw new Exception(string.Format("ProductAttibute with ExternalId={0} not found", externalId));
+            }
+            productAttibute.CurrentLang = LangId;
+
+            foreach (var pav in productAttibute.ProductAttributeValues)
+            {
+                pav.CurrentLang = LangId;
+
+                if (pav.ProductAttributeValueTag != null)
+                {
+                    pav.ProductAttributeValueTag.CurrentLang = LangId;
+                }
+            }
+
+            foreach (var pasv in productAttibute.ProductAttributeStaticValues)
+            {
+                pasv.CurrentLang = LangId;
+            }
+
+
+            return productAttibute;
+        }
+
         public void DeleteProductAttribute(int id)
         {
             var productAttribute = _store.ProductAttributes.SingleOrDefault(c => c.Id == id);
