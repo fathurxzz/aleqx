@@ -215,8 +215,19 @@ namespace Shop.Api.Repositories
             //    pav.ProductAttributeValueLangs = null;
             //    product.ProductAttributeValues.Remove(pav);
             //}
-            product.ProductAttributeValues = null;
-            //_store.SaveChanges();
+            
+            //product.ProductAttributeValues = null;
+            product.ProductAttributeValues.Clear();
+            _store.SaveChanges();
+
+
+            while (product.ProductStocks.Any())
+            {
+                var productStock = product.ProductStocks.First();
+                _store.ProductStocks.Remove(productStock);
+            }
+            product.ProductStocks = null;
+            _store.SaveChanges();
 
             //while (product.ProductAttributeStaticValues.Any())
             //{
