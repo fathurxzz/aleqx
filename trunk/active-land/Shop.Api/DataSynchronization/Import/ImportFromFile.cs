@@ -11,6 +11,9 @@ using Shop.DataAccess.Repositories;
 
 namespace Shop.Api.DataSynchronization.Import
 {
+
+
+
     public class ImportFromFile
     {
         private static decimal ConvertToDecimalValue(string value, decimal defaultValue = 0)
@@ -100,7 +103,7 @@ namespace Shop.Api.DataSynchronization.Import
                         foreach (var attr in attributeMapping)
                         {
                             var importedAttributes = x[attributeMapping[attr.Key]];
-                            string[] attributes = importedAttributes.Split(new[] {"#"}, StringSplitOptions.RemoveEmptyEntries);
+                            string[] attributes = importedAttributes.Split(new[] { "#" }, StringSplitOptions.RemoveEmptyEntries);
                             var importedProductAttribute = new ImportedProductAttribute
                             {
                                 ExternalId = attr.Key,
@@ -158,6 +161,7 @@ namespace Shop.Api.DataSynchronization.Import
             //var products = new List<ImportedProduct>();
             try
             {
+                bool justAdded = false;
                 List<ImportedProduct> products = ReadProductsFromFile(file);
                 List<int> productStockToDelete = new List<int>();
                 foreach (var importedProduct in products)
@@ -168,7 +172,44 @@ namespace Shop.Api.DataSynchronization.Import
                         continue;
                     }
 
+                   
+
                     var siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
+
+                    if(siteProduct==null)
+                    {
+                        try
+                        {
+                            // добавляем новый товар
+                            var category = repository.GetCategory(categoryName);
+                            var newProduct = new Product { Category = category };
+                            newProduct.InjectFromImportProduct(importedProduct);
+                            if (importedProduct.ImportedProductStocks != null)
+                            {
+                                foreach (var importedProductStock in importedProduct.ImportedProductStocks)
+                                {
+                                    newProduct.ProductStocks.Add(new ProductStock
+                                    {
+                                        StockNumber = importedProductStock.StockNumber,
+                                        Color = importedProductStock.Color,
+                                        Size = importedProductStock.Size
+                                    });
+
+                                }
+                            }
+                            newProduct.SearchCriteriaAttributes = "";
+                            repository.AddProduct(newProduct);
+                            justAdded = true;
+                            res.NewProductCount++;
+                        }
+                        catch
+                        {
+                            res.AddProductFailedCount++;
+                        }
+                    }
+
+                    siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
+
                     //var siteProduct = repository.FindProduct(importedProduct.Id);
                     if (siteProduct != null)
                     {
@@ -232,46 +273,78 @@ namespace Shop.Api.DataSynchronization.Import
                             //    }
                             //}
 
-
                             
 
                             foreach (var attributeGroup in importedProduct.ImportedProductAttibutes)
                             {
+                                var attrToDelete = new List<int>();
                                 var exId = attributeGroup.ExternalId;
+                                var siteAttr = siteProduct.ProductAttributeValues.Where(pav => pav.ProductAttribute.ExternalId == exId).Select(a => a.Title).ToList();
+
+                                var xx = siteAttr.Except(attributeGroup.Values).ToList(); //  items to delete
+                                var xy = attributeGroup.Values.Except(siteAttr).ToList(); //  items to add
+
+                                List<string> addedAttr = new List<string>();
+
                                 foreach (var attr in siteProduct.ProductAttributeValues.Where(pav => pav.ProductAttribute.ExternalId == exId))
                                 {
-                                    if (attributeGroup.Values.Contains(attr.Title))
+                                    if (xx.Contains(attr.Title))
                                     {
-                                        
-                                    }
-                                    else
-                                    {
-                                        
+                                        //siteProduct.ProductAttributeValues.Remove(attr);
+                                        attrToDelete.Add(attr.Id);
                                     }
                                 }
+
+                                foreach (var id in attrToDelete)
+                                {
+                                    var a = repository.GetProductAttributeValue(id);
+                                    siteProduct.ProductAttributeValues.Remove(a);
+                                }
+
+
+                                var productAttributes = repository.GetProductAttributes(siteProduct.CategoryId);
+
+                                var productAttribute = productAttributes.First(pa => pa.ExternalId == exId);
+                                foreach (var attributeValue in productAttribute.ProductAttributeValues)
+                                {
+                                    if (xy.Contains(attributeValue.Title))
+                                    {
+                                        siteProduct.ProductAttributeValues.Add(attributeValue);
+                                        addedAttr.Add(attributeValue.Title);
+                                    }
+                                }
+
+
+                                var attrNotFoundOnSite = xy.Except(addedAttr);
+                                foreach (string s in attrNotFoundOnSite)
+                                {
+                                    var newProductAttributeValue = new ProductAttributeValue
+                                    {
+                                        CurrentLang = currentLangId,
+                                        Title = s,
+                                        ProductAttribute = productAttribute,
+                                    };
+                                    newProductAttributeValue.Products.Add(siteProduct);
+
+                                    repository.AddProductAttributeValue(newProductAttributeValue);
+                                }
+
+
                             }
 
 
-                            //// TODO: add updating product attributes
-                            //foreach (var productAttributeValue in siteProduct.ProductAttributeValues)
-                            //{
-                            //    var productAttributeExternalId = productAttributeValue.ProductAttribute.ExternalId;
-
-                            //    foreach (var importedProductAttibute in importedProduct.ImportedProductAttibutes.Where(pa => pa.ExternalId == productAttributeExternalId))
-                            //    {
-                            //        importedProductAttibute.Imported = true;
-
-
-                            //    }
-                            //}
-
-                            //repository.GetProductAttribute()
-
-
-
-
                             repository.SaveProduct(siteProduct);
-                            res.UpdatedProductCount++;
+                            
+                            if (!justAdded)
+                            {
+                                res.UpdatedProductCount++;
+                            }
+                            else
+                            {
+                                justAdded = false;
+                            }
+
+                            
                         }
                         catch
                         {
