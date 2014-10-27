@@ -82,7 +82,8 @@ namespace Shop.Api.DataSynchronization.Import
                             IsTopSale = ConvertToBooleanValue(x[fieldMapping["IsTopSale"]]),
                             IsActive = ConvertToBooleanValue(x[fieldMapping["IsActive"]]),
                             ImportedProductStocks = new List<ImportedProductStock>(),
-                            ImportedProductAttibutes = new Dictionary<string, string>()
+                            //ImportedProductAttibutes = new Dictionary<string, string>()
+                            ImportedProductAttibutes = new List<ImportedProductAttribute>()
                         };
 
                         if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
@@ -99,7 +100,16 @@ namespace Shop.Api.DataSynchronization.Import
                         foreach (var attr in attributeMapping)
                         {
                             var importedAttributes = x[attributeMapping[attr.Key]];
-                            product.ImportedProductAttibutes.Add(attr.Key, importedAttributes);
+                            string[] attributes = importedAttributes.Split(new[] {"#"}, StringSplitOptions.RemoveEmptyEntries);
+                            var importedProductAttribute = new ImportedProductAttribute
+                            {
+                                ExternalId = attr.Key
+                            };
+                            foreach (var attribute in attributes)
+                            {
+                                importedProductAttribute.Values.Add(attribute);
+                            }
+                            product.ImportedProductAttibutes.Add(importedProductAttribute);
                         }
 
 
@@ -170,7 +180,7 @@ namespace Shop.Api.DataSynchronization.Import
                             }
 
 
-                            
+
                             foreach (var productStock in siteProduct.ProductStocks)
                             {
                                 var importedProductStock = importedProduct.ImportedProductStocks.FirstOrDefault(ips => ips.StockNumber == productStock.StockNumber && !ips.Imported);
@@ -223,10 +233,14 @@ namespace Shop.Api.DataSynchronization.Import
 
 
                             // TODO: add updating product attributes
-                            foreach (var importedProductAttibute in importedProduct.ImportedProductAttibutes)
+                            foreach (var productAttributeValue in siteProduct.ProductAttributeValues)
                             {
-                                foreach (var productAttributeValue in siteProduct.ProductAttributeValues)
+                                var productAttributeExternalId = productAttributeValue.ProductAttribute.ExternalId;
+
+                                foreach (var importedProductAttibute in importedProduct.ImportedProductAttibutes.Where(pa => pa.ExternalId == productAttributeExternalId))
                                 {
+                                    importedProductAttibute.Imported = true;
+
 
                                 }
                             }
@@ -281,7 +295,7 @@ namespace Shop.Api.DataSynchronization.Import
                     repository.DeleteProductStock(id);
                 }
 
-                
+
 
                 res.ProductCount = products.Count;
             }

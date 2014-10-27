@@ -10,6 +10,7 @@ namespace Shop.Api.DataSynchronization.Model
     public class ImportedProduct:Product
     {
         public List<ImportedProductStock> ImportedProductStocks { get; set; }
-        public Dictionary<string, string> ImportedProductAttibutes { get; set; }
+        //public Dictionary<string, string> ImportedProductAttibutes { get; set; }
+        public List<ImportedProductAttribute> ImportedProductAttibutes { get; set; }
     }
 }

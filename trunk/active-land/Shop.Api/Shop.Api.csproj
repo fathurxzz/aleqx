@@ -52,6 +52,7 @@
     <Compile Include="DataSynchronization\Import\ImportFromFile.cs" />
     <Compile Include="DataSynchronization\Import\ImportResult.cs" />
     <Compile Include="DataSynchronization\Model\ImportedProduct.cs" />
+    <Compile Include="DataSynchronization\Model\ImportedProductAttribute.cs" />
     <Compile Include="DataSynchronization\Model\ImportedProductStock.cs" />
     <Compile Include="DataSynchronization\Model\ProductExtension.cs" />
     <Compile Include="DataSynchronization\Model\TransferData.cs" />
