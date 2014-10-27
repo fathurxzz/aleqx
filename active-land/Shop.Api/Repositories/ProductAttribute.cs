@@ -12,24 +12,8 @@ namespace Shop.Api.Repositories
     {
         public IEnumerable<ProductAttribute> GetProductAttributes()
         {
-            var productAttributes = _store.ProductAttributes.ToList();
-            foreach (var productAttribute in productAttributes)
-            {
-                productAttribute.CurrentLang = LangId;
-
-                foreach (var value in productAttribute.ProductAttributeValues)
-                {
-                    value.CurrentLang = LangId;
-                }
-
-                foreach (var category in productAttribute.Categories)
-                {
-                    category.CurrentLang = LangId;
-                }
-            }
-            return productAttributes;
+            return _store.ProductAttributes;
         }
-
 
         public IEnumerable<ProductAttribute> GetProductAttributes(string categoryName)
         {
@@ -122,7 +106,32 @@ namespace Shop.Api.Repositories
                 _store.ProductAttributeLangs.Remove(productAttributeLang);
             }
 
-            // TODO: Add removing ProductAttributeValues and ProductAttributeStaticValues
+            while (productAttribute.ProductAttributeValues.Any())
+            {
+                var pav = productAttribute.ProductAttributeValues.First();
+                while (pav.ProductAttributeValueLangs.Any())
+                {
+                    var pavl = pav.ProductAttributeValueLangs.First();
+                    _store.ProductAttributeValueLangs.Remove(pavl);
+                }
+                pav.Products.Clear();
+                _store.ProductAttributeValues.Remove(pav);
+            }
+
+            while (productAttribute.ProductAttributeStaticValues.Any())
+            {
+                var pav = productAttribute.ProductAttributeStaticValues.First();
+                while (pav.ProductAttributeStaticValueLangs.Any())
+                {
+                    var pavl = pav.ProductAttributeStaticValueLangs.First();
+                    _store.ProductAttributeStaticValueLangs.Remove(pavl);
+                }
+                pav.Product = null;
+                //pav.Products.Clear();
+                _store.ProductAttributeStaticValues.Remove(pav);
+            }
+
+            productAttribute.Categories.Clear();
 
             _store.ProductAttributes.Remove(productAttribute);
             _store.SaveChanges();

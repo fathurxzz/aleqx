@@ -72,7 +72,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         }
 
 
-        public ActionResult Create(int? id)
+        public ActionResult Create(int? id, string page)
         {
             _repository.LangId = CurrentLangId;
 
@@ -85,6 +85,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 }
             }
             ViewBag.Categories = categories;
+            ViewBag.Page = page;
 
             return View(new Product { CategoryId = id ?? 0 });
         }
@@ -160,7 +161,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string page)
         {
             _repository.LangId = CurrentLangId;
 
@@ -173,7 +174,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     category.Selected = true;
                 }
                 ViewBag.Categories = categories;
-
+                ViewBag.Page = page;
                 return View(product);
             }
             catch (Exception ex)
@@ -244,7 +245,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Attributes(int id)
+        public ActionResult Attributes(int id, string page)
         {
             _repository.LangId = CurrentLangId;
             var product = _repository.GetProduct(id);
@@ -252,12 +253,13 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             var productAttributes = _repository.GetProductAttributes(product.CategoryId);
             ViewBag.ProductAttributeValues = product.ProductAttributeValues.ToList();
             ViewBag.ProductId = product.Id;
+            ViewBag.Page = page;
             return View(productAttributes);
         }
 
 
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, string page)
         {
             try
             {
@@ -267,7 +269,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             {
                 TempData["errorMessage"] = ex.Message;
             }
-            return RedirectToAction("Index");
+            return !string.IsNullOrEmpty(page) ? RedirectToAction("Index", new {page = page}) : RedirectToAction("Index");
         }
 
         [HttpPost]

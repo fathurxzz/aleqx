@@ -232,18 +232,28 @@ namespace Shop.Api.DataSynchronization.Import
                             //}
 
 
-                            // TODO: add updating product attributes
-                            foreach (var productAttributeValue in siteProduct.ProductAttributeValues)
+                            foreach (var attributeGroup in importedProduct.ImportedProductAttibutes)
                             {
-                                var productAttributeExternalId = productAttributeValue.ProductAttribute.ExternalId;
-
-                                foreach (var importedProductAttibute in importedProduct.ImportedProductAttibutes.Where(pa => pa.ExternalId == productAttributeExternalId))
+                                var exId = attributeGroup.ExternalId;
+                                foreach (var attr in siteProduct.ProductAttributeValues.Where(pav => pav.ProductAttribute.ExternalId == exId))
                                 {
-                                    importedProductAttibute.Imported = true;
-
-
+                                    
                                 }
                             }
+
+
+                            //// TODO: add updating product attributes
+                            //foreach (var productAttributeValue in siteProduct.ProductAttributeValues)
+                            //{
+                            //    var productAttributeExternalId = productAttributeValue.ProductAttribute.ExternalId;
+
+                            //    foreach (var importedProductAttibute in importedProduct.ImportedProductAttibutes.Where(pa => pa.ExternalId == productAttributeExternalId))
+                            //    {
+                            //        importedProductAttibute.Imported = true;
+
+
+                            //    }
+                            //}
 
                             //repository.GetProductAttribute()
 

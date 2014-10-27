@@ -19,7 +19,16 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public ActionResult Index()
         {
             _repository.LangId = CurrentLangId;
-            var productAttributes = _repository.GetProductAttributes();
+            var productAttributes = _repository.GetProductAttributes().ToList();
+            foreach (var productAttribute in productAttributes)
+            {
+                productAttribute.CurrentLang = CurrentLangId;
+                foreach (var category in productAttribute.Categories)
+                {
+                    category.CurrentLang = CurrentLangId;
+                }
+            }
+            
             return View(productAttributes);
         }
 

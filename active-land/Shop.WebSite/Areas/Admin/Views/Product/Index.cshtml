@@ -55,7 +55,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-      
+        <th title="Количество значений атрибутов">Ат.
+        </th>
         <th title="Количество изображений">Из.
         </th>
         <th title="Наличие">Нал.
@@ -107,6 +108,9 @@
                 }
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
+            <td>
+                @item.ProductAttributeValues.Count()
+            </td>
         
             <td>
                 @item.ProductImages.Count()
@@ -118,11 +122,11 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                @Html.ActionLink("Ред.", "Edit", new { id = item.Id },new{title="Редактировать товар"}) |
-                @Html.ActionLink("Атр.", "Attributes", new { id = item.Id },new{title="Атрибуты (свойства) товара"}) |
-                @Html.ActionLink("Арткл.", "Index","ProductStock", new { id = item.Id },new{title="Артикулы товара"}) |
-                @Html.ActionLink("Изобр.", "Index", "ProductImage", new { id = item.Id }, new{title="Изображения товара"}) |
-                @Html.ActionLink("Удал.", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить товар?')",title="Удалить товар" }) |
+                @Html.ActionLink("Ред.", "Edit", new { id = item.Id, page = ViewBag.Page },new{title="Редактировать товар"}) |
+                @Html.ActionLink("Атр.", "Attributes", new { id = item.Id, page = ViewBag.Page },new{title="Атрибуты (свойства) товара"}) |
+                @Html.ActionLink("Арткл.", "Index","ProductStock", new { id = item.Id, page = ViewBag.Page },new{title="Артикулы товара"}) |
+                @Html.ActionLink("Изобр.", "Index", "ProductImage", new { id = item.Id, page = ViewBag.Page }, new{title="Изображения товара"}) |
+                @Html.ActionLink("Удал.", "Delete", new { id = item.Id, page = ViewBag.Page }, new { onclick = "return confirm('Удалить товар?')",title="Удалить товар" }) |
                 @Html.ActionLink("Сайт","ProductDetails","Home",new{area="", product=item.Name},new{target="_blank"})
             </td>
         </tr>
