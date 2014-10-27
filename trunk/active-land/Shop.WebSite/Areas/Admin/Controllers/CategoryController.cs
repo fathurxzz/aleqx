@@ -162,6 +162,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             var productAttributes = _repository.GetProductAttributes();
             foreach (var productAttribute in productAttributes)
             {
+                productAttribute.CurrentLang = CurrentLangId;
+
                 if (category.ProductAttributes.Contains(productAttribute))
                 {
                     productAttribute.Selected = true;
@@ -177,6 +179,15 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             _repository.LangId = CurrentLangId;
             var category = _repository.GetCategory(categoryId);
             var attributes = _repository.GetProductAttributes().ToList();
+            foreach (var productAttribute in attributes)
+            {
+                productAttribute.CurrentLang = CurrentLangId;
+                foreach (var value in productAttribute.ProductAttributeValues)
+                {
+                    value.CurrentLang = CurrentLangId;
+                }
+            }
+
             PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr", "categoryId");
 
             foreach (var kvp in postData)
