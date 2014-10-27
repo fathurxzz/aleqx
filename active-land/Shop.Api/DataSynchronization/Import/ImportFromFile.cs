@@ -103,7 +103,8 @@ namespace Shop.Api.DataSynchronization.Import
                             string[] attributes = importedAttributes.Split(new[] {"#"}, StringSplitOptions.RemoveEmptyEntries);
                             var importedProductAttribute = new ImportedProductAttribute
                             {
-                                ExternalId = attr.Key
+                                ExternalId = attr.Key,
+                                Values = new List<string>()
                             };
                             foreach (var attribute in attributes)
                             {
@@ -232,12 +233,21 @@ namespace Shop.Api.DataSynchronization.Import
                             //}
 
 
+                            
+
                             foreach (var attributeGroup in importedProduct.ImportedProductAttibutes)
                             {
                                 var exId = attributeGroup.ExternalId;
                                 foreach (var attr in siteProduct.ProductAttributeValues.Where(pav => pav.ProductAttribute.ExternalId == exId))
                                 {
-                                    
+                                    if (attributeGroup.Values.Contains(attr.Title))
+                                    {
+                                        
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
                                 }
                             }
 
