@@ -262,7 +262,7 @@ namespace Shop.Api.Repositories
         {
             if (_store.Products.Any(c => c.Name == product.Name))
             {
-                throw new ObjectNotFoundException(string.Format("Product {0} already exists", product.Name));
+                throw new ObjectNotFoundException(string.Format("Товар с Name={0} существует в базе. Параметр Name должен быть уникален.", product.Name));
             }
 
             _store.Products.Add(product);

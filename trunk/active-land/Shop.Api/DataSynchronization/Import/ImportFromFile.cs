@@ -157,26 +157,28 @@ namespace Shop.Api.DataSynchronization.Import
         public static ImportResult Execute(IShopRepository repository, StreamReader file, string categoryName, int currentLangId)
         {
 
-            var res = new ImportResult { ErrorCode = 0 };
+            var res = new ImportResult { ErrorCode = 0, ProductErrors = new Dictionary<string, string>()};
             //var products = new List<ImportedProduct>();
             try
             {
                 bool justAdded = false;
+                int productCount = 0;
                 List<ImportedProduct> products = ReadProductsFromFile(file);
                 List<int> productStockToDelete = new List<int>();
                 foreach (var importedProduct in products)
                 {
+                    productCount++;
                     if (string.IsNullOrEmpty(importedProduct.ExternalId))
                     {
                         res.ReadProductFailedCount++;
                         continue;
                     }
 
-                   
+
 
                     var siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
 
-                    if(siteProduct==null)
+                    if (siteProduct == null)
                     {
                         try
                         {
@@ -202,8 +204,9 @@ namespace Shop.Api.DataSynchronization.Import
                             justAdded = true;
                             res.NewProductCount++;
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            res.ProductErrors.Add("Не удалось добавить " + importedProduct.ExternalId, ex.Message);
                             res.AddProductFailedCount++;
                         }
                     }
@@ -273,7 +276,7 @@ namespace Shop.Api.DataSynchronization.Import
                             //    }
                             //}
 
-                            
+
 
                             foreach (var attributeGroup in importedProduct.ImportedProductAttibutes)
                             {
@@ -304,7 +307,9 @@ namespace Shop.Api.DataSynchronization.Import
 
                                 var productAttributes = repository.GetProductAttributes(siteProduct.CategoryId);
 
-                                var productAttribute = productAttributes.First(pa => pa.ExternalId == exId);
+                                var productAttribute = productAttributes.FirstOrDefault(pa => pa.ExternalId == exId);
+                                if (productAttribute == null)
+                                    throw new Exception("Атрибут с идентификатором " + exId + " не найден");
                                 foreach (var attributeValue in productAttribute.ProductAttributeValues)
                                 {
                                     if (xy.Contains(attributeValue.Title))
@@ -334,7 +339,7 @@ namespace Shop.Api.DataSynchronization.Import
 
 
                             repository.SaveProduct(siteProduct);
-                            
+
                             if (!justAdded)
                             {
                                 res.UpdatedProductCount++;
@@ -344,43 +349,48 @@ namespace Shop.Api.DataSynchronization.Import
                                 justAdded = false;
                             }
 
-                            
+
                         }
-                        catch
+                        catch (Exception ex)
                         {
+                            res.ProductErrors.Add("Не удалось обновить " + siteProduct.ExternalId, ex.Message);
                             res.UpdateProductFailedCount++;
                         }
                     }
-                    else
-                    {
-                        try
-                        {
-                            // добавляем новый товар
-                            var category = repository.GetCategory(categoryName);
-                            var newProduct = new Product { Category = category };
-                            newProduct.InjectFromImportProduct(importedProduct);
-                            if (importedProduct.ImportedProductStocks != null)
-                            {
-                                foreach (var importedProductStock in importedProduct.ImportedProductStocks)
-                                {
-                                    newProduct.ProductStocks.Add(new ProductStock
-                                    {
-                                        StockNumber = importedProductStock.StockNumber,
-                                        Color = importedProductStock.Color,
-                                        Size = importedProductStock.Size
-                                    });
+                    
+                    //else
+                    //{
+                        
 
-                                }
-                            }
-                            newProduct.SearchCriteriaAttributes = "";
-                            repository.AddProduct(newProduct);
-                            res.NewProductCount++;
-                        }
-                        catch
-                        {
-                            res.AddProductFailedCount++;
-                        }
-                    }
+                    //    try
+                    //    {
+                    //        // добавляем новый товар
+                    //        var category = repository.GetCategory(categoryName);
+                    //        var newProduct = new Product { Category = category };
+                    //        newProduct.InjectFromImportProduct(importedProduct);
+                    //        if (importedProduct.ImportedProductStocks != null)
+                    //        {
+                    //            foreach (var importedProductStock in importedProduct.ImportedProductStocks)
+                    //            {
+                    //                newProduct.ProductStocks.Add(new ProductStock
+                    //                {
+                    //                    StockNumber = importedProductStock.StockNumber,
+                    //                    Color = importedProductStock.Color,
+                    //                    Size = importedProductStock.Size
+                    //                });
+
+                    //            }
+                    //        }
+                    //        newProduct.SearchCriteriaAttributes = "";
+                    //        repository.AddProduct(newProduct);
+                    //        res.NewProductCount++;
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        res.ProductErrors.Add("Не удалось добавить " + importedProduct.ExternalId, ex.Message);
+                    //        res.AddProductFailedCount++;
+                    //    }
+                    //}
                 }
 
                 foreach (var id in productStockToDelete)
