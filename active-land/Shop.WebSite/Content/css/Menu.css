@@ -47,13 +47,13 @@
     /*border: 1px solid red;*/
     text-align: center;
     vertical-align: middle;
-    width: 75px;
+    width: 205px;
     text-transform: uppercase;
     color: #ffffff;
     font-family: 'PT Sans', serif;
     font-weight: 700;
     font-size: 12px;
-    padding: 0 35px;
+    padding: 10px 25px 0 25px;
     letter-spacing: 1px;
 }
 

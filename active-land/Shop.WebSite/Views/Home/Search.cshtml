@@ -1,0 +1,63 @@
+﻿@using Shop.WebSite.Helpers
+@using Shop.WebSite.Models
+@model Shop.WebSite.Models.CatalogueModel
+
+@{
+    ViewBag.Title += " — Велокаталог";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="menu-panel">
+    @Html.Partial("LanguageSwitcher")
+    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new { id = "" }, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+    @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
+</div>
+<div id="main-banner">
+</div>
+
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = "Результаты поиска" } })
+
+<div id="catalogue">
+    
+    <div class="search-result-previews">
+        @if (Model.Products.Any())
+        {
+             foreach (var product in Model.Products)
+             {
+                 @Html.Partial("ProductPreview", new ProductPreview
+                 {
+                     Title = product.Title,
+                     Label =
+                         product.IsNew ? ProductPreviewLabel.WowNew
+                             : product.IsTopSale ? ProductPreviewLabel.TopSale
+                                 : product.IsDiscount ? ProductPreviewLabel.Discount
+                                     : ProductPreviewLabel.None,
+                     Price = product.Price,
+                     OldPrice = product.OldPrice,
+                     ImageSource = product.ImageSource,
+                     Name = product.Name
+                 })
+             }
+        }
+        else if(((string)ViewBag.Q).Length<2)
+        {
+            <div style="text-align: center">
+            @Html.Raw("Поисковая строка слишком короткая. Введите минимум 2 символа")
+            </div>
+        }
+        else
+        {
+            <div style="text-align: center">
+            @Html.Raw("К сожалению по вашему запросу ничего не найдено :(")
+            </div>
+        }
+    </div>
+    <div class="clearfix"></div>
+
+</div>
+@*<div>
+    @Html.Partial("Paging")
+</div>*@
+
+
+<div style="height: 50px"></div>

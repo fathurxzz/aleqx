@@ -16,11 +16,15 @@ namespace Shop.WebSite.Controllers
         {
         }
 
-        public ActionResult Index(string id)
+        public ActionResult Index(string id, string msg)
         {
             _repository.LangId = CurrentLangId;
             var model = new SiteModel(_repository, CurrentLangId, id) { CurrentLangCode = CurrentLangCode };
             this.SetSeoContent(model);
+            if (msg == "thanks")
+            {
+                ViewBag.Message = "Спасибо, ваше сообщение отправлено";
+            }
             return View(model);
         }
 
@@ -33,6 +37,7 @@ namespace Shop.WebSite.Controllers
             };
             ViewBag.ProductTotalCount = model.ProductTotalCount;
             ViewBag.Page = model.Page;
+            ViewBag.SortOrder = sortOrder;
             this.SetSeoContent(model);
             return View(model);
         }
@@ -46,8 +51,9 @@ namespace Shop.WebSite.Controllers
             };
             ViewBag.ProductTotalCount = model.ProductTotalCount;
             ViewBag.Page = model.Page;
+            ViewBag.Q = q;
             this.SetSeoContent(model);
-            return View("Catalogue", model);
+            return View(model);
         }
 
         public ActionResult ProductDetails(string product)
@@ -71,6 +77,24 @@ namespace Shop.WebSite.Controllers
             };
             this.SetSeoContent(model);
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Feedback(FormCollection form)
+        {
+            var contentName = form["contentName"];
+
+            var feedbackForm = new FeedbackForm
+            {
+                Name = form["customerName"],
+                Phone = form["mobilePhone"],
+                Email = form["email"],
+                Question = form["question"]
+            };
+
+            MailHelper.Notify(feedbackForm);
+
+            return RedirectToAction("Index", new { id = contentName, msg="thanks" });
         }
     }
 }

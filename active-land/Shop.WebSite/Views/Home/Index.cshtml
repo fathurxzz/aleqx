@@ -30,8 +30,8 @@
                 <img src="/Content/bg/main-04.jpg" alt="" /></li>
         </ul>
     </div>
-    
-     <div id="menu-panel-main-page">
+
+    <div id="menu-panel-main-page">
         @Html.Partial("LanguageSwitcher")
         @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new { id = "" }, new { id = "logo" }).ToString().Replace("[LINK]", ""))
         @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
@@ -52,7 +52,7 @@
     </div>
 
     <div id="chose-your-bike">
-        @Html.Raw(Html.ActionLink("[LINK]", "Catalogue", "Home").ToString().Replace("[LINK]", ""))
+        @Html.Raw(Html.ActionLink("[LINK]", "Catalogue", "Home",new{category="bikes"},null).ToString().Replace("[LINK]", ""))
     </div>
 
 
@@ -88,6 +88,65 @@
         }
         <div class="clearfix"></div>
     </div>
+}
+
+@if (Model.Content.ContentType == 3)
+{
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Обратная связь" } })
+
+    if (ViewBag.Message != null)
+    {
+        <div class="thankyou">@ViewBag.Message</div>
+    }
+    else
+    {
+        using (Html.BeginForm("Feedback", "Home", FormMethod.Post))
+        {
+            @Html.Hidden("contentName", Model.Content.Name)
+            <div class="feedbackForm">
+                <div class="order-fields">
+                    <div class="field">
+                        <div class="title">ваше имя:</div>
+                        <div class="input">
+                            <input type="text" name="customerName" id="customerName" value="">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="field">
+                        <div class="title">
+                            номер мобильного:<br>
+                            <span>Например: (097) 999-22-33</span>
+                        </div>
+                        <div class="input">
+                            <input type="text" name="mobilePhone" id="mobilePhone" value="">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="field">
+                        <div class="title">емейл-адрес:</div>
+                        <div class="input">
+                            <input type="text" name="email" id="email" value="">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="field">
+                        <div class="title">ваш вопрос:</div>
+                        <div class="input textarea">
+                            <textarea name="question" id="question"></textarea>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+        
+                <div id="order-done-wrapper">
+                    <div id="order-done">
+                        <input type="submit" onclick=" return FeedbackForm.validateFields() " value="отправить!"/>
+                        @*<a href="#" onclick="this.form[0].submit()">Готово!</a>*@
+                    </div>
+                </div>
+            </div>
+        }
+    }
 }
 
 @if (Model.Content != null && !string.IsNullOrEmpty(Model.Content.Text))

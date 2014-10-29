@@ -11,6 +11,10 @@
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/css/jquery.bxslider.css")" rel="stylesheet" type="text/css" />
+    
+    @Styles.Render("~/Content/css/bootstrap.min.css")
+    @Styles.Render("~/Content/css/bootstrap-select.min.css")
+
     @Styles.Render(
             "~/Content/css/main.css?v=" + SiteSettings.Version,
             "~/Content/css/content.css?v=" + SiteSettings.Version,
@@ -45,6 +49,8 @@
     @Scripts.Render("~/Content/fancybox/jquery.fancybox-1.3.4.js")
     @Scripts.Render("~/Scripts/cart.js?v=" + SiteSettings.Version)
     @Scripts.Render("~/Scripts/ordervalidation.js?v=" + SiteSettings.Version)
+    @Scripts.Render("~/Scripts/feedbackformvalidation.js?v=" + SiteSettings.Version)
+    
 
     @RenderSection("includes", required: false)
 
@@ -55,7 +61,15 @@
 
     <script type="text/javascript">
         $(function () {
-            //$('.selectpicker').selectpicker();
+            $('.selectpicker').selectpicker();
+
+
+            $('select.selectpicker').on('change', function () {
+                var selected = $('.selectpicker option:selected').attr("value");
+                $("#sortOrder").val(selected);
+                this.parentNode.parentNode.submit();
+            });
+
             $('.bxsliderArticleItemImages').bxSlider({
                 mode: 'fade',
                 //auto: autostart,
@@ -135,7 +149,7 @@
                 {
                     <div id="search-wrapper">
                         <div id="search-icon"></div>
-                        <input id="search-input" name="q" type="text" placeholder="Я ищу...">
+                        <input id="search-input" name="q" type="text" placeholder="Я ищу..." value="@ViewBag.Q">
                     </div>
                 }
                 <div id="phone-panel">
