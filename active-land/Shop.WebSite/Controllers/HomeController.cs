@@ -37,6 +37,19 @@ namespace Shop.WebSite.Controllers
             return View(model);
         }
 
+        public ActionResult Search(string q, int? page)
+        {
+            _repository.LangId = CurrentLangId;
+            var model = new CatalogueModel(_repository, CurrentLangId, page)
+            {
+                CurrentLangCode = CurrentLangCode
+            };
+            ViewBag.ProductTotalCount = model.ProductTotalCount;
+            ViewBag.Page = model.Page;
+            this.SetSeoContent(model);
+            return View("Catalogue", model);
+        }
+
         public ActionResult ProductDetails(string product)
         {
             _repository.LangId = CurrentLangId;

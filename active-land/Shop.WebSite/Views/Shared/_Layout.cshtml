@@ -78,8 +78,8 @@
 
         })
     </script>
-    
-   
+
+
 
 </head>
 
@@ -91,8 +91,8 @@
             <h4><span class="label label-danger">@TempData["errorMessage"]</span>    </h4>
         </div>
     }
-    
-    @RenderSection("Error",false)
+
+    @RenderSection("Error", false)
 
 
     <div id="header-outer">
@@ -101,12 +101,13 @@
         <div id="header-inner">
             <div id="header">
                 <div id="logo-small"></div>
-                          @if (Request.IsAuthenticated)
-        {
-            <div style="position: absolute; padding-top: 10px; padding-left: 50px">
-                <a href="@Url.Action("Index", "Category", new { area = "Admin" })"><button type="button" class="btn btn-danger btn-xs">@GlobalRes.Adminisration</button></a>
-            </div>
-        }
+                @if (Request.IsAuthenticated)
+                {
+                    <div style="position: absolute; padding-top: 10px; padding-left: 50px">
+                        <a href="@Url.Action("Index", "Category", new { area = "Admin" })">
+                            <button type="button" class="btn btn-danger btn-xs">@GlobalRes.Adminisration</button></a>
+                    </div>
+                }
                 <div id="user-greeting">
                     @*Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!*@
                 </div>
@@ -114,7 +115,7 @@
                 @*@Html.Raw(Html.ActionLink("[LINK]","Index","Cart",null,new{id="cart-icon"}).ToString().Replace("[LINK]","<div id=\"cart-items-count\">"+ WebSession.OrderItems.Sum(o => o.Value.Quantity)+"</div>"))*@
 
                 <a href="@Url.Action("Index", "Cart", null)" id="cart-icon">
-                    <div id="cart-items-count" class="@(WebSession.OrderItems.Sum(o => o.Value.Quantity) > 0?"show":"")" >@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>
+                    <div id="cart-items-count" class="@(WebSession.OrderItems.Sum(o => o.Value.Quantity) > 0 ? "show" : "")" >@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>
                 </a>
 
                 @*<a href="cart.html" id="cart-icon">*@
@@ -129,19 +130,19 @@
                     @*<div class="social vk">
                     </div>*@
                 </div>
-                <div id="search-wrapper">
-                    <div id="search-icon"></div>
-                    <input id="search-input" name="search-input" type="text" placeholder="Я ищу...">
-                </div>
+
+                @using (Html.BeginForm("Search","Home",new{area=""},FormMethod.Get))
+                {
+                    <div id="search-wrapper">
+                        <div id="search-icon"></div>
+                        <input id="search-input" name="q" type="text" placeholder="Я ищу...">
+                    </div>
+                }
                 <div id="phone-panel">
-                   (097) 765-36-10, <span class="skype"><a href="skype:active-land">active-land</a></span>
+                    (097) 765-36-10, <span class="skype"><a href="skype:active-land">active-land</a></span>
                 </div>
-                
-         
             </div>
         </div>
-             
-
     </div>
     <div id="page">
         @RenderBody()
