@@ -23,5 +23,7 @@ namespace Shop.Api.DataSynchronization.Import
         public int AddedArticles { get; set; }
         public int UpdatedArticles { get; set; }
 
+        public Dictionary<string, string> ProductErrors { get; set; }
+
     }
 }
