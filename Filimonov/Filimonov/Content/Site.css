@@ -345,12 +345,20 @@ body
 }
 
 .flash-links, .music {
-    margin: 50px 0;
+    margin: 30px 0 50px 0;
 }
 
 .music-item, .flash-item {
     padding: 10px 0;
     text-align: center;
+}
+
+.flash-items {
+    text-align: center;
+}
+.flash-items li{
+    display: inline-block;
+    margin: 10px;
 }
 
 .siteBgContainer {

@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/22/2014 23:05:46
+-- Date Created: 10/29/2014 19:02:08
 -- Generated from EDMX file: C:\vsp\Filimonov\Filimonov\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -31,6 +31,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `FlashContent`;
     DROP TABLE IF EXISTS `Song`;
     DROP TABLE IF EXISTS `SiteBackground`;
+    DROP TABLE IF EXISTS `MusicItem`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -82,7 +83,8 @@ CREATE TABLE `FlashContent`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`ImageSource` varchar (200) NOT NULL, 
 	`Title` varchar (200) NOT NULL, 
-	`ProjectId` int NOT NULL);
+	`ProjectId` int NOT NULL, 
+	`ImageSourcePreview` varchar (200) NOT NULL);
 
 ALTER TABLE `FlashContent` ADD PRIMARY KEY (Id);
 
