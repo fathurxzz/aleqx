@@ -159,7 +159,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             var category = _repository.GetCategory(id);
             ViewBag.CategoryId = id;
-            var productAttributes = _repository.GetProductAttributes();
+            var productAttributes = _repository.GetProductAttributes().ToList();
             foreach (var productAttribute in productAttributes)
             {
                 productAttribute.CurrentLang = CurrentLangId;
