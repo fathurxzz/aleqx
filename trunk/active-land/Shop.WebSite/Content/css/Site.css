@@ -146,3 +146,18 @@ ul.language-switcher li a{
 
 
 
+.search-result-previews {
+    margin:0 -19px;
+}
+
+.thankyou {
+    font-size: 30px;
+    color: #00aeef;
+    text-align: center;
+    padding: 50px;
+    font-weight: bold;
+}
+
+.bootstrap-select {
+    width: 205px !important;
+}

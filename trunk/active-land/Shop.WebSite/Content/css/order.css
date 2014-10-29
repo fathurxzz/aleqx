@@ -41,7 +41,20 @@
     height: 40px;
     width: 393px;
     text-align: left;
+ }
 
+.order-fields .input.textarea {
+    float: left;
+    height: auto;
+    width: 393px;
+    text-align: left;
+ }
+
+.order-fields .input textarea {
+ 
+    height: 140px;
+    width: 393px;
+    text-align: left;
 }
 
 .order-fields .radio {
@@ -98,6 +111,17 @@
     border-radius: 6px;
     outline: none;
     padding: 0 11px;
+    font-family: 'PT Sans', serif;
+    font-size: 19px;
+    color: #606060;
+    width: 370px;
+}
+
+.order-fields .input textarea {
+    border: 1px solid #b5b5b5;
+    border-radius: 6px;
+    outline: none;
+    padding: 10px 11px;
     font-family: 'PT Sans', serif;
     font-size: 19px;
     color: #606060;

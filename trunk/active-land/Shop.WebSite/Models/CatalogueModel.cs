@@ -185,7 +185,9 @@ namespace Shop.WebSite.Models
 
             IQueryable<Product> products = null;
 
-            products = Products.OrderBy(p => p.Title).ThenBy(p => p.Price).AsQueryable();
+            products = sortOrder=="desc" ? 
+                Products.OrderByDescending(p => p.Price).ThenBy(p=>p.Title).AsQueryable()
+                : Products.OrderBy(p => p.Price).ThenBy(p => p.Title).AsQueryable();
 
             products = ApplyPaging(products, page, int.Parse(SiteSettings.GetShopSetting("ProductsPageSize")));
 

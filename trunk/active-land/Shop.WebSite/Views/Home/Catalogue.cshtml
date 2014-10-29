@@ -77,13 +77,20 @@
         </div>
     
     <div id="filters-container">
-
+        
+        @using (Html.BeginForm("Catalogue", "Home", FormMethod.Get))
+        {
+            <input type="hidden" name="sortBy" value="price"/>
+            <input type="hidden" name="sortOrder" id="sortOrder" value=""/>
+            
             <div id="price-sort-selector" class="selector">
-                @*<select class="selectpicker" name="priceOrder">
-                <option>Сначала дорогие</option>
-                <option>Сначала дешевые</option>
-            </select>*@
+                <select class="selectpicker">
+                    
+                    <option @(ViewBag.SortOrder=="asc"?"selected":"") value="asc">Сначала дешевые</option>
+                    <option @(ViewBag.SortOrder=="desc"?"selected":"") value="desc">Сначала дорогие</option>
+                </select>
             </div>
+        }
 
             @foreach (var productAttribute in Model.ProductAttributes)
             {
