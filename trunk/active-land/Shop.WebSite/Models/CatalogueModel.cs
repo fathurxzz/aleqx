@@ -92,7 +92,7 @@ namespace Shop.WebSite.Models
         }
 
 
-        public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null)
+        public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null)
             : base(repository1, langId, null)
         {
             _repository = repository1;
