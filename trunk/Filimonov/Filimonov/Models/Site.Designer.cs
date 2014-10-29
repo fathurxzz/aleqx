@@ -504,13 +504,15 @@ namespace Filimonov.Models
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="projectId">Initial value of the ProjectId property.</param>
-        public static FlashContent CreateFlashContent(global::System.Int32 id, global::System.String imageSource, global::System.String title, global::System.Int32 projectId)
+        /// <param name="imageSourcePreview">Initial value of the ImageSourcePreview property.</param>
+        public static FlashContent CreateFlashContent(global::System.Int32 id, global::System.String imageSource, global::System.String title, global::System.Int32 projectId, global::System.String imageSourcePreview)
         {
             FlashContent flashContent = new FlashContent();
             flashContent.Id = id;
             flashContent.ImageSource = imageSource;
             flashContent.Title = title;
             flashContent.ProjectId = projectId;
+            flashContent.ImageSourcePreview = imageSourcePreview;
             return flashContent;
         }
 
@@ -616,6 +618,30 @@ namespace Filimonov.Models
         private global::System.Int32 _ProjectId;
         partial void OnProjectIdChanging(global::System.Int32 value);
         partial void OnProjectIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSourcePreview
+        {
+            get
+            {
+                return _ImageSourcePreview;
+            }
+            set
+            {
+                OnImageSourcePreviewChanging(value);
+                ReportPropertyChanging("ImageSourcePreview");
+                _ImageSourcePreview = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSourcePreview");
+                OnImageSourcePreviewChanged();
+            }
+        }
+        private global::System.String _ImageSourcePreview;
+        partial void OnImageSourcePreviewChanging(global::System.String value);
+        partial void OnImageSourcePreviewChanged();
 
         #endregion
 

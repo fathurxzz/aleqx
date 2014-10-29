@@ -21,12 +21,12 @@ namespace Filimonov.Areas.Admin.Controllers
                 var content = context.Content.First(c => c.Id == id);
                 var projects = content.Projects.ToList();
                 var sortOrder = projects.Any() ? projects.Max(p => p.SortOrder) : 0;
-                return View(new Project { SortOrder = sortOrder + 1, Content = content});
+                return View(new Project { SortOrder = sortOrder + 1, Content = content });
             }
         }
 
         [HttpPost]
-        [ValidateInput(false)] 
+        [ValidateInput(false)]
         public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload, Project model)
         {
             try
@@ -69,7 +69,7 @@ namespace Filimonov.Areas.Admin.Controllers
 
 
         [HttpPost]
-        [ValidateInput(false)] 
+        [ValidateInput(false)]
         public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
         {
             try
@@ -144,7 +144,7 @@ namespace Filimonov.Areas.Admin.Controllers
                     context.SaveChanges();
                 }
 
-                
+
 
                 //if (fileUpload != null)
                 //{
@@ -228,10 +228,10 @@ namespace Filimonov.Areas.Admin.Controllers
         //        //}
         //    }
         //}
-        
-        
+
+
         [HttpPost]
-        public ActionResult AddFlashToProject(FlashContent model, int projectId, HttpPostedFileBase fileUpload)
+        public ActionResult AddFlashToProject(FlashContent model, int projectId, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUploadPreview)
         {
 
             using (var context = new SiteContainer())
@@ -242,15 +242,14 @@ namespace Filimonov.Areas.Admin.Controllers
 
                 try
                 {
-                    
-                    var file = fileUpload;
-                    if (file != null)
+                    if (fileUpload != null && fileUploadPreview != null)
                     {
+                        var file = fileUpload;
                         var pi = new FlashContent();
                         string fileName = IOHelper.GetUploadFileName("~/Content/TmpArchive", file.FileName);
                         string filePath = Server.MapPath("~/Content/TmpArchive");
 
-                        
+
 
                         //string flashSourceFilePath = filePath;
                         //string flashDestFilePath = filePath;
@@ -258,9 +257,9 @@ namespace Filimonov.Areas.Admin.Controllers
                         filePath = Path.Combine(filePath, fileName);
                         file.SaveAs(filePath);
 
-                        string archiveName =  Path.GetFileNameWithoutExtension(fileName);
-                        
-                        string extractedArchivePath = Path.Combine(Server.MapPath("~/Content/FlashContent" ), archiveName);
+                        string archiveName = Path.GetFileNameWithoutExtension(fileName);
+
+                        string extractedArchivePath = Path.Combine(Server.MapPath("~/Content/FlashContent"), archiveName);
 
                         Directory.CreateDirectory(extractedArchivePath);
 
@@ -274,11 +273,25 @@ namespace Filimonov.Areas.Admin.Controllers
 
                         System.IO.File.Delete(filePath);
 
+
+                        file = fileUploadPreview;
+
+                        fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                        filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        file.SaveAs(filePath);
+                        pi.ImageSourcePreview = fileName;
+
                         pi.ImageSource = archiveName;
-                        pi.Title = model.Title;
+                        pi.Title = model.Title??"";
                         project.FlashContents.Add(pi);
 
                         context.SaveChanges();
+                    }
+                    else
+                    {
+                        ViewBag.Errormessage = "Выберите файлы для загрузки!";
+                        return View();
                     }
 
                     return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
@@ -379,6 +392,7 @@ namespace Filimonov.Areas.Admin.Controllers
                 try
                 {
                     IOHelper.DeleteDirectory("~/Content/FlashContent", projectImage.ImageSource);
+                    IOHelper.DeleteFile("~/Content/Images", projectImage.ImageSourcePreview);
                 }
                 catch
                 {
@@ -428,8 +442,8 @@ namespace Filimonov.Areas.Admin.Controllers
 
                     context.DeleteObject(projectImage);
                 }
-                
-                
+
+
                 IOHelper.DeleteFile("~/Content/Images", project.ImageSource);
                 foreach (var thumbnail in SiteSettings.Thumbnails)
                 {
@@ -444,6 +458,6 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
 
-        
+
     }
 }

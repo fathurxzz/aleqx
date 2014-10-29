@@ -15,34 +15,50 @@
 </style>
 <div class="adminContentContainer">
     <div style="width: 750px; margin: 0 auto">
-    @ViewBag.Errormessage
-    @using (Html.BeginForm("AddFlashToProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.ValidationSummary(true)
-        @Html.Hidden("projectId")
-        <table class="adminEditContentTable">
-            <tr>
-                <td>@Html.LabelFor(model => model.ImageSource)
-                </td>
-                <td>
-                    @*<input type="file" name="fileUpload" class="photoFileInput" />*@
-                    <input type="file" id="fileUpload" name="fileUpload"  />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => model.Title)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.Title)
-                    @Html.ValidationMessageFor(model => model.Title)
-                </td>
-            </tr>
-        </table>
-        <div class="buttonsContainer">
-            <input type="submit" value="Закачать" />
-            @Html.ActionLink("Назад", "Projects", "Home", new { Area = "", id = ViewBag.projectName }, null)
-        </div>
-    }
-</div>
+        
+        @if (!string.IsNullOrEmpty(ViewBag.Errormessage))
+        {
+            <div style="color: red">
+                @ViewBag.Errormessage
+            </div>
+        }
+        
+
+        @using (Html.BeginForm("AddFlashToProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.Hidden("projectId")
+            <table class="adminEditContentTable">
+                <tr>
+                    <td>@Html.LabelFor(model => model.ImageSource)
+                    </td>
+                    <td>
+                        @*<input type="file" name="fileUpload" class="photoFileInput" />*@
+                        <input type="file" id="fileUpload" name="fileUpload"  />
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.ImageSourcePreview)
+                    </td>
+                    <td>
+                        @*<input type="file" name="fileUpload" class="photoFileInput" />*@
+                        <input type="file" id="fileUploadPreview" name="fileUploadPreview"  />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Title)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Title)
+                        @Html.ValidationMessageFor(model => model.Title)
+                    </td>
+                </tr>
+            </table>
+            <div class="buttonsContainer">
+                <input type="submit" value="Закачать" />
+                @Html.ActionLink("Назад", "Projects", "Home", new { Area = "", id = ViewBag.projectName }, null)
+            </div>
+        }
+    </div>
 </div>

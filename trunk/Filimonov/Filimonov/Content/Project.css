@@ -85,6 +85,14 @@ img {
     margin: 5px;
 }
 
+.flash-items .preview {
+    width: 73px;
+    height: 73px;
+    padding: 7px;
+    background-image: url('img/carusel-preview-frame.gif');
+    margin: 5px;
+}
+
 
 .description-title {
     text-align: center;

@@ -73,6 +73,7 @@
     <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="ImageSourcePreview" Type="varchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="Song">
     <Key>
@@ -236,6 +237,7 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
           <NavigationProperty Name="Project" Relationship="Site.ProjectFlashContent" FromRole="FlashContent" ToRole="Project" />
           <Property Type="Int32" Name="ProjectId" Nullable="false" />
+          <Property Type="String" Name="ImageSourcePreview" Nullable="false" MaxLength="200" />
         </EntityType>
         <Association Name="ProjectFlashContent">
           <End Type="Site.Project" Role="Project" Multiplicity="1" />
@@ -348,6 +350,7 @@
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ImageSourcePreview" ColumnName="ImageSourcePreview" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -404,7 +407,7 @@
           <ConnectorPoint PointX="7.5" PointY="3.43724609375" />
           <ConnectorPoint PointX="8.625" PointY="3.43724609375" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.FlashContent" Width="1.5" PointX="7.125" PointY="5.375" />
+        <EntityTypeShape EntityType="Site.FlashContent" Width="1.875" PointX="7.125" PointY="5.375" />
         <AssociationConnector Association="Site.ProjectFlashContent" />
         <EntityTypeShape EntityType="Site.Song" Width="1.5" PointX="9.625" PointY="7.5" />
         <AssociationConnector Association="Site.ProjectSong" />

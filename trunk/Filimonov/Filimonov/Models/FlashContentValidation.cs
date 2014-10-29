@@ -15,11 +15,13 @@ namespace Filimonov.Models
 
     public class FlashContentValidation
     {
-        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Заголовок")]
         public string Title { get; set; }
 
-        [DisplayName("Изображение")]
+        [DisplayName("Флеш-архив")]
         public string ImageSource { get; set; }
+
+        [DisplayName("Изображение превьюшки")]
+        public string ImageSourcePreview { get; set; }
     }
 }
