@@ -92,7 +92,7 @@ namespace Shop.WebSite.Models
         }
 
 
-        public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null)
+        public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy=null)
             : base(repository1, langId, null)
         {
             _repository = repository1;
@@ -109,7 +109,8 @@ namespace Shop.WebSite.Models
 
             Products = new List<Product>();
 
-            SourceProducts = _repository.GetProductsByCategory(categoryName);
+            
+
 
             //FilterArray = filter != null ? filter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
 
@@ -123,48 +124,60 @@ namespace Shop.WebSite.Models
             //            );
 
 
-            if (filterValueGroups.Any())
+            if (query != null && query.Length > 1)
             {
+                SourceProducts = _repository.GetProductsByQueryString(query);
                 foreach (var product in SourceProducts)
                 {
-                    var productAttributeValueGroups = GroupProductAttributesString(product);
-                    var matchCount = 0;
-                    var mismatchConut = 0;
-
-                    foreach (var filterValueGroup in filterValueGroups)
-                    {
-                        var found = 0;
-                        foreach (var productAttributeValueGroup in productAttributeValueGroups)
-                        {
-                            if (filterValueGroup.Key == productAttributeValueGroup.Key)
-                            {
-                                found++;
-                                if (CompareGroups(productAttributeValueGroup.Value, filterValueGroup.Value))
-                                {
-                                    matchCount++;
-                                    break;
-                                }
-                                mismatchConut++;
-                                break;
-                            }
-                        }
-                        if (found == 0)
-                        {
-                            mismatchConut++;
-                        }
-                    }
-
-                    if (matchCount>0&&mismatchConut==0)
-                    {
-                        Products.Add(product);
-                    }
+                    Products.Add(product);
                 }
             }
             else
             {
-                foreach (var product in SourceProducts)
+                SourceProducts = _repository.GetProductsByCategory(categoryName);
+                if (filterValueGroups.Any())
                 {
-                    Products.Add(product);
+                    foreach (var product in SourceProducts)
+                    {
+                        var productAttributeValueGroups = GroupProductAttributesString(product);
+                        var matchCount = 0;
+                        var mismatchConut = 0;
+
+                        foreach (var filterValueGroup in filterValueGroups)
+                        {
+                            var found = 0;
+                            foreach (var productAttributeValueGroup in productAttributeValueGroups)
+                            {
+                                if (filterValueGroup.Key == productAttributeValueGroup.Key)
+                                {
+                                    found++;
+                                    if (CompareGroups(productAttributeValueGroup.Value, filterValueGroup.Value))
+                                    {
+                                        matchCount++;
+                                        break;
+                                    }
+                                    mismatchConut++;
+                                    break;
+                                }
+                            }
+                            if (found == 0)
+                            {
+                                mismatchConut++;
+                            }
+                        }
+
+                        if (matchCount > 0 && mismatchConut == 0)
+                        {
+                            Products.Add(product);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var product in SourceProducts)
+                    {
+                        Products.Add(product);
+                    }
                 }
             }
 

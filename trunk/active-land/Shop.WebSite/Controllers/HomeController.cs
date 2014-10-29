@@ -24,10 +24,10 @@ namespace Shop.WebSite.Controllers
             return View(model);
         }
 
-        public ActionResult Catalogue(string category, string filter, int? page)
+        public ActionResult Catalogue(string category, string filter, int? page, string sortOrder, string sortBy)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository,CurrentLangId, page, category, filter: filter)
+            var model = new CatalogueModel(_repository,CurrentLangId, page, category, filter: filter,sortBy:sortBy,sortOrder:sortOrder)
             {
                 CurrentLangCode = CurrentLangCode
             };
@@ -40,7 +40,7 @@ namespace Shop.WebSite.Controllers
         public ActionResult Search(string q, int? page)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, CurrentLangId, page)
+            var model = new CatalogueModel(_repository, CurrentLangId, page,query:q)
             {
                 CurrentLangCode = CurrentLangCode
             };
