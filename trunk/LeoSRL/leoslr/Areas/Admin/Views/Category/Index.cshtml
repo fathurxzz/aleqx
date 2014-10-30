@@ -36,20 +36,17 @@
 <table class="table">
     @*<table class="table">*@
     <tr>
-        <th>
+        <th style="width: 200px;">
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.SortOrder)*@
+            @Html.DisplayNameFor(model => model.SortOrder)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.IsCorrectLang)*@
+            @Html.DisplayNameFor(model => model.IsCorrectLang)
         </th>
         <th></th>
     </tr>
@@ -89,9 +86,6 @@
                 @item.Title 
             </td>
             <td>
-                <div class="adminTextContainer">@Html.Raw(item.Text)</div>
-            </td>
-            <td>
                 @if (!item.IsCorrectLang)
                 {
                     <span class="label label-danger">!</span>
@@ -122,8 +116,9 @@
                     }
                     else
                     {
-                    @Html.ActionLink("Добавить раздел", "Create", "Product", new { id = item.Id, isContentPage = true }, null) <text>|</text>
-                    @Html.ActionLink("Добавить проект", "Create", "Product", new { id = item.Id, isContentPage = false }, null)
+                        @Html.ActionLink("Добавить раздел", "Create", "Product", new { id = item.Id, isContentPage = true }, null) <text>|</text>
+                        @Html.ActionLink("Добавить проект", "Create", "Product", new { id = item.Id, isContentPage = false }, null)<text>|</text>
+                        @Html.ActionLink("Разделы ("+item.Products.Count+")", "Details", "Category", new { id = item.Id }, null)
                     }
                     
                 }
@@ -131,7 +126,7 @@
         </tr>
         
         
-
+        @*
                 foreach (var product in item.Products.OrderBy(p=>p.SortOrder))
                 {
                     <tr>
@@ -221,8 +216,9 @@
                     </tr>
                     }
                 }
+            *@
 
-
+        
                 foreach (var article in item.Articles.OrderByDescending(a=>a.Date))
                 {
                     <tr>
@@ -241,13 +237,6 @@
                         </td>
                         <td>@article.Title</td>
                         <td>
-                            <div class="adminTextContainer">
-                                @Html.Raw(article.Description)
-                            </div>
-                            
-                            
-                        </td>
-                        <td>
                             @if (!article.IsCorrectLang)
                             {
                                 <span class="label label-danger">!</span>
@@ -259,16 +248,18 @@
                         </td>
                         <td>
                             @Html.ActionLink("Редактировать", "Edit", "Article", new { id = article.Id }, null) |
-                            @Html.ActionLink("Добавить блок новостей", "Create", "ArticleItem", new { id = article.Id }, null) |
+                            @Html.ActionLink("Подробнее", "Details", "Article", new { id = article.Id }, null) 
+
+                            @*@Html.ActionLink("Добавить блок новостей", "Create", "ArticleItem", new { id = article.Id }, null) |*@
                             @*@Html.ActionLink("Добавить блок изображений", "AddImagesBlock", "Article", new { id = article.Id }, null) |*@
                             
-                            @if (!article.ArticleItems.Any())
+                            @*@if (!article.ArticleItems.Any())
                             {
                                 @Html.ActionLink("Удалить", "Delete", "Article", new { id = article.Id }, new { onclick = "return confirm('Удалить новость?')" })
-                            }
+                            }*@
                         </td>
                     </tr>
-
+        @*
                     foreach (var articleItem in article.ArticleItems.OrderBy(i=>i.SortOrder))
                     {
                         <tr>
@@ -308,6 +299,9 @@
                         </tr>
   
                     }
+                    *@
+                    
+                    
                 }
         cnt++;
 

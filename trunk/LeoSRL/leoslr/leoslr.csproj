@@ -321,6 +321,8 @@
     <Content Include="Areas\Admin\Views\ProductTextBlock\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductTextBlockFile\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductTextBlockFile\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Details.cshtml" />
     <None Include="Properties\PublishProfiles\leosrl.pubxml" />
     <None Include="Properties\PublishProfiles\leo_prod_real.pubxml" />
     <None Include="Properties\PublishProfiles\prod_1gb.pubxml" />
