@@ -287,12 +287,24 @@ table td, table th {
     padding-bottom: 35px;
 }
 
-.socials {
+.socials.socials-header {
     height: 18px;
     width: 200px;
     position: absolute;
     margin-left: 140px;
     margin-top: 10px;
+}
+
+.socials.socials-footer {
+    height: 18px;
+    width: 200px;
+    
+    /*position: absolute;
+    margin-left: 140px;
+    margin-top: 10px;*/
+    padding-top: 50px;
+    position: relative;
+    margin: 0 auto;
 }
 
 .socials .fb,
