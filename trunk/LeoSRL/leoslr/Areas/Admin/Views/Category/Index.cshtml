@@ -83,6 +83,11 @@
                 @item.SortOrder
             </td>
             <td>
+                @if (item.CategoryLevel > 0)
+                {
+                    string categoryLevel = "level" + item.CategoryLevel;
+                    <span class="category-level-indicator @categoryLevel"></span>
+                }
                 @item.Title 
             </td>
             <td>
@@ -235,7 +240,10 @@
                         </td>
                         <td>
                         </td>
-                        <td>@article.Title</td>
+                        <td>
+                            <span class="category-level-indicator level2"></span>
+                            @article.Title
+                        </td>
                         <td>
                             @if (!article.IsCorrectLang)
                             {

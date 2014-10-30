@@ -129,7 +129,7 @@ namespace Leo.Models
                 }
                 else if (subcategoryName != null && Products.Any())
                 {
-                    Product = Category.Products.First();
+                    Product = Category.Products.OrderBy(p=>p.SortOrder).First();
                 }
             }
             

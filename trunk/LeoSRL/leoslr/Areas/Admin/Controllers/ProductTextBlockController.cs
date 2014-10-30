@@ -50,7 +50,7 @@ namespace Leo.Areas.Admin.Controllers
                 }
 
 
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Details", "Category", new { id = product.CategoryId });
             }
             catch (Exception ex)
             {
@@ -86,7 +86,7 @@ namespace Leo.Areas.Admin.Controllers
                         CreateOrChangeContentLang(_context, model, cache, lang);
                     }
                 }
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Details", "Category", new { id = cache.Product.CategoryId });
             }
             catch (Exception ex)
             {
@@ -98,6 +98,7 @@ namespace Leo.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             var articleItem = _context.ProductTextBlocks.First(a => a.Id == id);
+            var categoryId = articleItem.Product.CategoryId;
             while (articleItem.ProductTextBlockFiles.Any())
             {
                 var image = articleItem.ProductTextBlockFiles.First();
@@ -111,7 +112,7 @@ namespace Leo.Areas.Admin.Controllers
             }
             _context.ProductTextBlocks.Remove(articleItem);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Category");
+            return RedirectToAction("Details", "Category", new { id = categoryId });
         }
 
         private void CreateOrChangeContentLang(SiteContext context, ProductTextBlock instance, ProductTextBlock cache, Language lang)
