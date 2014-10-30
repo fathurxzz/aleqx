@@ -16,6 +16,12 @@
     @Html.HiddenFor(model => model.Id)
     <fieldset>
         <legend>Редактировать категорию</legend>
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="attention">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
         @if (!Model.IsCorrectLang)
             {
                 <div class="attention">

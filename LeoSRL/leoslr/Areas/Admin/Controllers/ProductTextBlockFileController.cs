@@ -32,6 +32,7 @@ namespace Leo.Areas.Admin.Controllers
             {
                 model.Id = 0;
                 var product = _context.ProductTextBlocks.First(a => a.Id == model.ProductTextBlockId);
+                var categoryId = product.Product.CategoryId;
                 model.Title = model.Title;
                 var cache = new ProductTextBlockFile
                 {
@@ -66,9 +67,9 @@ namespace Leo.Areas.Admin.Controllers
 
                 product.ProductTextBlockFiles.Add(cache);
                 _context.SaveChanges();
-                
 
-                return RedirectToAction("Index", "Category");
+
+                return RedirectToAction("Details", "Category", new { id = categoryId });
             }
             catch (Exception ex)
             {
@@ -90,6 +91,7 @@ namespace Leo.Areas.Admin.Controllers
             try
             {
                 var product = _context.ProductTextBlockFiles.First(a => a.Id == model.Id);
+                var categoryId = product.ProductTextBlock.Product.CategoryId;
                 TryUpdateModel(product, new[] {"Title"});
 
                 var file = image;
@@ -119,7 +121,7 @@ namespace Leo.Areas.Admin.Controllers
 
                 _context.SaveChanges();
 
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Details", "Category", new { id = categoryId });
             }
             catch (Exception ex)
             {
@@ -132,11 +134,12 @@ namespace Leo.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             var articleItem = _context.ProductTextBlockFiles.First(a => a.Id == id);
+            var categoryId = articleItem.ProductTextBlock.Product.CategoryId;
             ImageHelper.DeleteImage(articleItem.ImageSource);
             ImageHelper.DeleteFile(articleItem.FileName);
             _context.ProductTextBlockFiles.Remove(articleItem);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Category");
+            return RedirectToAction("Details", "Category", new { id = categoryId });
         }
 
 

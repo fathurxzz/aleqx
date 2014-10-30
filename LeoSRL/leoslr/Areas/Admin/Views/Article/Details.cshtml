@@ -79,10 +79,10 @@
             }
         </td>
         <td>
-            @Html.ActionLink("Редактировать", "Edit", "Article", new { id = Model.Id }, null) |
-            @Html.ActionLink("Подробнее", "Details", "Article", new { id = Model.Id }, null) |
+            @*@Html.ActionLink("Редактировать", "Edit", "Article", new { id = Model.Id }, null) |
+            @Html.ActionLink("Подробнее", "Details", "Article", new { id = Model.Id }, null) |*@
 
-            @Html.ActionLink("Добавить блок новостей", "Create", "ArticleItem", new { id = Model.Id }, null) |
+            @Html.ActionLink("Добавить блок новостей", "Create", "ArticleItem", new { id = Model.Id }, null) 
             @*@Html.ActionLink("Добавить блок изображений", "AddImagesBlock", "Article", new { id = article.Id }, null) |*@
                             
             @if (!Model.ArticleItems.Any())

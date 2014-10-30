@@ -70,6 +70,8 @@ namespace Leo.Areas.Admin.Controllers
                     categoryLevel = parent.CategoryLevel + 1;
                 }
 
+
+
                 var cache = new Category
                 {
                     Name = SiteHelper.UpdatePageWebName(model.Name),
@@ -79,9 +81,14 @@ namespace Leo.Areas.Admin.Controllers
                     Title = model.Title,
                     //Text = model.Text,
                     IsNewsCategory = model.IsNewsCategory
-                    
+
                     //CategoryId = model.CategoryId
                 };
+
+                if (_context.Categories.FirstOrDefault(c => c.Name == cache.Name) != null)
+                {
+                    throw new Exception("Каетгория с идентификатором " + cache.Name + " уже существует. Введите другой идентификатор");
+                }
 
                 model.Text = model.Text ?? "";
 
@@ -97,10 +104,12 @@ namespace Leo.Areas.Admin.Controllers
             }
             catch (DbEntityValidationException ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 return View(model);
             }
             catch (Exception ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 return View(model);
             }
 
@@ -129,6 +138,12 @@ namespace Leo.Areas.Admin.Controllers
                 {
                     TryUpdateModel(cache, new[] { "SortOrder", "Title", "IsNewsCategory" });
                     cache.Name = SiteHelper.UpdatePageWebName(model.Name);
+
+                    //if (_context.Categories.FirstOrDefault(c => c.Name == cache.Name) != null)
+                    //{
+                    //    throw new Exception("Каетгория с идентификатором " + cache.Name + " уже существует. Введите другой идентификатор");
+                    //}
+
                     model.Text = model.Text ?? "";
                     var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
@@ -139,10 +154,12 @@ namespace Leo.Areas.Admin.Controllers
             }
             catch (DbEntityValidationException ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 return View(model);
             }
             catch (Exception ex)
             {
+                ViewBag.ErrorMessage = ex.Message;
                 return View(model);
             }
 
@@ -156,6 +173,10 @@ namespace Leo.Areas.Admin.Controllers
             foreach (var product in category.Products)
             {
                 product.CurrentLang = CurrentLang.Id;
+                foreach (var productTextBlock in product.ProductTextBlocks)
+                {
+                    productTextBlock.CurrentLang = CurrentLang.Id;
+                }
             }
             foreach (var article in category.Articles)
             {

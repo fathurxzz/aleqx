@@ -73,7 +73,7 @@ namespace Leo.Areas.Admin.Controllers
                 }
 
 
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Details", "Article", new { id = article.Id });
             }
             catch (Exception ex)
             {
@@ -124,7 +124,7 @@ namespace Leo.Areas.Admin.Controllers
                         CreateOrChangeContentLang(_context, model, cache, lang);
                     }
                 }
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Details", "Article", new{id=cache.ArticleId});
             }
             catch(Exception ex)
             {
@@ -136,6 +136,7 @@ namespace Leo.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             var articleItem = _context.ArticleItems.First(a => a.Id == id);
+            var articleId = articleItem.ArticleId;
             while (articleItem.ArticleItemImages.Any())
             {
                 var image = articleItem.ArticleItemImages.First();
@@ -149,16 +150,18 @@ namespace Leo.Areas.Admin.Controllers
             }
             _context.ArticleItems.Remove(articleItem);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Category");
+            return RedirectToAction("Details", "Article", new { id = articleId });
         }
 
         public ActionResult DeleteImage(int id)
         {
             var productImage = _context.ArticleItemImages.First(pi => pi.Id == id);
+            var articleId = productImage.ArticleItem.ArticleId;
             ImageHelper.DeleteImage(productImage.ImageSource);
             _context.ArticleItemImages.Remove(productImage);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Category", new { area = "Admin" });
+            //return RedirectToAction("Index", "Category", new { area = "Admin" });
+            return RedirectToAction("Details", "Article", new { id = articleId });
         }
 
 

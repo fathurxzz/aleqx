@@ -15,6 +15,14 @@
     @Html.ValidationSummary(true)
     @Html.HiddenFor(model=>model.CurrentLang)
     @Html.HiddenFor(model=>model.CategoryId)
+
+    if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="attention">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+    
     <fieldset>
         <legend>Добавить категорию</legend>
 
