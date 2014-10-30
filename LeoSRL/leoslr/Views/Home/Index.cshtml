@@ -16,7 +16,7 @@
 @section scripts
 {
     <script type="text/javascript">
-        (function(leo) {
+        (function (leo) {
             var settings;
             if (leo.settings === null) {
                 leo.settings = settings = {};
@@ -50,17 +50,17 @@
             prevText: ''
         });
     </script>
-    
+
     <script type="text/javascript">
 
-        $(function() {
-            
-          @*  $.scrollingParallax('/Content/Images/@ViewBag.RandomImageSource', {
+        $(function () {
+
+            @*  $.scrollingParallax('/Content/Images/@ViewBag.RandomImageSource', {
                 staticSpeed: .2
             });*@
         })
 
-        
+
 
 
     </script>
@@ -71,29 +71,36 @@
 @section Navigation
 {
     <div class="navigation-container">
-        <div class="socials">
+
+        @if (!(Model.Category.HasContentPages && Model.Product != null) && !Model.Category.IsNewsCategory)
+        {
+            <div class="socials socials-header">
                 <a class="fb" href="https://www.facebook.com/leo.srl"></a>
                 <a class="twitter" href="https://twitter.com/search?q=leosrl&src=typd"></a>
                 <a class="linkedin" href="http://it.linkedin.com/pub/leo-srl-italy/4a/341/a6a/ru"></a>
             </div>
+        }
+
         <div class="categories-title">
             <span>
                 @Html.ActionLink(Model.NextCategoryTitle, "Index", "Home", new { category = Model.NextCategoryName }, null)
             </span>
         </div>
         <div class="menu">
-            
-            
-            @if (ViewBag.IsHomePAge!="1")
+
+
+            @if (ViewBag.IsHomePAge != "1")
             {
-                <a href="@Url.Action("Index","Home",new{category=ViewBag.Category,subcategory=""})"><div class="logo"></div></a>
+                <a href="@Url.Action("Index", "Home", new { category = ViewBag.Category, subcategory = "" })">
+                    <div class="logo"></div>
+                </a>
             }
             else
             {
                 <div class="logo"></div>
             }
-            
-            
+
+
 
             @Html.Partial("Menu", Model.SiteMenu)
 
@@ -191,7 +198,7 @@
         <div class="category-title articles">
             @Model.Category.Title
         </div>
-        
+
         @if (Model.Category.Products.Count > 1)
         {
             <div>
@@ -200,24 +207,24 @@
                     {
                         if (product.Name == Model.Product.Name)
                         {
-                            <li>@product.Title</li>
+                        <li>@product.Title</li>
                         }
                         else
                         {
                             
-                            <li>@Html.ActionLink(product.Title, "Index", "Home", new { product = product.Name }, null)</li>
+                        <li>@Html.ActionLink(product.Title, "Index", "Home", new { product = product.Name }, null)</li>
                         }
 
                     }
                 </ul>
-                </div>
+            </div>
         }
 
         <div class="content-separator"></div>
         <div class="title">@Model.Product.Title</div>
         <div class="text">
             @Html.Raw(Model.Product.Text)
-            
+
             @foreach (var textBlock in Model.Product.ProductTextBlocks.OrderBy(c => c.SortOrder))
             {
                 <div class="text-box-title">
@@ -225,27 +232,26 @@
                 </div>
                 if (!string.IsNullOrEmpty(textBlock.Text))
                 {
-                    <div class="text-box-text">
-                        @Html.Raw(textBlock.Text)
-                    </div>
+                <div class="text-box-text">
+                    @Html.Raw(textBlock.Text)
+                </div>
                 }
                 if (textBlock.ProductTextBlockFiles.Any())
                 {
                     
-                    <div class="text-box-files">
-                        
-                        
-                        @foreach (var file in textBlock.ProductTextBlockFiles)
-                        {
-                            <div class="text-box-file">
-                                <a href="~/Content/Files/@file.FileName" target="_blank">
+                <div class="text-box-files">
+
+                    @foreach (var file in textBlock.ProductTextBlockFiles)
+                    {
+                        <div class="text-box-file">
+                            <a href="~/Content/Files/@file.FileName" target="_blank">
                                 @Html.Raw(Html.CachedImage("~/Content/Images/", file.ImageSource, SiteSettings.GetThumbnail("documentPreview")))
                                 <div>@file.Title</div>
-                                </a>
-                            </div>
-                        }
-                        <div class="clear"></div>
-                    </div>
+                            </a>
+                        </div>
+                    }
+                    <div class="clear"></div>
+                </div>
                 }
             }
 
@@ -279,7 +285,6 @@
         }
 
         <div style="height: 25px;">
-            
         </div>
 
 
@@ -340,13 +345,13 @@
             <div id="productContainer">
                 <div class="cross"></div>
                 <div class="product-content-wrapper">
-                <div id="productTitle">
-                    @Html.Raw(Model.Product.Title)
-                </div>
+                    <div id="productTitle">
+                        @Html.Raw(Model.Product.Title)
+                    </div>
                     <div id="productText">
                         @Html.Raw(Model.Product.Text)
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -374,9 +379,15 @@
 {
     <div class="footer" id="footer">
         <div class="copy">&copy; 2014 LEO SRL. Все права защищены</div>
+
         <div class="em">
             Сайт создан в<br>
             <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+        </div>
+        <div class="socials socials-footer">
+            <a class="fb" href="https://www.facebook.com/leo.srl"></a>
+            <a class="twitter" href="https://twitter.com/search?q=leosrl&src=typd"></a>
+            <a class="linkedin" href="http://it.linkedin.com/pub/leo-srl-italy/4a/341/a6a/ru"></a>
         </div>
     </div>
 }
