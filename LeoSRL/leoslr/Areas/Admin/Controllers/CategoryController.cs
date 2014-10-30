@@ -153,6 +153,14 @@ namespace Leo.Areas.Admin.Controllers
         {
             var category = _context.Categories.First(c => c.Id == id);
             category.CurrentLang = CurrentLang.Id;
+            foreach (var product in category.Products)
+            {
+                product.CurrentLang = CurrentLang.Id;
+            }
+            foreach (var article in category.Articles)
+            {
+                article.CurrentLang = CurrentLang.Id;
+            }
             return View(category);
         }
 

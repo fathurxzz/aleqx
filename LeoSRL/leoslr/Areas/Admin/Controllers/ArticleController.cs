@@ -110,6 +110,10 @@ namespace Leo.Areas.Admin.Controllers
         {
             var article = _context.Articles.First(p => p.Id == id);
             article.CurrentLang = CurrentLang.Id;
+            foreach (var articleItem in article.ArticleItems)
+            {
+                articleItem.CurrentLang = CurrentLang.Id;
+            }
             return View(article);
         }
 
