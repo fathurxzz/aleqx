@@ -139,6 +139,13 @@ namespace Leo.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult Details(int id)
+        {
+            var product = _context.Products.First(p => p.Id == id);
+
+            return View(product);
+        }
+
         public ActionResult Delete(int id)
         {
             var product = _context.Products.First(p => p.Id == id);

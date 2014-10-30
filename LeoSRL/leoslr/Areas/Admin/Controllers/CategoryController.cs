@@ -149,6 +149,12 @@ namespace Leo.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Details(int id)
+        {
+            var category = _context.Categories.First(c => c.Id == id);
+            category.CurrentLang = CurrentLang.Id;
+            return View(category);
+        }
 
         public ActionResult Delete(int id)
         {

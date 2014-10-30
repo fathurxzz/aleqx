@@ -29,7 +29,7 @@ namespace Leo.Models
         [Required(ErrorMessage = "Введите идентификатор")]
         public string Name { get; set; }
 
-        [Display(Name = "Доступность на текущем языке")]
+        [Display(Name = "Локализация")]
         public bool IsCorrectLang { get; set; }
     }
 }

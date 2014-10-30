@@ -1,0 +1,136 @@
+﻿@using System.Linq
+@using Leo
+@using SiteExtensions.Graphics
+@model Leo.Models.Article
+@{
+    ViewBag.Title += "Просмотр новости";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section AdminNavigation
+{
+    <ul class="nav nav-tabs" role="tablist">
+        <li>@Html.ActionLink("Контент главной страницы", "Index", "SpecialContent", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+        @*<li>@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>*@
+    </ul>
+}
+
+@if (TempData["errorMessage"] != null)
+{
+    <div style="text-align: center">
+        <h4><span class="label label-danger">@TempData["errorMessage"]</span>    </h4>
+    </div>
+}
+
+<h2>@Model.Title</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Name)*@
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.SortOrder)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Text)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCorrectLang)
+        </th>
+        <th></th>
+    </tr>
+    
+    
+    <tr>
+        <td>
+            <span class="category-level-indicator level2"></span>
+            @if (Model.Published)
+            {
+                <span class="product-indicator label label-success">@Model.Date.ToShortDateString()</span>
+            }
+            else
+            {
+                <span class="product-indicator label label-danger">@Model.Date.ToShortDateString()</span>
+            }
+        </td>
+        <td>
+        </td>
+        <td>@Model.Title</td>
+        <td>
+            <div class="adminTextContainer">
+                @Html.Raw(Model.Description)
+            </div>
+                            
+                            
+        </td>
+        <td>
+            @if (!Model.IsCorrectLang)
+            {
+                <span class="label label-danger">!</span>
+            }
+            else
+            {
+                <span class="label label-success">ok</span>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", "Article", new { id = Model.Id }, null) |
+            @Html.ActionLink("Подробнее", "Details", "Article", new { id = Model.Id }, null) |
+
+            @Html.ActionLink("Добавить блок новостей", "Create", "ArticleItem", new { id = Model.Id }, null) |
+            @*@Html.ActionLink("Добавить блок изображений", "AddImagesBlock", "Article", new { id = article.Id }, null) |*@
+                            
+            @if (!Model.ArticleItems.Any())
+            {
+                @Html.ActionLink("Удалить", "Delete", "Article", new { id = Model.Id }, new { onclick = "return confirm('Удалить новость?')" })
+            }
+        </td>
+    </tr>
+    
+    
+    @foreach (var articleItem in Model.ArticleItems.OrderBy(i=>i.SortOrder))
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@articleItem.SortOrder</td>
+                            
+                            <td colspan="2">
+                                <div>
+                                    <div class="adminTextContainer">@Html.Raw(articleItem.Text)</div>
+                                    
+                                </div>
+                                <div>
+                                    @foreach (var image in articleItem.ArticleItemImages)
+                                          {
+                                              <div style="float: left; margin: 0 3px">
+                                                  @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleItemImagePreview")))
+                                                  <br />
+                                                  @Html.ActionLink("Удалить", "DeleteImage", "ArticleItem", new { id = image.Id }, new { onclick = "return confirm('Удалить изображение?')" })
+                                              </div>
+                                          }
+                                </div>
+                            </td>
+                            <td>
+                            @if (!articleItem.IsCorrectLang)
+                            {
+                                <span class="label label-danger">!</span>
+                            }
+                            else
+                            {
+                                <span class="label label-success">ok</span>
+                            }
+                        </td>
+                            <td>
+                                @Html.ActionLink("Редактировать", "Edit", "ArticleItem", new { id = articleItem.Id }, null) |
+                                @Html.ActionLink("Удалить", "Delete", "ArticleItem", new { id = articleItem.Id }, new { onclick = "return confirm('Удалить блок?')" })
+                            </td>
+                        </tr>
+  
+                    }
+    
+</table>

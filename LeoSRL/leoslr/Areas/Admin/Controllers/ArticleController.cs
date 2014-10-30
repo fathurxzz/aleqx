@@ -106,6 +106,13 @@ namespace Leo.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult Details(int id)
+        {
+            var article = _context.Articles.First(p => p.Id == id);
+            article.CurrentLang = CurrentLang.Id;
+            return View(article);
+        }
+
         public ActionResult Delete(int id)
         {
             var article = _context.Articles.First(p => p.Id == id);
