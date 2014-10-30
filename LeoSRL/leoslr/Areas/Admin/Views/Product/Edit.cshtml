@@ -63,7 +63,7 @@
 
             <div class="admin-buttons">
                 <input type="submit" value="Сохранить" />
-                @Html.ActionLink("Назад", "Index", "Category", new { area = "Admin" }, null)
+                @Html.ActionLink("Назад", "Details", "Category", new { area = "Admin", id=Model.CategoryId }, null)
             </div>
         </fieldset>
     }

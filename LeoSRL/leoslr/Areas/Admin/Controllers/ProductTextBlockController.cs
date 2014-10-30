@@ -19,7 +19,8 @@ namespace Leo.Areas.Admin.Controllers
 
         public ActionResult Create(int id)
         {
-            return View(new ProductTextBlock { CurrentLang = CurrentLang.Id, SortOrder = 0, ProductId = id});
+            var product = _context.Products.First(a => a.Id == id);
+            return View(new ProductTextBlock { CurrentLang = CurrentLang.Id, SortOrder = 0, ProductId = id, Product = product});
         }
 
         [HttpPost]
