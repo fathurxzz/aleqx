@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<SiteExtensions.MenuItem>
 
-@foreach (var item in Model)
+@foreach (var item in Model.OrderBy(m=>m.SortOrder))
 {
 
     var selected = item.Selected ? "selected" : "";
