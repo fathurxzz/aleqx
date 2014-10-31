@@ -92,7 +92,7 @@
 
 #title-price-in-cart-section .price {
     float: right;
-    width: 129px;
+    width: 154px;
     height: 40px;
     background: url("../img/product-details-price.png");
     color: #ffffff;
@@ -103,6 +103,7 @@
     text-align: right;
     padding-right: 25px;
     margin-top: 3px;
+    padding-top: 6px;
 }
 
     #title-price-in-cart-section .price .old {

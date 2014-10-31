@@ -55,16 +55,14 @@ $(function () {
 
         var filterValue = $(this).attr("filter"),
             wholeUrl = location.href,
-            urlWithoutParams,
             urlParams = "",
             urlHasParams = wholeUrl.indexOf("?") > -1,
-            urlArray = wholeUrl.split("?");
-
-        urlWithoutParams = urlArray[0];
+            urlArray = wholeUrl.split("?"),
+            urlWithoutParams = urlArray[0];
 
         if (urlHasParams) {
-            urlParams = "?"+ urlArray[1];
-        } 
+            urlParams = "?" + urlArray[1];
+        }
 
         var x = urlWithoutParams.split("/");
         while (x.length > 6) {
