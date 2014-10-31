@@ -38,7 +38,9 @@ namespace Shop.WebSite.Helpers
                     order.DeliveryMethod == 0 ? "Доставка" : "Самовывоз",
                     number);
             message.IsBodyHtml = true;
+#if !DEBUG
             client.Send(message);
+#endif
             message.Dispose();
         }
 
@@ -60,7 +62,9 @@ namespace Shop.WebSite.Helpers
                     feedbackForm.Email,
                     feedbackForm.Question);
             message.IsBodyHtml = true;
+#if !DEBUG
             client.Send(message);
+#endif
             message.Dispose();
         }
     }

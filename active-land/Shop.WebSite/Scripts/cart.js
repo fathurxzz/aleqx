@@ -11,6 +11,15 @@
         });
     },
 
+    updateCartStock: function (id,stock,size,color) {
+        $.get("/Cart/UpdateStock/?id=" + id + "&stock=" + stock+"&size="+size+"&color="+color);
+    },
+
+    checkRadiosCart: function (obj) {
+        var x = obj.split("#");
+        Shop.updateCartStock(x[0], x[1], x[2], x[3]);
+    },
+
     updateCart: function (id,quantity) {
         //alert(id+" "+quantity);
         $.get("/Cart/Update/?id=" + id + "&quantity=" + quantity);
@@ -52,6 +61,10 @@ $(function() {
         $("#totalPrice")[0].innerHTML = totalCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
     });
+
+
+
+
 
     $(".arrow-dec").click(function () {
         var wrapper = $(this).closest(".cart-item")[0];

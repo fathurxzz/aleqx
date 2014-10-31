@@ -9,5 +9,6 @@ namespace Shop.DataAccess.Entities
     partial class OrderItem
     {
         public string CategoryName { get; set; }
+        public List<ProductStock> ProductStocks { get; set; }
     }
 }

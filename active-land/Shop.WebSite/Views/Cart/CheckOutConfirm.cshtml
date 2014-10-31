@@ -81,7 +81,7 @@
     <div class="field">
         <div class="title">Способ оплаты:</div>
         <div class="order-value">
-            @(Model.Order.PaymentMethod==0?"Оплачиваю наличными курьеру при доставке":"Оплачиваю карточкой")
+            @(Model.Order.PaymentMethod==0?(Model.Order.DeliveryMethod==0?"Оплачиваю наличными курьеру при доставке":"Оплачиваю наличными"):"Оплачиваю карточкой")
         </div>
         <div class="clearfix"></div>
     </div>

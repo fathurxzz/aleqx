@@ -23,6 +23,9 @@ namespace Shop.DatabaseModel
         public int ProductId { get; set; }
         public string ProductTitle { get; set; }
         public int OrderId { get; set; }
+        public string ProductStockNumber { get; set; }
+        public string ProductSize { get; set; }
+        public string ProductColor { get; set; }
     
         public virtual Order Order { get; set; }
     }

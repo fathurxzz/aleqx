@@ -111,30 +111,35 @@
             }
 
         </div>
-        <div id="products">
-            @foreach (var product in Model.Products)
+    <div id="products">
+        @foreach (var product in Model.Products)
+        {
+            @Html.Partial("ProductPreview", new ProductPreview
             {
-                @Html.Partial("ProductPreview", new ProductPreview
-                {
-                    Title = product.Title,
-                    Label =
-                        product.IsNew ? ProductPreviewLabel.WowNew
-                            : product.IsTopSale ? ProductPreviewLabel.TopSale
-                                : product.IsDiscount ? ProductPreviewLabel.Discount
-                                    : ProductPreviewLabel.None,
-                    Price = product.Price,
-                    OldPrice = product.OldPrice,
-                    ImageSource = product.ImageSource,
-                    Name = product.Name
-                })
-            }
-        </div>
+                Title = product.Title,
+                Label =
+                    product.IsNew ? ProductPreviewLabel.WowNew
+                        : product.IsTopSale ? ProductPreviewLabel.TopSale
+                            : product.IsDiscount ? ProductPreviewLabel.Discount
+                                : ProductPreviewLabel.None,
+                Price = product.Price,
+                OldPrice = product.OldPrice,
+                ImageSource = product.ImageSource,
+                Name = product.Name
+            })
+                
+        }
         <div class="clearfix"></div>
+        
+        @Html.Partial("Paging")
 
+    </div>
+    <div class="clearfix"></div>
+    
 </div>
-<div>
+@*<div>
     @Html.Partial("Paging")
-</div>
+</div>*@
 
 
 <div style="height: 50px"></div>

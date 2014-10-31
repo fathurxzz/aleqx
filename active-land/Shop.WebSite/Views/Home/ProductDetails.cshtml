@@ -54,6 +54,10 @@
     @Html.Partial("SiteTitle", bc)
 }
 
+ @if (ViewBag.Message != null)
+    {
+        <div class="thankyou">@ViewBag.Message</div>
+    }
 @if (Model.Product != null)
 {
     @Html.Partial("_ProductDetails", Model.Product)
@@ -120,4 +124,71 @@ else
     <script type="text/javascript">
         ProductCatalogue.initialize();
     </script>
+}
+
+
+
+@section Layout
+{
+    <div class="layout">
+        
+        <div class="map-container">
+            <div class="fancy-close-btn"></div>
+            <div class="toptitle">
+                Обратная связь
+                <br/>
+            </div>
+                    
+            @*@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Обратная связь" } })*@
+            @using (Html.BeginForm("Feedback", "Home", FormMethod.Post))
+            {
+                @Html.Hidden("productName", Model.Product.Name)
+                <div class="feedbackForm">
+                    <div class="order-fields">
+                        <div class="field">
+                            <div class="title">ваше имя:</div>
+                            <div class="input">
+                                <input type="text" name="customerName" id="customerName" value="">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="field">
+                            <div class="title">
+                                номер мобильного:<br>
+                                <span>Например: (097) 999-22-33</span>
+                            </div>
+                            <div class="input">
+                                <input type="text" name="mobilePhone" id="mobilePhone" value="">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="field">
+                            <div class="title">емейл-адрес:</div>
+                            <div class="input">
+                                <input type="text" name="email" id="email" value="">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="field">
+                            <div class="title">ваш вопрос:</div>
+                            <div class="input textarea">
+                                <textarea name="question" id="question"></textarea>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+        
+                    <div id="order-done-wrapper">
+                        <div id="order-done">
+                            <input type="submit" onclick=" return FeedbackForm.validateFields() " value="отправить!"/>
+                            @*<a href="#" onclick="this.form[0].submit()">Готово!</a>*@
+                        </div>
+                    </div>
+                </div>
+            }
+
+               
+                
+        </div>
+    </div>
 }

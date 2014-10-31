@@ -4,6 +4,15 @@ $(function () {
     var hideMenu = true;
 
 
+    $(".fancy-close-btn").click(function () {
+        $(".layout").hide();
+    });
+
+    $("#mailTo").click(function () {
+        $(".layout").show();
+    });
+
+
     $(".categories-menu-link").mousemove(function () {
         if (obj[0] != undefined) {
             var width = obj[0].offsetWidth;
