@@ -56,13 +56,17 @@ namespace Shop.WebSite.Controllers
             return View(model);
         }
 
-        public ActionResult ProductDetails(string product)
+        public ActionResult ProductDetails(string product, string msg)
         {
             _repository.LangId = CurrentLangId;
             var model = new CatalogueModel(_repository, CurrentLangId, null, productName: product)
             {
                 CurrentLangCode = CurrentLangCode
             };
+            if (msg == "thanks")
+            {
+                ViewBag.Message = "Спасибо, ваше сообщение отправлено";
+            }
             this.SetSeoContent(model);
             ViewBag.CurrentLangCode = CurrentLangCode;
             return View(model);
@@ -84,6 +88,7 @@ namespace Shop.WebSite.Controllers
         {
             var contentName = form["contentName"];
 
+
             var feedbackForm = new FeedbackForm
             {
                 Name = form["customerName"],
@@ -94,7 +99,12 @@ namespace Shop.WebSite.Controllers
 
             MailHelper.Notify(feedbackForm);
 
+            if (string.IsNullOrEmpty(contentName))
+            {
+                return RedirectToAction("ProductDetails", new { product = form["productName"], msg = "thanks" });
+            }
             return RedirectToAction("Index", new { id = contentName, msg="thanks" });
         }
+
     }
 }

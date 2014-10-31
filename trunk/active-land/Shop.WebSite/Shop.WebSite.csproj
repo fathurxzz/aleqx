@@ -276,6 +276,7 @@
     <Content Include="Content\img\delete-cart-item.png" />
     <Content Include="Content\img\discount.png" />
     <Content Include="Content\img\em-sudio.png" />
+    <Content Include="Content\img\fancy-close.png" />
     <Content Include="Content\img\header-outer.png" />
     <Content Include="Content\img\header-shadow.png" />
     <Content Include="Content\img\left-arrow.png" />
@@ -290,6 +291,7 @@
     <Content Include="Content\img\menu-item-arrow-top.png" />
     <Content Include="Content\img\old-price-line-through.png" />
     <Content Include="Content\img\order-done.png" />
+    <Content Include="Content\img\pager-separator.png" />
     <Content Include="Content\img\phone-panel.png" />
     <Content Include="Content\img\product-details-price.png" />
     <Content Include="Content\img\product-in-cart.png" />

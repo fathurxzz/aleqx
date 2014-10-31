@@ -161,3 +161,44 @@ ul.language-switcher li a{
 .bootstrap-select {
     width: 205px !important;
 }
+
+
+.layout {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1005;
+    
+}
+
+.map-container {
+    width: 650px;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    padding: 1px 50px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 70px;
+    background-color: #f5f5f5 !important;
+}
+
+   .map-container .toptitle {
+        margin-top: 70px;
+        text-align: center;
+    }
+
+.fancy-close-btn {
+    width: 20px;
+    height: 20px;
+    background: url('../img/fancy-close.png');
+    background-position: -18px -18px;
+    float: right;
+    margin-right: -30px;
+    margin-top: 10px;
+    cursor: pointer;
+}

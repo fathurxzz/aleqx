@@ -11,57 +11,74 @@
 }
 @if (totalCount > pageSize)
 {
-    <div id="pager">
-        @for (int i = 0; i < pageCount; i++)
-        {
-            if (i == 0)
+    <div class="pager-container">
+    </div>
+    <div class="pager-layer">
+        <div id="pager">
+
+            @for (int i = 0; i < pageCount; i++)
             {
-                if (page != 0)
+                if (page > i + 1)
                 {
-                    
-                    <div>
-                        @Html.ActionLink("<", "Catalogue", "Home", new { page = (page - 1)}, null)
-                    </div>
+                    if (i == 0)
+                    {
+                        if (page != 0)
+                        {
+                            <div>
+                                @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new {page = i}, null)
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="current">@(i + 1)</div>
+                        }
+                    }
                 }
-                else
-                {
-                    
-                    <div class="current"><</div>
-                }
-            }
             
-            if (i == page)
-            {
-                <div class="current">
-                    @Html.Raw((i + 1).ToString())
-                </div>
-            }
-            else if (page < i - 1 || page > i + 1)
-            {
-                if (page == i - 2 || page == i + 2)
+            
+
+                if (i == page)
                 {
-                    <span>...&nbsp;&nbsp;</span>
-                }
-            }
-            else
-            {
-                <div>
-                    @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new { page = i }, null)
-                </div>
-            }
-            if (i == pageCount - 1)
-            {
-                if (page != pageCount - 1)
-                {
-                    <div>
-                        @Html.ActionLink(">", "Catalogue", "Home", new { page = (page + 1)}, null)
+                    <div class="current">
+                        @Html.Raw((i + 1).ToString())
                     </div>
+                }
+                else if (page < i - 1 || page > i + 1)
+                {
+                    if (page == i - 3 || page == i + 3)
+                    {
+                        <div class="pager-separator">
+                            &nbsp;
+                        </div>
+                    }
                 }
                 else
                 {
-                    <div class="current">></div>
+                    <div>
+                        @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new { page = i }, null)
+                    </div>
+                }
+
+            
+            
+                if (page < pageCount-2)
+                {
+                    if (i == pageCount - 1)
+                    {
+                        if (page != pageCount - 1)
+                        {
+                            <div class="last">
+                                @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new {page = i}, null)
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="current last">@(i + 1)</div>
+                        }
+                    }
                 }
             }
-        }
+        </div>
     </div>
 }

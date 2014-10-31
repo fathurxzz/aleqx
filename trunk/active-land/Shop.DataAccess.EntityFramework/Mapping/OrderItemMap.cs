@@ -34,9 +34,15 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Description).HasColumnName("Description");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");
+
+
+
             this.Property(t => t.Price).HasColumnName("Price");
             this.Property(t => t.Quantity).HasColumnName("Quantity");
             this.Property(t => t.ProductName).HasColumnName("ProductName");
+            this.Property(t => t.ProductStockNumber).HasColumnName("ProductStockNumber");
+            this.Property(t => t.ProductSize).HasColumnName("ProductSize");
+            this.Property(t => t.ProductColor).HasColumnName("ProductColor");
             this.Property(t => t.ProductId).HasColumnName("ProductId");
             this.Property(t => t.ProductTitle).HasColumnName("ProductTitle");
             this.Property(t => t.OrderId).HasColumnName("OrderId");
@@ -48,6 +54,8 @@ namespace Shop.DataAccess.EntityFramework.Mapping
 
             // Ignored
             this.Ignore(t => t.CategoryName);
+            this.Ignore(t => t.ProductStocks);
+
 
         }
     }

@@ -1,6 +1,7 @@
 ﻿@using Shop.WebSite
 @using Shop.WebSite.App_LocalResources
 @using Shop.WebSite.Helpers
+@using Shop.WebSite.Models
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,83 +99,85 @@
 </head>
 
 
-<body>
-    @if (TempData["errorMessage"] != null)
-    {
-        <div style="text-align: center">
-            <h4><span class="label label-danger">@TempData["errorMessage"]</span>    </h4>
-        </div>
-    }
+    <body>
+      @RenderSection("Layout",false)
 
-    @RenderSection("Error", false)
+        @if (TempData["errorMessage"] != null)
+        {
+            <div style="text-align: center">
+                <h4><span class="label label-danger">@TempData["errorMessage"]</span>    </h4>
+            </div>
+        }
+
+        @RenderSection("Error", false)
 
 
-    <div id="header-outer">
+        <div id="header-outer">
 
 
-        <div id="header-inner">
-            <div id="header">
-                <div id="logo-small"></div>
-                @if (Request.IsAuthenticated)
-                {
-                    <div style="position: absolute; padding-top: 10px; padding-left: 50px">
-                        <a href="@Url.Action("Index", "Category", new { area = "Admin" })">
-                            <button type="button" class="btn btn-danger btn-xs">@GlobalRes.Adminisration</button></a>
+            <div id="header-inner">
+                <div id="header">
+                    <div id="logo-small"></div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div style="position: absolute; padding-top: 10px; padding-left: 50px">
+                            <a href="@Url.Action("Index", "Category", new { area = "Admin" })">
+                                <button type="button" class="btn btn-danger btn-xs">@GlobalRes.Adminisration</button></a>
+                        </div>
+                    }
+                    <div id="user-greeting">
+                        @*Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!*@
                     </div>
-                }
-                <div id="user-greeting">
-                    @*Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!*@
-                </div>
 
-                @*@Html.Raw(Html.ActionLink("[LINK]","Index","Cart",null,new{id="cart-icon"}).ToString().Replace("[LINK]","<div id=\"cart-items-count\">"+ WebSession.OrderItems.Sum(o => o.Value.Quantity)+"</div>"))*@
+                    @*@Html.Raw(Html.ActionLink("[LINK]","Index","Cart",null,new{id="cart-icon"}).ToString().Replace("[LINK]","<div id=\"cart-items-count\">"+ WebSession.OrderItems.Sum(o => o.Value.Quantity)+"</div>"))*@
 
-                <a href="@Url.Action("Index", "Cart", null)" id="cart-icon">
-                    <div id="cart-items-count" class="@(WebSession.OrderItems.Sum(o => o.Value.Quantity) > 0 ? "show" : "")" >@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>
-                </a>
+                    <a href="@Url.Action("Index", "Cart", null)" id="cart-icon">
+                        <div id="cart-items-count" class="@(WebSession.OrderItems.Sum(o => o.Value.Quantity) > 0 ? "show" : "")" >@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>
+                    </a>
 
-                @*<a href="cart.html" id="cart-icon">*@
-                @*<div id="cart-items-count">@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>*@
-                @*</a>*@
-                <div class="socials">
-                    <div class="social instagram">
-                    </div>
-                    <div class="social fb">
-                        <a href="https://www.facebook.com/activeland.kiev"></a>
-                    </div>
-                    @*<div class="social vk">
+                    @*<a href="cart.html" id="cart-icon">*@
+                    @*<div id="cart-items-count">@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>*@
+                    @*</a>*@
+                    <div class="socials">
+                        <div class="social instagram">
+                        </div>
+                        <div class="social fb">
+                            <a href="https://www.facebook.com/activeland.kiev"></a>
+                        </div>
+                        @*<div class="social vk">
                     </div>*@
-                </div>
-
-                @using (Html.BeginForm("Search","Home",new{area=""},FormMethod.Get))
-                {
-                    <div id="search-wrapper">
-                        <div id="search-icon"></div>
-                        <input id="search-input" name="q" type="text" placeholder="Я ищу..." value="@ViewBag.Q">
                     </div>
-                }
-                <div id="phone-panel">
-                    (097) 765-36-10, <span class="skype"><a href="skype:active-land">active-land</a></span>
+
+                    @using (Html.BeginForm("Search","Home",new{area=""},FormMethod.Get))
+                    {
+                        <div id="search-wrapper">
+                            <div id="search-icon"></div>
+                            <input id="search-input" name="q" type="text" placeholder="Я ищу..." value="@ViewBag.Q">
+                        </div>
+                    }
+                    <div id="phone-panel">
+                        (097) 765-36-10, <span class="skype"><a href="skype:active-land">active-land</a></span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="page">
-        @RenderBody()
-    </div>
+        <div id="page">
+            @RenderBody()
+        </div>
 
-    <div id="footer">
-        <div id="footer-inner">
-            <div id="copyright">
-                &copy; 2014<br>
-                Веломагазин Григория Войтишина
-            </div>
-            <div id="em-studio">
-                Сделано в
+        <div id="footer">
+            <div id="footer-inner">
+                <div id="copyright">
+                    &copy; 2014<br>
+                    Веломагазин Григория Войтишина
+                </div>
+                <div id="em-studio">
+                    Сделано в
                     <br>
-                <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+                    <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+                </div>
             </div>
         </div>
-    </div>
 
-</body>
+    </body>
 </html>

@@ -5,14 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/25/2014 11:44:34
+-- Date Created: 11/01/2014 00:18:42
 -- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `gbua_active_dev`;
-CREATE DATABASE `gbua_active_dev`;
-USE `gbua_active_dev`;
+DROP DATABASE IF EXISTS `gbua_activetest`;
+CREATE DATABASE `gbua_activetest`;
+USE `gbua_activetest`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -420,7 +420,10 @@ CREATE TABLE `OrderItem`(
 	`ProductName` varchar (200), 
 	`ProductId` int NOT NULL, 
 	`ProductTitle` varchar (200) NOT NULL, 
-	`OrderId` int NOT NULL);
+	`OrderId` int NOT NULL, 
+	`ProductStockNumber` varchar (200), 
+	`ProductSize` varchar (200), 
+	`ProductColor` varchar (200));
 
 ALTER TABLE `OrderItem` ADD PRIMARY KEY (Id);
 

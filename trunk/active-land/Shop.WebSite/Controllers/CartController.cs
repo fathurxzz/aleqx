@@ -53,6 +53,13 @@ namespace Shop.WebSite.Controllers
                     Quantity = 1,
                     ProductTitle = product.Title
                 };
+
+                orderItem.ProductStocks = new List<ProductStock>();
+                foreach (var productStock in product.ProductStocks)
+                {
+                    orderItem.ProductStocks.Add(productStock);
+                }
+
                 WebSession.OrderItems.Add(product.Id, orderItem);
             }
             return WebSession.OrderItems.Sum(o => o.Value.Quantity);
@@ -64,6 +71,18 @@ namespace Shop.WebSite.Controllers
             if (WebSession.OrderItems.ContainsKey(id))
             {
                 WebSession.OrderItems[id].Quantity = quantity;
+            }
+            //return WebSession.OrderItems.Sum(o => o.Value.Quantity);
+        }
+
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
+        public void UpdateStock(int id, string stock, string size, string color)
+        {
+            if (WebSession.OrderItems.ContainsKey(id))
+            {
+                WebSession.OrderItems[id].ProductStockNumber = stock;
+                WebSession.OrderItems[id].ProductSize = size;
+                WebSession.OrderItems[id].ProductColor = color;
             }
             //return WebSession.OrderItems.Sum(o => o.Value.Quantity);
         }
@@ -115,6 +134,13 @@ namespace Shop.WebSite.Controllers
 
             foreach (var orderItem in WebSession.OrderItems.Select(o => o.Value))
             {
+                foreach (var productStock in orderItem.ProductStocks.Where(ps=>ps.StockNumber==form["stock"]))
+                {
+                    orderItem.ProductStockNumber = productStock.StockNumber;
+                    orderItem.ProductColor = productStock.Color;
+                    orderItem.ProductSize = productStock.Size;
+                }
+
                 order.OrderItems.Add(orderItem);
             }
 
@@ -143,8 +169,6 @@ namespace Shop.WebSite.Controllers
             var model = new CartModel(_repository, CurrentLangId, null);
             try
             {
-                
-
                 var order = WebSession.Order;
                 var amount = order.OrderItems.Sum(oi => oi.Quantity * oi.Price);
                 var number = _repository.AddOrder(order);

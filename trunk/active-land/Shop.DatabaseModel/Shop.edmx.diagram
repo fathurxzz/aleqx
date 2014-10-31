@@ -69,7 +69,7 @@
         <AssociationConnector Association="Shop.LanguageContentItemLang" />
         <AssociationConnector Association="Shop.ContentItemContentItemImage" />
         <EntityTypeShape EntityType="Shop.Order" Width="1.5" PointX="2.875" PointY="18.125" />
-        <EntityTypeShape EntityType="Shop.OrderItem" Width="1.5" PointX="5.5" PointY="18" />
+        <EntityTypeShape EntityType="Shop.OrderItem" Width="1.75" PointX="5.5" PointY="18" />
         <AssociationConnector Association="Shop.OrderOrderItem" />
         <EntityTypeShape EntityType="Shop.QuickAdvice" Width="1.5" PointX="3" PointY="14.875" />
         <EntityTypeShape EntityType="Shop.QuickAdviceLang" Width="1.75" PointX="5.75" PointY="14.875" />

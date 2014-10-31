@@ -15,6 +15,9 @@ namespace Shop.DataAccess.Entities
         public int Quantity { get; set; }
         public string ProductName { get; set; }
         public int ProductId { get; set; }
+        public string ProductStockNumber { get; set; }
+        public string ProductSize { get; set; }
+        public string ProductColor { get; set; }
         public string ProductTitle { get; set; }
         public int OrderId { get; set; }
         public virtual Order Order { get; set; }

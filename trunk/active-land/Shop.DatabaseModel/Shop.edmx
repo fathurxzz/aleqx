@@ -468,6 +468,9 @@
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="ProductTitle" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="ProductStockNumber" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="ProductSize" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="ProductColor" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="QuickAdvice">
     <Key>
@@ -1898,6 +1901,9 @@
           <Property Type="String" Name="ProductTitle" Nullable="false" MaxLength="200" />
           <NavigationProperty Name="Order" Relationship="Shop.OrderOrderItem" FromRole="OrderItem" ToRole="Order" />
           <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="String" Name="ProductStockNumber" MaxLength="200" />
+          <Property Type="String" Name="ProductSize" MaxLength="200" />
+          <Property Type="String" Name="ProductColor" MaxLength="200" />
         </EntityType>
         <Association Name="OrderOrderItem">
           <End Type="Shop.Order" Role="Order" Multiplicity="1" />
@@ -2292,6 +2298,9 @@
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductStockNumber" ColumnName="ProductStockNumber" />
+          <ScalarProperty Name="ProductSize" ColumnName="ProductSize" />
+          <ScalarProperty Name="ProductColor" ColumnName="ProductColor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

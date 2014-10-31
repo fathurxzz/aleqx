@@ -47,6 +47,30 @@
                     @Html.Raw(orderItem.Value.Description)
                 </div>
             </div>
+            <div class="product-stock">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Артикул</th>
+                        <th>Цвет</th>
+                        <th>Размер</th>
+                    </tr>
+                
+                    @{
+                        var i = 0;
+                    }
+                @foreach (var item in orderItem.Value.ProductStocks)
+                {
+                    i++;
+                    <tr>
+                        <td><input type="radio" name="stock" @(i==1?"checked":"") onclick="Shop.checkRadiosCart(this.value)" value="@orderItem.Key#@item.StockNumber#@item.Size#@item.Color"/></td>
+                        <td>@item.StockNumber</td>
+                        <td>@item.Color</td>
+                        <td>@item.Size</td>
+                    </tr>
+                }
+                    </table>
+            </div>
             <div class="quantity">
                 <div class="arrow-inc"></div>
                 <div class="quantity-amount">
