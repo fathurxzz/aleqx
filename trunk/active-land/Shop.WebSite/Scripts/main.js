@@ -52,50 +52,31 @@ $(function () {
     }
 
     $(".attribute-checkbox").change(function () {
-        var filterValue = $(this).attr("filter");
 
+        var filterValue = $(this).attr("filter"),
+            wholeUrl = location.href,
+            urlWithoutParams,
+            urlParams = "",
+            urlHasParams = wholeUrl.indexOf("?") > -1,
+            urlArray = wholeUrl.split("?");
 
+        urlWithoutParams = urlArray[0];
 
+        if (urlHasParams) {
+            urlParams = "?"+ urlArray[1];
+        } 
 
-        //x.reduce(function (previousStr, currentItem, i) {
-        //    alert(i);
-        //    var str = previousStr + "/" + currentItem;
-        //    alert(str); // a, ab, abc, abcd
-        //    return str;
-        //}, "");
-
-        var url = location.href;
-
-        if (location.href.indexOf("?") > -1) {
-            var tmp = url.split("?");
-            url = tmp[0];
-        }
-
-        var x = url.split("/");
+        var x = urlWithoutParams.split("/");
         while (x.length > 6) {
             x.pop();
         }
-
         var urlWithoutFilters = x.join("/");
-        var urlHasParams = location.href.indexOf("?") > -1;
-        var urlParams = location.href.substring(location.href.indexOf("?"), location.href.length);
-
 
         // if uncheck last checked checkbox
         if (filterValue == "") {
             location.href = urlWithoutFilters + urlParams;
         } else {
-            if (urlHasParams) {
-                location.href = urlWithoutFilters + "/" + filterValue + "/" + urlParams;
-            } else {
-                location.href = urlWithoutFilters + "/" + filterValue;
-            }
-            //} else {
-            //    location.href = filterValue;
-            //}
+            location.href = urlWithoutFilters + "/" + filterValue + "/" + urlParams;
         }
     });
-
-
-
 });
