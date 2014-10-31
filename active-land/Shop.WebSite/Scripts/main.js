@@ -55,7 +55,7 @@ $(function () {
         var filterValue = $(this).attr("filter");
 
 
-        
+
 
         //x.reduce(function (previousStr, currentItem, i) {
         //    alert(i);
@@ -64,37 +64,32 @@ $(function () {
         //    return str;
         //}, "");
 
-        var x = location.href.split("/");
+        var url = location.href;
+
+        if (location.href.indexOf("?") > -1) {
+            var tmp = url.split("?");
+            url = tmp[0];
+        }
+
+        var x = url.split("/");
         while (x.length > 6) {
             x.pop();
         }
 
         var urlWithoutFilters = x.join("/");
         var urlHasParams = location.href.indexOf("?") > -1;
+        var urlParams = location.href.substring(location.href.indexOf("?"), location.href.length);
 
 
         // if uncheck last checked checkbox
         if (filterValue == "") {
-
-            //var urlHasParams = location.href.indexOf("?") > -1;
-            //if (urlHasParams) {
-            //    location.href = location.href.replace(location.href.substring(location.href.lastIndexOf("/"), location.href.indexOf("?")), "");
-            //} else {
-            //    location.href = location.href.replace(location.href.substring(location.href.lastIndexOf("/"), location.href.length), "");
-            //}
-
-            location.href = urlWithoutFilters;
-
+            location.href = urlWithoutFilters + urlParams;
         } else {
-
-            //location.href = location.href + "/" + filterValue+"/";
-
-           
-
-            location.href = urlWithoutFilters + "/" + filterValue;
-
-            //if (location.href.split("/").length == 6 ) {
-            //    location.href = location.href + "/" + filterValue;
+            if (urlHasParams) {
+                location.href = urlWithoutFilters + "/" + filterValue + "/" + urlParams;
+            } else {
+                location.href = urlWithoutFilters + "/" + filterValue;
+            }
             //} else {
             //    location.href = filterValue;
             //}
