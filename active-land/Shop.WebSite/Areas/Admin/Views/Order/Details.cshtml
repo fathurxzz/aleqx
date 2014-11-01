@@ -18,6 +18,9 @@
         <th>Заголовок</th>
         <th>Количество</th>
         <th>Описание</th>
+        <th>Артикул</th>
+        <th>Цвет</th>
+        <th>Размер</th>
     </tr>
     @foreach (var item in Model.OrderItems)
     {
@@ -27,6 +30,9 @@
             <td>@item.ProductTitle</td>
             <td>@item.Quantity</td>
             <td>@Html.Raw(item.Description)</td>
+            <td>@item.ProductStockNumber</td>
+            <td>@item.ProductColor</td>
+            <td>@item.ProductSize</td>
         </tr>
     }
 </table>

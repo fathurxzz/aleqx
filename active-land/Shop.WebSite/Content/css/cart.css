@@ -130,7 +130,7 @@
 .product-stock {
     float: left;
     width: 200px;
-    height: 100px;
+    /*height: 100px;*/
     margin-left: 40px;
     margin-top: 34px;
     color: #8d8e8e;
