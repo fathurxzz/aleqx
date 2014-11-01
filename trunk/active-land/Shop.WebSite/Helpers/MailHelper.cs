@@ -11,7 +11,7 @@ namespace Shop.WebSite.Helpers
 {
     public class MailHelper
     {
-        public static void Notify(Order order,int number)
+        public static void Notify(Order order, int number)
         {
             string[] mailTo = ConfigurationManager.AppSettings["mailTo"].Split(new[] { " ", ";", "," }, StringSplitOptions.RemoveEmptyEntries);
             SmtpClient client = new SmtpClient();
@@ -20,7 +20,7 @@ namespace Shop.WebSite.Helpers
             {
                 message.To.Add(mailAddress);
             }
-            if (order.Subscribed&&!string.IsNullOrEmpty(order.CustomerEmail))
+            if (order.Subscribed && !string.IsNullOrEmpty(order.CustomerEmail))
             {
                 message.To.Add(order.CustomerEmail);
             }
@@ -37,6 +37,17 @@ namespace Shop.WebSite.Helpers
                     order.PaymentMethod == 0 ? "Наличными" : "Картой",
                     order.DeliveryMethod == 0 ? "Доставка" : "Самовывоз",
                     number);
+
+            foreach (var orderItem in order.OrderItems)
+            {
+                message.Body += string.Format(
+                    "<div>Название: {0}</div><div>Артикул: {1}</div><div>Цвет: {2}</div><div>Размер: {3}</div>",
+                    orderItem.ProductTitle,
+                    orderItem.ProductStockNumber,
+                    orderItem.ProductColor,
+                    orderItem.ProductSize);
+            }
+
             message.IsBodyHtml = true;
 #if !DEBUG
             client.Send(message);
@@ -46,7 +57,7 @@ namespace Shop.WebSite.Helpers
 
         public static void Notify(FeedbackForm feedbackForm)
         {
-            string[] mailTo = ConfigurationManager.AppSettings["mailTo"].Split(new []{" ",";",","},StringSplitOptions.RemoveEmptyEntries);
+            string[] mailTo = ConfigurationManager.AppSettings["mailTo"].Split(new[] { " ", ";", "," }, StringSplitOptions.RemoveEmptyEntries);
             SmtpClient client = new SmtpClient();
             MailMessage message = new MailMessage();
             foreach (var mailAddress in mailTo)

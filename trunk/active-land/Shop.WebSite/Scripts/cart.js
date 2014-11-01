@@ -26,9 +26,28 @@
     }
 };
 
+var Cart = {
+    validateFields: function() {
+
+        var obj = $('input[name=stock]:checked').val();
+        if (obj != undefined) {
+            $(".product-stock").removeClass("validation-error");
+            return true;
+        }
+
+        $(".product-stock").addClass("validation-error");
+        return false;
+    }
+}
 
 
-$(function() {
+$(function () {
+
+    $(".radioStock").click(function () {
+        Shop.checkRadiosCart(this.value);
+        //alert(this.value);
+    });
+    
     $(".arrow-inc").click(function () {
 
         var wrapper = $(this).closest(".cart-item")[0];
