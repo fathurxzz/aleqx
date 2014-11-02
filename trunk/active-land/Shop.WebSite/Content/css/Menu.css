@@ -34,7 +34,12 @@
 
 #menu-items {
     margin-left: 255px;
-    padding-top: 15px;
+    padding-top: 25px;
+}
+
+#menu-panel-main-page #menu-items {
+    margin-left: 255px;
+    padding-top: 20px;
 }
 
 #menu-items ul {
@@ -91,8 +96,3 @@
     /*padding: 0 30px;*/
 }
 
-#menu-panel-main-page #menu-items {
-    /*margin-left: 225px;*/
-    margin-left: 255px;
-    /*padding-top: 23px;*/
-}
