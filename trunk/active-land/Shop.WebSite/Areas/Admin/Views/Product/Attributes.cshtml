@@ -19,6 +19,7 @@
     @using (Html.BeginForm("Attributes", "Product", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
     {
         @Html.Hidden("productId", (int)ViewBag.ProductId)
+        @Html.Hidden("page",(string)ViewBag.Page)
         <table class="table table-striped">
             <tr>
                 <th>Название

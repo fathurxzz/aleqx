@@ -61,6 +61,8 @@
         </th>
         <th title="Наличие">Нал.
         </th>
+        <th title="К этому товару пригодятся">Связ.
+        </th>
         <th title="@Html.DisplayNameFor(model => model.IsActive)">
             Акт
         </th>
@@ -119,6 +121,9 @@
                 @item.ProductStocks.Count()
             </td>
             <td>
+                @item.ProductChildren.Count()
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
@@ -127,6 +132,7 @@
                 @Html.ActionLink("Арткл.", "Index","ProductStock", new { id = item.Id, page = ViewBag.Page },new{title="Артикулы товара"}) |
                 @Html.ActionLink("Изобр.", "Index", "ProductImage", new { id = item.Id, page = ViewBag.Page }, new{title="Изображения товара"}) |
                 @Html.ActionLink("Удал.", "Delete", new { id = item.Id, page = ViewBag.Page }, new { onclick = "return confirm('Удалить товар?')",title="Удалить товар" }) |
+                @Html.ActionLink("Связ.", "RelatedProducts", new { id = item.Id, page = ViewBag.Page }, new { title="К этому товару пригодятся" }) |
                 @Html.ActionLink("Сайт","ProductDetails","Home",new{area="", product=item.Name},new{target="_blank"})
             </td>
         </tr>

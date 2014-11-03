@@ -42,6 +42,12 @@ namespace Shop.WebSite
               new string[1] { "Shop.WebSite.Controllers" }
           );
 
+          //  routes.MapRoute(
+          //    "GetProducts", // Route name
+          //    "getproducts/{id}", // URL with parameters
+          //    new { controller = "Home", action = "GetProducts", id = "" },
+          //    new string[1] { "Shop.WebSite.Controllers" }
+          //);
             
 
 

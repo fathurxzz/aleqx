@@ -13,6 +13,8 @@ namespace Shop.DataAccess.Entities
             this.ProductStocks = new List<ProductStock>();
             this.ProductLangs = new List<ProductLang>();
             this.ProductAttributeValues = new List<ProductAttributeValue>();
+            this.ProductChildren = new List<Product>();
+            this.ProductParents = new List<Product>();
         }
 
         public int Id { get; set; }
@@ -34,5 +36,7 @@ namespace Shop.DataAccess.Entities
         public virtual ICollection<ProductStock> ProductStocks { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
         public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public virtual ICollection<Product> ProductChildren { get; set; }
+        public virtual ICollection<Product> ProductParents { get; set; }
     }
 }

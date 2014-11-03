@@ -107,3 +107,7 @@
 .navbar-form .form-control.search {
     width: 300px !important;
 }
+
+#productsId {
+    padding: 6px;
+}

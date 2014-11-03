@@ -69,47 +69,34 @@ else
 
 
 
-@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "К покупке пригодятся:" } })
 
-<div id="tying-products">
 
-    @foreach (var product in Model.Products)
+
+@if (Model.Product != null&&Model.Product.ProductChildren.Count>0)
+{
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "К покупке пригодятся:" } })
+    <div id="tying-products">
+
+    @foreach (var product in Model.Product.ProductChildren)
     {
         @Html.Partial("ProductPreview", new ProductPreview
-            {
-                Title = product.Title,
-                Label =
-                product.IsNew ? ProductPreviewLabel.WowNew
-                : product.IsTopSale ? ProductPreviewLabel.TopSale
-                : product.IsDiscount ? ProductPreviewLabel.Discount
-                : ProductPreviewLabel.None,
-                Price = product.Price,
-                OldPrice = product.OldPrice,
-                ImageSource = product.ImageSource,
-                Name = product.Name
-            })
+   {
+       Title = product.Title,
+       Label =
+       product.IsNew ? ProductPreviewLabel.WowNew
+       : product.IsTopSale ? ProductPreviewLabel.TopSale
+       : product.IsDiscount ? ProductPreviewLabel.Discount
+       : ProductPreviewLabel.None,
+       Price = product.Price,
+       OldPrice = product.OldPrice,
+       ImageSource = product.ImageSource,
+       Name = product.Name
+   })
     }
-
-    @*<div class="product-preview">
-        <div class="image">
-            <img src="img/tmp/bike-image.png">
-        </div>
-        <div class="discount"></div>
-        <div class="title-price">
-            <div class="title">
-                <span>
-                    <a href="#">Marin Supersized 14"</a>
-                </span>
-            </div>
-            <div class="price">
-                <span>2,330<sup>грн</sup>
-                </span>
-            </div>
-        </div>
-    </div>*@
-
     <div class="clearfix"></div>
 </div>
+}
+
 
 <div id="banners">
     <div class="banner" id="banner1"></div>

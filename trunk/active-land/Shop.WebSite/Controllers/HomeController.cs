@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using Shop.DataAccess.Repositories;
 using Shop.WebSite.Helpers;
 using Shop.WebSite.Models;
@@ -106,5 +107,32 @@ namespace Shop.WebSite.Controllers
             return RedirectToAction("Index", new { id = contentName, msg="thanks" });
         }
 
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
+        public string GetProducts(int id)
+        {
+            var result = new List<ProductSelectModel>();
+            if (id == 0)
+            {
+                result.Add(new ProductSelectModel { id = 0, title = "Выберите категорию" });
+            }
+            else
+            {
+                var category = _repository.GetCategory(id);
+                if (category.Products.Count == 0)
+                {
+                    result.Add(new ProductSelectModel { id = 0, title = "Ничего не найдено" });
+                }
+                else
+                {
+                    foreach (var product in category.Products.OrderBy(p => p.Title))
+                    {
+                        product.CurrentLang = CurrentLangId;
+                        result.Add(new ProductSelectModel {id = product.Id, title = product.Title});
+                    }
+                }
+            }
+
+            return JsonConvert.SerializeObject(result.OrderBy(r=>r.title));
+        }
     }
 }
