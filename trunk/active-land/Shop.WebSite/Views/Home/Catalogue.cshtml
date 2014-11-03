@@ -15,29 +15,6 @@
 <div id="main-banner">
 </div>
 
-@*<div id="main-page-banner">
-    <div class="slider">
-        <ul class="bxsliderProducts" id="mainImages">
-            <li>
-                <img src="/Content/bg/main-01.jpg" alt="" /></li>
-            <li>
-                <img src="/Content/bg/main-02.jpg" alt="" /></li>
-            <li>
-                <img src="/Content/bg/main-03.jpg" alt="" /></li>
-            <li>
-                <img src="/Content/bg/main-04.jpg" alt="" /></li>
-        </ul>
-    </div>
-    
-     <div id="menu-panel-main-page">
-        @Html.Partial("LanguageSwitcher")
-        @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new { id = "" }, new { id = "logo" }).ToString().Replace("[LINK]", ""))
-        @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
-    </div>
-</div>*@
-
-
-
 @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = Model.CurrentCategory!=null?Model.CurrentCategory.Title: "Каталог" } })
 
 <div id="catalogue">
@@ -85,7 +62,6 @@
             
             <div id="price-sort-selector" class="selector">
                 <select class="selectpicker">
-                    
                     <option @(ViewBag.SortOrder=="asc"?"selected":"") value="asc">Сначала дешевые</option>
                     <option @(ViewBag.SortOrder=="desc"?"selected":"") value="desc">Сначала дорогие</option>
                 </select>
@@ -100,10 +76,15 @@
                         <ul>
                             @foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a => a.Title))
                             {
-                                <li>
-                                    <input class="attribute-checkbox" @Html.Raw(Model.FilterArray.Contains(categoryValue.Id.ToString()) ? "checked" : "") filter="@CatalogueFilterHelper.GetFilterStringForCheckbox(Model.FilterArray, categoryValue.Id.ToString(), Model.FilterArray.Contains(categoryValue.Id.ToString()))" type="checkbox" id="cb_@categoryValue.Id">
-                                    <label for="cb_@categoryValue.Id">@categoryValue.Title</label>
-                                </li>
+                                if (categoryValue.AvailableProductsCount > 0)
+                                {
+                                    <li>
+                                        <input class="attribute-checkbox" @Html.Raw(Model.FilterArray.Contains(categoryValue.Id.ToString()) ? "checked" : "") filter="@CatalogueFilterHelper.GetFilterStringForCheckbox(Model.FilterArray, categoryValue.Id.ToString(), Model.FilterArray.Contains(categoryValue.Id.ToString()))" type="checkbox" id="cb_@categoryValue.Id">
+
+                                        <label for="cb_@categoryValue.Id">@categoryValue.Title (@categoryValue.AvailableProductsCount)</label>
+                                    
+                                    </li>
+                                }
                             }
                         </ul>
                     </div>

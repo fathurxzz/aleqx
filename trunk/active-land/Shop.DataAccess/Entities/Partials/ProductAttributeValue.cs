@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Shop.DataAccess.Entities
 {
-    partial class ProductAttribute
+    partial class ProductAttributeValue
     {
-        public bool Selected { get; set; }
-        
+        public int AvailableProductsCount { get; set; }
     }
 }
