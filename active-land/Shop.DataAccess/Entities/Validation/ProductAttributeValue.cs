@@ -21,6 +21,8 @@ namespace Shop.DataAccess.Entities
 
         [Display(Name = "Доступность на текущем языке")]
         public bool IsCorrectLang { get; set; }
+
+        
     }
 
 

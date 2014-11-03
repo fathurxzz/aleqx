@@ -20,6 +20,7 @@ namespace Shop.WebSite.Models
         public string[] FilterArray { get; set; }
         public int ProductTotalCount { get; set; }
         public Category CurrentCategory { get; set; }
+        public List<Product> FilteredProducts { get; set; }
         public int Page { get; set; }
 
         private IShopRepository _repository { get; set; }
@@ -31,7 +32,7 @@ namespace Shop.WebSite.Models
             {
 
                 string[] filterArray = FilterArray = filterString.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
-                
+
 
                 var attributes = _repository.GetProductAttributes(categoryName);
                 foreach (var attribute in attributes)
@@ -92,7 +93,7 @@ namespace Shop.WebSite.Models
         }
 
 
-        public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy=null)
+        public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy = null)
             : base(repository1, langId, null)
         {
             _repository = repository1;
@@ -109,7 +110,7 @@ namespace Shop.WebSite.Models
 
             Products = new List<Product>();
 
-            
+
 
 
             //FilterArray = filter != null ? filter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
@@ -185,16 +186,38 @@ namespace Shop.WebSite.Models
 
             IQueryable<Product> products = null;
 
-            products = sortOrder=="desc" ? 
-                Products.OrderByDescending(p => p.Price).ThenBy(p=>p.Title).AsQueryable()
+            products = sortOrder == "desc" ?
+                Products.OrderByDescending(p => p.Price).ThenBy(p => p.Title).AsQueryable()
                 : Products.OrderBy(p => p.Price).ThenBy(p => p.Title).AsQueryable();
 
             var pageSize = int.Parse(SiteSettings.GetShopSetting("ProductsPageSize"));
 
-            if (page > products.Count()/pageSize)
+            if (page > products.Count() / pageSize)
             {
                 page = 0;
             }
+
+
+            //FilteredProducts = products;
+            var category = Categories.FirstOrDefault(c => c.Name == categoryName);
+            if (category != null)
+            {
+                ProductAttributes = _repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable);
+                CurrentCategory = _repository.GetCategory(category.Id);
+
+                foreach (var productAttribute in ProductAttributes)
+                {
+                    foreach (var productAttributeValue in productAttribute.ProductAttributeValues)
+                    {
+                        productAttributeValue.AvailableProductsCount = Enumerable.Count(products, product => productAttributeValue.Products.Contains(product));
+                    }
+                }
+            }
+
+
+            
+
+
 
             products = ApplyPaging(products, page, pageSize);
 
@@ -217,12 +240,7 @@ namespace Shop.WebSite.Models
             //    ProductAttributes = category.ProductAttributes.Where(pa => pa.IsFilterable);
             //}
 
-            var category = Categories.FirstOrDefault(c => c.Name == categoryName);
-            if (category != null)
-            {
-                ProductAttributes = _repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable);
-                CurrentCategory = _repository.GetCategory(category.Id);
-            }
+
 
             if (productName != null)
             {

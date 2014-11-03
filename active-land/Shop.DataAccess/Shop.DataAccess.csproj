@@ -76,6 +76,7 @@
     <Compile Include="Entities\Partials\OrderItem.cs" />
     <Compile Include="Entities\Partials\Product.cs" />
     <Compile Include="Entities\Partials\ProductAttribute.cs" />
+    <Compile Include="Entities\Partials\ProductAttributeValue.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductAttribute.cs" />
     <Compile Include="Entities\ProductAttributeLang.cs" />
