@@ -21,6 +21,8 @@ namespace Shop.DatabaseModel
             this.ProductAttributeValues = new HashSet<ProductAttributeValue>();
             this.ProductAttributeStaticValues = new HashSet<ProductAttributeStaticValue>();
             this.ProductStocks = new HashSet<ProductStock>();
+            this.ProductChildren = new HashSet<Product>();
+            this.ProductParents = new HashSet<Product>();
         }
     
         public int Id { get; set; }
@@ -43,5 +45,7 @@ namespace Shop.DatabaseModel
         public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
         public virtual ICollection<ProductAttributeStaticValue> ProductAttributeStaticValues { get; set; }
         public virtual ICollection<ProductStock> ProductStocks { get; set; }
+        public virtual ICollection<Product> ProductChildren { get; set; }
+        public virtual ICollection<Product> ProductParents { get; set; }
     }
 }

@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/01/2014 00:18:42
+-- Date Created: 11/02/2014 23:10:28
 -- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -58,6 +58,8 @@ USE `gbua_activetest`;
 --    ALTER TABLE `QuickAdviceLang` DROP CONSTRAINT `FK_QuickAdviceQuickAdviceLang`;
 --    ALTER TABLE `QuickAdviceLang` DROP CONSTRAINT `FK_LanguageQuickAdviceLang`;
 --    ALTER TABLE `ProductStock` DROP CONSTRAINT `FK_ProductProductStock`;
+--    ALTER TABLE `ProductProduct` DROP CONSTRAINT `FK_ProductProduct_Product`;
+--    ALTER TABLE `ProductProduct` DROP CONSTRAINT `FK_ProductProduct_Product1`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -95,6 +97,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ProductStock`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
     DROP TABLE IF EXISTS `ProductAttributeValueProduct`;
+    DROP TABLE IF EXISTS `ProductProduct`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -490,6 +493,15 @@ CREATE TABLE `ProductAttributeValueProduct`(
 	`Products_Id` int NOT NULL);
 
 ALTER TABLE `ProductAttributeValueProduct` ADD PRIMARY KEY (ProductAttributeValues_Id, Products_Id);
+
+
+
+
+CREATE TABLE `ProductProduct`(
+	`ProductParents_Id` int NOT NULL, 
+	`ProductChildren_Id` int NOT NULL);
+
+ALTER TABLE `ProductProduct` ADD PRIMARY KEY (ProductParents_Id, ProductChildren_Id);
 
 
 
@@ -1072,6 +1084,30 @@ ADD CONSTRAINT `FK_ProductProductStock`
 CREATE INDEX `IX_FK_ProductProductStock` 
     ON `ProductStock`
     (`ProductId`);
+
+-- Creating foreign key on `ProductParents_Id` in table 'ProductProduct'
+
+ALTER TABLE `ProductProduct`
+ADD CONSTRAINT `FK_ProductProduct_Product`
+    FOREIGN KEY (`ProductParents_Id`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating foreign key on `ProductChildren_Id` in table 'ProductProduct'
+
+ALTER TABLE `ProductProduct`
+ADD CONSTRAINT `FK_ProductProduct_Product1`
+    FOREIGN KEY (`ProductChildren_Id`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductProduct_Product1'
+
+CREATE INDEX `IX_FK_ProductProduct_Product1` 
+    ON `ProductProduct`
+    (`ProductChildren_Id`);
 
 -- --------------------------------------------------
 -- Script has ended

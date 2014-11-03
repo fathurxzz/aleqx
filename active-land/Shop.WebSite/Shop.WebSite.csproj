@@ -208,6 +208,7 @@
     <Compile Include="Models\MainMenuModel.cs" />
     <Compile Include="Models\ProductPreview.cs" />
     <Compile Include="Models\ProductPreviewLabel.cs" />
+    <Compile Include="Models\ProductSelectModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\OrderComplete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -377,6 +378,7 @@
     <Content Include="Areas\Admin\Views\ProductStock\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductStock\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DataTrasfer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\RelatedProducts.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>
@@ -471,6 +473,7 @@
     <None Include="Properties\PublishProfiles\prod.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="sc.aspx" />
+    <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cart.js" />

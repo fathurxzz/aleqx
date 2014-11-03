@@ -245,21 +245,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Attributes(int id, string page)
-        {
-            _repository.LangId = CurrentLangId;
-            var product = _repository.GetProduct(id);
-            ViewBag.ProductTitle = product.Title;
-            var productAttributes = _repository.GetProductAttributes(product.CategoryId);
-            ViewBag.ProductAttributeValues = product.ProductAttributeValues.ToList();
-            ViewBag.ProductId = product.Id;
-            ViewBag.Page = page;
-            return View(productAttributes);
-        }
-
-
-
-        public ActionResult Delete(int id, string page)
+         public ActionResult Delete(int id, string page)
         {
             try
             {
@@ -272,8 +258,20 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return !string.IsNullOrEmpty(page) ? RedirectToAction("Index", new {page = page}) : RedirectToAction("Index");
         }
 
+        public ActionResult Attributes(int id, string page)
+        {
+            _repository.LangId = CurrentLangId;
+            var product = _repository.GetProduct(id);
+            ViewBag.ProductTitle = product.Title;
+            var productAttributes = _repository.GetProductAttributes(product.CategoryId);
+            ViewBag.ProductAttributeValues = product.ProductAttributeValues.ToList();
+            ViewBag.ProductId = product.Id;
+            ViewBag.Page = page;
+            return View(productAttributes);
+        }
+
         [HttpPost]
-        public ActionResult Attributes(int productId, FormCollection form)
+        public ActionResult Attributes(int productId, FormCollection form, string page)
         {
             _repository.LangId = CurrentLangId;
             var product = _repository.GetProduct(productId);
@@ -341,8 +339,48 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
             _repository.SaveProduct(product);
 
-            return RedirectToAction("Index");
-
+            return !string.IsNullOrEmpty(page) ? RedirectToAction("Index", new { page = page }) : RedirectToAction("Index");
         }
+
+        public ActionResult RelatedProducts(int id, string page)
+        {
+            _repository.LangId = CurrentLangId;
+            var product = _repository.GetProduct(id);
+            foreach (var child in product.ProductChildren)
+            {
+                child.CurrentLang = CurrentLangId;
+            }
+            var categories = _repository.GetCategories();
+            ViewBag.ProductTitle = product.Title;
+            ViewBag.Page = page;
+            ViewBag.Categories = categories.ToList();
+            ViewBag.ProductId = product.Id;
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult RelatedProducts(int productId, FormCollection form, string page)
+        {
+            _repository.LangId = CurrentLangId;
+            try
+            {
+                int relatedProductId;
+
+                int.TryParse(form["productsId"], out relatedProductId);
+                if (relatedProductId != 0)
+                {
+                    var product = _repository.GetProduct(productId);
+                    var relatedProduct = _repository.GetProduct(relatedProductId);
+                    product.ProductChildren.Add(relatedProduct);
+                    _repository.SaveProduct(product);
+                }
+            }
+            catch
+            {
+                
+            }
+            return RedirectToAction("RelatedProducts", new {id = productId, page = page});
+        }
+        
     }
 }

@@ -38,6 +38,7 @@
     <EntitySet Name="ProductStock" EntityType="Shop.Store.ProductStock" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Shop.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValueProduct" EntityType="Shop.Store.ProductAttributeValueProduct" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductProduct" EntityType="Shop.Store.ProductProduct" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="LanguageCategoryLang" Association="Shop.Store.LanguageCategoryLang">
       <End Role="Language" EntitySet="Language" />
       <End Role="CategoryLang" EntitySet="CategoryLang" />
@@ -193,6 +194,14 @@
     <AssociationSet Name="ProductProductStock" Association="Shop.Store.ProductProductStock">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductStock" EntitySet="ProductStock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductProduct_Product" Association="Shop.Store.FK_ProductProduct_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductProduct" EntitySet="ProductProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductProduct_Product1" Association="Shop.Store.FK_ProductProduct_Product1">
+      <End Role="Product1" EntitySet="Product" />
+      <End Role="ProductProduct" EntitySet="ProductProduct" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
@@ -525,6 +534,14 @@
     </Key>
     <Property Name="ProductAttributeValues_Id" Type="int" Nullable="false" />
     <Property Name="Products_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductProduct">
+    <Key>
+      <PropertyRef Name="ProductParents_Id" />
+      <PropertyRef Name="ProductChildren_Id" />
+    </Key>
+    <Property Name="ProductParents_Id" Type="int" Nullable="false" />
+    <Property Name="ProductChildren_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="LanguageCategoryLang">
     <End Role="Language" Type="Shop.Store.Language" Multiplicity="1" />
@@ -994,6 +1011,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ProductProduct_Product">
+    <End Role="Product" Type="Shop.Store.Product" Multiplicity="1" />
+    <End Role="ProductProduct" Type="Shop.Store.ProductProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductProduct">
+        <PropertyRef Name="ProductParents_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductProduct_Product1">
+    <End Role="ProductProduct" Type="Shop.Store.ProductProduct" Multiplicity="*" />
+    <End Role="Product1" Type="Shop.Store.Product" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductProduct">
+        <PropertyRef Name="ProductChildren_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -1177,6 +1218,10 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductStock" EntitySet="ProductStock" />
           </AssociationSet>
+          <AssociationSet Name="ProductProduct" Association="Shop.ProductProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product1" EntitySet="Product" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -1253,6 +1298,8 @@
           <NavigationProperty Name="ProductStocks" Relationship="Shop.ProductProductStock" FromRole="Product" ToRole="ProductStock" />
           <Property Type="String" Name="ExternalId" MaxLength="200" />
           <Property Type="String" Name="OriginalUrl" MaxLength="500" />
+          <NavigationProperty Name="ProductChildren" Relationship="Shop.ProductProduct" FromRole="Product" ToRole="Product1" />
+          <NavigationProperty Name="ProductParents" Relationship="Shop.ProductProduct" FromRole="Product1" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductAttribute">
           <Key>
@@ -1995,6 +2042,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ProductProduct">
+          <End Type="Shop.Product" Role="Product" Multiplicity="*" />
+          <End Type="Shop.Product" Role="Product1" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2360,6 +2411,14 @@
       </EndProperty>
       <EndProperty Name="Product">
         <ScalarProperty Name="Id" ColumnName="Products_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductProduct" TypeName="Shop.ProductProduct" StoreEntitySet="ProductProduct">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="ProductParents_Id" />
+      </EndProperty>
+      <EndProperty Name="Product1">
+        <ScalarProperty Name="Id" ColumnName="ProductChildren_Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

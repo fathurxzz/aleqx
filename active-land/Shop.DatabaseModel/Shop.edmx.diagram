@@ -17,8 +17,8 @@
         <EntityTypeShape EntityType="Shop.ProductAttributeValueLang" Width="2.125" PointX="12.5" PointY="10.625" />
         <EntityTypeShape EntityType="Shop.ProductAttributeValueTag" Width="2.625" PointX="18" PointY="14.125" />
         <EntityTypeShape EntityType="Shop.ProductAttributeValueTagLang" Width="2.375" PointX="12.5" PointY="13.625" />
-        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValue" Width="2.375" PointX="16" PointY="7.75" />
-        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValueLang" Width="2.625" PointX="12.5" PointY="7.625" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValue" Width="2.375" PointX="16" PointY="8.25" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValueLang" Width="2.625" PointX="12.5" PointY="7.875" />
         <AssociationConnector Association="Shop.LanguageCategoryLang" />
         <AssociationConnector Association="Shop.LanguageProductLang" />
         <AssociationConnector Association="Shop.LanguageProductAttributeLang" />
@@ -78,6 +78,7 @@
         <EntityTypeShape EntityType="Shop.ShopSetting" Width="1.5" PointX="1" PointY="0.625" />
         <EntityTypeShape EntityType="Shop.ProductStock" Width="1.5" PointX="23.75" PointY="10.625" />
         <AssociationConnector Association="Shop.ProductProductStock" />
+        <AssociationConnector Association="Shop.ProductProduct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

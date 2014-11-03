@@ -49,6 +49,24 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                         m.MapRightKey("ProductAttributeValues_Id");
                     });
 
+            this.HasMany(t => t.ProductChildren)
+                .WithMany(t => t.ProductParents)
+                .Map(m =>
+                {
+                    m.ToTable("ProductProduct", "gbua_active_dev");
+                    m.MapLeftKey("ProductParent_Id");
+                    m.MapRightKey("ProductChildren_Id");
+                });
+
+            this.HasMany(t => t.ProductParents)
+               .WithMany(t => t.ProductChildren)
+               .Map(m =>
+               {
+                   m.ToTable("ProductProduct", "gbua_active_dev");
+                   m.MapLeftKey("ProductChildren_Id");
+                   m.MapRightKey("ProductParent_Id");
+               });
+
             this.HasRequired(t => t.Category)
                 .WithMany(t => t.Products)
                 .HasForeignKey(d => d.CategoryId);

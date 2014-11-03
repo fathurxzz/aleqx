@@ -1,0 +1,88 @@
+﻿@using System.Collections
+@using Shop.DataAccess.Entities
+@model Product
+
+@{
+    ViewBag.Title = "К этому товару пригодятся";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Product")
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/admin.js")
+}
+
+<div class="container">
+    <h3>К товару "@Model.Title" пригодятся</h3>
+    @using (Html.BeginForm("RelatedProducts", "Product", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+    {
+        @Html.Hidden("productId", (int)ViewBag.ProductId)
+        @Html.Hidden("page",(string)ViewBag.Page)
+        <table class="table table-striped">
+            <tr>
+                <th>Категория
+                </th>
+                <th>Название
+                </th>
+            </tr>
+
+            @foreach (var item in Model.ProductChildren)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @{
+            var categories = ((IEnumerable<Category>)ViewBag.Categories).ToList();
+            if (categories.Any())
+            {
+                    <select class="selectpicker" name="categoryId" id="categoryId">
+                        <option value="0">Выберите категорию</option>
+                        @foreach (var category in categories)
+                        {
+                            <option value="@category.Id">@Html.Raw(category.CategoryLevel > 0 ? "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" : "")@category.Title</option>
+                        }
+                    </select>
+            }
+                }
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">Товар</label>
+            <div class="col-sm-10">
+                <select name="productsId" id="productsId">
+                    <option value="0">Выберите продукт</option>
+                </select>
+            </div>
+        </div>
+        
+        
+        
+        
+        <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "Product", new { page = ViewBag.Page }, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Добавить</button>
+            </div>
+        </div>
+    }
+
+</div>
