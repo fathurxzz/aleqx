@@ -121,9 +121,27 @@
                     }
                     else
                     {
-                        @Html.ActionLink("Добавить раздел", "Create", "Product", new { id = item.Id, isContentPage = true }, null) <text>|</text>
-                        @Html.ActionLink("Добавить проект", "Create", "Product", new { id = item.Id, isContentPage = false }, null)<text>|</text>
-                        @Html.ActionLink("Разделы ("+item.Products.Count+")", "Details", "Category", new { id = item.Id }, null)
+                        if (!item.Products.Any())
+                        {
+                            @Html.ActionLink("Добавить раздел", "Create", "Product", new {id = item.Id, isContentPage = true}, null)
+                            <text>|</text>
+                            @Html.ActionLink("Добавить проект", "Create", "Product", new {id = item.Id, isContentPage = false}, null)<text>|</text>
+                        }
+                        else
+                        {
+                            if (item.Products.Any(p => p.IsContentPage))
+                            {
+                                @Html.ActionLink("Добавить раздел", "Create", "Product", new {id = item.Id, isContentPage = true}, null)
+                                <text>|</text>
+                                @Html.ActionLink("Разделы (" + item.Products.Count + ")", "Details", "Category", new {id = item.Id}, null)
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Добавить проект", "Create", "Product", new {id = item.Id, isContentPage = false}, null)<text>|</text>
+                                @Html.ActionLink("Проекты (" + item.Products.Count + ")", "Details", "Category", new {id = item.Id}, null)
+                            }
+                        }
+
                     }
                     
                 }
