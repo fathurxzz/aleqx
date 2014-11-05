@@ -57,7 +57,7 @@
         </div>
         <div id="support">
             <div class="info">
-                Есть вопросы? &mdash; Я на связи: <a href="#" id="mailTo">написать</a>  / <a href="#">позвонить</a>
+                Есть вопросы? &mdash; Я на связи: <a href="#" id="mailTo">написать</a>  / <a href="skype:active-land">позвонить</a>
             </div>
         </div>
     </div>
@@ -115,6 +115,21 @@
         <div id="product-attributes">
 
 
+            <div class="products-avaible">
+                <span>
+                В наличии размеры:
+                    </span>
+                <select>
+                    @foreach (var productStock in Model.ProductStocks.OrderBy(ps=>ps.Size))
+                    {
+                        <option>Размер @(!string.IsNullOrEmpty(productStock.Size)?productStock.Size:"не доступен"), Цвет @productStock.Color</option>
+                    }
+                </select>
+            </div>
+
+
+
+
             <table>
 
                 @foreach (var pruductAttribute in Model.Category.ProductAttributes.Where(pa => pa.IsPublic).OrderBy(p => p.SortOrder))
@@ -168,18 +183,7 @@
                     }
                 }
 
-                @foreach (var productStock in Model.ProductStocks)
-                {
-                    <tr class="attribute">
-                        <td class="title">Наличие: цвет, размер
-                        </td>
-                        <td class="value">
-                            <div class="value-text">
-                                @productStock.Color, @productStock.Size
-                            </div>
-                        </td>
-                    </tr>
-                }
+
             </table>
 
 

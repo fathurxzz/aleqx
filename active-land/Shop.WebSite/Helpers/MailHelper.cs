@@ -49,9 +49,9 @@ namespace Shop.WebSite.Helpers
             }
 
             message.IsBodyHtml = true;
-#if !DEBUG
+//#if !DEBUG
             client.Send(message);
-#endif
+//#endif
             message.Dispose();
         }
 
@@ -73,9 +73,9 @@ namespace Shop.WebSite.Helpers
                     feedbackForm.Email,
                     feedbackForm.Question);
             message.IsBodyHtml = true;
-#if !DEBUG
+//#if !DEBUG
             client.Send(message);
-#endif
+//#endif
             message.Dispose();
         }
     }
