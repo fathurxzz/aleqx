@@ -29,6 +29,39 @@ namespace Kiki.WebSite
             );
 
             routes.MapRoute(
+                "Gifts",
+                "{lang}/gifts",
+                new { controller = "Home", action = "Index", id = "sales"},
+                new { lang = @"ru|en" },
+                new[] { "Kiki.WebSite.Controllers" }
+            );
+
+
+            routes.MapRoute(
+              "Services",
+              "{lang}/services",
+              new { controller = "Home", action = "Index", id = "services"},
+              new { lang = @"ru|en" },
+              new[] { "Kiki.WebSite.Controllers" }
+          );
+
+            routes.MapRoute(
+                "Articles",
+                "{lang}/articles",
+                new { controller = "Home", action = "Index", id = "articles" },
+                new { lang = @"ru|en" },
+                new[] { "Kiki.WebSite.Controllers" }
+            );
+
+            routes.MapRoute(
+                "Welcome",
+                "{lang}/welcome",
+                new { controller = "Home", action = "Index", id = "gallery" },
+                new { lang = @"ru|en" },
+                new[] { "Kiki.WebSite.Controllers" }
+            );
+            
+            routes.MapRoute(
                 "Search",
                 "{lang}/search/{q}",
                 new { controller = "Service", action = "Search", q = UrlParameter.Optional },
@@ -44,12 +77,25 @@ namespace Kiki.WebSite
             );
 
             routes.MapRoute(
-                "Services",
+                "ServiceDetails",
                 "{lang}/services/{id}",
                 new { controller = "Home", action = "ServiceDetails", id = UrlParameter.Optional, contentName="services" },
                 new { lang = @"ru|en" },
                 new[] { "Kiki.WebSite.Controllers" }
             );
+
+            routes.MapRoute(
+                "ArticleDetails",
+                "{lang}/articles/{id}",
+                new { controller = "Home", action = "ArticleDetails", id = UrlParameter.Optional, contentName = "articles" },
+                new { lang = @"ru|en" },
+                new[] { "Kiki.WebSite.Controllers" }
+            );
+
+
+           
+
+
 
 
             routes.MapRoute(
