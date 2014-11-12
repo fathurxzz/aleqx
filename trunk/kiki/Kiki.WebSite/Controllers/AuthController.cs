@@ -41,7 +41,16 @@ namespace Shop.WebSite.Controllers
             if (loginModel.Name == "admin" && loginModel.Password == "kiki")
             {
                 FormsAuthentication.SetAuthCookie(loginModel.Name, loginModel.Keep);
-                return RedirectToLocal(returnUrl);
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    return RedirectToLocal("/admin");
+                   return RedirectToAction("Default", "Admin", new {area = "Admin"});
+                }
+                
             }
             loginModel.ErrorMessage = "Неправильные логин или пароль";
             return View(loginModel);
