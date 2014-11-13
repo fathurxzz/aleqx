@@ -39,7 +39,7 @@ namespace Filimonov
 
         public static string Version
         {
-            get { return "0.0.3"; }
+            get { return "0.0.4"; }
         }
     }
 }
