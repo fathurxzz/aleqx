@@ -52,6 +52,8 @@ namespace Shop.DataAccess
 
         IDbSet<ShopSetting> ShopSettings { get; }
 
+        IDbSet<MainPageBanner> MainPageBanners { get; }
+
         int SaveChanges();
     }
 }

@@ -1,0 +1,40 @@
+﻿@model Shop.DataAccess.Entities.MainPageBanner
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "MainPageBanners")
+}
+
+
+<div class="container">
+    <h3>Добавление изображений</h3>
+    @using (Html.BeginForm("Create", "MainPageBanner", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Изображения</label>
+            <div class="col-sm-10">
+                @Html.Partial("InputImages")
+            </div>
+        </div>
+    
+        <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "MainPageBanner", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

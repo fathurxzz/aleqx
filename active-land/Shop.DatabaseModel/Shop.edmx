@@ -36,6 +36,7 @@
     <EntitySet Name="QuickAdviceLang" EntityType="Shop.Store.QuickAdviceLang" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ShopSetting" EntityType="Shop.Store.ShopSetting" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductStock" EntityType="Shop.Store.ProductStock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MainPageBanner" EntityType="Shop.Store.MainPageBanner" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Shop.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValueProduct" EntityType="Shop.Store.ProductAttributeValueProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProduct" EntityType="Shop.Store.ProductProduct" store:Type="Tables" Schema="dbo" />
@@ -518,6 +519,13 @@
     <Property Name="Color" Type="varchar" Nullable="true" MaxLength="100" />
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="IsAvailable" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MainPageBanner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -1222,6 +1230,7 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="Product1" EntitySet="Product" />
           </AssociationSet>
+          <EntitySet Name="MainPageBanner" EntityType="Shop.MainPageBanner" />
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -2046,6 +2055,13 @@
           <End Type="Shop.Product" Role="Product" Multiplicity="*" />
           <End Type="Shop.Product" Role="Product1" Multiplicity="*" />
         </Association>
+        <EntityType Name="MainPageBanner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="true" MaxLength="200" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2394,6 +2410,14 @@
           <ScalarProperty Name="Color" ColumnName="Color" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MainPageBanner">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.MainPageBanner)">
+        <MappingFragment StoreEntitySet="MainPageBanner">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

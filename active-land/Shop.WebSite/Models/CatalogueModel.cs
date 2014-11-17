@@ -94,7 +94,7 @@ namespace Shop.WebSite.Models
 
 
         public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy = null)
-            : base(repository1, langId, null)
+            : base(repository1, langId, "category")
         {
             _repository = repository1;
             FilterArray = new string[0];

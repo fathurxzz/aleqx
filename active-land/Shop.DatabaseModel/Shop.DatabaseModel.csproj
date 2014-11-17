@@ -85,6 +85,9 @@
     <Compile Include="Language.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
+    <Compile Include="MainPageBanner.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>

@@ -55,5 +55,6 @@ namespace Shop.DatabaseModel
         public DbSet<QuickAdviceLang> QuickAdviceLang { get; set; }
         public DbSet<ShopSetting> ShopSetting { get; set; }
         public DbSet<ProductStock> ProductStock { get; set; }
+        public DbSet<MainPageBanner> MainPageBanner { get; set; }
     }
 }

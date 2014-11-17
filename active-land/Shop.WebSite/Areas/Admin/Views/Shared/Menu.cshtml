@@ -82,6 +82,15 @@
         <li>@Html.ActionLink("Настройки", "Index", "ShopSetting", new { area = "Admin" }, null)</li>
     }
     
+    @if (Model == "MainPageBanners")
+    {
+        <li class="active">@Html.ActionLink("Фоновые изображения главной страницы", "Index", "MainPageBanner", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Фоновые изображения главной страницы", "Index", "MainPageBanner", new { area = "Admin" }, null)</li>
+    }
+    
     @if (Model == "Export")
     {
         <li class="active">@Html.ActionLink("Экспорт / Импорт", "Index", "DataTrasfer", new { area = "Admin" }, null)</li>

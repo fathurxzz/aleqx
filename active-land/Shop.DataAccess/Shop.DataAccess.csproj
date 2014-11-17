@@ -70,6 +70,7 @@
     <Compile Include="Entities\Localization\ProductAttributeValue.cs" />
     <Compile Include="Entities\Localization\ProductAttributeValueTag.cs" />
     <Compile Include="Entities\Localization\QuickAdvice.cs" />
+    <Compile Include="Entities\MainPageBanner.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Partials\Category.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Entities\Validation\ArticleValidation.cs" />
     <Compile Include="Entities\Validation\CategoryValidation.cs" />
     <Compile Include="Entities\Validation\ContentValidation.cs" />
+    <Compile Include="Entities\Validation\MainPageBannerValidation.cs" />
     <Compile Include="Entities\Validation\OrderValidation.cs" />
     <Compile Include="Entities\Validation\ProductAttribute.cs" />
     <Compile Include="Entities\Validation\ProductAttributeStaticValue.cs" />

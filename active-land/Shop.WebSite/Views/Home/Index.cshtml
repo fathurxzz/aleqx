@@ -17,17 +17,28 @@
 
 }
 
-<div id="main-page-banner">
+@if (Model.Content!=null && Model.Content.IsMainPage)
+{
+    <div id="main-page-banner">
     <div class="slider">
         <ul class="bxsliderProducts" id="mainImages">
-            <li>
+            
+            @foreach (var item in Model.MainPageBanners)
+            {
+                <li>
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("mainPageBanner")))
+                    @*<img src="/Content/bg/main-01.jpg" alt="" />*@
+                </li>
+            }
+
+            @*<li>
                 <img src="/Content/bg/main-01.jpg" alt="" /></li>
             <li>
                 <img src="/Content/bg/main-02.jpg" alt="" /></li>
             <li>
                 <img src="/Content/bg/main-03.jpg" alt="" /></li>
             <li>
-                <img src="/Content/bg/main-04.jpg" alt="" /></li>
+                <img src="/Content/bg/main-04.jpg" alt="" /></li>*@
         </ul>
     </div>
 
@@ -37,6 +48,20 @@
         @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
     </div>
 </div>
+}
+else
+{
+    <div id="menu-panel">
+    @Html.Partial("LanguageSwitcher")
+    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new { id = "" }, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+    @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
+</div>
+    <div id="main-banner">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Content.ImageSource, SiteSettings.GetThumbnail("pageBanner")))
+    </div>
+}
+
+
 
 
 @if (Model.Content.IsMainPage)
@@ -52,7 +77,7 @@
     </div>
 
     <div id="chose-your-bike">
-        @Html.Raw(Html.ActionLink("[LINK]", "Catalogue", "Home",new{category="bikes"},null).ToString().Replace("[LINK]", ""))
+        @Html.Raw(Html.ActionLink("[LINK]", "Catalogue", "Home", new { category = "bikes" }, null).ToString().Replace("[LINK]", ""))
     </div>
 
 
@@ -87,6 +112,45 @@
     }
         }
         <div class="clearfix"></div>
+    </div>
+}
+
+
+
+@if (Model.Content != null && !string.IsNullOrEmpty(Model.Content.Text))
+{
+    <div class="content-text">
+        @Html.Raw(Model.Content.Text)
+
+        @foreach (var contentItem in Model.Content.ContentItems)
+        {
+            <div class="articleItem">
+                <div class="text">
+                    @Html.Raw(contentItem.Text)
+                </div>
+                @if (contentItem.ContentItemImages.Any())
+                {
+                    <div class="slider-container">
+                        <div class="slider-image-wrapper">
+
+                            <div id="slider-prev"></div>
+                            <div id="slider-next"></div>
+                            <ul class="bxsliderArticleItemImages">
+                                @foreach (var image in contentItem.ContentItemImages)
+                                {
+                                    <li>
+                                        <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
+                                            <div class="zoom"></div>
+                                            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
     </div>
 }
 
@@ -149,44 +213,6 @@
     }
 }
 
-@if (Model.Content != null && !string.IsNullOrEmpty(Model.Content.Text))
-{
-    <div class="content-text">
-        @Html.Raw(Model.Content.Text)
-
-        @foreach (var contentItem in Model.Content.ContentItems)
-        {
-            <div class="articleItem">
-                <div class="text">
-                    @Html.Raw(contentItem.Text)
-                </div>
-                @if (contentItem.ContentItemImages.Any())
-                {
-                    <div class="slider-container">
-                        <div class="slider-image-wrapper">
-
-                            <div id="slider-prev"></div>
-                            <div id="slider-next"></div>
-                            <ul class="bxsliderArticleItemImages">
-                                @foreach (var image in contentItem.ContentItemImages)
-                                {
-                                    <li>
-                                        <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
-                                            <div class="zoom"></div>
-                                            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
-                                        </a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                }
-            </div>
-        }
-    </div>
-}
-
-
 @if (Model.SpecialOffers.Any())
 {
     @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Специальные предложения" } })
@@ -194,18 +220,18 @@
         @foreach (var product in Model.SpecialOffers)
         {
             @Html.Partial("ProductPreview", new ProductPreview
-            {
-                Title = product.Title,
-                Label =
-                    product.IsNew ? ProductPreviewLabel.WowNew
-                        : product.IsTopSale ? ProductPreviewLabel.TopSale
-                            : product.IsDiscount ? ProductPreviewLabel.Discount
-                                : ProductPreviewLabel.None,
-                Price = product.Price,
-                OldPrice = product.OldPrice,
-                ImageSource = product.ImageSource,
-                Name = product.Name
-            })
+       {
+           Title = product.Title,
+           Label =
+               product.IsNew ? ProductPreviewLabel.WowNew
+                   : product.IsTopSale ? ProductPreviewLabel.TopSale
+                       : product.IsDiscount ? ProductPreviewLabel.Discount
+                           : ProductPreviewLabel.None,
+           Price = product.Price,
+           OldPrice = product.OldPrice,
+           ImageSource = product.ImageSource,
+           Name = product.Name
+       })
         }
         <div class="clearfix"></div>
     </div>

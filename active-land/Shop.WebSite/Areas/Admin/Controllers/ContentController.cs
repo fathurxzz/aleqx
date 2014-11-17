@@ -53,6 +53,20 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     SortOrder = model.SortOrder
                 };
 
+
+                var file = Request.Files[0];
+                if (file != null && !string.IsNullOrEmpty(file.FileName))
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    file.SaveAs(filePath);
+                    content.ImageSource = fileName;
+                }
+
+
                 content.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 _repository.AddContent(content);
@@ -91,6 +105,25 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 content.Name = SiteHelper.UpdatePageWebName(model.Name);
                 TryUpdateModel(content, new[] { "Name", "Title", "SeoDescription", "ContentType", "SeoKeywords", "Seotext", "SortOrder" });
                 content.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+
+
+                var file = Request.Files[0];
+                if (file != null && !string.IsNullOrEmpty(file.FileName))
+                {
+                    if (!string.IsNullOrEmpty(content.ImageSource))
+                    {
+                        ImageHelper.DeleteImage(content.ImageSource);
+                    }
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    file.SaveAs(filePath);
+                    content.ImageSource = fileName;
+                }
+
                 _repository.SaveContent(content);
             }
             catch (Exception ex)

@@ -26,21 +26,22 @@ namespace Shop.WebSite.Models
         public string CurrentLangCode { get; set; }
         public IEnumerable<QuickAdvice> QuickAdvices { get; set; }
         public string ErrorMessage { get; set; }
+        public IEnumerable<MainPageBanner> MainPageBanners { get; set; }
 
-        public SiteModel(IShopRepository repository, int langId, string contentName )
+        public SiteModel(IShopRepository repository, int langId, string contentName)
         {
             Title = "Active Land";
             Categories = repository.GetCategories();
-            SpecialOffers = GetSpecialOffers(repository, langId, int.Parse(SiteSettings.GetShopSetting( "SpecialOffersQuantity")));
+            SpecialOffers = GetSpecialOffers(repository, langId, int.Parse(SiteSettings.GetShopSetting("SpecialOffersQuantity")));
             Contents = repository.GetContents();
-            Content = contentName != null ? repository.GetContent(contentName) : repository.GetContent();
-
+            Content = contentName != null ? (contentName == "category" ? repository.GetCatalogueContent() : repository.GetContent(contentName)) : repository.GetContent();
+            MainPageBanners = repository.GetMainPageBanners();
             if (Content.ContentType == 2)
             {
                 Articles = GetAllArticles(repository, langId);
             }
 
-            LastArticles = GetLastArticles(repository, langId, int.Parse(SiteSettings.GetShopSetting( "ArticlesQuantity")));
+            LastArticles = GetLastArticles(repository, langId, int.Parse(SiteSettings.GetShopSetting("ArticlesQuantity")));
             QuickAdvices = repository.GetQuickAdvices(true);
         }
 
