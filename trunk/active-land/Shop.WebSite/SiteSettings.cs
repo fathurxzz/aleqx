@@ -32,6 +32,10 @@ namespace Shop.WebSite
                                     {"articleItemImageAdminPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 50 }, CacheFolder = "articleItemImageAdminPreview", ScaleMode = ScaleMode.Crop}},
                                     {"articleCaruselItem",new ThumbnailPicture{ PictureSize =new PictureSize {Height =391 ,Width = 522 }, CacheFolder = "articleCaruselItem", ScaleMode = ScaleMode.Crop}},
                                     {"cartProductImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =154 ,Width = 154 }, CacheFolder = "cartProductImage", ScaleMode = ScaleMode.Crop}},
+                                    {"pageBanner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =233 ,Width = 1195 }, CacheFolder = "pageBanner", ScaleMode = ScaleMode.Crop}},
+                                    {"adminPageBanner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =30 ,Width = 150 }, CacheFolder = "adminPageBanner", ScaleMode = ScaleMode.Crop}},
+                                    {"mainPageBanner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =478 ,Width = 1195 }, CacheFolder = "mainPageBanner", ScaleMode = ScaleMode.Crop}},
+                                    {"adminMainPageBanner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =120 ,Width = 300 }, CacheFolder = "adminMainPageBanner", ScaleMode = ScaleMode.Crop}},
 
                                   //{"adminPreviewProductImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 200,Width = 200}, CacheFolder = "adminPreviewProductImage", ScaleMode = ScaleMode.Crop}},
 
@@ -69,7 +73,7 @@ namespace Shop.WebSite
 
         public static string Version
         {
-            get { return "0.0.23"; }
+            get { return "0.0.24"; }
         }
 
         public static string MailTo

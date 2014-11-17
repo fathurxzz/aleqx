@@ -151,6 +151,11 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.ShopSettings; }
         }
 
+        public IDbSet<MainPageBanner> MainPageBanners
+        {
+            get { return _context.MainPageBanners; }
+        }
+
 
         public int SaveChanges()
         {

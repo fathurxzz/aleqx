@@ -97,6 +97,7 @@ namespace Shop.DataAccess.Repositories
         Content GetContent(int id);
         Content GetContent(string name);
         Content GetContent();
+        Content GetCatalogueContent();
         void DeleteContent(int id);
         void SaveContent(Content content);
         int AddContent(Content content);
@@ -136,7 +137,14 @@ namespace Shop.DataAccess.Repositories
         ProductStock GetProductStock(int id);
         void DeleteProductStock(int id);
         void SaveProductStock(ProductStock productStock);
-        
+
+        // MainPageBanner
+        int AddMainPageBanner(MainPageBanner mainPageBanner);
+        void SaveMainPageBanner(MainPageBanner mainPageBanner);
+        MainPageBanner GetMainPageBanner(int id);
+        IEnumerable<MainPageBanner> GetMainPageBanners();
+        void DeleteMainPageBanner(int id, Action<string> deleteImages);
+
 
     }
 }

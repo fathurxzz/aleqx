@@ -65,6 +65,7 @@
     <Compile Include="Repositories\ContentItem.cs" />
     <Compile Include="Repositories\ContentItemImage.cs" />
     <Compile Include="Repositories\Language.cs" />
+    <Compile Include="Repositories\MainPageBanner.cs" />
     <Compile Include="Repositories\Order.cs" />
     <Compile Include="Repositories\Product.cs" />
     <Compile Include="Repositories\ProductAttribute.cs" />

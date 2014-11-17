@@ -45,6 +45,8 @@
             /*float: left;*/
         }
 
+
+
         .product-preview .title-price .title {
             font-family: 'PT Sans Narrow', serif;
             font-weight: 700;
@@ -119,3 +121,5 @@
 .discount {
     background: url("../img/discount.png");
 }
+
+

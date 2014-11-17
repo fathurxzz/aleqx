@@ -202,3 +202,11 @@ ul.language-switcher li a{
     margin-top: 10px;
     cursor: pointer;
 }
+
+.category-menu a,  #menu-items ul a {
+    text-decoration: underline !important;
+}
+
+#product-add-to-cart a, #product-in-cart-text a, .cart-tying-products-link a, .skype a{
+    text-decoration: underline !important;
+}

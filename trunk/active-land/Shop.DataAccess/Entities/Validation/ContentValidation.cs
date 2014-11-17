@@ -26,6 +26,9 @@ namespace Shop.DataAccess.Entities
         [Display(Name = "Идентификатор")]
         public string Name { get; set; }
 
+        [Display(Name = "Баннер")]
+        public string ImageSource { get; set; }
+
         [Display(Name = "Доступность на текущем языке")]
         public bool IsCorrectLang { get; set; }
 

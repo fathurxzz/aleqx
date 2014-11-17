@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Shop.DataAccess.Entities.Content>
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@model IEnumerable<Shop.DataAccess.Entities.Content>
 
 @{
     ViewBag.Title = "Index";
@@ -35,6 +37,9 @@
 
         <th>
             @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSource)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SeoDescription)
@@ -86,6 +91,12 @@
                 <div>
                     @Html.Raw(item.Text)
                 </div>
+            </td>
+            <td>
+                @if (item.ImageSource != null)
+                {
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("adminPageBanner")))
+                }
             </td>
              <td class="adminTextContainer">
                 <div>

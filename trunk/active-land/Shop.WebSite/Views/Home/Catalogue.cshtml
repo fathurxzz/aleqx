@@ -1,4 +1,6 @@
-﻿@using Shop.WebSite.Helpers
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers
+@using Shop.WebSite.Helpers.Graphics
 @using Shop.WebSite.Models
 @model Shop.WebSite.Models.CatalogueModel
 
@@ -13,6 +15,7 @@
     @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
 </div>
 <div id="main-banner">
+    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Content.ImageSource, SiteSettings.GetThumbnail("pageBanner")))
 </div>
 
 @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = Model.CurrentCategory!=null?Model.CurrentCategory.Title: "Каталог" } })
