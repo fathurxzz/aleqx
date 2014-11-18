@@ -157,6 +157,13 @@ namespace Shop.WebSite.Helpers.Graphics
             graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
             thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
             saveTo.Position = 0;
+
+
+            //graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            //graphics.SmoothingMode = SmoothingMode.HighQuality;
+            //graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            //graphics.CompositingQuality = CompositingQuality.HighQuality;
+            //graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
         }
 
 
