@@ -389,16 +389,10 @@ namespace Filimonov.Areas.Admin.Controllers
             {
                 var projectImage = context.FlashContent.Include("Project").First(pi => pi.Id == id);
                 var project = projectImage.Project;
-                try
-                {
-                    IOHelper.DeleteDirectory("~/Content/FlashContent", projectImage.ImageSource);
-                    IOHelper.DeleteFile("~/Content/Images", projectImage.ImageSourcePreview);
-                }
-                catch
-                {
-                    context.DeleteObject(projectImage);
-                    context.SaveChanges();
-                }
+                IOHelper.DeleteDirectory("~/Content/FlashContent", projectImage.ImageSource);
+                IOHelper.DeleteFile("~/Content/Images", projectImage.ImageSourcePreview);
+                context.DeleteObject(projectImage);
+                context.SaveChanges();
                 return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
             }
         }
@@ -437,8 +431,10 @@ namespace Filimonov.Areas.Admin.Controllers
                 while (project.FlashContents.Any())
                 {
                     var projectImage = project.FlashContents.First();
-                    IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource);
-                    IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource, "xml");
+                    //IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource);
+                    //IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource, "xml");
+                    IOHelper.DeleteDirectory("~/Content/FlashContent", projectImage.ImageSource);
+                    IOHelper.DeleteFile("~/Content/Images", projectImage.ImageSourcePreview);
 
                     context.DeleteObject(projectImage);
                 }
