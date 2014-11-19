@@ -72,6 +72,9 @@ namespace Filimonov.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var flashContent = context.FlashContent.First(f => f.Id == id);
+                var project = flashContent.Project;
+                ViewBag.projectId = project.Id;
+                ViewBag.projectName = project.Name;
                 return View(flashContent);
             }
         }
@@ -85,7 +88,7 @@ namespace Filimonov.Areas.Admin.Controllers
                 var project = flashContent.Project;
                 ViewBag.projectId = project.Id;
                 ViewBag.projectName = project.Name;
-                TryUpdateModel(flashContent, new[] {"Title"});
+                //TryUpdateModel(flashContent, new[] {"Title"});
                 if (fileUploadPreview != null)
                 {
 
