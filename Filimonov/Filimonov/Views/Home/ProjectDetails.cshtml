@@ -94,6 +94,8 @@
                                 <div style="position: absolute ">
                                 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                                 {
+                                    @Html.ActionLink("Редактировать", "EditFlash", "Project", new { area = "Admin", id = flash.Id }, new { @class = "adminLink"})
+                                    <br/>
                                     @Html.ActionLink("Удалить", "DeleteFlash", "Project", new { area = "Admin", id = flash.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить флеш?')" })
                                 }    
                                 </div>
