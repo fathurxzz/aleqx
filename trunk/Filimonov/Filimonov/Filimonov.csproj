@@ -371,6 +371,7 @@
     <Content Include="Areas\Admin\Views\SiteBackground\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Music\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Music\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\EditFlash.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

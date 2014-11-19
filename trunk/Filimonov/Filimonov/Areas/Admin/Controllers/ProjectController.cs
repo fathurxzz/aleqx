@@ -67,6 +67,48 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult EditFlash(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var flashContent = context.FlashContent.First(f => f.Id == id);
+                return View(flashContent);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditFlash(FlashContent model,HttpPostedFileBase fileUploadPreview)
+        {
+            using (var context = new SiteContainer())
+            {
+                var flashContent = context.FlashContent.Include("Project").First(f => f.Id == model.Id);
+                var project = flashContent.Project;
+                ViewBag.projectId = project.Id;
+                ViewBag.projectName = project.Name;
+                TryUpdateModel(flashContent, new[] {"Title"});
+                if (fileUploadPreview != null)
+                {
+
+                    var file = fileUploadPreview;
+
+                    var fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    var filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+                    flashContent.ImageSourcePreview = fileName;
+                    flashContent.Title = model.Title ?? "";
+                    context.SaveChanges();
+                }
+                else
+                {
+                    ViewBag.Errormessage = "Выберите файлы для загрузки!";
+                    return View();
+                }
+
+                context.SaveChanges();
+                return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+            }
+        }
 
         [HttpPost]
         [ValidateInput(false)]
