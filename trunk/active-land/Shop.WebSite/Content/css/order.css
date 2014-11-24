@@ -144,6 +144,13 @@
     margin-bottom: 50px;
 }
 
+#order-done-wrapper.feedback {
+    background: url("../img/total.png") repeat-x 0 23px;
+    margin-top: 25px;
+    height: 40px;
+    margin-bottom: 50px;
+}
+
 #order-done {
     width: 216px;
     height: 46px;
@@ -168,6 +175,25 @@
     cursor: pointer;
     outline: none;
 }
+
+
+#order-done.feedback input, #order-done.feedback a {
+    display: block;
+    width: 143px;
+    height: 37px;
+    text-align: center;
+    font-family: 'PT Sans Caption', serif;
+    font-size: 20px;
+    color: #ffffff;
+    background: url("../img/sent-feedback.png");
+    text-decoration: none;
+    line-height: 44px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+
 
 
 .validation-error {
