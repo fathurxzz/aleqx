@@ -127,7 +127,7 @@ namespace Shop.WebSite.Models
 
             if (query != null && query.Length > 1)
             {
-                SourceProducts = _repository.GetProductsByQueryString(query);
+                SourceProducts = _repository.GetProductsByQueryString(query).Where(p => p.IsActive);
                 foreach (var product in SourceProducts)
                 {
                     Products.Add(product);
@@ -135,7 +135,7 @@ namespace Shop.WebSite.Models
             }
             else
             {
-                SourceProducts = _repository.GetProductsByCategory(categoryName);
+                SourceProducts = _repository.GetProductsByCategory(categoryName).Where(p => p.IsActive);
                 if (filterValueGroups.Any())
                 {
                     foreach (var product in SourceProducts)

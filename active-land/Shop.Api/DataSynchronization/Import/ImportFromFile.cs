@@ -51,14 +51,18 @@ namespace Shop.Api.DataSynchronization.Import
                     for (int i = 0; i < x.Length; i++)
                     {
                         if (string.IsNullOrEmpty(x[i]))
-                            throw new Exception("Cannot get field name");
+                            throw new Exception("Невозможно прочитать имя поля");
 
                         if (TransferData.ProductFields.ContainsKey(x[i]))
                         {
+                            if (fieldMapping.ContainsKey(x[i]))
+                                throw new Exception("Дубль поля " + x[i] + ". Данное поле уже добавлено в коллекцию");
                             fieldMapping.Add(x[i], i);
                         }
                         else
                         {
+                            if (attributeMapping.ContainsKey(x[i]))
+                                throw new Exception("Дубль атрибута " + x[i] + ". Данный атрибут уже добавлен в коллекцию");
                             attributeMapping.Add(x[i], i);
                         }
                     }
