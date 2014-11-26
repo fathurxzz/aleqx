@@ -31,7 +31,7 @@
 }
 
 .slogan {
-    height: 114px;
+    height: 124px;
     background-position: center 30px;
     background-repeat: no-repeat;
 }
@@ -39,7 +39,7 @@
 .slogan .text {
     font-size: 9px;
     text-align: center;
-    padding-top: 26px;
+    padding-top: 45px;
     text-transform: uppercase;
     color: #000;
     letter-spacing: 2px;
@@ -52,7 +52,8 @@
 #logo {
     width: 154px;
     height: 107px;
-    background: url('img/logo.svg') no-repeat;
+    /*background: url('img/logo.svg') no-repeat;*/
+    background: url('img/mbs-logo-site.svg') no-repeat;
     position: relative;
     margin: 0 auto;
 }
