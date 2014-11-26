@@ -193,6 +193,7 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logo.svg" />
+    <Content Include="Content\img\mbs-logo-site.svg" />
     <Content Include="Content\img\menu-bg.gif" />
     <Content Include="Content\img\menu-bg.png" />
     <Content Include="Content\img\menu-current-bg.gif" />
@@ -206,6 +207,7 @@
     <Content Include="Content\menu.css" />
     <Content Include="Content\product.css" />
     <Content Include="favicon.ico" />
+    <Content Include="favicon_old.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="Areas\Admin\Views\Web.config" />
