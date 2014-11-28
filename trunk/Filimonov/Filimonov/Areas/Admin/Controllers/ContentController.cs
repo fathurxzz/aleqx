@@ -87,9 +87,17 @@ namespace Filimonov.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var content = context.Content.First(c => c.Id == id);
-                context.DeleteObject(content);
-                context.SaveChanges();
+                var content = context.Content.Include("Projects").First(c => c.Id == id);
+                if (content.Projects.Any())
+                {
+                    TempData["error"] = "Невозможно удалить раздел, в котором есть проекты. Сначала удалите все проекты из раздела.";
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+                else
+                {
+                    context.DeleteObject(content);
+                    context.SaveChanges();
+                }
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
         }
