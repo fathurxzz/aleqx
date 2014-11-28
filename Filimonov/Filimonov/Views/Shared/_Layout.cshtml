@@ -68,6 +68,13 @@
         <div id="header">
         </div>
         <div class="content">
+            @if (TempData["error"]!=null)
+            {
+                <div style="color: red; font-weight: bold; text-align: center">
+                    @TempData["error"]
+                </div>
+            }
+
             @RenderBody()
             <div class="page" style="height: 50px;">
             </div>
