@@ -13,6 +13,8 @@ namespace SiteExtensions
     {
        public static void DeleteFile(string relativePath, string fileName)
         {
+           if(fileName==null)
+               return;
             string absolutePath = HttpContext.Current.Server.MapPath(relativePath);
             string path = Path.Combine(absolutePath, fileName);
             if (File.Exists(path))
@@ -21,6 +23,8 @@ namespace SiteExtensions
 
        public static void DeleteDirectory(string relativePath, string directoryName)
         {
+            if (directoryName == null)
+                return;
             string absolutePath = HttpContext.Current.Server.MapPath(relativePath);
             string path = Path.Combine(absolutePath, directoryName);
            if (Directory.Exists(path))
@@ -29,11 +33,12 @@ namespace SiteExtensions
 
         public static void DeleteFile(string relativePath, string fileName, string extension)
         {
+            if (fileName == null)
+                return;
             string absolutePath = HttpContext.Current.Server.MapPath(relativePath);
 
             if (Path.HasExtension(fileName))
             {
-
                 fileName = Path.GetFileNameWithoutExtension(fileName) +"."+ extension;
             }
 
@@ -44,13 +49,13 @@ namespace SiteExtensions
 
         public static void DeleteFiles(string relativePath, string[] fileNames)
         {
-            foreach (var fileName in fileNames)
+            foreach (var fileName in fileNames.Where(fileName => fileName != null))
             {
                 DeleteFile(relativePath, fileName);
             }
         }
 
-        
+
         public static string CreateAbsolutePath(string relativePath, string fileName)
         {
             return Path.Combine(HttpContext.Current.Server.MapPath(relativePath), fileName);

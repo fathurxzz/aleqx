@@ -485,12 +485,14 @@ namespace Filimonov.Areas.Admin.Controllers
                 }
 
 
-                IOHelper.DeleteFile("~/Content/Images", project.ImageSource);
-                foreach (var thumbnail in SiteSettings.Thumbnails)
+                if (project.ImageSource != null)
                 {
-                    IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, project.ImageSource);
+                    IOHelper.DeleteFile("~/Content/Images", project.ImageSource);
+                    foreach (var thumbnail in SiteSettings.Thumbnails)
+                    {
+                        IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, project.ImageSource);
+                    }
                 }
-
 
                 context.DeleteObject(project);
                 context.SaveChanges();
