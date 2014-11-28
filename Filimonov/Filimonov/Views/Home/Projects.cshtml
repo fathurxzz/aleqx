@@ -21,8 +21,8 @@ break;
         case ContentType.Projects:
             @(Model.Project != null && Model.Project.ContentId==item.Id
             ? Html.Partial("ProjectDetails", Model.Project) 
-            : Html.Partial("ContentItemProjects", new ContentItemProjects {Title = item.Title, Projects = item.Projects, Visible = Model.ContentId == item.Id.ToString()}))
-            break;
+            : Html.Partial("ContentItemProjects", new ContentItemProjects {Title = item.Title, Projects = item.Projects, Visible = Model.ContentId == item.Id.ToString(), Id = item.Id}))
+break;
     }
 }
 <div class="page">
