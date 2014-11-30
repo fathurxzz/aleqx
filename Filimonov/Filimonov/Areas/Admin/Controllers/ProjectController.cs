@@ -494,6 +494,12 @@ namespace Filimonov.Areas.Admin.Controllers
                     }
                 }
 
+                while (project.Songs.Any())
+                {
+                    var projectSong = project.Songs.First();
+                    context.DeleteObject(projectSong);
+                }
+
                 context.DeleteObject(project);
                 context.SaveChanges();
 
