@@ -69,7 +69,8 @@ namespace Filimonov.Areas.Admin.Controllers
                     var content = context.Content.First(c => c.Id == id);
                     TryUpdateModel(content, new[] { "Title", "SeoDescription", "SeoKeywords","SortOrder" });
                     content.Text = HttpUtility.HtmlDecode(form["Text"]);
-                    content.ContentType = form["isProject"] == "on" ? 1 : 0;
+                    if (content.ContentType != (int) ContentType.Feedback)
+                        content.ContentType = form["isProject"] == "on" ? 1 : 0;
                     context.SaveChanges();
                     return RedirectToAction("Index", "Home", new { area = "" });
                 }
