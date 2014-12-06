@@ -11,12 +11,13 @@
 
 #header-inner
 {
-    width: 1417px;
+    /*width: 1417px;*/
+    
     position: relative;
     margin: 0 auto;
     height: 45px;
     min-width: 1195px;
-    background: url("../img/header-shadow.png") no-repeat 0 41px;
+    background: url("../img/header-shadow.png") no-repeat center 41px;
 }
 
 #header{
