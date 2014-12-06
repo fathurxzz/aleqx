@@ -19,6 +19,9 @@ namespace Shop.Api.DataSynchronization.Model
             {"IsDiscount", "Скидка"},
             {"IsTopSale", "Хит продаж"},
             {"IsActive", "Активный"},
+            {"SeoDescription", "Описание для поисковиков"},
+            {"SeoKeywords", "Ключевые слова для поисковиков"},
+            {"SeoText", "Текст для поисковиков"},
             {"ProductStock.StockNumber", "Артикул"},
             {"ProductStock.Size", "Размер"},
             {"ProductStock.Color", "Цвет"}

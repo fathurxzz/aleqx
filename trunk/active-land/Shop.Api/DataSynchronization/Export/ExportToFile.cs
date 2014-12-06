@@ -87,6 +87,12 @@ namespace Shop.Api.DataSynchronization.Export
                 sb.Append(";");
                 sb.Append(product.IsActive);
                 sb.Append(";");
+                sb.Append(product.SeoDescription);
+                sb.Append(";");
+                sb.Append(product.SeoKeywords);
+                sb.Append(";");
+                sb.Append(product.SeoText);
+                sb.Append(";");
 
 
 
@@ -159,6 +165,12 @@ namespace Shop.Api.DataSynchronization.Export
                     sb.Append(product.IsTopSale);
                     sb.Append(";");
                     sb.Append(product.IsActive);
+                    sb.Append(";");
+                    sb.Append(product.SeoDescription);
+                    sb.Append(";");
+                    sb.Append(product.SeoKeywords);
+                    sb.Append(";");
+                    sb.Append(product.SeoText);
                     sb.Append(";");
 
 
