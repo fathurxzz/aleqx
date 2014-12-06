@@ -55,8 +55,12 @@ namespace Shop.Api.Repositories
                 var productAttributeValueLang = productAttributeValue.ProductAttributeValueLangs.First();
                 _store.ProductAttributeValueLangs.Remove(productAttributeValueLang);
             }
+            productAttributeValue.ProductAttributeValueLangs = null;
 
-            productAttributeValue.Products = null;
+            productAttributeValue.Products.Clear();
+            _store.SaveChanges();
+            
+            //productAttributeValue.Products = null;
             
 
             _store.ProductAttributeValues.Remove(productAttributeValue);

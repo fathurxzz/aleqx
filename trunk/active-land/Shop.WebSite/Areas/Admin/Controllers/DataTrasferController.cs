@@ -28,12 +28,50 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return View(new DataTransferModel{Categories = categories,ImportResult = new ImportResult{ErrorCode = -1}} );
         }
 
+
+        private void RefreshSearchData()
+        {
+            try
+            {
+                _repository.LangId = CurrentLangId;
+                var products = _repository.GetAllProducts().ToList();
+                foreach (var p in products)
+                {
+                    var product = _repository.GetProduct(p.Id);
+
+                    string searchCriteriaAttributes = "";
+                    foreach (var productAttributeValue in product.ProductAttributeValues)
+                    {
+                        searchCriteriaAttributes += productAttributeValue.ProductAttributeId + "-" + productAttributeValue.Id + ";";
+                    }
+                    product.SearchCriteriaAttributes = searchCriteriaAttributes;
+                    _repository.SaveProduct(product);
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+
+        public ActionResult RefreshData()
+        {
+
+            RefreshSearchData();
+            
+            return RedirectToAction("Index");
+        }
+
         public void Export(string categoryName)
         {
             _repository.LangId = CurrentLangId;
             string content = ExportToFile.Execute(_repository, CurrentLangId, categoryName);
             SaveToFile(content, categoryName);
         }
+
+
 
         public ActionResult Import(HttpPostedFileBase fileUpload)
         {
@@ -46,6 +84,11 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 var categoryName = fileUpload.FileName.Split(new[] {"."}, StringSplitOptions.None)[1];
                 result = ImportFromFile.Execute(_repository, reader, categoryName, CurrentLangId);
             }
+
+
+
+            RefreshSearchData();
+
             return View("Index", new DataTransferModel {Categories = categories, ImportResult = result});
             //return RedirectToAction("Index", new { message = result.ErrorMessage, errorCode = result.ErrorCode });
         }
