@@ -88,6 +88,11 @@ namespace Shop.Api.DataSynchronization.Import
                             IsDiscount = ConvertToBooleanValue(x[fieldMapping["IsDiscount"]]),
                             IsTopSale = ConvertToBooleanValue(x[fieldMapping["IsTopSale"]]),
                             IsActive = ConvertToBooleanValue(x[fieldMapping["IsActive"]]),
+
+                            SeoDescription = x[fieldMapping["SeoDescription"]],
+                            SeoKeywords = x[fieldMapping["SeoKeywords"]],
+                            SeoText = x[fieldMapping["SeoText"]],
+
                             ImportedProductStocks = new List<ImportedProductStock>(),
                             //ImportedProductAttibutes = new Dictionary<string, string>()
                             ImportedProductAttibutes = new List<ImportedProductAttribute>()
