@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.DatabaseModel.DataAcce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.SiteExtensions", "Shop.SiteExtensions\Shop.SiteExtensions.csproj", "{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.ProductDataTransfer.Console", "Shop.ProductDataTransfer.Console\Shop.ProductDataTransfer.Console.csproj", "{DF6B4E60-95E3-4A89-BF79-07EF321956D8}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -53,6 +55,10 @@ Global
 		{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF6B4E60-95E3-4A89-BF79-07EF321956D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF6B4E60-95E3-4A89-BF79-07EF321956D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF6B4E60-95E3-4A89-BF79-07EF321956D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF6B4E60-95E3-4A89-BF79-07EF321956D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -72,7 +72,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         }
 
 
-
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
         public ActionResult Import(HttpPostedFileBase fileUpload)
         {
             _repository.LangId = CurrentLangId;
