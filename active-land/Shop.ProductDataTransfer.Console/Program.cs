@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
+using Shop.Api.DataSynchronization.Import;
 using Shop.Api.DataSynchronization.Model;
+using Shop.Api.Repositories;
+using Shop.DataAccess;
 using Shop.DataAccess.Entities;
+using Shop.DataAccess.EntityFramework;
 using Shop.DataAccess.Repositories;
 
-namespace Shop.Api.DataSynchronization.Import
+namespace Shop.ProductDataTransfer.Console
 {
-
-
-
-    public class ImportFromFile
+    class Program
     {
         private static decimal ConvertToDecimalValue(string value, decimal defaultValue = 0)
         {
@@ -28,32 +28,43 @@ namespace Shop.Api.DataSynchronization.Import
             return bool.TryParse(value, out result) ? result : defaultValue;
         }
 
-
-        
-
-        private static List<ImportedProduct> ReadProductsFromFile(StreamReader file)
+        static void Main(string[] args)
         {
+            int currentLangId = 1;
+            IShopStore store = new ShopStore();
+
+            IShopRepository repository = new ShopRepository(store);
+            repository.LangId = currentLangId;
+
+            
+
+
+            string filename = args.Length == 0 ? "1 output.bikes.06.12.2014 15_37_56.csv" : args[0];
+
             int rowCounter = 0;
             string rowExternalId = string.Empty;
             var products = new List<ImportedProduct>();
-            //int counter = 0;
-
-            string line;
             string oldId = string.Empty;
             ImportedProduct currentProduct = null;
-
             var fieldMapping = new Dictionary<string, int>();
             var attributeMapping = new Dictionary<string, int>();
-
+            int failedProducts = 0;
+            var failedProductsExternalIds = new List<string>();
 
             try
             {
-                while ((line = file.ReadLine()) != null)
+                System.Console.WriteLine("Чтение файла {0}...", filename);
+                var lines = System.IO.File.ReadLines(filename, Encoding.GetEncoding(1251)).ToList();
+                System.Console.WriteLine("Всего строк: {0}", lines.Count);
+                System.Console.WriteLine("Формирование списка товаров...");
+
+                foreach (var line in lines)
                 {
                     rowCounter++;
                     string[] x = line.Split(new[] { ";" }, StringSplitOptions.None);
                     if (rowCounter == 1)
                     {
+                        System.Console.WriteLine("Чтение полей и атрибутов товара");
                         for (int i = 0; i < x.Length; i++)
                         {
                             if (string.IsNullOrEmpty(x[i]))
@@ -64,18 +75,27 @@ namespace Shop.Api.DataSynchronization.Import
                                 if (fieldMapping.ContainsKey(x[i]))
                                     throw new Exception("Дубль поля " + x[i] + ". Данное поле уже добавлено в коллекцию");
                                 fieldMapping.Add(x[i], i);
+                                System.Console.WriteLine("Добвлено поле {0}", x[i]);
                             }
                             else
                             {
                                 if (attributeMapping.ContainsKey(x[i]))
                                     throw new Exception("Дубль атрибута " + x[i] + ". Данный атрибут уже добавлен в коллекцию");
                                 attributeMapping.Add(x[i], i);
+                                System.Console.WriteLine("Добвлен атрибут {0}", x[i]);
                             }
                         }
+
+                        System.Console.WriteLine("Всего полей: {0}", fieldMapping.Count);
+                        System.Console.WriteLine("Всего атрибутов: {0}", attributeMapping.Count);
+
                     }
                     if (rowCounter > 2)
                     {
+
+
                         string newId = x[fieldMapping["ExternalId"]];
+
                         rowExternalId = newId;
                         if (newId != oldId)
                         {
@@ -87,9 +107,16 @@ namespace Shop.Api.DataSynchronization.Import
                                 }
                                 else
                                 {
-                                    throw new Exception(string.Format("Дублирование товара {0}", currentProduct.ExternalId));
+                                    failedProducts++;
+                                    failedProductsExternalIds.Add(currentProduct.ExternalId);
+                                    System.Console.ForegroundColor = ConsoleColor.Red;
+                                    System.Console.WriteLine("Дублирование товара {0}", currentProduct.ExternalId);
+                                    System.Console.ForegroundColor = ConsoleColor.White;
                                 }
                             }
+
+
+                            System.Console.WriteLine("Создаем товар: {0}", newId);
 
                             var product = new ImportedProduct
                             {
@@ -191,34 +218,73 @@ namespace Shop.Api.DataSynchronization.Import
                     }
                     else
                     {
-                        throw new Exception(string.Format("Дублирование товара {0}", currentProduct.ExternalId));
+                        failedProducts++;
+                        failedProductsExternalIds.Add(currentProduct.ExternalId);
+                        System.Console.ForegroundColor = ConsoleColor.Red;
+                        System.Console.WriteLine("Дублирование товара {0}", currentProduct.ExternalId);
+                        System.Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
 
-                return products;
+
+                System.Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine("Прочитано и создано товаров: {0}", products.Count);
+                
+                System.Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine("Найдено дублей: {0}", failedProducts);
+                foreach (var failedProductsExternalId in failedProductsExternalIds)
+                {
+                    System.Console.WriteLine(failedProductsExternalId);
+                }
+                System.Console.ForegroundColor = ConsoleColor.White;
+
+
+                //foreach (var product in products)
+                //{
+                //    System.Console.WriteLine(product);
+                //}
+
             }
             catch (Exception ex)
             {
                 throw new Exception(string.Format("Ошибка чтения файла. {0}", ex.Message + " строка:" + rowCounter + " ExternalId:" + rowExternalId));
             }
-        }
 
 
-        public static ImportResult Execute(IShopRepository repository, StreamReader file, string categoryName, int currentLangId)
-        {
 
-            var res = new ImportResult { ErrorCode = 0, ProductErrors = new Dictionary<string, string>()};
-            //var products = new List<ImportedProduct>();
+
+
+
+
+            var categoryName = filename.Split(new[] { "." }, StringSplitOptions.None)[1];
+            
+
+            System.Console.ForegroundColor = ConsoleColor.Green;
+            System.Console.WriteLine("Старт процедуры апдейта товаров:");
+            System.Console.ForegroundColor = ConsoleColor.White;
+
+
+
+
+            var res = new ImportResult { ErrorCode = 0, ProductErrors = new Dictionary<string, string>() };
+
+
             try
             {
                 bool justAdded = false;
                 int productCount = 0;
 
-                List<ImportedProduct> products = ReadProductsFromFile(file);
 
                 List<int> productStockToDelete = new List<int>();
+
+
+                System.Console.WriteLine("Всего товаров: {0}", products.Count);
+
                 foreach (var importedProduct in products)
                 {
+
+                    
+
                     productCount++;
                     if (string.IsNullOrEmpty(importedProduct.ExternalId))
                     {
@@ -227,14 +293,19 @@ namespace Shop.Api.DataSynchronization.Import
                     }
 
 
+                    System.Console.ForegroundColor = ConsoleColor.Green;
+                    System.Console.WriteLine("Обработка {0} из {1}", productCount, products.Count);
+                    System.Console.ForegroundColor = ConsoleColor.White;
 
+                    System.Console.Write("Ищем в базе товар с ExternalId: {0}...",importedProduct.ExternalId);
                     var siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
+                    System.Console.WriteLine("ОК");
 
                     if (siteProduct == null)
                     {
                         try
                         {
-                            // добавляем новый товар
+                            System.Console.Write(" Добавляем новый товар..");
                             var category = repository.GetCategory(categoryName);
                             var newProduct = new Product { Category = category };
                             newProduct.InjectFromImportProduct(importedProduct);
@@ -255,29 +326,35 @@ namespace Shop.Api.DataSynchronization.Import
                             repository.AddProduct(newProduct);
                             justAdded = true;
                             res.NewProductCount++;
+                            System.Console.WriteLine("ОК");
+                            
+                            
+                            siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
+                            System.Console.WriteLine(" Не удалось добавить {0}", importedProduct.ExternalId);
                             res.ProductErrors.Add("Не удалось добавить " + importedProduct.ExternalId, ex.Message);
                             res.AddProductFailedCount++;
                         }
                     }
 
-                    siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
-
+                    
                     //var siteProduct = repository.FindProduct(importedProduct.Id);
                     if (siteProduct != null)
                     {
                         try
                         {
+                            System.Console.Write(" Обновление данных товара...");
                             siteProduct.InjectFromImportProduct(importedProduct);
+                            System.Console.WriteLine("ОК");
                             if (siteProduct.ProductStocks == null)
                             {
                                 siteProduct.ProductStocks = new LinkedList<ProductStock>();
                             }
 
 
-
+                            System.Console.Write(" Обновление данных артикулов...");
                             foreach (var productStock in siteProduct.ProductStocks)
                             {
                                 var importedProductStock = importedProduct.ImportedProductStocks.FirstOrDefault(ips => ips.StockNumber == productStock.StockNumber && !ips.Imported);
@@ -298,8 +375,6 @@ namespace Shop.Api.DataSynchronization.Import
                                 }
                             }
 
-
-
                             foreach (var importedProductStock in importedProduct.ImportedProductStocks.Where(ips => !ips.Imported))
                             {
                                 siteProduct.ProductStocks.Add(new ProductStock
@@ -310,7 +385,7 @@ namespace Shop.Api.DataSynchronization.Import
                                 });
                                 res.AddedArticles++;
                             }
-
+                            System.Console.WriteLine("ОК");
 
                             //if (importedProduct.ImportedProductStocks != null)
                             //{
@@ -329,7 +404,7 @@ namespace Shop.Api.DataSynchronization.Import
                             //}
 
 
-
+                            System.Console.Write(" Обновление атрибутов...");
                             foreach (var attributeGroup in importedProduct.ImportedProductAttibutes)
                             {
                                 var attrToDelete = new List<int>();
@@ -388,9 +463,12 @@ namespace Shop.Api.DataSynchronization.Import
 
 
                             }
+                            System.Console.WriteLine("ОК");
 
-
+                            System.Console.Write(" Сохранение товара в базе...");
                             repository.SaveProduct(siteProduct);
+                            System.Console.WriteLine("ОК");
+
 
                             if (!justAdded)
                             {
@@ -405,14 +483,17 @@ namespace Shop.Api.DataSynchronization.Import
                         }
                         catch (Exception ex)
                         {
+                            System.Console.ForegroundColor = ConsoleColor.Red;
+                            System.Console.WriteLine("Не удалось обновить {0},", siteProduct.ExternalId);
                             res.ProductErrors.Add("Не удалось обновить " + siteProduct.ExternalId, ex.Message);
                             res.UpdateProductFailedCount++;
+                            System.Console.ForegroundColor = ConsoleColor.White;
                         }
                     }
-                    
+
                     //else
                     //{
-                        
+
 
                     //    try
                     //    {
@@ -445,11 +526,13 @@ namespace Shop.Api.DataSynchronization.Import
                     //}
                 }
 
+
+                System.Console.Write(" Удаление несвуществующих артикулов...");
                 foreach (var id in productStockToDelete)
                 {
                     repository.DeleteProductStock(id);
                 }
-
+                System.Console.WriteLine("ОК");
 
 
                 res.ProductCount = products.Count;
@@ -461,10 +544,13 @@ namespace Shop.Api.DataSynchronization.Import
             }
             finally
             {
-                file.Close();
+                //file.Close();
             }
 
-            return res;
+
+
+
+
         }
     }
 }
