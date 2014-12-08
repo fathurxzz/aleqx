@@ -18,9 +18,14 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Property(t => t.ImageSource)
                 .HasMaxLength(200);
 
+            this.Property(t => t.Url)
+                .HasMaxLength(500);
+
             this.ToTable("MainPageBanner", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");
+            this.Property(t => t.IsSiteBanner).HasColumnName("IsSiteBanner");
+            this.Property(t => t.Url).HasColumnName("Url");
         }
     }
 }

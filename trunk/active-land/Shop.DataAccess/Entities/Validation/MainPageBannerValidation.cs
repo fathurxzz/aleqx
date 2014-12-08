@@ -17,5 +17,10 @@ namespace Shop.DataAccess.Entities
     {
         [Display(Name = "Изображение")]
         public string ImageSource { get; set; }
+
+       
+        [Display(Name = "Адрес страницы")]
+        public string Url { get; set; }
+
     }
 }

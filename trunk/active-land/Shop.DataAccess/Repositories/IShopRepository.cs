@@ -143,6 +143,7 @@ namespace Shop.DataAccess.Repositories
         void SaveMainPageBanner(MainPageBanner mainPageBanner);
         MainPageBanner GetMainPageBanner(int id);
         IEnumerable<MainPageBanner> GetMainPageBanners();
+        IEnumerable<MainPageBanner> GetSiteBanners();
         void DeleteMainPageBanner(int id, Action<string> deleteImages);
 
 

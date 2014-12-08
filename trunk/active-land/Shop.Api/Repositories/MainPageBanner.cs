@@ -29,7 +29,12 @@ namespace Shop.Api.Repositories
 
         public IEnumerable<MainPageBanner> GetMainPageBanners()
         {
-            return _store.MainPageBanners;
+            return _store.MainPageBanners.Where(b=>!b.IsSiteBanner);
+        }
+
+        public IEnumerable<MainPageBanner> GetSiteBanners()
+        {
+            return _store.MainPageBanners.Where(b => b.IsSiteBanner);
         }
 
         public void DeleteMainPageBanner(int id, Action<string> deleteImages)

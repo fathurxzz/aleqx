@@ -5,14 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/17/2014 21:18:59
+-- Date Created: 12/08/2014 22:41:34
 -- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `gbua_activetest`;
-CREATE DATABASE `gbua_activetest`;
-USE `gbua_activetest`;
+DROP DATABASE IF EXISTS `gbua_active_dev`;
+CREATE DATABASE `gbua_active_dev`;
+USE `gbua_active_dev`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -482,7 +482,9 @@ ALTER TABLE `ProductStock` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `MainPageBanner`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`ImageSource` varchar (200));
+	`ImageSource` varchar (200), 
+	`IsSiteBanner` bool NOT NULL, 
+	`Url` varchar (500));
 
 ALTER TABLE `MainPageBanner` ADD PRIMARY KEY (Id);
 

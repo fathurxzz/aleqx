@@ -27,6 +27,7 @@ namespace Shop.WebSite.Models
         public IEnumerable<QuickAdvice> QuickAdvices { get; set; }
         public string ErrorMessage { get; set; }
         public IEnumerable<MainPageBanner> MainPageBanners { get; set; }
+        public IEnumerable<MainPageBanner> SiteBanners { get; set; }
 
         public SiteModel(IShopRepository repository, int langId, string contentName)
         {
@@ -36,6 +37,8 @@ namespace Shop.WebSite.Models
             Contents = repository.GetContents();
             Content = contentName != null ? (contentName == "category" ? repository.GetCatalogueContent() : repository.GetContent(contentName)) : repository.GetContent();
             MainPageBanners = repository.GetMainPageBanners();
+            SiteBanners = repository.GetSiteBanners().OrderBy(p => Guid.NewGuid()).Take(2).ToList();
+
             if (Content.ContentType == 2)
             {
                 Articles = GetAllArticles(repository, langId);

@@ -16,5 +16,7 @@ namespace Shop.DatabaseModel
     {
         public int Id { get; set; }
         public string ImageSource { get; set; }
+        public bool IsSiteBanner { get; set; }
+        public string Url { get; set; }
     }
 }

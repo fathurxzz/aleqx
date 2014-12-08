@@ -1,0 +1,47 @@
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@model IEnumerable<Shop.DataAccess.Entities.MainPageBanner>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "SiteBanners")
+}
+
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("siteBanner")))
+            </td>
+            <td>
+                @Html.Raw(item.Url)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id}, null) | 
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id}, new { onclick = "return confirm('Удалить изображение?')" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -81,10 +81,28 @@ else
     </div>
 
 
-    <div id="banners">
-        <div class="banner" id="banner1"></div>
-        <div class="banner" id="banner2"></div>
-    </div>
+    
+    if (Model.SiteBanners.Any())
+    {
+        <div id="banners">
+            @{
+                int cnt = 0;
+                foreach (var banner in Model.SiteBanners)
+                {
+                    cnt++;
+                    string className = cnt%2 == 1 ? "banner banner-first" : "banner banner-second";
+
+                    <div class="@className">
+                        <a href="@banner.Url">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", banner.ImageSource, SiteSettings.GetThumbnail("siteBanner")))
+                            </a>
+                    </div>
+                 }
+            }
+        </div>
+    }
+
+
 }
 @if (Model.Content.ContentType == 2 && Model.Articles.Any())
 {
