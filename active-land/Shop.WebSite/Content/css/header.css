@@ -93,11 +93,11 @@
 
 #phone-panel
 {
-    width: 296px;
+    width: 426px;
     height: 44px;
     position: relative;
     margin: 0 auto;
-    background: url("../img/phone-panel.png") no-repeat;
+    background: url("../img/phone-panel2.png") no-repeat;
     text-align: center;
     font-family: 'PT Sans Narrow', sans-serif;
     font-weight: 700;
