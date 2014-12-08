@@ -295,6 +295,7 @@
     <Content Include="Content\img\order-done.png" />
     <Content Include="Content\img\pager-separator.png" />
     <Content Include="Content\img\phone-panel.png" />
+    <Content Include="Content\img\phone-panel2.png" />
     <Content Include="Content\img\product-details-price.png" />
     <Content Include="Content\img\product-in-cart.png" />
     <Content Include="Content\img\right-arrow.png" />
