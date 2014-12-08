@@ -100,31 +100,48 @@
     background: url("../img/phone-panel2.png") no-repeat;
     text-align: center;
     font-family: 'PT Sans Narrow', sans-serif;
-    font-weight: 700;
+    
     font-size: 20px;
     color: #ffffff;
     padding-top: 7px;
 }
 
-#phone-panel span.skype {
-    /*height: 23px;*/
-    /*background: url("../img/skype.png") no-repeat;
-    background-position: 0 33px;*/
+#phone-panel div.phone {
+    float: left;
+    width: 130px;
+    margin-left: 16px;
+    font-weight: 700;
     
-    padding-left: 29px;
-    margin-left: 10px;
-
-   
-    width: 25px;
-    height: 25px;
-    background: url("../img/skype.svg") no-repeat;
 }
 
-#phone-panel span.skype a {
+#phone-panel div.skype {
+    float: left;
+    padding-left: 20px;
+    margin-left: 16px;
+    width: 120px;
+    height: 30px;
+    background: url("../img/skype.svg") no-repeat;
+    font-weight: 700;
+    line-height: 22px;
+    margin-top: 2px;
+}
+
+#phone-panel div.skype a {
     color: inherit;
     font-family: 'PT Sans Narrow', sans-serif;
     font-weight: 700;
     font-size: 20px;
+}
+
+#phone-panel div.worktime {
+    float: left;
+    font-family: 'PT Sans CaptionBold', sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-left: 20px;
+    line-height: 15px;
+    font-weight: 700;
+    
 }
 
 
@@ -134,7 +151,7 @@
     height: 26px;
     margin-top: 7px;
     position: absolute;
-    margin-left: 804px;
+    margin-left: 860px;
     width: 140px;
 }
 
