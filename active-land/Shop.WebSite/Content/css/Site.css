@@ -95,6 +95,20 @@ body {
     height: 132px;
 }
 
+#banners img {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#banners .banner-first {
+    float: left;
+}
+
+#banners .banner-second {
+    float: right;
+}
+
 #banners #banner1 {
     float: left;
     background: url("../img/tmp/banner1.png");

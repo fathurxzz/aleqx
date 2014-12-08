@@ -49,7 +49,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     filePath = Path.Combine(filePath, fileName);
                     //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
                     file.SaveAs(filePath);
-                    var mainPageBanner = new MainPageBanner() { ImageSource = fileName };
+                    var mainPageBanner = new MainPageBanner { ImageSource = fileName, IsSiteBanner = true };
                     _repository.AddMainPageBanner(mainPageBanner);
                 }
             }

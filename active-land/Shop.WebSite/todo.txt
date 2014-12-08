@@ -1,1 +1,5 @@
 ﻿1b87e7c57890
+
+
+alter table `MainPageBanner` add `IsSiteBanner` bool NOT NULL;
+alter table `MainPageBanner` add	`Url` varchar (500);
