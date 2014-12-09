@@ -28,6 +28,15 @@ namespace Shop.ProductDataTransfer.Console
             return bool.TryParse(value, out result) ? result : defaultValue;
         }
 
+        private static string ParseStrinfValue(string source)
+        {
+            if (source.StartsWith("\"") && source.EndsWith("\""))
+            {
+                source = source.Substring(1, source.Length - 2).Replace("\"\"", "\"");
+            }
+            return source;
+        }
+
         static void Main(string[] args)
         {
             int currentLangId = 1;
@@ -36,7 +45,7 @@ namespace Shop.ProductDataTransfer.Console
             IShopRepository repository = new ShopRepository(store);
             repository.LangId = currentLangId;
 
-            
+
 
 
             string filename = args.Length == 0 ? "1 output.bikes.06.12.2014 15_37_56.csv" : args[0];
@@ -120,9 +129,9 @@ namespace Shop.ProductDataTransfer.Console
 
                             var product = new ImportedProduct
                             {
-                                ExternalId = x[fieldMapping["ExternalId"]],
-                                Name = x[fieldMapping["Name"]],
-                                Title = x[fieldMapping["Title"]],
+                                ExternalId = ParseStrinfValue(x[fieldMapping["ExternalId"]]),
+                                Name = ParseStrinfValue(x[fieldMapping["Name"]]),
+                                Title = ParseStrinfValue(x[fieldMapping["Title"]]),
                                 OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]]),
                                 Price = ConvertToDecimalValue(x[fieldMapping["Price"]]),
                                 IsNew = ConvertToBooleanValue(x[fieldMapping["IsNew"]]),
@@ -141,24 +150,24 @@ namespace Shop.ProductDataTransfer.Console
 
                             if (fieldMapping.ContainsKey("SeoDescription"))
                             {
-                                product.SeoDescription = x[fieldMapping["SeoDescription"]];
+                                product.SeoDescription = ParseStrinfValue(x[fieldMapping["SeoDescription"]]);
                             }
                             if (fieldMapping.ContainsKey("SeoKeywords"))
                             {
-                                product.SeoKeywords = x[fieldMapping["SeoKeywords"]];
+                                product.SeoKeywords = ParseStrinfValue(x[fieldMapping["SeoKeywords"]]);
                             }
                             if (fieldMapping.ContainsKey("SeoText"))
                             {
-                                product.SeoText = x[fieldMapping["SeoText"]];
+                                product.SeoText = ParseStrinfValue(x[fieldMapping["SeoText"]]);
                             }
 
                             if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
                             {
                                 product.ImportedProductStocks.Add(new ImportedProductStock
                                 {
-                                    StockNumber = x[fieldMapping["ProductStock.StockNumber"]],
-                                    Size = x[fieldMapping["ProductStock.Size"]],
-                                    Color = x[fieldMapping["ProductStock.Color"]]
+                                    StockNumber = ParseStrinfValue(x[fieldMapping["ProductStock.StockNumber"]]),
+                                    Size = ParseStrinfValue(x[fieldMapping["ProductStock.Size"]]),
+                                    Color = ParseStrinfValue(x[fieldMapping["ProductStock.Color"]])
                                 });
                             }
 
@@ -176,7 +185,7 @@ namespace Shop.ProductDataTransfer.Console
                                 };
                                 foreach (var attribute in attributes)
                                 {
-                                    importedProductAttribute.Values.Add(attribute);
+                                    importedProductAttribute.Values.Add(ParseStrinfValue(attribute));
                                 }
                                 product.ImportedProductAttibutes.Add(importedProductAttribute);
                             }
@@ -190,9 +199,9 @@ namespace Shop.ProductDataTransfer.Console
                             {
                                 var productStock = new ImportedProductStock
                                 {
-                                    StockNumber = x[fieldMapping["ProductStock.StockNumber"]],
-                                    Size = x[fieldMapping["ProductStock.Size"]],
-                                    Color = x[fieldMapping["ProductStock.Color"]]
+                                    StockNumber = ParseStrinfValue(x[fieldMapping["ProductStock.StockNumber"]]),
+                                    Size = ParseStrinfValue(x[fieldMapping["ProductStock.Size"]]),
+                                    Color = ParseStrinfValue(x[fieldMapping["ProductStock.Color"]])
 
                                 };
                                 if (currentProduct != null)
@@ -229,7 +238,7 @@ namespace Shop.ProductDataTransfer.Console
 
                 System.Console.ForegroundColor = ConsoleColor.Green;
                 System.Console.WriteLine("Прочитано и создано товаров: {0}", products.Count);
-                
+
                 System.Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("Найдено дублей: {0}", failedProducts);
                 foreach (var failedProductsExternalId in failedProductsExternalIds)
@@ -252,12 +261,12 @@ namespace Shop.ProductDataTransfer.Console
 
 
 
-
+            
 
 
 
             var categoryName = filename.Split(new[] { "." }, StringSplitOptions.None)[1];
-            
+
 
             System.Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine("Старт процедуры апдейта товаров:");
@@ -283,7 +292,7 @@ namespace Shop.ProductDataTransfer.Console
                 foreach (var importedProduct in products)
                 {
 
-                    
+
 
                     productCount++;
                     if (string.IsNullOrEmpty(importedProduct.ExternalId))
@@ -297,7 +306,7 @@ namespace Shop.ProductDataTransfer.Console
                     System.Console.WriteLine("Обработка {0} из {1}", productCount, products.Count);
                     System.Console.ForegroundColor = ConsoleColor.White;
 
-                    System.Console.Write("Ищем в базе товар с ExternalId: {0}...",importedProduct.ExternalId);
+                    System.Console.Write("Ищем в базе товар с ExternalId: {0}...", importedProduct.ExternalId);
                     var siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
                     System.Console.WriteLine("ОК");
 
@@ -327,8 +336,8 @@ namespace Shop.ProductDataTransfer.Console
                             justAdded = true;
                             res.NewProductCount++;
                             System.Console.WriteLine("ОК");
-                            
-                            
+
+
                             siteProduct = repository.GetProductByExternalId(importedProduct.ExternalId);
                         }
                         catch (Exception ex)
@@ -339,7 +348,7 @@ namespace Shop.ProductDataTransfer.Console
                         }
                     }
 
-                    
+
                     //var siteProduct = repository.FindProduct(importedProduct.Id);
                     if (siteProduct != null)
                     {
