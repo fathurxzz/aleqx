@@ -28,7 +28,14 @@ namespace Shop.Api.DataSynchronization.Import
             return bool.TryParse(value, out result) ? result : defaultValue;
         }
 
-
+        private static string ParseStrinfValue(string source)
+        {
+            if (source.StartsWith("\"") && source.EndsWith("\""))
+            {
+                source = source.Substring(1, source.Length - 2).Replace("\"\"", "\"");
+            }
+            return source;
+        }
         
 
         private static List<ImportedProduct> ReadProductsFromFile(StreamReader file)
@@ -93,9 +100,9 @@ namespace Shop.Api.DataSynchronization.Import
 
                             var product = new ImportedProduct
                             {
-                                ExternalId = x[fieldMapping["ExternalId"]],
-                                Name = x[fieldMapping["Name"]],
-                                Title = x[fieldMapping["Title"]],
+                                ExternalId = ParseStrinfValue(x[fieldMapping["ExternalId"]]),
+                                Name = ParseStrinfValue(x[fieldMapping["Name"]]),
+                                Title = ParseStrinfValue(x[fieldMapping["Title"]]),
                                 OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]]),
                                 Price = ConvertToDecimalValue(x[fieldMapping["Price"]]),
                                 IsNew = ConvertToBooleanValue(x[fieldMapping["IsNew"]]),
@@ -114,24 +121,24 @@ namespace Shop.Api.DataSynchronization.Import
 
                             if (fieldMapping.ContainsKey("SeoDescription"))
                             {
-                                product.SeoDescription = x[fieldMapping["SeoDescription"]];
+                                product.SeoDescription = ParseStrinfValue(x[fieldMapping["SeoDescription"]]);
                             }
                             if (fieldMapping.ContainsKey("SeoKeywords"))
                             {
-                                product.SeoKeywords = x[fieldMapping["SeoKeywords"]];
+                                product.SeoKeywords = ParseStrinfValue(x[fieldMapping["SeoKeywords"]]);
                             }
                             if (fieldMapping.ContainsKey("SeoText"))
                             {
-                                product.SeoText = x[fieldMapping["SeoText"]];
+                                product.SeoText = ParseStrinfValue(x[fieldMapping["SeoText"]]);
                             }
 
                             if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
                             {
                                 product.ImportedProductStocks.Add(new ImportedProductStock
                                 {
-                                    StockNumber = x[fieldMapping["ProductStock.StockNumber"]],
-                                    Size = x[fieldMapping["ProductStock.Size"]],
-                                    Color = x[fieldMapping["ProductStock.Color"]]
+                                    StockNumber = ParseStrinfValue(x[fieldMapping["ProductStock.StockNumber"]]),
+                                    Size = ParseStrinfValue(x[fieldMapping["ProductStock.Size"]]),
+                                    Color = ParseStrinfValue(x[fieldMapping["ProductStock.Color"]])
                                 });
                             }
 
@@ -149,7 +156,7 @@ namespace Shop.Api.DataSynchronization.Import
                                 };
                                 foreach (var attribute in attributes)
                                 {
-                                    importedProductAttribute.Values.Add(attribute);
+                                    importedProductAttribute.Values.Add(ParseStrinfValue(attribute));
                                 }
                                 product.ImportedProductAttibutes.Add(importedProductAttribute);
                             }
@@ -163,9 +170,9 @@ namespace Shop.Api.DataSynchronization.Import
                             {
                                 var productStock = new ImportedProductStock
                                 {
-                                    StockNumber = x[fieldMapping["ProductStock.StockNumber"]],
-                                    Size = x[fieldMapping["ProductStock.Size"]],
-                                    Color = x[fieldMapping["ProductStock.Color"]]
+                                    StockNumber = ParseStrinfValue(x[fieldMapping["ProductStock.StockNumber"]]),
+                                    Size = ParseStrinfValue(x[fieldMapping["ProductStock.Size"]]),
+                                    Color = ParseStrinfValue(x[fieldMapping["ProductStock.Color"]])
 
                                 };
                                 if (currentProduct != null)
