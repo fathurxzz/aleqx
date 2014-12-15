@@ -98,7 +98,7 @@ namespace Shop.DataAccess.Repositories
         Content GetContent(string name);
         Content GetContent();
         Content GetCatalogueContent();
-        void DeleteContent(int id);
+        void DeleteContent(int id, Action<string> deleteImages);
         void SaveContent(Content content);
         int AddContent(Content content);
 

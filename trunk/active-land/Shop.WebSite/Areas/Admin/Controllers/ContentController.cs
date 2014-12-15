@@ -145,7 +145,9 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             try
             {
-                _repository.DeleteContent(id);
+                _repository.LangId = CurrentLangId;
+
+                _repository.DeleteContent(id, ImageHelper.DeleteImage);
             }
             catch (Exception ex)
             {
