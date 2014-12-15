@@ -65,7 +65,7 @@ namespace Shop.Api.Repositories
             return content;
         }
 
-        public void DeleteContent(int id)
+        public void DeleteContent(int id, Action<string> deleteImages)
         {
             var content = _store.Contents.SingleOrDefault(c => c.Id == id);
             if (content == null)
@@ -73,6 +73,14 @@ namespace Shop.Api.Repositories
                 throw new Exception(string.Format("Content with id={0} not found", id));
 
             }
+
+            while (content.ContentLangs.Any())
+            {
+                var contentLang = content.ContentLangs.First();
+                _store.ContentLangs.Remove(contentLang);
+            }
+
+            deleteImages(content.ImageSource);
 
             _store.Contents.Remove(content);
             _store.SaveChanges();
