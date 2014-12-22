@@ -26,7 +26,6 @@
     @if (Model.CurrentCategory == null)
     {
         
-
          foreach (var category in Model.Categories.Where(c=>c.Parent==null&&c.IsActive))
          {
             @Html.Partial("CategoryPreview", new CategoryPreview
@@ -36,9 +35,6 @@
                     Name = category.Name
                 })
          }
-            
-           
-        
          
     }
     else
@@ -56,45 +52,58 @@
          <div class="clearfix"></div>
         </div>
     
-    <div id="filters-container">
+    
         
-        @using (Html.BeginForm("Catalogue", "Home", FormMethod.Get))
+        @if (Model.Products.Any())
         {
-            <input type="hidden" name="sortBy" value="price"/>
-            <input type="hidden" name="sortOrder" id="sortOrder" value=""/>
-            
-            <div id="price-sort-selector" class="selector">
-                <select class="selectpicker">
-                    <option @(ViewBag.SortOrder=="asc"?"selected":"") value="asc">Сначала дешевые</option>
-                    <option @(ViewBag.SortOrder=="desc"?"selected":"") value="desc">Сначала дорогие</option>
-                </select>
-            </div>
-        }
-
-            @foreach (var productAttribute in Model.ProductAttributes)
+            <div id="filters-container">
+            @using (Html.BeginForm("Catalogue", "Home", FormMethod.Get))
             {
-                <div class="selector checkbox-selector">
-                    <div class="title">@productAttribute.Title:</div>
-                    <div class="selectors">
-                        <ul>
-                            @foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a => a.Title))
-                            {
-                                if (categoryValue.AvailableProductsCount > 0)
-                                {
-                                    <li>
-                                        <input class="attribute-checkbox" @Html.Raw(Model.FilterArray.Contains(categoryValue.Id.ToString()) ? "checked" : "") filter="@CatalogueFilterHelper.GetFilterStringForCheckbox(Model.FilterArray, categoryValue.Id.ToString(), Model.FilterArray.Contains(categoryValue.Id.ToString()))" type="checkbox" id="cb_@categoryValue.Id">
-
-                                        <label for="cb_@categoryValue.Id">@categoryValue.Title (@categoryValue.AvailableProductsCount)</label>
-                                    
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </div>
+                <input type="hidden" name="sortBy" value="price"/>
+                <input type="hidden" name="sortOrder" id="sortOrder" value=""/>
+            
+                <div id="price-sort-selector" class="selector">
+                    <select class="selectpicker">
+                        <option @(ViewBag.SortOrder=="asc"?"selected":"") value="asc">Сначала дешевые</option>
+                        <option @(ViewBag.SortOrder=="desc"?"selected":"") value="desc">Сначала дорогие</option>
+                    </select>
                 </div>
             }
+        
+           
+            @foreach (var productAttribute in Model.ProductAttributes.OrderBy(p => p.SortOrder))
+            {
+                if (productAttribute.ProductAttributeValues.Any(pav => pav.AvailableProductsCount > 0))
+                {
+                    <div class="selector checkbox-selector">
+                        <div class="title">@productAttribute.Title:</div>
+                        <div class="selectors">
+                            <ul>
+                                @foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a => a.Title))
+                                {
+                                    if (categoryValue.AvailableProductsCount > 0)
+                                    {
+                                        <li>
+                                            <input class="attribute-checkbox" @Html.Raw(Model.FilterArray.Contains(categoryValue.Id.ToString()) ? "checked" : "") filter="@CatalogueFilterHelper.GetFilterStringForCheckbox(Model.FilterArray, categoryValue.Id.ToString(), Model.FilterArray.Contains(categoryValue.Id.ToString()))" type="checkbox" id="cb_@categoryValue.Id">
 
-        </div>
+                                            <label for="cb_@categoryValue.Id">@categoryValue.Title (@categoryValue.AvailableProductsCount)</label>
+                                    
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+                }
+                 </div>
+        }
+
+   
+    
+    
+    
+
     <div id="products">
         @foreach (var product in Model.Products)
         {
