@@ -122,7 +122,7 @@
                 <select>
                     @foreach (var productStock in Model.ProductStocks.OrderBy(ps=>ps.Size))
                     {
-                        <option>Размер @(!string.IsNullOrEmpty(productStock.Size)?productStock.Size:"не доступен"), Цвет @productStock.Color</option>
+                        <option>@(!string.IsNullOrEmpty(productStock.Size)?"Размер "+productStock.Size:""), Цвет @productStock.Color</option>
                     }
                 </select>
             </div>
