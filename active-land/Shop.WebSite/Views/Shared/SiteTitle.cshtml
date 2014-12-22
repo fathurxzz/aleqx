@@ -14,7 +14,8 @@
                 if (i == 1)
                 {
                 <span>
-                    @Html.ActionLink(Model[i].Title, "Catalogue", "Home", new { category = Model[i-1].Name, subcategory=Model[i].Name }, null) &raquo;
+                    @*@Html.ActionLink(Model[i].Title, "Catalogue", "Home", new { category = Model[i-1].Name, subcategory=Model[i].Name }, null) &raquo;*@
+                    @Html.ActionLink(Model[i].Title, "Catalogue", "Home", new { category = Model[i].Name }, null) &raquo;
                 </span>
                 }
 

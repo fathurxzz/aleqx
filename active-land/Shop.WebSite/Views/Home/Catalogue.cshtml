@@ -18,7 +18,26 @@
     @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Content.ImageSource, SiteSettings.GetThumbnail("pageBanner")))
 </div>
 
-@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = Model.CurrentCategory!=null?Model.CurrentCategory.Title: "Каталог" } })
+@if (Model.CurrentCategory!=null&& Model.CurrentCategory.Parent == null)
+{
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = Model.CurrentCategory!=null?Model.CurrentCategory.Title: "Каталог" } })
+}
+else if (Model.CurrentCategory != null && Model.CurrentCategory.Parent != null)
+{
+   @Html.Partial("SiteTitle", new BreadCrumbs
+   {
+       new BreadCrumb
+       {
+           Title = Model.CurrentCategory.Parent.Title,
+           Name = Model.CurrentCategory.Parent.Name
+       },
+       new BreadCrumb
+       {
+           Title = Model.CurrentCategory.Title
+       }
+   })
+}
+
 
 <div id="catalogue">
     
