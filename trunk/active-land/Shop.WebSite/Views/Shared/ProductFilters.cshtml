@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Shop.WebSite.Models.FilterViewModel>
+
+@foreach (var fvm in Model)
+{
+    <div class="selector checkbox-selector">
+        <div class="title">@fvm.Title:</div>
+        <div class="selectors">
+            <ul>
+                @foreach (var item in fvm.FilterItems)
+                {
+                    <li>
+                        <input class="attribute-checkbox" @Html.Raw(item.Selected ? "checked" : "") filter="@item.FilterAttributeString" type="checkbox" id="@item.Id">
+                        <label for="@item.Id">@item.Title (@item.AvaibleProductsCount)</label>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

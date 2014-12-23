@@ -23,6 +23,8 @@ namespace Shop.WebSite.Models
         public List<Product> FilteredProducts { get; set; }
         public int Page { get; set; }
 
+        public List<FilterViewModel> Filters { get; set; }
+
         private IShopRepository _repository { get; set; }
 
         private Dictionary<string, List<string>> GroupFilterString(string categoryName, string filterString)
@@ -93,12 +95,12 @@ namespace Shop.WebSite.Models
         }
 
 
-        public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy = null)
-            : base(repository1, langId, "category")
+        public CatalogueModel(IShopRepository repository, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy = null)
+            : base(repository, langId, "category")
         {
-            _repository = repository1;
+            _repository = repository;
             FilterArray = new string[0];
-            ProductAttributes = new List<ProductAttribute>();
+            
             CurrentFilter = filter;
 
 
@@ -202,7 +204,8 @@ namespace Shop.WebSite.Models
             var category = Categories.FirstOrDefault(c => c.Name == categoryName);
             if (category != null)
             {
-                ProductAttributes = _repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable);
+                ProductAttributes = new List<ProductAttribute>();
+                ProductAttributes = _repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable).ToList();
                 CurrentCategory = _repository.GetCategory(category.Id);
 
                 foreach (var productAttribute in ProductAttributes)
@@ -212,6 +215,42 @@ namespace Shop.WebSite.Models
                         productAttributeValue.AvailableProductsCount = Enumerable.Count(products, product => productAttributeValue.Products.Contains(product));
                     }
                 }
+
+
+
+                // создание фильтров
+                Filters = new List<FilterViewModel>();
+                foreach (var productAttribute in ProductAttributes.OrderBy(p => p.SortOrder))
+                {
+                    if (productAttribute.ProductAttributeValues.Any(pav => pav.AvailableProductsCount > 0))
+                    {
+                        var fvm = new FilterViewModel { Title = productAttribute.Title, FilterItems = new List<FilterItem>()};
+                        foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a => a.Title))
+                        {
+                            //if (categoryValue.AvailableProductsCount > 0)
+                            //{
+                                var filterItem = new FilterItem
+                                {
+                                    Title = categoryValue.Title,
+                                    AvaibleProductsCount = categoryValue.AvailableProductsCount,
+                                    Selected = FilterArray.Contains(categoryValue.Id.ToString()),
+                                    FilterAttributeString = CatalogueFilterHelper.GetFilterStringForCheckbox(FilterArray,
+                                        categoryValue.Id.ToString(), FilterArray.Contains(categoryValue.Id.ToString())),
+                                    Id = "cb_" + categoryValue.Id
+                                };
+
+                                fvm.FilterItems.Add(filterItem);
+                            //}
+                        }
+
+                        if (fvm.FilterItems.Any())
+                        {
+                            Filters.Add(fvm);
+                        }
+                    }
+                }
+
+
             }
 
 
@@ -234,13 +273,6 @@ namespace Shop.WebSite.Models
             }
 
 
-            //if (!string.IsNullOrEmpty(categoryName))
-            //{
-            //    var category = Categories.First(c => c.Name == categoryName);
-            //    ProductAttributes = category.ProductAttributes.Where(pa => pa.IsFilterable);
-            //}
-
-
 
             if (productName != null)
             {
@@ -259,6 +291,24 @@ namespace Shop.WebSite.Models
             {
                 this.Article = _repository.GetArticle(articleName);
             }
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
 
         }
 
