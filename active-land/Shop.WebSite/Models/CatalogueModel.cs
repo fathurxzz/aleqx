@@ -187,10 +187,13 @@ namespace Shop.WebSite.Models
             ProductTotalCount = Products.Count;
 
             IQueryable<Product> products = null;
+            //IQueryable<Product> allProducts = null;
 
             products = sortOrder == "desc" ?
                 Products.OrderByDescending(p => p.Price).ThenBy(p => p.Title).AsQueryable()
                 : Products.OrderBy(p => p.Price).ThenBy(p => p.Title).AsQueryable();
+
+            //allProducts = SourceProducts.AsQueryable();
 
             var pageSize = int.Parse(SiteSettings.GetShopSetting("ProductsPageSize"));
 
@@ -208,13 +211,14 @@ namespace Shop.WebSite.Models
                 ProductAttributes = _repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable).ToList();
                 CurrentCategory = _repository.GetCategory(category.Id);
 
-                foreach (var productAttribute in ProductAttributes)
-                {
-                    foreach (var productAttributeValue in productAttribute.ProductAttributeValues)
-                    {
-                        productAttributeValue.AvailableProductsCount = Enumerable.Count(products, product => productAttributeValue.Products.Contains(product));
-                    }
-                }
+                //foreach (var productAttribute in ProductAttributes)
+                //{
+                //    foreach (var productAttributeValue in productAttribute.ProductAttributeValues)
+                //    {
+                //        productAttributeValue.AvailableProductsCount = Enumerable.Count(products, product => productAttributeValue.Products.Contains(product));
+                //        //productAttributeValue.AvailableProductsCountAfterApplyingFilter = Enumerable.Count(SourceProducts, product => productAttributeValue.Products.Contains(product));
+                //    }
+                //}
 
 
 
@@ -222,8 +226,8 @@ namespace Shop.WebSite.Models
                 Filters = new List<FilterViewModel>();
                 foreach (var productAttribute in ProductAttributes.OrderBy(p => p.SortOrder))
                 {
-                    if (productAttribute.ProductAttributeValues.Any(pav => pav.AvailableProductsCount > 0))
-                    {
+                    //if (productAttribute.ProductAttributeValues.Any(pav => pav.AvailableProductsCount > 0))
+                    //{
                         var fvm = new FilterViewModel { Title = productAttribute.Title, FilterItems = new List<FilterItem>()};
                         foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a => a.Title))
                         {
@@ -233,6 +237,7 @@ namespace Shop.WebSite.Models
                                 {
                                     Title = categoryValue.Title,
                                     AvaibleProductsCount = categoryValue.AvailableProductsCount,
+                                    AvaibleProductsCountAfterApplyingFilter = categoryValue.AvailableProductsCountAfterApplyingFilter,
                                     Selected = FilterArray.Contains(categoryValue.Id.ToString()),
                                     FilterAttributeString = CatalogueFilterHelper.GetFilterStringForCheckbox(FilterArray,
                                         categoryValue.Id.ToString(), FilterArray.Contains(categoryValue.Id.ToString())),
@@ -247,7 +252,7 @@ namespace Shop.WebSite.Models
                         {
                             Filters.Add(fvm);
                         }
-                    }
+                    //}
                 }
 
 
