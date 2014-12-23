@@ -109,23 +109,26 @@
             </div>
         </div>
         <div class="clearfix"></div>
+        
+        <div class="products-avaible">
+            <span>
+                В наличии размеры:
+            </span>
+            <select>
+                @foreach (var productStock in Model.ProductStocks.OrderBy(ps=>ps.Size))
+                {
+                    <option>@(!string.IsNullOrEmpty(productStock.Size)?"Размер "+productStock.Size+", ":"")Цвет @productStock.Color</option>
+                }
+            </select>
+        </div>
+
         <div id="description">
             @Html.Raw(Model.Description)
         </div>
         <div id="product-attributes">
 
 
-            <div class="products-avaible">
-                <span>
-                В наличии размеры:
-                    </span>
-                <select>
-                    @foreach (var productStock in Model.ProductStocks.OrderBy(ps=>ps.Size))
-                    {
-                        <option>@(!string.IsNullOrEmpty(productStock.Size)?"Размер "+productStock.Size:""), Цвет @productStock.Color</option>
-                    }
-                </select>
-            </div>
+            
 
 
 

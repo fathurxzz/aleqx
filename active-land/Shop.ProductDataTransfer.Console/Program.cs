@@ -37,7 +37,20 @@ namespace Shop.ProductDataTransfer.Console
             return source;
         }
 
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
+        {
+            //Run(args);
+
+            string[] x = {"3", "2", "5", "9"};
+
+            var aaa = x.FirstOrDefault(v => v == "2")??x.FirstOrDefault();
+
+            System.Console.WriteLine(aaa);
+
+        }
+
+        private static void Run(string[] args)
         {
             int currentLangId = 1;
             IShopStore store = new ShopStore();
