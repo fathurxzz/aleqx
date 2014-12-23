@@ -18,6 +18,7 @@ namespace Shop.WebSite.Models
         public bool Selected { get; set; }
         public string Title { get; set; }
         public int AvaibleProductsCount { get; set; }
+        public int AvaibleProductsCountAfterApplyingFilter { get; set; }
         public string FilterAttributeString { get; set; }
     }
 }
