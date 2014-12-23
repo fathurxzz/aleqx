@@ -87,12 +87,20 @@ else
             
                 <div id="price-sort-selector" class="selector">
                     <select class="selectpicker">
+                        <option @(ViewBag.SortOrder == "abc" ? "selected" : "") value="abc">По алфавиту</option>
                         <option @(ViewBag.SortOrder == "asc" ? "selected" : "") value="asc">Сначала дешевые</option>
                         <option @(ViewBag.SortOrder == "desc" ? "selected" : "") value="desc">Сначала дорогие</option>
                     </select>
                 </div>
             }
 
+            
+            @if (Model.IsFiltered)
+            {
+                <div class="reset-filters">
+                @Html.ActionLink("Сбросить все фильтры","Catalogue","Home",new{filter=""},null)
+                </div>
+            }
 
             @Html.Partial("ProductFilters", Model.Filters)
 

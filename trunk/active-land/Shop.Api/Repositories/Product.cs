@@ -150,6 +150,17 @@ namespace Shop.Api.Repositories
                 throw new ObjectNotFoundException(string.Format("Product with name={0} not found", name));
             }
             product.CurrentLang = LangId;
+
+            foreach (var productChild in product.ProductChildren)
+            {
+                productChild.CurrentLang = LangId;
+
+                if (productChild.ProductImages.Any())
+                {
+                    var cpp = productChild.ProductImages.FirstOrDefault(pi => pi.IsDefault) ?? productChild.ProductImages.First();
+                    productChild.ImageSource = cpp.ImageSource;
+                }
+            }
             
             foreach (var productAttributeValue in product.ProductAttributeValues)
             {
@@ -171,10 +182,16 @@ namespace Shop.Api.Repositories
                 productAttribute.CurrentLang = LangId;
             }
 
-            foreach (var image in product.ProductImages.Where(pi=>pi.IsDefault))
+            if (product.ProductImages.Any())
             {
-                product.ImageSource = image.ImageSource;
+                var pp = product.ProductImages.FirstOrDefault(pi => pi.IsDefault) ?? product.ProductImages.First();
+                product.ImageSource = pp.ImageSource;
             }
+
+            //foreach (var image in product.ProductImages.Where(pi=>pi.IsDefault))
+            //{
+            //    product.ImageSource = image.ImageSource;
+            //}
 
             return product;
         }
