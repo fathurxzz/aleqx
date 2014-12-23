@@ -207,6 +207,7 @@
     <Compile Include="Models\CatalogueModel.cs" />
     <Compile Include="Models\CategoryPreview.cs" />
     <Compile Include="Models\FeedbackForm.cs" />
+    <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\MainMenuModel.cs" />
     <Compile Include="Models\ProductPreview.cs" />
     <Compile Include="Models\ProductPreviewLabel.cs" />
@@ -542,6 +543,7 @@
     <Content Include="Views\Shared\Paging.cshtml" />
     <Content Include="Views\Shared\CategoryPreview.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Shared\ProductFilters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

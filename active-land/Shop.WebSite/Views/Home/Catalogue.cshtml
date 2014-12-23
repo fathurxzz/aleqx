@@ -11,16 +11,16 @@
 
 <div id="menu-panel">
     @Html.Partial("LanguageSwitcher")
-    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new{id=""}, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new { id = "" }, new { id = "logo" }).ToString().Replace("[LINK]", ""))
     @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
 </div>
 <div id="main-banner">
     @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Content.ImageSource, SiteSettings.GetThumbnail("pageBanner")))
 </div>
 
-@if (Model.CurrentCategory!=null&& Model.CurrentCategory.Parent == null)
+@if (Model.CurrentCategory != null && Model.CurrentCategory.Parent == null)
 {
-    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = Model.CurrentCategory!=null?Model.CurrentCategory.Title: "Каталог" } })
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = Model.CurrentCategory != null ? Model.CurrentCategory.Title : "Каталог" } })
 }
 else if (Model.CurrentCategory != null && Model.CurrentCategory.Parent != null)
 {
@@ -39,62 +39,65 @@ else if (Model.CurrentCategory != null && Model.CurrentCategory.Parent != null)
 }
 else
 {
-    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title =  "Каталог" } })
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = "Каталог" } })
 }
 
 
 <div id="catalogue">
-    
+
     <div class="category-previews">
-    @if (Model.CurrentCategory == null)
-    {
-        
-         foreach (var category in Model.Categories.Where(c=>c.Parent==null&&c.IsActive))
-         {
-            @Html.Partial("CategoryPreview", new CategoryPreview
-                {
-                    Title = category.Title,
-                    ImageSource = category.ImageSource,
-                    Name = category.Name
-                })
-         }
-         
-    }
-    else
-    {
-        foreach (var category in Model.CurrentCategory.Children.Where(c=>c.IsActive))
-         {
-            @Html.Partial("CategoryPreview", new CategoryPreview
-                {
-                    Title = category.Title,
-                    ImageSource = category.ImageSource,
-                    Name = category.Name
-                })
-         }
-    }
-         <div class="clearfix"></div>
-        </div>
-    
-    
-        
-        @if (Model.Products.Any())
+        @if (Model.CurrentCategory == null)
         {
-            <div id="filters-container">
+
+            foreach (var category in Model.Categories.Where(c => c.Parent == null && c.IsActive))
+            {
+            @Html.Partial("CategoryPreview", new CategoryPreview
+                {
+                    Title = category.Title,
+                    ImageSource = category.ImageSource,
+                    Name = category.Name
+                })
+            }
+
+        }
+        else
+        {
+            foreach (var category in Model.CurrentCategory.Children.Where(c => c.IsActive))
+            {
+            @Html.Partial("CategoryPreview", new CategoryPreview
+                {
+                    Title = category.Title,
+                    ImageSource = category.ImageSource,
+                    Name = category.Name
+                })
+            }
+        }
+        <div class="clearfix"></div>
+    </div>
+
+
+
+    @if (Model.Products.Any())
+    {
+        <div id="filters-container">
             @using (Html.BeginForm("Catalogue", "Home", FormMethod.Get))
             {
-                <input type="hidden" name="sortBy" value="price"/>
-                <input type="hidden" name="sortOrder" id="sortOrder" value=""/>
+                <input type="hidden" name="sortBy" value="price" />
+                <input type="hidden" name="sortOrder" id="sortOrder" value="" />
             
                 <div id="price-sort-selector" class="selector">
                     <select class="selectpicker">
-                        <option @(ViewBag.SortOrder=="asc"?"selected":"") value="asc">Сначала дешевые</option>
-                        <option @(ViewBag.SortOrder=="desc"?"selected":"") value="desc">Сначала дорогие</option>
+                        <option @(ViewBag.SortOrder == "asc" ? "selected" : "") value="asc">Сначала дешевые</option>
+                        <option @(ViewBag.SortOrder == "desc" ? "selected" : "") value="desc">Сначала дорогие</option>
                     </select>
                 </div>
             }
-        
-           
-            @foreach (var productAttribute in Model.ProductAttributes.OrderBy(p => p.SortOrder))
+
+
+            @Html.Partial("ProductFilters", Model.Filters)
+
+
+            @*@foreach (var productAttribute in Model.ProductAttributes.OrderBy(p => p.SortOrder))
             {
                 if (productAttribute.ProductAttributeValues.Any(pav => pav.AvailableProductsCount > 0))
                 {
@@ -118,14 +121,14 @@ else
                         </div>
                     </div>
                 }
-                }
-                 </div>
-        }
+             }*@
+        </div>
+    }
 
-   
-    
-    
-    
+
+
+
+
 
     <div id="products">
         @foreach (var product in Model.Products)
@@ -146,12 +149,12 @@ else
                 
         }
         <div class="clearfix"></div>
-        
+
         @Html.Partial("Paging")
 
     </div>
     <div class="clearfix"></div>
-    
+
 </div>
 @*<div>
     @Html.Partial("Paging")
