@@ -25,7 +25,7 @@
                         if (page != 0)
                         {
                             <div>
-                                @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new {page = i}, null)
+                                @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new {page = i, sortOrder=ViewBag.SortOrder}, null)
                             </div>
                         }
                         else
@@ -56,7 +56,7 @@
                 else
                 {
                     <div>
-                        @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new { page = i }, null)
+                        @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new { page = i, sortOrder=ViewBag.SortOrder }, null)
                     </div>
                 }
 
@@ -69,7 +69,7 @@
                         if (page != pageCount - 1)
                         {
                             <div class="last">
-                                @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new {page = i}, null)
+                                @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new {page = i, sortOrder=ViewBag.SortOrder}, null)
                             </div>
                         }
                         else
