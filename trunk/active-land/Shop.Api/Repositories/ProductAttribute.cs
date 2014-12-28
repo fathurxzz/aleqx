@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,11 @@ namespace Shop.Api.Repositories
 
         public IEnumerable<ProductAttribute> GetProductAttributes(int categoryId)
         {
-            var category = _store.Categories.Single(c => c.Id == categoryId);
+            var categories =
+                _store.Categories.Include(
+                    c => c.ProductAttributes.Select(pa => pa.ProductAttributeValues));
+          var category = categories.Single(x => x.Id == categoryId);
+            //.Single(c => c.Id == categoryId);
             foreach (var productAttribute in category.ProductAttributes)
             {
                 productAttribute.CurrentLang = LangId;

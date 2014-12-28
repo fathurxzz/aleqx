@@ -16,6 +16,11 @@ namespace Shop.DataAccess.Entities
 
         private int _currentLang;
 
+        private IEnumerable<CategoryLang> CategoryLangsCached
+        {
+            get { return (ICollection<CategoryLang>)Cache.Default.GetOrAdd("CategoryLangsCached_" + Id, key => (object)CategoryLangs.ToList()); }
+        }
+
         public int CurrentLang
         {
             get
@@ -26,11 +31,11 @@ namespace Shop.DataAccess.Entities
             set
             {
                 _currentLang = value;
-                var currentLang = CategoryLangs.FirstOrDefault(c => c.LanguageId == value);
+                var currentLang = CategoryLangsCached.FirstOrDefault(c => c.LanguageId == value);
                 if (currentLang == null)
                 {
                     IsCorrectLang = false;
-                    var anyLang = CategoryLangs.FirstOrDefault();
+                    var anyLang = CategoryLangsCached.FirstOrDefault();
                     if (anyLang != null)
                     {
                         SetLang(anyLang);

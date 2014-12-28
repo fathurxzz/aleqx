@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.DataAccess;
 using Shop.DataAccess.Entities;
 using Shop.DataAccess.Repositories;
 
@@ -57,6 +58,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     SortOrder = model.SortOrder
                 };
                 _repository.AddProductAttribute(productAttibute);
+                Cache.Default.Clear();
             }
             catch (Exception ex)
             {
@@ -90,6 +92,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 var productAttribute = _repository.GetProductAttribute(model.Id);
                 TryUpdateModel(productAttribute, new[] { "Title", "ExternalId", "UnitTitle", "IsStatic", "IsPublic", "DisplayOnPreview", "IsFilterable", "SortOrder" });
                 _repository.SaveProductAttribute(productAttribute);
+                Cache.Default.Clear();
             }
             catch (Exception ex)
             {

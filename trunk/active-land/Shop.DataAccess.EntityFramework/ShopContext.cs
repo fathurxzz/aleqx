@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using log4net;
 using Shop.DataAccess.Entities;
 using Shop.DataAccess.EntityFramework.Mapping;
 
@@ -10,6 +11,8 @@ namespace Shop.DataAccess.EntityFramework
     [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class ShopContext:DbContext
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof (ShopContext));
+
         static ShopContext()
         {
             Database.SetInitializer<ShopContext>(null);
@@ -18,7 +21,7 @@ namespace Shop.DataAccess.EntityFramework
         public ShopContext()
             : base("Name=gbua_active_dev")
         {
-            
+            Database.Log = Log.Debug;
         }
 
         public DbSet<Article> Articles { get; set; }

@@ -57,8 +57,8 @@ namespace Shop.DataAccess.Repositories
         // Products
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetActiveProducts();
-        IEnumerable<Product> GetProductsByCategory(string categoryName);
-        IEnumerable<Product> GetProductsByQueryString(string query);
+        IQueryable<Product> GetProductsByCategory(string categoryName);
+        IQueryable<Product> GetProductsByQueryString(string query);
         Product FindProduct(int id);
         Product GetProduct(int id);
         Product GetProduct(string name);

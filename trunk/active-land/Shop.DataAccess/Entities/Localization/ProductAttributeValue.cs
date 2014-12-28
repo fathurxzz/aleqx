@@ -14,6 +14,15 @@ namespace Shop.DataAccess.Entities
 
         private int _currentLang;
 
+        private IEnumerable<ProductAttributeValueLang> ProductAttributeValueLangsCached
+        {
+            get
+            {
+                return (ICollection<ProductAttributeValueLang>)Cache.Default.GetOrAdd("ProductAttributeValueLang_" + Id, key => (object)ProductAttributeValueLangs.ToList());
+            }
+        }
+
+
         public int CurrentLang
         {
             get
@@ -24,11 +33,11 @@ namespace Shop.DataAccess.Entities
             set
             {
                 _currentLang = value;
-                var currentLang = ProductAttributeValueLangs.FirstOrDefault(c => c.LanguageId == value);
+                var currentLang = ProductAttributeValueLangsCached.FirstOrDefault(c => c.LanguageId == value);
                 if (currentLang == null)
                 {
                     IsCorrectLang = false;
-                    var anyLang = ProductAttributeValueLangs.FirstOrDefault();
+                    var anyLang = ProductAttributeValueLangsCached.FirstOrDefault();
                     if (anyLang != null)
                     {
                         SetLang(anyLang);
