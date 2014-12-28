@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache.cs" />
     <Compile Include="Entities\Article.cs" />
     <Compile Include="Entities\ArticleItem.cs" />
     <Compile Include="Entities\ArticleItemImage.cs" />

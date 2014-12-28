@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.DataAccess;
 using Shop.DataAccess.Entities;
 using Shop.DataAccess.Repositories;
 
@@ -52,6 +53,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             try
             {
                 _repository.AddProductAttributeValue(productAttributeValue);
+                Cache.Default.Clear();
             }
             catch (Exception ex)
             {
@@ -90,6 +92,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 TryUpdateModel(productAttributeValue, new[] { "Title" });
                 productAttributeValue.ProductAttributeValueTag = tag;
                 _repository.SaveProductAttributeValue(productAttributeValue);
+                Cache.Default.Clear();
                 return RedirectToAction("Index", new { id = productAttributeValue.ProductAttributeId });
             }
             catch (Exception ex)

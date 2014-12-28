@@ -10,7 +10,7 @@
                 {
                     <li>
                         <input class="attribute-checkbox" @Html.Raw(item.Selected ? "checked" : "") filter="@item.FilterAttributeString" type="checkbox" id="@item.Id">
-                        <label for="@item.Id">@item.Title @*(@item.AvaibleProductsCount)*@</label>
+                        <label for="@item.Id">@item.Title (@item.AvaibleProductsCount)</label>
                     </li>
                 }
             </ul>

@@ -12,7 +12,13 @@ namespace Shop.DataAccess.Entities
         public string UnitTitle { get; set; }
         public bool IsCorrectLang { get; protected set; }
 
+
         private int _currentLang;
+
+        private IEnumerable<ProductAttributeLang> ProductAttributeLangsCached
+        {
+            get { return (ICollection<ProductAttributeLang>)Cache.Default.GetOrAdd("ProductAttributeLang_" + Id, key => (object)ProductAttributeLangs.ToList()); }
+        }
 
         public int CurrentLang
         {
@@ -24,11 +30,11 @@ namespace Shop.DataAccess.Entities
             set
             {
                 _currentLang = value;
-                var currentLang = ProductAttributeLangs.FirstOrDefault(c => c.LanguageId == value);
+                var currentLang = ProductAttributeLangsCached.FirstOrDefault(c => c.LanguageId == value);
                 if (currentLang == null)
                 {
                     IsCorrectLang = false;
-                    var anyLang = ProductAttributeLangs.FirstOrDefault();
+                    var anyLang = ProductAttributeLangsCached.FirstOrDefault();
                     if (anyLang != null)
                     {
                         SetLang(anyLang);
