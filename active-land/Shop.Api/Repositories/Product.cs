@@ -28,7 +28,7 @@ namespace Shop.Api.Repositories
         //    return products;
         //}
 
-        public IEnumerable<Product> GetAllProducts()
+        public IQueryable<Product> GetAllProducts()
         {
             return _store.Products;
         }
