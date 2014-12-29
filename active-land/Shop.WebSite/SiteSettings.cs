@@ -74,7 +74,7 @@ namespace Shop.WebSite
 
         public static string Version
         {
-            get { return "0.0.34"; }
+            get { return "0.0.35"; }
         }
 
         public static string MailTo

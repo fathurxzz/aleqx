@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI.WebControls;
 using log4net;
@@ -37,7 +39,7 @@ namespace Shop.WebSite.Models
 
         protected Stopwatch _sw = new Stopwatch();
 
-        public SiteModel(IShopRepository repository, int langId, string contentName)
+        public SiteModel(IShopRepository repository, int langId, string contentName, bool showSpecialOffers =false)
         {
             
             _sw.Start();
@@ -45,8 +47,19 @@ namespace Shop.WebSite.Models
 
             Title = "Active Land";
 
-            Categories = repository.GetCategories();
-            SpecialOffers = GetSpecialOffers(repository, langId, int.Parse(SiteSettings.GetShopSetting("SpecialOffersQuantity")));
+            IQueryable<Category> categories = null;
+
+            categories = repository.GetCategories().OrderBy(c => c.SortOrder);
+            Categories = categories.Include(c => c.Children).ToList();
+
+            //Categories = repository.GetCategories().Include(x=>x.Children).ToList();
+            foreach (var category in Categories)
+            {
+                category.CurrentLang = langId;
+            }
+
+            if (showSpecialOffers)
+                SpecialOffers = GetSpecialOffers(repository, langId, int.Parse(SiteSettings.GetShopSetting("SpecialOffersQuantity")));
 
             Contents = repository.GetContents();
 
@@ -68,7 +81,20 @@ namespace Shop.WebSite.Models
         private static IEnumerable<Product> GetSpecialOffers(IShopRepository repository, int langId, int quantity)
         {
             var orderedProducts = repository.GetAllProducts().Where(p => p.IsDiscount || p.IsNew || p.IsTopSale);
-            var randomProducts = orderedProducts.Include(x => x.ProductImages).ToList().OrderBy(p => Guid.NewGuid()).Take(quantity);
+            //var randomProducts = orderedProducts.Include(x => x.ProductImages)
+            //    //.ToList()
+            //    //.OrderBy(p => Guid.NewGuid())
+            //    .Take(quantity)
+            //    .ToList();
+
+            //var randomProducts = (from p in orderedProducts orderby SqlFunctions.Rand(1) select p).Take(8).ToList();
+
+
+            var randomProducts = orderedProducts.Include(x => x.ProductImages).Take(quantity).ToList();
+            
+            //var randomProducts = orderedProducts.Include(x => x.ProductImages).AsEnumerable().OrderBy(p => Guid.NewGuid()).Take(quantity).ToList();
+
+            //var cnt = orderedProducts.Count();
 
             foreach (var product in randomProducts)
             {

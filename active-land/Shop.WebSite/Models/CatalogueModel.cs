@@ -91,29 +91,28 @@ namespace Shop.WebSite.Models
             return result;
         }
 
-        private bool CompareGroups(List<string> value1, List<string> value2)
+        //private bool CompareGroups(List<string> value1, List<string> value2)
+        //{
+        //    foreach (var s1 in value1)
+        //    {
+        //        if (value2.Contains(s1))
+        //            return true;
+        //    }
+        //    return false;
+        //}
+
+
+        public CatalogueModel(IShopRepository repository, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy = null, bool showSpecialOffers = false)
+            : base(repository, langId, "category", showSpecialOffers)
         {
-            foreach (var s1 in value1)
-            {
-                if (value2.Contains(s1))
-                    return true;
-            }
-            return false;
-        }
 
 
-        public CatalogueModel(IShopRepository repository, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy = null)
-            : base(repository, langId, "category")
-        {
-
-            
             _repository = repository;
             FilterArray = new string[0];
 
             CurrentFilter = filter ?? string.Empty;
 
             IQueryable<Product> products = null;
-            IQueryable<Product> allProducts = null;
 
             //var filterValueGroups = GroupFilterString(categoryName, filter);
             var filters = CurrentFilter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
@@ -125,12 +124,9 @@ namespace Shop.WebSite.Models
             }
             else
             {
-                products = allProducts = _repository.GetProductsByCategory(categoryName).Where(p => p.IsActive);
+                products = _repository.GetProductsByCategory(categoryName).Where(p => p.IsActive);
                 if (filters.Any())
-                    //products = products.Where(x => x.ProductAttributeValues.Select(pav => filters.Contains(pav.Id)).Any());
-                    //products = products.Where(x => x.ProductAttributeValues.Where(pav => filters.Contains(pav.Id)).Any());
                     products = products.Where(x => x.ProductAttributeValues.Any(pav => filters.Contains(pav.Id)));
-                    //products = products.Where(p => p.ProductAttributeValues.Where(pav => pav.Id == 350).Any());
             }
 
             switch (sortOrder)
