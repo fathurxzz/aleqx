@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using log4net;
 using Shop.DataAccess.Entities;
 using Shop.DataAccess.Repositories;
 using Shop.WebSite.Helpers;
@@ -12,6 +14,8 @@ namespace Shop.WebSite.Models
 {
     public class SiteModel : ISiteModel
     {
+        protected static readonly ILog Log = LogManager.GetLogger(typeof(CatalogueModel));
+
         public string Title { get; set; }
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
@@ -32,9 +36,18 @@ namespace Shop.WebSite.Models
         public SiteModel(IShopRepository repository, int langId, string contentName)
         {
             Title = "Active Land";
+
+            Log.Debug("GetCategories start");
             Categories = repository.GetCategories();
+            Log.Debug("GetCategories end");
+            Log.Debug("GetSpecialOffers start");
             SpecialOffers = GetSpecialOffers(repository, langId, int.Parse(SiteSettings.GetShopSetting("SpecialOffersQuantity")));
+            Log.Debug("GetSpecialOffers end");
+
+            Log.Debug("GetContents start");
             Contents = repository.GetContents();
+            Log.Debug("GetContents end");
+
             Content = contentName != null ? (contentName == "category" ? repository.GetCatalogueContent() : repository.GetContent(contentName)) : repository.GetContent();
             MainPageBanners = repository.GetMainPageBanners();
             SiteBanners = repository.GetSiteBanners().OrderBy(p => Guid.NewGuid()).Take(2).ToList();
@@ -51,11 +64,12 @@ namespace Shop.WebSite.Models
         private static IEnumerable<Product> GetSpecialOffers(IShopRepository repository, int langId, int quantity)
         {
             var orderedProducts = repository.GetAllProducts().Where(p => p.IsDiscount || p.IsNew || p.IsTopSale);
-            var randomProducts = orderedProducts.OrderBy(p => Guid.NewGuid()).Take(quantity).ToList();
+            var randomProducts = orderedProducts.Include(x => x.ProductImages).ToList().OrderBy(p => Guid.NewGuid()).Take(quantity);
+
             foreach (var product in randomProducts)
             {
                 product.CurrentLang = langId;
-                product.Category.CurrentLang = langId;
+                //product.Category.CurrentLang = langId;
                 if (product.ProductImages.Any())
                 {
                     var pi = product.ProductImages.FirstOrDefault(c => c.IsDefault) ?? product.ProductImages.First();
@@ -69,6 +83,7 @@ namespace Shop.WebSite.Models
         {
             var articles = repository.GetActiveArticles().OrderByDescending(a => a.Date).Take(quantity).ToList();
             return LoadArticles(articles, langId);
+
         }
 
         private static IEnumerable<Article> GetAllArticles(IShopRepository repository, int langId)
