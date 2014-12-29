@@ -17,7 +17,8 @@ namespace Shop.DataAccess.Repositories
         IEnumerable<Language> GetLanguages();
             
         // Categories
-        IEnumerable<Category> GetCategories(bool showInactive = false);
+        //IEnumerable<Category> GetCategories(bool showInactive = false);
+        IQueryable<Category> GetCategories(bool showInactive = false);
         Category GetCategory(int id);
         Category GetCategory(string categoryName);
         void DeleteCategory(int id, Action<string> deleteImages);
