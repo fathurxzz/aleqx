@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using Shop.DataAccess;
 using Shop.DataAccess.Repositories;
 using Shop.WebSite.Helpers;
 using Shop.WebSite.Models;
@@ -133,6 +134,15 @@ namespace Shop.WebSite.Controllers
             }
 
             return JsonConvert.SerializeObject(result.OrderBy(r=>r.title));
+        }
+
+
+        public ActionResult Test()
+        {
+            Cache.Default.Clear();
+            _repository.LangId = CurrentLangId;
+            var categories = _repository.GetCategories();
+            return View();
         }
     }
 }
