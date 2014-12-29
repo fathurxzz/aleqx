@@ -10,15 +10,19 @@ namespace Shop.Api.Repositories
 {
     public partial class ShopRepository : IShopRepository
     {
-        public IEnumerable<Category> GetCategories(bool showInactive = false)
+        //public IEnumerable<Category> GetCategories(bool showInactive = false)
+        //{
+        //    showInactive = true;
+        //    var categories = _store.Categories.Where(c=>!showInactive || c.IsActive).ToList();
+        //    foreach (var category in categories)
+        //    {
+        //        category.CurrentLang = LangId;
+        //    }
+        //    return ApplySorting(categories);
+        //}
+        public IQueryable<Category> GetCategories(bool showInactive = false)
         {
-            showInactive = true;
-            var categories = _store.Categories.Where(c=>!showInactive || c.IsActive).ToList();
-            foreach (var category in categories)
-            {
-                category.CurrentLang = LangId;
-            }
-            return ApplySorting(categories);
+            return _store.Categories.Where(c=>!showInactive || c.IsActive);
         }
 
         public Category GetCategory(int id)
