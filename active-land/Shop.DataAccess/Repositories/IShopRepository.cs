@@ -17,7 +17,7 @@ namespace Shop.DataAccess.Repositories
         IEnumerable<Language> GetLanguages();
             
         // Categories
-        IEnumerable<Category> GetCategories();
+        IEnumerable<Category> GetCategories(bool showInactive = false);
         Category GetCategory(int id);
         Category GetCategory(string categoryName);
         void DeleteCategory(int id, Action<string> deleteImages);
@@ -55,7 +55,7 @@ namespace Shop.DataAccess.Repositories
         void SaveProductAttributeValueTag(ProductAttributeValueTag productAttributeValueTag);
 
         // Products
-        IEnumerable<Product> GetAllProducts();
+        IQueryable<Product> GetAllProducts();
         IEnumerable<Product> GetActiveProducts();
         IQueryable<Product> GetProductsByCategory(string categoryName);
         IQueryable<Product> GetProductsByQueryString(string query);
