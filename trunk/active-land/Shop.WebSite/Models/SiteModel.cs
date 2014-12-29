@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -33,20 +34,21 @@ namespace Shop.WebSite.Models
         public IEnumerable<MainPageBanner> MainPageBanners { get; set; }
         public IEnumerable<MainPageBanner> SiteBanners { get; set; }
 
+
+        protected Stopwatch _sw = new Stopwatch();
+
         public SiteModel(IShopRepository repository, int langId, string contentName)
         {
+            
+            _sw.Start();
+
+
             Title = "Active Land";
 
-            Log.Debug("GetCategories start");
             Categories = repository.GetCategories();
-            Log.Debug("GetCategories end");
-            Log.Debug("GetSpecialOffers start");
             SpecialOffers = GetSpecialOffers(repository, langId, int.Parse(SiteSettings.GetShopSetting("SpecialOffersQuantity")));
-            Log.Debug("GetSpecialOffers end");
 
-            Log.Debug("GetContents start");
             Contents = repository.GetContents();
-            Log.Debug("GetContents end");
 
             Content = contentName != null ? (contentName == "category" ? repository.GetCatalogueContent() : repository.GetContent(contentName)) : repository.GetContent();
             MainPageBanners = repository.GetMainPageBanners();
@@ -59,6 +61,8 @@ namespace Shop.WebSite.Models
 
             LastArticles = GetLastArticles(repository, langId, int.Parse(SiteSettings.GetShopSetting("ArticlesQuantity")));
             QuickAdvices = repository.GetQuickAdvices(true);
+            
+           
         }
 
         private static IEnumerable<Product> GetSpecialOffers(IShopRepository repository, int langId, int quantity)

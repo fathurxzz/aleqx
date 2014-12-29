@@ -21,7 +21,7 @@ namespace Shop.DataAccess.EntityFramework
         public ShopContext()
             : base("Name=gbua_active_dev")
         {
-            Database.Log = Log.Debug;
+            //Database.Log = Log.Debug;
         }
 
         public DbSet<Article> Articles { get; set; }
