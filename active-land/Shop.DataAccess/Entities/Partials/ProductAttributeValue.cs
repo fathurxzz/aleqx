@@ -9,6 +9,6 @@ namespace Shop.DataAccess.Entities
     partial class ProductAttributeValue
     {
         public int AvailableProductsCount { get; set; }
-        //public int AvailableProductsCountAfterApplyingFilter { get; set; }
+        public int AvailableProductsCountAfterApplyingFilter { get; set; }
     }
 }

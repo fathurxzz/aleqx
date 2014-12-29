@@ -15,7 +15,7 @@ namespace Shop.WebSite.Models
 {
     public class CatalogueModel : SiteModel
     {
-        
+
 
         public IEnumerable<ProductAttribute> ProductAttributes { get; set; }
         public IEnumerable<Product> Products { get; set; }
@@ -107,17 +107,13 @@ namespace Shop.WebSite.Models
         {
 
             
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            
-            
-
             _repository = repository;
             FilterArray = new string[0];
 
             CurrentFilter = filter ?? string.Empty;
 
             IQueryable<Product> products = null;
+            IQueryable<Product> allProducts = null;
 
             //var filterValueGroups = GroupFilterString(categoryName, filter);
             var filters = CurrentFilter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
@@ -129,15 +125,13 @@ namespace Shop.WebSite.Models
             }
             else
             {
-                products = _repository.GetProductsByCategory(categoryName).Where(p => p.IsActive);
-                if(filters.Any())
+                products = allProducts = _repository.GetProductsByCategory(categoryName).Where(p => p.IsActive);
+                if (filters.Any())
                     //products = products.Where(x => x.ProductAttributeValues.Select(pav => filters.Contains(pav.Id)).Any());
-                    products = products.Where(x => x.ProductAttributeValues.Select(pav => pav.Id==350).Any());
+                    //products = products.Where(x => x.ProductAttributeValues.Where(pav => filters.Contains(pav.Id)).Any());
+                    products = products.Where(x => x.ProductAttributeValues.Any(pav => filters.Contains(pav.Id)));
+                    //products = products.Where(p => p.ProductAttributeValues.Where(pav => pav.Id == 350).Any());
             }
-
-            //var ppp = products.ToList();
-
-            //ProductTotalCount = Products.Count();
 
             switch (sortOrder)
             {
@@ -152,10 +146,15 @@ namespace Shop.WebSite.Models
                     break;
             }
 
+
             var pageSize = int.Parse(SiteSettings.GetShopSetting("ProductsPageSize"));
-            Products = products.Include(x=>x.ProductAttributeValues)
-                .Include(x=>x.ProductImages)
+            Products = products.Include(x => x.ProductAttributeValues)
+                .Include(x => x.ProductImages)
                 .ToList();
+
+            //var AllProducts = allProducts.Include(x => x.ProductAttributeValues)
+            //    .Include(x => x.ProductImages)
+            //    .ToList();
 
             ProductTotalCount = Products.Count();
 
@@ -176,7 +175,8 @@ namespace Shop.WebSite.Models
                 {
                     foreach (var productAttributeValue in productAttribute.ProductAttributeValues)
                     {
-                        productAttributeValue.AvailableProductsCount = Products.Count(p => p.ProductAttributeValues.Any(pav=>pav.Id == productAttributeValue.Id));
+                        productAttributeValue.AvailableProductsCount = Products.Count(p => p.ProductAttributeValues.Any(pav => pav.Id == productAttributeValue.Id));
+                        //productAttributeValue.AvailableProductsCountAfterApplyingFilter = AllProducts.Count(p => p.ProductAttributeValues.Any(pav => pav.Id == productAttributeValue.Id));
                     }
                 }
 
@@ -198,7 +198,7 @@ namespace Shop.WebSite.Models
                                 {
                                     Title = categoryValue.Title,
                                     AvaibleProductsCount = categoryValue.AvailableProductsCount,
-                                    //AvaibleProductsCountAfterApplyingFilter = categoryValue.AvailableProductsCountAfterApplyingFilter,
+                                    AvaibleProductsCountAfterApplyingFilter = categoryValue.AvailableProductsCountAfterApplyingFilter,
                                     Selected = FilterArray.Contains(categoryValue.Id.ToString()),
                                     FilterAttributeString = CatalogueFilterHelper.GetFilterStringForCheckbox(FilterArray,
                                         categoryValue.Id.ToString(), FilterArray.Contains(categoryValue.Id.ToString())),
@@ -208,11 +208,7 @@ namespace Shop.WebSite.Models
                                 fvm.FilterItems.Add(filterItem);
                             }
                         }
-
-                        //if (fvm.FilterItems.Any())
-                        //{
                         Filters.Add(fvm);
-                        //}
                     }
                 }
 
@@ -220,7 +216,7 @@ namespace Shop.WebSite.Models
             }
 
             Products = ApplyPaging(Products.AsQueryable(), page, pageSize).ToList();
-            
+
             foreach (var product in Products)
             {
                 product.CurrentLang = langId;
@@ -250,12 +246,12 @@ namespace Shop.WebSite.Models
                 this.Article = _repository.GetArticle(articleName);
             }
 
-            sw.Stop();
+            _sw.Stop();
 
-            Log.DebugFormat("CatalogueModel {0}", sw.Elapsed);
+            Log.DebugFormat("SiteModel+CatalogueModel: {0}", _sw.Elapsed);
         }
 
-        IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page, int pageSize)
+        IEnumerable<Product> ApplyPaging(IEnumerable<Product> products, int? page, int pageSize)
         {
             if (products == null)
                 return null;
