@@ -10,9 +10,10 @@ namespace Shop.Api.Repositories
 {
     public partial class ShopRepository : IShopRepository
     {
-        public IEnumerable<Category> GetCategories()
+        public IEnumerable<Category> GetCategories(bool showInactive = false)
         {
-            var categories = _store.Categories.ToList();
+            showInactive = true;
+            var categories = _store.Categories.Where(c=>!showInactive || c.IsActive).ToList();
             foreach (var category in categories)
             {
                 category.CurrentLang = LangId;
