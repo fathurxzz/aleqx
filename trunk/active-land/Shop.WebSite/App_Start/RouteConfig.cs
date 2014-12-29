@@ -14,6 +14,15 @@ namespace Shop.WebSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("favicon.ico");
 
+            //routes.MapRoute(
+            //    "Admin",
+            //    "admin",
+            //     new { controller = "Admin", action = "Default", lang = "ru" },
+            //     new { lang = @"ru|ua" },
+            //    new[] { "Shop.WebSite.Areas.Admin.Controllers" }
+            //);
+
+
             routes.MapRoute(
                 "Login",
                 "login",

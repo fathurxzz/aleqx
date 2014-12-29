@@ -21,7 +21,7 @@ namespace Shop.WebSite.Controllers
         public ActionResult Index(string id, string msg)
         {
             _repository.LangId = CurrentLangId;
-            var model = new SiteModel(_repository, CurrentLangId, id) { CurrentLangCode = CurrentLangCode };
+            var model = new SiteModel(_repository, CurrentLangId, id, true) { CurrentLangCode = CurrentLangCode };
             this.SetSeoContent(model);
             if (msg == "thanks")
             {
