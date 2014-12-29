@@ -15,7 +15,7 @@ namespace Shop.WebSite.Models
 {
     public class CatalogueModel : SiteModel
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(CatalogueModel));
+        
 
         public IEnumerable<ProductAttribute> ProductAttributes { get; set; }
         public IEnumerable<Product> Products { get; set; }
@@ -105,6 +105,13 @@ namespace Shop.WebSite.Models
         public CatalogueModel(IShopRepository repository, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null, string query = null, string sortOrder = null, string sortBy = null)
             : base(repository, langId, "category")
         {
+
+            
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            
+            
+
             _repository = repository;
             FilterArray = new string[0];
 
@@ -115,6 +122,7 @@ namespace Shop.WebSite.Models
             //var filterValueGroups = GroupFilterString(categoryName, filter);
             var filters = CurrentFilter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
 
+
             if (query != null && query.Length > 1)
             {
                 products = _repository.GetProductsByQueryString(query).Where(p => p.IsActive);
@@ -123,10 +131,13 @@ namespace Shop.WebSite.Models
             {
                 products = _repository.GetProductsByCategory(categoryName).Where(p => p.IsActive);
                 if(filters.Any())
-                    products = products.Where(x => x.ProductAttributeValues.Select(pav => filters.Contains(pav.Id)).Any());
+                    //products = products.Where(x => x.ProductAttributeValues.Select(pav => filters.Contains(pav.Id)).Any());
+                    products = products.Where(x => x.ProductAttributeValues.Select(pav => pav.Id==350).Any());
             }
 
-            //ProductTotalCount = Products.Count;
+            //var ppp = products.ToList();
+
+            //ProductTotalCount = Products.Count();
 
             switch (sortOrder)
             {
@@ -145,6 +156,8 @@ namespace Shop.WebSite.Models
             Products = products.Include(x=>x.ProductAttributeValues)
                 .Include(x=>x.ProductImages)
                 .ToList();
+
+            ProductTotalCount = Products.Count();
 
             if (page > Products.Count() / pageSize)
             {
@@ -207,7 +220,7 @@ namespace Shop.WebSite.Models
             }
 
             Products = ApplyPaging(Products.AsQueryable(), page, pageSize).ToList();
-
+            
             foreach (var product in Products)
             {
                 product.CurrentLang = langId;
@@ -236,6 +249,10 @@ namespace Shop.WebSite.Models
             {
                 this.Article = _repository.GetArticle(articleName);
             }
+
+            sw.Stop();
+
+            Log.DebugFormat("CatalogueModel {0}", sw.Elapsed);
         }
 
         IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page, int pageSize)
