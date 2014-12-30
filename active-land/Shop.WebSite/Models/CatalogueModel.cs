@@ -132,10 +132,10 @@ namespace Shop.WebSite.Models
             switch (sortOrder)
             {
                 case "desc":
-                    products = products.OrderByDescending(p => p.Price).ThenBy(p => p.Title).AsQueryable();
+                    products = products.OrderByDescending(p => p.Price).ThenBy(p => p.Name).AsQueryable();
                     break;
                 case "asc":
-                    products = products.OrderBy(p => p.Price).ThenBy(p => p.Title).AsQueryable();
+                    products = products.OrderBy(p => p.Price).ThenBy(p => p.Name).AsQueryable();
                     break;
                 default: // "abc"
                     products = products.OrderBy(p => p.Name).AsQueryable();
