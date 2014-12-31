@@ -38,7 +38,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             q = q != null ? q.ToLower() : null;
             var orderedProducts = _repository.GetAllProducts()
                 .Where(p => string.IsNullOrEmpty(q) || p.SearchCriteria.ToLower().Contains(q))
-                .OrderBy(p => p.CategoryId).ThenBy(p => p.Title).AsQueryable();
+                .OrderBy(p => p.CategoryId).ThenBy(p => p.Name).AsQueryable();
 
             int productsCount = orderedProducts.Count();
             orderedProducts = ApplyPaging(orderedProducts, page, int.Parse(SiteSettings.GetShopSetting("AdminProductsPageSize")));

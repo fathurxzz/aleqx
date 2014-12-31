@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Shop.Api.DataSynchronization.Export;
 using Shop.Api.DataSynchronization.Import;
+using Shop.DataAccess;
 using Shop.DataAccess.Repositories;
 using Shop.WebSite.Areas.Admin.Models;
 
@@ -88,6 +89,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
 
             RefreshSearchData();
+            Cache.Default.Clear();
 
             return View("Index", new DataTransferModel {Categories = categories, ImportResult = result});
             //return RedirectToAction("Index", new { message = result.ErrorMessage, errorCode = result.ErrorCode });
