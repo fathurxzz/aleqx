@@ -60,32 +60,32 @@ namespace Shop.Api.Repositories
             string[] x = query.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
             if (x.Length == 2)
             {
-                return _store.Products
+                return _store.Products.ToList()
                     .Where(p => 
                         p.SearchCriteria.IndexOf(x[0], StringComparison.InvariantCultureIgnoreCase) > -1 && 
-                        p.SearchCriteria.IndexOf(x[1], StringComparison.InvariantCultureIgnoreCase) > -1);
+                        p.SearchCriteria.IndexOf(x[1], StringComparison.InvariantCultureIgnoreCase) > -1).AsQueryable();
             }
             
             if (x.Length == 3)
             {
-                return _store.Products
+                return _store.Products.ToList()
                     .Where(p =>
                         p.SearchCriteria.IndexOf(x[0], StringComparison.InvariantCultureIgnoreCase) > -1 &&
                         p.SearchCriteria.IndexOf(x[1], StringComparison.InvariantCultureIgnoreCase) > -1 && 
-                        p.SearchCriteria.IndexOf(x[2], StringComparison.InvariantCultureIgnoreCase) > -1);
+                        p.SearchCriteria.IndexOf(x[2], StringComparison.InvariantCultureIgnoreCase) > -1).AsQueryable();
             }
 
             if (x.Length == 4)
             {
-                return _store.Products
+                return _store.Products.ToList()
                     .Where(p =>
                         p.SearchCriteria.IndexOf(x[0], StringComparison.InvariantCultureIgnoreCase) > -1 &&
                         p.SearchCriteria.IndexOf(x[1], StringComparison.InvariantCultureIgnoreCase) > -1 &&
                         p.SearchCriteria.IndexOf(x[2], StringComparison.InvariantCultureIgnoreCase) > -1 && 
-                        p.SearchCriteria.IndexOf(x[3], StringComparison.InvariantCultureIgnoreCase) > -1);
+                        p.SearchCriteria.IndexOf(x[3], StringComparison.InvariantCultureIgnoreCase) > -1).AsQueryable();
             }
 
-            return _store.Products.Where(p => p.SearchCriteria.IndexOf(x[0], StringComparison.InvariantCultureIgnoreCase) > -1);
+            return _store.Products.ToList().Where(p => p.SearchCriteria.IndexOf(x[0], StringComparison.InvariantCultureIgnoreCase) > -1).AsQueryable();
         }
 
         public Product FindProduct(int id)
