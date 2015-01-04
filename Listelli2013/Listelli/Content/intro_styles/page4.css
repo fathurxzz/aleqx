@@ -1,0 +1,72 @@
+.page4 {
+    background: url('../img/page4/background.jpg');
+    background-size: cover;
+    min-width: 600px;
+}
+
+.page4 .page40 {
+    background: url('../img/page4/background.jpg');
+    background-size: cover;
+}
+
+.page4 .page41 {
+    background: url('../img/page4/slide01.jpg');
+    background-size: cover;
+}
+.page4 .page42 {
+    background: url('../img/page4/slide02.jpg');
+    background-size: cover;
+}
+.page4 .page43 {
+    background: url('../img/page4/slide03.jpg');
+    background-size: cover;
+}
+
+.page4 .info {
+    max-width: 446px;
+    /*height: 292px;*/
+    /*background: url("../img/page4/text.png");*/
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    margin-left: -223px;
+    margin-top: -156px;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+
+.page4 .info .romb {
+    width: 75px;
+    height: 11px;
+    background: url("../img/page4/slide4-nad-zag.svg") no-repeat;
+    position: relative;
+    margin: 0 auto;
+}
+
+.page4 .info .title {
+    font-size: 39px;
+    font-family: 'Yeseva One', cursive;
+    padding-top: 20px;
+    line-height: 40px;
+    /*height: 115px;*/
+    letter-spacing: 2px;
+}
+
+.page4 .info .leaf {
+    width: 179px;
+    height: 9px;
+    background: url("../img/page4/slide4-pod-zag.svg") no-repeat;
+    position: relative;
+    margin: 25px auto 0;
+}
+
+.page4 .info .text {
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 14px;
+    padding-top: 22px;
+    line-height: 29px;
+    letter-spacing: 1px;
+}

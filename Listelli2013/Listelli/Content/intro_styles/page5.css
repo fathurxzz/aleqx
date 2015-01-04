@@ -1,0 +1,52 @@
+.page5 {
+    background: url('../img/page5/background.jpg');
+    background-size: cover;
+    min-width: 600px;
+}
+
+.page5 .info {
+    max-width: 470px;
+    /*height: 262px;*/
+    /*background: url("../img/page5/text.png");*/
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    margin-left: -115px;
+    margin-top: -131px;
+    text-align: center;
+    color: #ffffff;
+}
+
+
+.page5 .info .romb {
+    width: 49px;
+    height: 19px;
+    background: url("../img/page5/slide5-nad-zag.svg") no-repeat;
+    position: relative;
+    margin: 0 auto;
+}
+
+.page5 .info .title {
+    font-size: 39px;
+    font-family: 'Yeseva One', cursive;
+    padding-top: 37px;
+    line-height: 40px;
+    /*height: 75px;*/
+    letter-spacing: 2px;
+}
+
+.page5 .info .leaf {
+    width: 106px;
+    height: 27px;
+    background: url("../img/page5/slide5-pod-zag.svg") no-repeat;
+    position: relative;
+    margin: 30px auto 0;
+}
+
+.page5 .info .text {
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 14px;
+    padding-top: 22px;
+    line-height: 29px;
+    letter-spacing: 1px;
+}

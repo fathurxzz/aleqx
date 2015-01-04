@@ -51,18 +51,18 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\listelli_bin\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data.Entity, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MySql.Data.Entity.dll</HintPath>
+      <HintPath>..\..\..\listelli_bin\MySql.Data.Entity.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Web, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MySql.Web.dll</HintPath>
+      <HintPath>..\..\..\listelli_bin\MySql.Web.dll</HintPath>
     </Reference>
     <Reference Include="SiteExtensions">
-      <HintPath>..\SiteExtensions.dll</HintPath>
+      <HintPath>..\..\listelli_siteextensions\SiteExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -238,6 +238,43 @@
     <Content Include="Content\img\m5.gif" />
     <Content Include="Content\img\m5en.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
+    <Content Include="Content\img\page1\background.jpg" />
+    <Content Include="Content\img\page1\background.png" />
+    <Content Include="Content\img\page1\slide1-logo-li-eco.svg" />
+    <Content Include="Content\img\page1\slide1-to-site.svg" />
+    <Content Include="Content\img\page1\slide1-uvidet-bolshe.svg" />
+    <Content Include="Content\img\page1\slide1-zmeykacopy.svg" />
+    <Content Include="Content\img\page2\background-left.png" />
+    <Content Include="Content\img\page2\background-right.jpg" />
+    <Content Include="Content\img\page2\background-right.png" />
+    <Content Include="Content\img\page2\slide01.jpg" />
+    <Content Include="Content\img\page2\slide02.jpg" />
+    <Content Include="Content\img\page2\slide2-listki.svg" />
+    <Content Include="Content\img\page2\slide2-rombikcopy.svg" />
+    <Content Include="Content\img\page3\background.jpg" />
+    <Content Include="Content\img\page3\background.png" />
+    <Content Include="Content\img\page3\slide01.jpg" />
+    <Content Include="Content\img\page3\slide02.jpg" />
+    <Content Include="Content\img\page3\slide03.jpg" />
+    <Content Include="Content\img\page3\slide3-nad-zagol.svg" />
+    <Content Include="Content\img\page3\slide3-pod-zagol.svg" />
+    <Content Include="Content\img\page4\background.jpg" />
+    <Content Include="Content\img\page4\background.png" />
+    <Content Include="Content\img\page4\slide01.jpg" />
+    <Content Include="Content\img\page4\slide02.jpg" />
+    <Content Include="Content\img\page4\slide03.jpg" />
+    <Content Include="Content\img\page4\slide4-nad-zag.svg" />
+    <Content Include="Content\img\page4\slide4-pod-zag.svg" />
+    <Content Include="Content\img\page5\background.jpg" />
+    <Content Include="Content\img\page5\background.png" />
+    <Content Include="Content\img\page5\slide5-nad-zag.svg" />
+    <Content Include="Content\img\page5\slide5-pod-zag.svg" />
+    <Content Include="Content\img\page6\background.jpg" />
+    <Content Include="Content\img\page6\background.png" />
+    <Content Include="Content\img\page6\em-logo.svg" />
+    <Content Include="Content\img\page6\footer.png" />
+    <Content Include="Content\img\page6\slide6-logo.svg" />
+    <Content Include="Content\img\page6\slide6-MBS-logo.svg" />
     <Content Include="Content\img\pattern1.png" />
     <Content Include="Content\img\pattern2.png" />
     <Content Include="Content\img\portfolio-image-frame.gif" />
@@ -248,6 +285,14 @@
     <Content Include="Content\img\title-container-bg.gif" />
     <Content Include="Content\img\title-left.gif" />
     <Content Include="Content\img\title-right.gif" />
+    <Content Include="Content\intro_styles\jquery.bxslider.css" />
+    <Content Include="Content\intro_styles\main.css" />
+    <Content Include="Content\intro_styles\page1.css" />
+    <Content Include="Content\intro_styles\page2.css" />
+    <Content Include="Content\intro_styles\page3.css" />
+    <Content Include="Content\intro_styles\page4.css" />
+    <Content Include="Content\intro_styles\page5.css" />
+    <Content Include="Content\intro_styles\page6.css" />
     <Content Include="Content\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Content\MailTemplates\ConfirmSubscribe.htm" />
     <Content Include="Content\MailTemplates\Newsletter.htm" />
@@ -257,6 +302,7 @@
     <Content Include="Content\Site-mobile.css" />
     <Content Include="emails.txt" />
     <Content Include="Global.asax" />
+    <Content Include="intro.html" />
     <Content Include="Models\Customer.edmx.sql" />
     <Content Include="Models\Portfolio.edmx.sql" />
     <Content Include="Models\Site.edmx.sql" />
@@ -270,6 +316,8 @@
     <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.bxslider.min.js" />
+    <Content Include="Scripts\jquery.mousewheel.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

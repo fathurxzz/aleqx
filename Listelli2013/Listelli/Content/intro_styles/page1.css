@@ -1,0 +1,71 @@
+.page1 {
+    background: url('../img/page1/background.jpg');
+    background-size: cover;
+    min-width: 800px;
+}
+
+.page1 .info {
+    max-width: 810px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -80px auto 0 -405px;
+}
+
+.page1 .info .eco
+{
+    padding-left: 165px;
+    background: url("../img/page1/slide1-logo-li-eco.svg") no-repeat left center;
+}
+
+.page1 .info .snake
+{
+    height: 159px;
+    background: url("../img/page1/slide1-zmeykacopy.svg") no-repeat;
+    padding-left: 13px;
+}
+
+.page1 .info .slogan
+{
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 45px;
+    color: #fff;
+}
+
+.page1 .info .slogan div.title
+{
+    font-family: 'Yeseva One', cursive;
+    font-size: 31px;
+    padding-left: 2px;
+}
+
+.page1 .info .slogan div.text
+{
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 14px;
+    padding-top: 14px;
+    line-height: 22px;
+}
+
+.page1 .more {
+    position: absolute;
+    width: 168px;
+    height: 108px;
+    background: url("../img/page1/slide1-uvidet-bolshe.svg");
+    left: 50%;
+    top: 100%;
+    margin-top: -118px;
+    margin-left: -84px;
+}
+
+.page1 .site {
+    position: absolute;
+    width: 220px;
+    height: 28px;
+    background: url("../img/page1/slide1-to-site.svg") no-repeat;;
+    left: 100%;
+    top: 0;
+    margin-top: 40px;
+    margin-left: -264px;
+}
