@@ -1,0 +1,89 @@
+.page2 {
+    /*background: url('../002.jpg');*/
+    background-size: cover;
+    min-width: 800px;
+}
+
+
+
+.page2 .left {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: url('../img/page2/background-left.png') no-repeat;
+    background-size: cover;
+}
+
+.page2 .right {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 50%;
+    background: url('../img/page2/background-right.jpg') no-repeat;
+    background-size: cover;
+}
+
+.page20 {
+    background: url('../img/page2/background-right.jpg');
+    background-size: cover;
+}
+
+.page21 {
+    background: url('../img/page2/slide01.jpg');
+    background-size: cover;
+}
+.page22 {
+    background: url('../img/page2/slide02.jpg');
+    background-size: cover;
+}
+
+
+.page2 .left .info {
+    max-width: 449px;
+    /*height: 296px;*/
+    position: relative;
+    /*background: url("../img/page2/text.png");*/
+
+    /*left: 50%;*/
+    top: 50%;
+    margin-top: -148px;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin-left: -225px;*/
+    color: #fff;
+    text-align: center;
+}
+
+.page2 .left .info .romb {
+    width: 96px;
+    height: 14px;
+    background: url("../img/page2/slide2-rombikcopy.svg") no-repeat;
+    position: relative;
+    margin: 0 auto;
+}
+
+.page2 .left .info .title {
+    font-size: 39px;
+    font-family: 'Yeseva One', cursive;
+
+    padding-top: 20px;
+    line-height: 40px;
+    /*height: 100px;*/
+    letter-spacing: 2px;
+}
+
+.page2 .left .info .leaf {
+    width: 68px;
+    height: 29px;
+    background: url("../img/page2/slide2-listki.svg") no-repeat;
+    position: relative;
+    margin: 20px auto 0;
+}
+
+.page2 .left .info .text {
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 14px;
+    padding-top: 18px;
+    line-height: 29px;
+    letter-spacing: 1px;
+}
