@@ -9,9 +9,22 @@
         HttpCookie cookie = new HttpCookie("listelli_show_intro", "true");
         cookie.Expires = DateTime.Now.AddDays(1);
         Response.Cookies.Add(cookie);
-        Response.Redirect("~/intro.html");
+
+
+        var mombileExpression = new System.Text.RegularExpressions.Regex("(iphone)|(android)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        bool isMobile = mombileExpression.IsMatch(Request.UserAgent);
+
+        if (isMobile)
+        {
+            Response.Redirect("~/mobile.html");
+        }
+        else
+        {
+            Response.Redirect("~/intro.html");
+        }
     }
-    
+
+    //Response.Redirect("~/mobile.html");
     
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
