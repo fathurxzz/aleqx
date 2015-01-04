@@ -239,6 +239,7 @@
     <Content Include="Content\img\m5en.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\mobile\next.png" />
+    <Content Include="Content\img\mobile\site.png" />
     <Content Include="Content\img\mobile\slide01img1.jpg" />
     <Content Include="Content\img\mobile\slide02img1.jpg" />
     <Content Include="Content\img\mobile\slide03img1.jpg" />
