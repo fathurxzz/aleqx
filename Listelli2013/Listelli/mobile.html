@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Listelli</title>
+    <link href='Content/intro_styles/jquery.bxslider.css?v=0.5' rel='stylesheet' type='text/css' />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="scripts/jquery.bxslider.min.js"></script>
+    <script src="scripts/jquery.mousewheel.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption&subset=cyrillic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Yeseva+One&subset=cyrillic' rel='stylesheet' type='text/css'>
+
+    <link href='Content/intro_styles/main.css?v=0.5' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/mobile.css?v=0.5' rel='stylesheet' type='text/css'>
+
+    <!--<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">-->
+    <style>
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            $(".more").click(function () {
+                //$(".main").moveDown();
+                sliderouter.goToNextSlide();
+            });
+
+
+            $("html").keydown(function (e) {
+                //console.log(sliderouter);
+                //console.log(slider);
+                if (e.keyCode === 40) {
+                    sliderouter.goToNextSlide();
+                } else if (e.keyCode === 38) {
+                    sliderouter.goToPrevSlide();
+                }
+//                else if (e.keyCode === 39) {
+//                    slider.goToNextSlide();
+//                } else if (e.keyCode === 37) {
+//                    slider.goToPrevSlide();
+//                }
+            });
+
+
+            var isSliding = false;
+            var index = 0;
+
+            var sliderouter = $('.bxsliderouter').bxSlider({
+                controls: false,
+                mode: 'vertical',
+                pager: true,
+                pagerType: 'full',
+                infiniteLoop: false,
+                onSlideAfter: function ($slideElement, oldIndex, newIndex) {
+                    //isSliding = false;
+                    index = newIndex;
+                    console.log('onSlideAfter index:' + index);
+                    setTimeout(function () {
+                        isSliding = false;
+                    }, 1000);
+                },
+                pager:false
+            });
+
+
+//            sliderouter.onSlideAfter(function($slideElement, oldIndex, newIndex){
+//
+//                console.log(oldIndex);
+//
+//            });
+
+            var slider = $('.bxslider').bxSlider({
+                controls: false,
+                mode: 'horizontal',
+                pager: true,
+                pagerType: 'full'
+            });
+
+
+            $(document).mousewheel(function (event, delta) {
+                if (delta == 1) {
+                    if (!isSliding && index > 0) {
+                        isSliding = true;
+                        sliderouter.goToPrevSlide();
+                    }
+                }
+                else {
+                    if (!isSliding && index < 5) {
+                        isSliding = true;
+                        sliderouter.goToNextSlide();
+                    }
+                }
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <ul class="bxsliderouter">
+        <li class="mobile page1">
+            <div class="top">
+                <div class="title">
+                    Дизайн, одобренный природой
+                </div>
+                </div>
+            <div class="bottom">
+                <div class="info">
+                    <!--<div class="romb"></div>-->
+                    <!--<div class="text">-->
+                    Природа &mdash; идеальный создатель и творец всего живого на Земле с Первого дня<br>
+                    нашего существования. Мы решили позволить ей стать Главным<br>
+                    дизайнером Листелли в 2015 году
+                    <!--</div>-->
+                    <!--<div class="leaf"></div>-->
+                </div>
+                <a href="#" class="more"></a>
+            </div>
+        </li>
+
+
+        <li class="mobile page2">
+            <div class="top">
+                <div class="title">
+                    Полное сохранение природных свойств
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="info">
+
+                    Попадая из родной обители &mdash; Леса, &mdash; в наши дома, дерево сохраняет
+                    свои
+                    природные свойства, обеспечивая помещению фильтрацию воздуха, простоту ухода и неповторимые
+                    ощущения натуральности рядом
+
+                </div>
+                <a href="#" class="more"></a>
+            </div>
+        </li>
+
+
+        <li class="mobile page3">
+            <div class="top">
+                <div class="title">
+                    Гармония, эстетика, практичность
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="info">
+
+                    Минимально вмешиваясь в создаваемые Природой формы, мы получаем завораживающие
+                    своей
+                    красотой и гармоничностью результаты
+
+                </div>
+                <a href="#" class="more"></a>
+            </div>
+        </li>
+
+        <li class="mobile page4">
+            <div class="top">
+                <div class="title">
+                    Природа как стиль жизни
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="info">
+
+                    Позвольте себе быть ближе к Природе, где бы Вы не находились - в квартире или
+                    загородном доме, ресторане или офисе. Интерьерные решения невероятной красоты и исключительной
+                    экологичности теперь доступны повсюду!
+
+                </div>
+                <a href="#" class="more"></a>
+            </div>
+        </li>
+        <li class="mobile page5">
+            <div class="top">
+                <div class="title">
+                    Забота и сохранение
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="info">
+
+                    Природа позаботилась о создании шедевральных форм и их долговечности. Продолжая
+                    идею
+                    Природы, мы считаем своим долгом заботиться о каждом созданном нами интерьере. В Вашем
+                    распоряжении
+                    всевозможный уход, обновление и реставрация изделий.
+
+                </div>
+                <a href="#" class="more"></a>
+            </div>
+        </li>
+        <li class="mobile page6">
+            <div class="top">
+            </div>
+            <div class="bottom">
+                <a href="http://listelli.ua" class="site"></a>
+            </div>
+        </li>
+
+    </ul>
+</div>
+</body>
+</html>

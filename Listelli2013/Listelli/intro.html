@@ -2,19 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Listelli</title>
-    <link href='Content/intro_styles/jquery.bxslider.css?v=0.5' rel='stylesheet' type='text/css'/>
+    <link href='Content/intro_styles/jquery.bxslider.css?v=0.5' rel='stylesheet' type='text/css' />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="scripts/jquery.bxslider.min.js"></script>
     <script src="scripts/jquery.mousewheel.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption&subset=cyrillic' rel='stylesheet' type='text/css'/>
-    <link href='http://fonts.googleapis.com/css?family=Yeseva+One&subset=cyrillic' rel='stylesheet' type='text/css'/>
-    <link href='Content/intro_styles/main.css?v=0.5' rel='stylesheet' type='text/css'/>
-    <link href='Content/intro_styles/page1.css?v=0.5' rel='stylesheet' type='text/css'/>
-    <link href='Content/intro_styles/page2.css?v=0.5' rel='stylesheet' type='text/css'/>
-    <link href='Content/intro_styles/page3.css?v=0.5' rel='stylesheet' type='text/css'/>
-    <link href='Content/intro_styles/page4.css?v=0.5' rel='stylesheet' type='text/css'/>
-    <link href='Content/intro_styles/page5.css?v=0.5' rel='stylesheet' type='text/css'/>
-    <link href='Content/intro_styles/page6.css?v=0.5' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption&subset=cyrillic' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Yeseva+One&subset=cyrillic' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/main.css?v=0.5' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page1.css?v=0.5' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page2.css?v=0.5' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page3.css?v=0.5' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page4.css?v=0.5' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page5.css?v=0.5' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page6.css?v=0.5' rel='stylesheet' type='text/css' />
     <script>
         $(document).ready(function () {
             $(".more").click(function () {
@@ -29,26 +29,46 @@
                 }
             });
 
+            var isSliding = false;
+            var index = 0;
+
             var sliderouter = $('.bxsliderouter').bxSlider({
                 controls: false,
                 mode: 'vertical',
                 pager: true,
-                pagerType: 'full'
+                pagerType: 'full',
+                infiniteLoop: false,
+                onSlideAfter: function ($slideElement, oldIndex, newIndex) {
+                    //isSliding = false;
+                    index = newIndex;
+                    console.log('onSlideAfter index:' + index);
+                    setTimeout(function () { isSliding = false; }, 1000);
+                }
             });
+
+
 
             var slider = $('.bxslider').bxSlider({
                 controls: false,
                 mode: 'horizontal',
                 pager: true,
-                pagerType: 'full'
+                pagerType: 'full',
+                infiniteLoop: false
             });
 
             $(document).mousewheel(function (event, delta) {
-                if (delta > 0) {
-                    sliderouter.goToPrevSlide();
+                console.log('delta: ' + delta + '; isSliding: ' + isSliding + '; index: ' + index);
+                if (delta == 1) {
+                    if (!isSliding && index > 0) {
+                        isSliding = true;
+                        sliderouter.goToPrevSlide();
+                    }
                 }
                 else {
-                    sliderouter.goToNextSlide();
+                    if (!isSliding && index < 5) {
+                        isSliding = true;
+                        sliderouter.goToNextSlide();
+                    }
                 }
             });
         });
@@ -56,129 +76,124 @@
 </head>
 <body>
     <div class="wrapper">
-    <!--<div id="bx-pager">-->
-    <!---->
+        <!--<div id="bx-pager">-->
+        <!---->
 
-    <!--</div>-->
-    <ul class="bxsliderouter">
-        <li class="page1">
-            <a href="http://listelli.ua" class="site"></a>
+        <!--</div>-->
+        <ul class="bxsliderouter">
+            <li class="page1">
+                <a href="http://listelli.ua" class="site"></a>
 
-            <div class="info">
-                <div class="eco">
-                    <div class="snake">
-                        <div class="slogan">
-                            <div class="title">Дизайн, одобренный природой</div>
-                            <div class="text">
-                                Природа &mdash; идеальный создатель и творец всего живого на Земле с Первого дня<br>
-                                нашего существования. Мы решили позволить ей стать Главным<br>
-                                дизайнером Листелли в 2015 году
+                <div class="info">
+                    <div class="eco">
+                        <div class="snake">
+                            <div class="slogan">
+                                <div class="title">Дизайн, одобренный природой</div>
+                                <div class="text">
+                                    Природа &mdash; идеальный создатель и творец всего живого на Земле с Первого дня<br>
+                                    нашего существования. Мы решили позволить ей стать Главным<br>
+                                    дизайнером Листелли в 2015 году
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <a href="#" class="more">
-            </a>
-        </li>
-        <li class="page2">
-            <div class="left">
-                <div class="info">
-                    <div class="romb"></div>
-                    <div class="title">Полное сохранение природных свойств</div>
-                    <div class="leaf"></div>
-                    <div class="text">Попадая из родной обители &mdash; Леса, &mdash; в наши дома, дерево сохраняет
+                <a href="#" class="more"></a>
+            </li>
+            <li class="page2">
+                <div class="left">
+                    <div class="info">
+                        <div class="romb"></div>
+                        <div class="title">Полное сохранение природных свойств</div>
+                        <div class="leaf"></div>
+                        <div class="text">
+                            Попадая из родной обители &mdash; Леса, &mdash; в наши дома, дерево сохраняет
                         свои
                         природные свойства, обеспечивая помещению фильтрацию воздуха, простоту ухода и неповторимые
                         ощущения натуральности рядом
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="right">
+                <div class="right">
+                    <ul class="bxslider">
+                        <li class="page20"></li>
+                        <li class="page21"></li>
+                        <li class="page22"></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="page3">
                 <ul class="bxslider">
-                    <li class="page20">
-                    </li>
-                    <li class="page21">
-                    </li>
-                    <li class="page22">
-                    </li>
+                    <li class="page30"></li>
+                    <li class="page31"></li>
+                    <li class="page32"></li>
+                    <li class="page33"></li>
                 </ul>
-            </div>
-        </li>
-        <li class="page3">
-            <ul class="bxslider">
-                <li class="page30">
-                </li>
-                <li class="page31">
-                </li>
-                <li class="page32">
-                </li>
-                <li class="page33">
-                </li>
-            </ul>
 
-            <div class="info">
-                <div class="romb"></div>
-                <div class="title">Гармония, эстетика, практичность</div>
-                <div class="leaf"></div>
-                <div class="text">Минимально вмешиваясь в создаваемые Природой формы, мы получаем завораживающие
+                <div class="info">
+                    <div class="romb"></div>
+                    <div class="title">Гармония, эстетика, практичность</div>
+                    <div class="leaf"></div>
+                    <div class="text">
+                        Минимально вмешиваясь в создаваемые Природой формы, мы получаем завораживающие
                     своей
                     красотой и гармоничностью результаты
+                    </div>
                 </div>
-            </div>
 
-        </li>
-        <li class="page4">
-            <ul class="bxslider">
-                <li class="page40">
-                </li>
-                <li class="page41">
-                </li>
-                <li class="page42">
-                </li>
-                <li class="page43">
-                </li>
-            </ul>
-            <div class="info">
-                <div class="romb"></div>
-                <div class="title">Природа как стиль жизни</div>
-                <div class="leaf"></div>
-                <div class="text">Позвольте себе быть ближе к Природе, где бы Вы не находились - в квартире или
+            </li>
+            <li class="page4">
+                <ul class="bxslider">
+                    <li class="page40"></li>
+                    <li class="page41"></li>
+                    <li class="page42"></li>
+                    <li class="page43"></li>
+                </ul>
+                <div class="info">
+                    <div class="romb"></div>
+                    <div class="title">Природа как стиль жизни</div>
+                    <div class="leaf"></div>
+                    <div class="text">
+                        Позвольте себе быть ближе к Природе, где бы Вы не находились - в квартире или
                     загородном доме, ресторане или офисе. Интерьерные решения невероятной красоты и исключительной
                     экологичности теперь доступны повсюду!
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="page5">
-            <div class="info">
-                <div class="romb"></div>
-                <div class="title">Забота и сохранение</div>
-                <div class="leaf"></div>
-                <div class="text">Природа позаботилась о создании шедевральных форм и их долговечности. Продолжая
+            </li>
+            <li class="page5">
+                <div class="info">
+                    <div class="romb"></div>
+                    <div class="title">Забота и сохранение</div>
+                    <div class="leaf"></div>
+                    <div class="text">
+                        Природа позаботилась о создании шедевральных форм и их долговечности. Продолжая
                     идею
                     Природы, мы считаем своим долгом заботиться о каждом созданном нами интерьере. В Вашем
                     распоряжении
                     всевозможный уход, обновление и реставрация изделий.
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="page6">
-            <div class="text"></div>
-            <a href="http://listelli.ua" class="site"></a>
+            </li>
+            <li class="page6">
+                <div class="text"></div>
+                <a href="http://listelli.ua" class="site"></a>
 
 
-            <div class="footer">
-                <div class="em">
-                    <div class="logo"></div>
-                    <div class="copy"> Сделано в <br>
-                        <a href="http://eugene-miller.com">Студии Евгения Миллера</a></div>
+                <div class="footer">
+                    <div class="em">
+                        <div class="logo"></div>
+                        <div class="copy">
+                            Сделано в
+                            <br>
+                            <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
 
-</div>
+    </div>
 </body>
 </html>

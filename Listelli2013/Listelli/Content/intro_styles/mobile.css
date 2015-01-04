@@ -1,0 +1,103 @@
+.mobile{
+    padding: 0;
+    margin: 0;
+    min-height: 500px;
+}
+
+.mobile .top{
+    font-size: 39px;
+    font-family: 'Yeseva One', cursive;
+    line-height: 50px;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    height: 50%;
+
+    color: #ffffff;
+}
+
+
+
+.mobile .top .title{
+    max-width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -148px;
+}
+
+.mobile .bottom{
+    background-color: #ffffff;
+    height: 50%;
+    color: #000000;
+}
+
+.mobile .bottom .info {
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 24px;
+    max-width: 449px;
+    line-height: 35px;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    margin-top: -120px;
+    margin-left: -220px;
+}
+
+.mobile .more {
+    position: absolute;
+    width: 64px;
+    height: 34px;
+    background: url("../img/mobile/next.png");
+    left: 50%;
+    top: 100%;
+    margin-top: -50px;
+    margin-left: -32px;
+}
+
+
+.mobile.page1 .top{
+    background: url('../img/mobile/slide01img1.jpg') no-repeat;
+    background-size: cover;
+}
+
+.mobile.page2 .top{
+    background: url('../img/mobile/slide02img1.jpg') no-repeat;
+    background-size: cover;
+}
+
+.mobile.page3 .top{
+    background: url('../img/mobile/slide03img1.jpg') no-repeat;
+    background-size: cover;
+    color: #000000;
+}
+
+.mobile.page4 .top{
+    background: url('../img/mobile/slide04img1.jpg') no-repeat;
+    background-size: cover;
+}
+.mobile.page5 .top{
+    background: url('../img/mobile/slide05img1.jpg') no-repeat;
+    background-size: cover;
+}
+.mobile.page6 .top{
+    background: url('../img/mobile/slide06img1.jpg') no-repeat;
+    background-size: cover;
+}
+
+.mobile.page6 .bottom{
+    background-color: #000000;
+}
+
+.mobile.page6 .site {
+    position: absolute;
+    width: 220px;
+    height: 28px;
+    background: url("../img/page1/slide1-to-site.svg");
+    left: 50%;
+    top: 75%;
+    margin-top: -15px;
+    margin-left: -110px;
+}
