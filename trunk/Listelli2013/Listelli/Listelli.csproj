@@ -238,6 +238,13 @@
     <Content Include="Content\img\m5.gif" />
     <Content Include="Content\img\m5en.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
+    <Content Include="Content\img\mobile\next.png" />
+    <Content Include="Content\img\mobile\slide01img1.jpg" />
+    <Content Include="Content\img\mobile\slide02img1.jpg" />
+    <Content Include="Content\img\mobile\slide03img1.jpg" />
+    <Content Include="Content\img\mobile\slide04img1.jpg" />
+    <Content Include="Content\img\mobile\slide05img1.jpg" />
+    <Content Include="Content\img\mobile\slide06img1.jpg" />
     <Content Include="Content\img\page1\background.jpg" />
     <Content Include="Content\img\page1\background.png" />
     <Content Include="Content\img\page1\slide1-logo-li-eco.svg" />
@@ -287,6 +294,7 @@
     <Content Include="Content\img\title-right.gif" />
     <Content Include="Content\intro_styles\jquery.bxslider.css" />
     <Content Include="Content\intro_styles\main.css" />
+    <Content Include="Content\intro_styles\mobile.css" />
     <Content Include="Content\intro_styles\page1.css" />
     <Content Include="Content\intro_styles\page2.css" />
     <Content Include="Content\intro_styles\page3.css" />
@@ -303,6 +311,7 @@
     <Content Include="emails.txt" />
     <Content Include="Global.asax" />
     <Content Include="intro.html" />
+    <Content Include="mobile.html" />
     <Content Include="Models\Customer.edmx.sql" />
     <Content Include="Models\Portfolio.edmx.sql" />
     <Content Include="Models\Site.edmx.sql" />
