@@ -6,7 +6,8 @@
     <link href='Content/intro_styles/jquery.bxslider.css?v=0.5' rel='stylesheet' type='text/css' />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="scripts/jquery.bxslider.min.js"></script>
-    <script src="scripts/jquery.mousewheel.min.js"></script>
+    <script src="scripts/jquery.easing.1.3.js"></script>
+    <!--<script src="scripts/jquery.mousewheel.min.js"></script>-->
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption&subset=cyrillic' rel='stylesheet'
           type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Yeseva+One&subset=cyrillic' rel='stylesheet' type='text/css'>
@@ -26,71 +27,47 @@
             });
 
 
-            $("html").keydown(function (e) {
-                //console.log(sliderouter);
-                //console.log(slider);
-                if (e.keyCode === 40) {
-                    sliderouter.goToNextSlide();
-                } else if (e.keyCode === 38) {
-                    sliderouter.goToPrevSlide();
-                }
-//                else if (e.keyCode === 39) {
-//                    slider.goToNextSlide();
-//                } else if (e.keyCode === 37) {
-//                    slider.goToPrevSlide();
-//                }
-            });
-
-
-            var isSliding = false;
-            var index = 0;
+            //var isSliding = false;
+            //var index = 0;
 
             var sliderouter = $('.bxsliderouter').bxSlider({
                 controls: false,
                 mode: 'vertical',
-                pager: true,
                 pagerType: 'full',
                 infiniteLoop: false,
-                onSlideAfter: function ($slideElement, oldIndex, newIndex) {
-                    //isSliding = false;
-                    index = newIndex;
-                    console.log('onSlideAfter index:' + index);
-                    setTimeout(function () {
-                        isSliding = false;
-                    }, 1000);
-                },
+                touchEnabled: true,
+                easing: 'linear',
+                useCSS: false,
+                preloadImages: 'all',
+                swipeThreshold:10,
+                //oneToOneTouch:false,
+                //onSlideAfter: function ($slideElement, oldIndex, newIndex) {
+                //    //isSliding = false;
+                //    index = newIndex;
+                //    console.log('onSlideAfter index:' + index);
+                //    setTimeout(function () {
+                //        isSliding = false;
+                //    }, 1000);
+                //},
                 pager:false
             });
 
 
-//            sliderouter.onSlideAfter(function($slideElement, oldIndex, newIndex){
-//
-//                console.log(oldIndex);
-//
-//            });
 
-            var slider = $('.bxslider').bxSlider({
-                controls: false,
-                mode: 'horizontal',
-                pager: true,
-                pagerType: 'full'
-            });
-
-
-            $(document).mousewheel(function (event, delta) {
-                if (delta == 1) {
-                    if (!isSliding && index > 0) {
-                        isSliding = true;
-                        sliderouter.goToPrevSlide();
-                    }
-                }
-                else {
-                    if (!isSliding && index < 5) {
-                        isSliding = true;
-                        sliderouter.goToNextSlide();
-                    }
-                }
-            });
+            //$(document).mousewheel(function (event, delta) {
+            //    if (delta == 1) {
+            //        if (!isSliding && index > 0) {
+            //            isSliding = true;
+            //            sliderouter.goToPrevSlide();
+            //        }
+            //    }
+            //    else {
+            //        if (!isSliding && index < 5) {
+            //            isSliding = true;
+            //            sliderouter.goToNextSlide();
+            //        }
+            //    }
+            //});
 
 
         });
