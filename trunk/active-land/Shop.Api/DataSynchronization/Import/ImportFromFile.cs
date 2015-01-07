@@ -28,7 +28,7 @@ namespace Shop.Api.DataSynchronization.Import
             return bool.TryParse(value, out result) ? result : defaultValue;
         }
 
-        private static string ParseStrinfValue(string source)
+        private static string ParseStringValue(string source)
         {
             if (source.StartsWith("\"") && source.EndsWith("\""))
             {
@@ -82,27 +82,125 @@ namespace Shop.Api.DataSynchronization.Import
                     }
                     if (rowCounter > 2)
                     {
-                        string newId = x[fieldMapping["ExternalId"]];
-                        rowExternalId = newId;
-                        if (newId != oldId)
-                        {
-                            if (currentProduct != null)
-                            {
-                                if (products.FirstOrDefault(p => p.ExternalId == currentProduct.ExternalId) == null)
-                                {
-                                    products.Add(currentProduct);
-                                }
-                                else
-                                {
-                                    throw new Exception(string.Format("Дублирование товара {0}", currentProduct.ExternalId));
-                                }
-                            }
+                        //string newId = x[fieldMapping["ExternalId"]];
+                        //rowExternalId = newId;
+                        //if (newId != oldId)
+                        //{
+                        //    if (currentProduct != null)
+                        //    {
+                        //        if (products.FirstOrDefault(p => p.ExternalId == currentProduct.ExternalId) == null)
+                        //        {
+                        //            products.Add(currentProduct);
+                        //        }
+                        //        else
+                        //        {
+                        //            throw new Exception(string.Format("Дублирование товара {0}", currentProduct.ExternalId));
+                        //        }
+                        //    }
 
-                            var product = new ImportedProduct
+                        //    var product = new ImportedProduct
+                        //    {
+                        //        ExternalId = ParseStrinfValue(x[fieldMapping["ExternalId"]]),
+                        //        Name = ParseStrinfValue(x[fieldMapping["Name"]]),
+                        //        Title = ParseStrinfValue(x[fieldMapping["Title"]]),
+                        //        OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]]),
+                        //        Price = ConvertToDecimalValue(x[fieldMapping["Price"]]),
+                        //        IsNew = ConvertToBooleanValue(x[fieldMapping["IsNew"]]),
+                        //        IsDiscount = ConvertToBooleanValue(x[fieldMapping["IsDiscount"]]),
+                        //        IsTopSale = ConvertToBooleanValue(x[fieldMapping["IsTopSale"]]),
+                        //        IsActive = ConvertToBooleanValue(x[fieldMapping["IsActive"]]),
+
+                        //        //SeoDescription = x[fieldMapping["SeoDescription"]],
+                        //        //SeoKeywords = x[fieldMapping["SeoKeywords"]],
+                        //        //SeoText = x[fieldMapping["SeoText"]],
+
+                        //        ImportedProductStocks = new List<ImportedProductStock>(),
+                        //        //ImportedProductAttibutes = new Dictionary<string, string>()
+                        //        ImportedProductAttibutes = new List<ImportedProductAttribute>()
+                        //    };
+
+                        //    if (fieldMapping.ContainsKey("SeoDescription"))
+                        //    {
+                        //        product.SeoDescription = ParseStrinfValue(x[fieldMapping["SeoDescription"]]);
+                        //    }
+                        //    if (fieldMapping.ContainsKey("SeoKeywords"))
+                        //    {
+                        //        product.SeoKeywords = ParseStrinfValue(x[fieldMapping["SeoKeywords"]]);
+                        //    }
+                        //    if (fieldMapping.ContainsKey("SeoText"))
+                        //    {
+                        //        product.SeoText = ParseStrinfValue(x[fieldMapping["SeoText"]]);
+                        //    }
+
+                        //    if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
+                        //    {
+                        //        product.ImportedProductStocks.Add(new ImportedProductStock
+                        //        {
+                        //            StockNumber = ParseStrinfValue(x[fieldMapping["ProductStock.StockNumber"]]),
+                        //            Size = ParseStrinfValue(x[fieldMapping["ProductStock.Size"]]),
+                        //            Color = ParseStrinfValue(x[fieldMapping["ProductStock.Color"]])
+                        //        });
+                        //    }
+
+
+
+
+                        //    foreach (var attr in attributeMapping)
+                        //    {
+                        //        var importedAttributes = x[attributeMapping[attr.Key]];
+                        //        string[] attributes = importedAttributes.Split(new[] { "#" }, StringSplitOptions.RemoveEmptyEntries);
+                        //        var importedProductAttribute = new ImportedProductAttribute
+                        //        {
+                        //            ExternalId = attr.Key,
+                        //            Values = new List<string>()
+                        //        };
+                        //        foreach (var attribute in attributes)
+                        //        {
+                        //            importedProductAttribute.Values.Add(ParseStrinfValue(attribute));
+                        //        }
+                        //        product.ImportedProductAttibutes.Add(importedProductAttribute);
+                        //    }
+
+
+                        //    currentProduct = product;
+                        //}
+                        //else
+                        //{
+                        //    if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
+                        //    {
+                        //        var productStock = new ImportedProductStock
+                        //        {
+                        //            StockNumber = ParseStrinfValue(x[fieldMapping["ProductStock.StockNumber"]]),
+                        //            Size = ParseStrinfValue(x[fieldMapping["ProductStock.Size"]]),
+                        //            Color = ParseStrinfValue(x[fieldMapping["ProductStock.Color"]])
+
+                        //        };
+                        //        if (currentProduct != null)
+                        //        {
+                        //            if (currentProduct.ImportedProductStocks == null)
+                        //            {
+                        //                currentProduct.ImportedProductStocks = new List<ImportedProductStock>();
+                        //            }
+                        //            currentProduct.ImportedProductStocks.Add(productStock);
+                        //        }
+                        //    }
+                        //}
+
+                        //oldId = newId;
+
+
+
+
+                        rowExternalId = x[fieldMapping["ExternalId"]];
+
+                        ImportedProduct product = products.FirstOrDefault(p => p.ExternalId == rowExternalId);
+                        if (product == null)
+                        {
+                            product = new ImportedProduct
                             {
-                                ExternalId = ParseStrinfValue(x[fieldMapping["ExternalId"]]),
-                                Name = ParseStrinfValue(x[fieldMapping["Name"]]),
-                                Title = ParseStrinfValue(x[fieldMapping["Title"]]),
+                                ExternalId = ParseStringValue(x[fieldMapping["ExternalId"]]),
+                                Name = ParseStringValue(x[fieldMapping["Name"]]),
+                                Title = ParseStringValue(x[fieldMapping["Title"]]),
                                 OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]]),
                                 Price = ConvertToDecimalValue(x[fieldMapping["Price"]]),
                                 IsNew = ConvertToBooleanValue(x[fieldMapping["IsNew"]]),
@@ -121,28 +219,26 @@ namespace Shop.Api.DataSynchronization.Import
 
                             if (fieldMapping.ContainsKey("SeoDescription"))
                             {
-                                product.SeoDescription = ParseStrinfValue(x[fieldMapping["SeoDescription"]]);
+                                product.SeoDescription = ParseStringValue(x[fieldMapping["SeoDescription"]]);
                             }
                             if (fieldMapping.ContainsKey("SeoKeywords"))
                             {
-                                product.SeoKeywords = ParseStrinfValue(x[fieldMapping["SeoKeywords"]]);
+                                product.SeoKeywords = ParseStringValue(x[fieldMapping["SeoKeywords"]]);
                             }
                             if (fieldMapping.ContainsKey("SeoText"))
                             {
-                                product.SeoText = ParseStrinfValue(x[fieldMapping["SeoText"]]);
+                                product.SeoText = ParseStringValue(x[fieldMapping["SeoText"]]);
                             }
 
                             if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
                             {
                                 product.ImportedProductStocks.Add(new ImportedProductStock
                                 {
-                                    StockNumber = ParseStrinfValue(x[fieldMapping["ProductStock.StockNumber"]]),
-                                    Size = ParseStrinfValue(x[fieldMapping["ProductStock.Size"]]),
-                                    Color = ParseStrinfValue(x[fieldMapping["ProductStock.Color"]])
+                                    StockNumber = ParseStringValue(x[fieldMapping["ProductStock.StockNumber"]]),
+                                    Size = ParseStringValue(x[fieldMapping["ProductStock.Size"]]),
+                                    Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]])
                                 });
                             }
-
-
 
 
                             foreach (var attr in attributeMapping)
@@ -156,51 +252,75 @@ namespace Shop.Api.DataSynchronization.Import
                                 };
                                 foreach (var attribute in attributes)
                                 {
-                                    importedProductAttribute.Values.Add(ParseStrinfValue(attribute));
+                                    importedProductAttribute.Values.Add(ParseStringValue(attribute));
                                 }
                                 product.ImportedProductAttibutes.Add(importedProductAttribute);
                             }
 
+                            products.Add(product);
 
-                            currentProduct = product;
                         }
                         else
                         {
                             if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
                             {
-                                var productStock = new ImportedProductStock
+                                product.ImportedProductStocks.Add(new ImportedProductStock
                                 {
-                                    StockNumber = ParseStrinfValue(x[fieldMapping["ProductStock.StockNumber"]]),
-                                    Size = ParseStrinfValue(x[fieldMapping["ProductStock.Size"]]),
-                                    Color = ParseStrinfValue(x[fieldMapping["ProductStock.Color"]])
+                                    StockNumber = ParseStringValue(x[fieldMapping["ProductStock.StockNumber"]]),
+                                    Size = ParseStringValue(x[fieldMapping["ProductStock.Size"]]),
+                                    Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]])
+                                });
+                            }
 
-                                };
-                                if (currentProduct != null)
+                            foreach (var attr in attributeMapping)
+                            {
+                                var importedAttributes = x[attributeMapping[attr.Key]];
+                                string[] attributes = importedAttributes.Split(new[] { "#" }, StringSplitOptions.RemoveEmptyEntries);
+
+
+                                var importedProductAttribute = product.ImportedProductAttibutes.FirstOrDefault(ipa => ipa.ExternalId == attr.Key);
+                                if (importedProductAttribute == null)
                                 {
-                                    if (currentProduct.ImportedProductStocks == null)
+                                    importedProductAttribute = new ImportedProductAttribute
                                     {
-                                        currentProduct.ImportedProductStocks = new List<ImportedProductStock>();
+                                        ExternalId = attr.Key,
+                                        Values = new List<string>()
+                                    };
+                                    foreach (var attribute in attributes)
+                                    {
+                                        var value = ParseStringValue(attribute);
+                                        importedProductAttribute.Values.Add(value);
                                     }
-                                    currentProduct.ImportedProductStocks.Add(productStock);
+                                    product.ImportedProductAttibutes.Add(importedProductAttribute);
                                 }
+                                else
+                                {
+                                    foreach (var attribute in attributes)
+                                    {
+                                        var value = ParseStringValue(attribute);
+                                        if (!importedProductAttribute.Values.Contains(value))
+                                        {
+                                            importedProductAttribute.Values.Add(value);
+                                        }
+                                    }
+                                }
+
                             }
                         }
-
-                        oldId = newId;
                     }
                 }
 
-                if (currentProduct != null)
-                {
-                    if (products.FirstOrDefault(p => p.ExternalId == currentProduct.ExternalId) == null)
-                    {
-                        products.Add(currentProduct);
-                    }
-                    else
-                    {
-                        throw new Exception(string.Format("Дублирование товара {0}", currentProduct.ExternalId));
-                    }
-                }
+                //if (currentProduct != null)
+                //{
+                //    if (products.FirstOrDefault(p => p.ExternalId == currentProduct.ExternalId) == null)
+                //    {
+                //        products.Add(currentProduct);
+                //    }
+                //    else
+                //    {
+                //        throw new Exception(string.Format("Дублирование товара {0}", currentProduct.ExternalId));
+                //    }
+                //}
 
                 return products;
             }
