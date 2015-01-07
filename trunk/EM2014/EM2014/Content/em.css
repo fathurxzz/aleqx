@@ -8,7 +8,7 @@
     margin: 0 auto;
 }
 
-.phoneLine {
+.contactsLine {
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -17,14 +17,33 @@
     min-width: 941px;
 }
 
-.phone {
+.contacts {
     text-align: center;
     padding-top: 4px;
     font-size: 14px;
 }
 
-.phone span.address {
+.contacts span.address {
     padding-right: 20px;
+}
+
+
+.contacts a {
+    font-family: 'PT Sans Caption';
+    color: #000;
+    text-decoration: none;
+}
+
+
+.contacts .mailto {
+    margin-left: 15px;
+}
+
+.contacts .skype {
+    margin-left: 15px;
+    /*background: url('img/skype.png') no-repeat;*/
+    background: url('svg/skype.svg') no-repeat;
+    padding-left: 22px;
 }
 
 
