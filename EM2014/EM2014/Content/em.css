@@ -32,12 +32,22 @@
     font-family: 'PT Sans Caption';
     color: #000;
     text-decoration: none;
+    font-weight: 400;
 }
 
 
 .contacts .mailto {
     margin-left: 15px;
 }
+
+.contacts .mailto a {
+    font-size: 13px;
+}
+
+.contacts .skype a {
+    font-size: 13px;
+}
+
 
 .contacts .skype {
     margin-left: 15px;
