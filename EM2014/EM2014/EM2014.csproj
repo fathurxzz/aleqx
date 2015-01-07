@@ -201,11 +201,13 @@
     <Content Include="Content\img\phone-bg.png" />
     <Content Include="Content\img\site-bg.gif" />
     <Content Include="Content\img\site-bg.png" />
+    <Content Include="Content\img\skype.png" />
     <Content Include="Content\img\slogan.gif" />
     <Content Include="Content\img\slogan.png" />
     <Content Include="Content\login.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\product.css" />
+    <Content Include="Content\svg\skype.svg" />
     <Content Include="favicon.ico" />
     <Content Include="favicon_old.ico" />
     <Content Include="Global.asax" />
