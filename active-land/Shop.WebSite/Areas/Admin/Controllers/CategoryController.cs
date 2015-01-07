@@ -21,6 +21,10 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             _repository.LangId = CurrentLangId;
             var categories = _repository.GetCategories();
+            foreach (var category in categories)
+            {
+                category.CurrentLang = CurrentLangId;
+            }
             return View(categories);
         }
 
