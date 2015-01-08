@@ -30,10 +30,10 @@ namespace Shop.WebSite.Controllers
             return View(model);
         }
 
-        public ActionResult Catalogue(string category, string filter, int? page, string sortOrder, string sortBy)
+        public ActionResult Catalogue(string category, string filter, int? page, string sortOrder)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository,CurrentLangId, page, category, filter: filter,sortBy:sortBy,sortOrder:sortOrder)
+            var model = new CatalogueModel(_repository,CurrentLangId, page, category, filter, sortOrder)
             {
                 CurrentLangCode = CurrentLangCode
             };
@@ -47,7 +47,7 @@ namespace Shop.WebSite.Controllers
         public ActionResult Search(string q, int? page)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, CurrentLangId, page,query:q)
+            var model = new SearchModel(_repository, CurrentLangId, page, query: q)
             {
                 CurrentLangCode = CurrentLangCode
             };
@@ -61,7 +61,7 @@ namespace Shop.WebSite.Controllers
         public ActionResult ProductDetails(string product, string msg)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, CurrentLangId, null, productName: product)
+            var model = new ProductDetailsModel(_repository, CurrentLangId, product)
             {
                 CurrentLangCode = CurrentLangCode
             };
@@ -77,7 +77,7 @@ namespace Shop.WebSite.Controllers
         public ActionResult ArticleDetails(string article)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, CurrentLangId, null, articleName: article)
+            var model = new SiteModel(_repository, CurrentLangId, "category", articleName: article)
             {
                 CurrentLangCode = CurrentLangCode
             };
