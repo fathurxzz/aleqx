@@ -569,6 +569,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\ProductFilters.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Shared\SearchPaging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

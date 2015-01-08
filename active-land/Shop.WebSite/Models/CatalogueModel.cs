@@ -22,7 +22,7 @@ namespace Shop.WebSite.Models
         public Product Product { get; set; }
 
         public string CurrentFilter { get; set; }
-        public string[] FilterArray { get; set; }
+        //public string[] FilterArray { get; set; }
         public int ProductTotalCount { get; set; }
         public Category CurrentCategory { get; set; }
         public List<Product> FilteredProducts { get; set; }
@@ -33,42 +33,7 @@ namespace Shop.WebSite.Models
 
         private IShopRepository _repository { get; set; }
 
-        private Dictionary<string, List<string>> GroupFilterString(string categoryName, string filterString)
-        {
-            var result = new Dictionary<string, List<string>>();
-            if (!string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(categoryName))
-            {
-
-                string[] filterArray = FilterArray = filterString.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
-
-                IsFiltered = FilterArray.Any();
-
-                var attributes = _repository.GetProductAttributes(categoryName);
-                foreach (var attribute in attributes)
-                {
-                    foreach (var value in attribute.ProductAttributeValues)
-                    {
-                        if (filterArray.Contains(value.Id.ToString()))
-                        {
-                            if (result.ContainsKey(attribute.Id.ToString()))
-                            {
-                                var tmp = result[attribute.Id.ToString()];
-                                tmp.Add(value.Id.ToString());
-                                result[attribute.Id.ToString()] = tmp;
-                            }
-                            else
-                            {
-                                result.Add(attribute.Id.ToString(), new List<string> { value.Id.ToString() });
-                            }
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-
-
-        private Dictionary<int, List<int>> GroupProductAttributes(IEnumerable<ProductAttribute> productAttributes, IEnumerable<int> filters)
+        private static Dictionary<int, List<int>> GroupProductAttributes(IEnumerable<ProductAttribute> productAttributes, IEnumerable<int> filters)
         {
             var result = new Dictionary<int, List<int>>();
 
@@ -92,7 +57,7 @@ namespace Shop.WebSite.Models
         }
 
 
-        private IQueryable<Product> OederProducts(IQueryable<Product> products, string sortOrder)
+        private static IQueryable<Product> OrderProducts(IQueryable<Product> products, string sortOrder)
         {
             switch (sortOrder)
             {
@@ -112,7 +77,7 @@ namespace Shop.WebSite.Models
         {
 
             _repository = repository;
-            FilterArray = new string[0];
+            //FilterArray = new string[0];
 
             var category = Categories.First(c => c.Name == categoryName);
             ProductAttributes = _repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable).ToList();
@@ -120,16 +85,19 @@ namespace Shop.WebSite.Models
             CurrentFilter = filter ?? string.Empty;
 
             //var filterValueGroups = GroupFilterString(categoryName, filter);
-            var filters = CurrentFilter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
+            var filters = CurrentFilter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
             IQueryable<Product> products = _repository.GetProductsByCategory(categoryName).Where(p => p.IsActive);
 
             Dictionary<int, List<int>> groupedAttributes = GroupProductAttributes(ProductAttributes, filters);
 
-            if (filters.Any())
-                products = products.Where(x => x.ProductAttributeValues.Any(pav => filters.Contains(pav.Id)));
 
-            products = OederProducts(products, sortOrder);
+            if (filters.Any())
+            {
+                products = products.Where(x => x.ProductAttributeValues.Any(pav => filters.Contains(pav.Id)));
+            }
+
+            products = OrderProducts(products, sortOrder);
 
             var pageSize = int.Parse(SiteSettings.GetShopSetting("ProductsPageSize"));
             
@@ -169,25 +137,24 @@ namespace Shop.WebSite.Models
             // создание фильтров
             Filters = new List<FilterViewModel>();
 
-            var filterValueGroups = GroupFilterString(categoryName, CurrentFilter);
+            //var filterValueGroups = GroupFilterString(categoryName, CurrentFilter);
 
             foreach (var productAttribute in ProductAttributes.OrderBy(p => p.SortOrder))
             {
-                if (filterValueGroups.ContainsKey(productAttribute.Id.ToString()) || productAttribute.ProductAttributeValues.Any(pav => pav.AvailableProductsCount > 0))
+                if (groupedAttributes.ContainsKey(productAttribute.Id) || productAttribute.ProductAttributeValues.Any(pav => pav.AvailableProductsCount > 0))
                 {
                     var fvm = new FilterViewModel { Title = productAttribute.Title, FilterItems = new List<FilterItem>() };
                     foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a => a.Title))
                     {
-                        if (filterValueGroups.ContainsKey(productAttribute.Id.ToString()) || categoryValue.AvailableProductsCount > 0)
+                        if (groupedAttributes.ContainsKey(productAttribute.Id) || categoryValue.AvailableProductsCount > 0)
                         {
                             var filterItem = new FilterItem
                             {
                                 Title = categoryValue.Title,
                                 AvaibleProductsCount = categoryValue.AvailableProductsCount,
                                 AvaibleProductsCountAfterApplyingFilter = categoryValue.AvailableProductsCountAfterApplyingFilter,
-                                Selected = FilterArray.Contains(categoryValue.Id.ToString()),
-                                FilterAttributeString = CatalogueFilterHelper.GetFilterStringForCheckbox(FilterArray,
-                                    categoryValue.Id.ToString(), FilterArray.Contains(categoryValue.Id.ToString())),
+                                Selected = filters.Contains(categoryValue.Id),
+                                FilterAttributeString = CatalogueFilterHelper.GetFilterStringForCheckbox(filters, categoryValue.Id, filters.Contains(categoryValue.Id)),
                                 Id = "cb_" + categoryValue.Id
                             };
 

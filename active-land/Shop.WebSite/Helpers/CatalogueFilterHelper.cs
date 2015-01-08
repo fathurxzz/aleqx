@@ -8,7 +8,8 @@ namespace Shop.WebSite.Helpers
 {
     public static class CatalogueFilterHelper
     {
-        public static string GetFilterStringForCheckbox(string[] source, string value, bool isChecked)
+
+        public static string GetFilterStringForCheckbox(IEnumerable<int> source, int value, bool isChecked)
         {
             var result = new StringBuilder();
             if (isChecked)
@@ -51,7 +52,7 @@ namespace Shop.WebSite.Helpers
                     result.Append(value);
                 }
 
-                
+
             }
             return result.ToString();
         }

@@ -1,0 +1,85 @@
+﻿@model string
+@using Shop.WebSite
+@using Shop.WebSite.Helpers
+@{
+    
+    int pageSize = int.Parse(WebSession.ShopSettings.First(ss => ss.Key == "ProductsPageSize").Value);
+    int totalCount = (int)ViewBag.ProductTotalCount;
+    int pageCount = totalCount / pageSize;
+    int page = (int)ViewBag.Page;
+    pageCount += ((totalCount % pageSize) > 0) ? 1 : 0;
+    
+}
+@if (totalCount > pageSize)
+{
+    <div class="pager-container">
+    </div>
+    <div class="pager-layer">
+        <div id="pager">
+
+            @for (int i = 0; i < pageCount; i++)
+            {
+                if (page > i + 1)
+                {
+                    if (i == 0)
+                    {
+                        if (page != 0)
+                        {
+                            <div>
+                                @Html.ActionLink((i + 1).ToString(), "Search", "Home", new {page = i,q=Model, sortOrder=ViewBag.SortOrder}, null)
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="current">@(i + 1)</div>
+                        }
+                    }
+                }
+            
+            
+
+                if (i == page)
+                {
+                    <div class="current">
+                        @Html.Raw((i + 1).ToString())
+                    </div>
+                }
+                else if (page < i - 1 || page > i + 1)
+                {
+                    if (page == i - 3 || page == i + 3)
+                    {
+                        <div class="pager-separator">
+                            &nbsp;
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>
+                        @Html.ActionLink((i + 1).ToString(), "Search", "Home", new { page = i,q=Model, sortOrder=ViewBag.SortOrder }, null)
+                    </div>
+                }
+
+            
+            
+                if (page < pageCount-2)
+                {
+                    if (i == pageCount - 1)
+                    {
+                        if (page != pageCount - 1)
+                        {
+                            <div class="last">
+                                @Html.ActionLink((i + 1).ToString(), "Search", "Home", new {page = i,q=Model, sortOrder=ViewBag.SortOrder}, null)
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="current last">@(i + 1)</div>
+                        }
+                    }
+                }
+            }
+        </div>
+    </div>
+}

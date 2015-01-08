@@ -51,6 +51,9 @@
             @Html.Raw("К сожалению по вашему запросу ничего не найдено :(")
             </div>
         }
+         <div class="clearfix"></div>
+
+        @Html.Partial("SearchPaging",(string)ViewBag.Q)
     </div>
     <div class="clearfix"></div>
 
