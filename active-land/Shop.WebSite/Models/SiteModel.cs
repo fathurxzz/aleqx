@@ -35,11 +35,12 @@ namespace Shop.WebSite.Models
         public string ErrorMessage { get; set; }
         public IEnumerable<MainPageBanner> MainPageBanners { get; set; }
         public IEnumerable<MainPageBanner> SiteBanners { get; set; }
+        public Article Article { get; set; }
 
 
         protected Stopwatch _sw = new Stopwatch();
 
-        public SiteModel(IShopRepository repository, int langId, string contentName, bool showSpecialOffers =false)
+        public SiteModel(IShopRepository repository, int langId, string contentName, bool showSpecialOffers = false, string articleName = null)
         {
             
             _sw.Start();
@@ -74,7 +75,11 @@ namespace Shop.WebSite.Models
 
             LastArticles = GetLastArticles(repository, langId, int.Parse(SiteSettings.GetShopSetting("ArticlesQuantity")));
             QuickAdvices = repository.GetQuickAdvices(true);
-            
+
+            if (articleName != null)
+            {
+                this.Article = repository.GetArticle(articleName);
+            }
            
         }
 

@@ -10,5 +10,6 @@ namespace Shop.DataAccess.Entities
     {
         public string ImageSource { get; set; }
         public bool IsInCart { get; set; }
+        public bool IsSelectedByFilter { get; set; }
     }
 }

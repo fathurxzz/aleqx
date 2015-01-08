@@ -230,9 +230,11 @@
     <Compile Include="Models\FeedbackForm.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\MainMenuModel.cs" />
+    <Compile Include="Models\ProductDetailsModel.cs" />
     <Compile Include="Models\ProductPreview.cs" />
     <Compile Include="Models\ProductPreviewLabel.cs" />
     <Compile Include="Models\ProductSelectModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\OrderComplete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
