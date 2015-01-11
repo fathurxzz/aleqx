@@ -133,7 +133,7 @@ namespace Shop.ProductDataTransfer.Console
                                 IsNew = ConvertToBooleanValue(x[fieldMapping["IsNew"]]),
                                 IsDiscount = ConvertToBooleanValue(x[fieldMapping["IsDiscount"]]),
                                 IsTopSale = ConvertToBooleanValue(x[fieldMapping["IsTopSale"]]),
-                                IsActive = ConvertToBooleanValue(x[fieldMapping["IsActive"]]),
+                                //IsActive = ConvertToBooleanValue(x[fieldMapping["IsActive"]]),
 
                                 //SeoDescription = x[fieldMapping["SeoDescription"]],
                                 //SeoKeywords = x[fieldMapping["SeoKeywords"]],
@@ -163,7 +163,8 @@ namespace Shop.ProductDataTransfer.Console
                                 {
                                     StockNumber = ParseStringValue(x[fieldMapping["ProductStock.StockNumber"]]),
                                     Size = ParseStringValue(x[fieldMapping["ProductStock.Size"]]),
-                                    Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]])
+                                    Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]]),
+                                    IsAvailable = ConvertToBooleanValue(x[fieldMapping["ProductStock.IsAvailable"]])
                                 });
                             }
 
@@ -195,7 +196,8 @@ namespace Shop.ProductDataTransfer.Console
                                 {
                                     StockNumber = ParseStringValue(x[fieldMapping["ProductStock.StockNumber"]]),
                                     Size = ParseStringValue(x[fieldMapping["ProductStock.Size"]]),
-                                    Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]])
+                                    Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]]),
+                                    IsAvailable = ConvertToBooleanValue(x[fieldMapping["ProductStock.IsAvailable"]])
                                 });
                             }
 
@@ -237,94 +239,8 @@ namespace Shop.ProductDataTransfer.Console
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        //if (newId != oldId)
-                        //{
-                        //    if (currentProduct != null)
-                        //    {
-                        //        if (products.FirstOrDefault(p => p.ExternalId == currentProduct.ExternalId) == null)
-                        //        {
-                        //            products.Add(currentProduct);
-                        //        }
-                        //        else
-                        //        {
-                        //            failedProducts++;
-                        //            failedProductsExternalIds.Add(currentProduct.ExternalId);
-                        //            System.Console.ForegroundColor = ConsoleColor.Red;
-                        //            System.Console.WriteLine("Дублирование товара {0}", currentProduct.ExternalId);
-                        //            System.Console.ForegroundColor = ConsoleColor.White;
-                        //        }
-                        //    }
-
-
-                        //    System.Console.WriteLine("Создаем товар: {0}", newId);
-
-                            
-
-                            
-
-
-
-
-                            
-
-
-                        //    currentProduct = product;
-                        //}
-                        //else
-                        //{
-                        //    if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
-                        //    {
-                        //        var productStock = new ImportedProductStock
-                        //        {
-                        //            StockNumber = ParseStringValue(x[fieldMapping["ProductStock.StockNumber"]]),
-                        //            Size = ParseStringValue(x[fieldMapping["ProductStock.Size"]]),
-                        //            Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]])
-
-                        //        };
-                        //        if (currentProduct != null)
-                        //        {
-                        //            if (currentProduct.ImportedProductStocks == null)
-                        //            {
-                        //                currentProduct.ImportedProductStocks = new List<ImportedProductStock>();
-                        //            }
-                        //            currentProduct.ImportedProductStocks.Add(productStock);
-                        //        }
-                        //    }
-                        //}
-
-                        //oldId = newId;
                     }
                 }
-
-                //if (currentProduct != null)
-                //{
-                //    if (products.FirstOrDefault(p => p.ExternalId == currentProduct.ExternalId) == null)
-                //    {
-                //        products.Add(currentProduct);
-                //    }
-                //    else
-                //    {
-                //        failedProducts++;
-                //        failedProductsExternalIds.Add(currentProduct.ExternalId);
-                //        System.Console.ForegroundColor = ConsoleColor.Red;
-                //        System.Console.WriteLine("Дублирование товара {0}", currentProduct.ExternalId);
-                //        System.Console.ForegroundColor = ConsoleColor.White;
-                //    }
-                //}
-
 
                 System.Console.ForegroundColor = ConsoleColor.Green;
                 System.Console.WriteLine("Прочитано и создано товаров: {0}", products.Count);
@@ -416,7 +332,8 @@ namespace Shop.ProductDataTransfer.Console
                                     {
                                         StockNumber = importedProductStock.StockNumber,
                                         Color = importedProductStock.Color,
-                                        Size = importedProductStock.Size
+                                        Size = importedProductStock.Size,
+                                        IsAvailable = importedProductStock.IsAvailable
                                     });
 
                                 }
@@ -463,6 +380,7 @@ namespace Shop.ProductDataTransfer.Console
                                     importedProductStock.Imported = true;
                                     productStock.Size = importedProductStock.Size;
                                     productStock.Color = importedProductStock.Color;
+                                    productStock.IsAvailable = importedProductStock.IsAvailable;
                                     res.UpdatedArticles++;
                                 }
                                 else
@@ -480,27 +398,12 @@ namespace Shop.ProductDataTransfer.Console
                                 {
                                     StockNumber = importedProductStock.StockNumber,
                                     Color = importedProductStock.Color,
-                                    Size = importedProductStock.Size
+                                    Size = importedProductStock.Size,
+                                    IsAvailable = importedProductStock.IsAvailable
                                 });
                                 res.AddedArticles++;
                             }
                             System.Console.WriteLine("ОК");
-
-                            //if (importedProduct.ImportedProductStocks != null)
-                            //{
-                            //    foreach (var importedProductStock in importedProduct.ImportedProductStocks)
-                            //    {
-                            //        if (siteProduct.ProductStocks.FirstOrDefault(ps => ps.StockNumber == importedProductStock.StockNumber) == null)
-                            //        {
-                            //            siteProduct.ProductStocks.Add(new ProductStock
-                            //            {
-                            //                StockNumber = importedProductStock.StockNumber,
-                            //                Color = importedProductStock.Color,
-                            //                Size = importedProductStock.Size
-                            //            });
-                            //        }
-                            //    }
-                            //}
 
 
                             System.Console.Write(" Обновление атрибутов...");

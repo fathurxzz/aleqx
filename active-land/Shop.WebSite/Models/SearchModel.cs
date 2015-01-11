@@ -34,7 +34,7 @@ namespace Shop.WebSite.Models
 
             if (query != null && query.Length > 1)
             {
-                products = _repository.GetProductsByQueryString(query).Where(p => p.IsActive);
+                products = _repository.GetProductsByQueryString(query).Where(p => p.ProductStocks.Any(ps => ps.IsAvailable));
             }
             else
             {
