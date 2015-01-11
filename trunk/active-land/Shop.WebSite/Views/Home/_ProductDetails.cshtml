@@ -115,7 +115,7 @@
                 В наличии размеры:
             </span>
             <select>
-                @foreach (var productStock in Model.ProductStocks.OrderBy(ps=>ps.Size))
+                @foreach (var productStock in Model.ProductStocks.Where(ps=>ps.IsAvailable).OrderBy(ps=>ps.Size))
                 {
                     <option>@(!string.IsNullOrEmpty(productStock.Size)?"Размер "+productStock.Size+", ":"")Цвет @productStock.Color</option>
                 }
@@ -126,12 +126,6 @@
             @Html.Raw(Model.Description)
         </div>
         <div id="product-attributes">
-
-
-            
-
-
-
 
             <table>
 

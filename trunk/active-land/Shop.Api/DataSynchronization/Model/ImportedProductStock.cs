@@ -11,6 +11,7 @@ namespace Shop.Api.DataSynchronization.Model
         public string StockNumber { get; set; }
         public string Size { get; set; }
         public string Color { get; set; }
+        public bool IsAvailable { get; set; }
 
         public bool Imported { get; set; }
     }
