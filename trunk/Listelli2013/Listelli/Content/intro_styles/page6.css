@@ -38,10 +38,11 @@
     width: 220px;
     height: 28px;
     background: url("../img/page1/slide1-to-site.svg");
-    left: 100%;
+    left: 50%;
     top: 100%;
-    margin-top: -70px;
-    margin-left: -264px;
+    margin-top: -220px;
+    margin-left: -110px;
+    
 }
 
 .page6 .em
