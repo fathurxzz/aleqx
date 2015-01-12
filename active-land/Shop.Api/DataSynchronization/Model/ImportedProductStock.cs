@@ -12,6 +12,8 @@ namespace Shop.Api.DataSynchronization.Model
         public string Size { get; set; }
         public string Color { get; set; }
         public bool IsAvailable { get; set; }
+        public decimal Price { get; set; }
+        public decimal OldPrice { get; set; }
 
         public bool Imported { get; set; }
     }

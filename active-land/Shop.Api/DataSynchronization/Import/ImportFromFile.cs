@@ -128,7 +128,9 @@ namespace Shop.Api.DataSynchronization.Import
                                     StockNumber = ParseStringValue(x[fieldMapping["ProductStock.StockNumber"]]),
                                     Size = ParseStringValue(x[fieldMapping["ProductStock.Size"]]),
                                     Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]]),
-                                    IsAvailable = ConvertToBooleanValue(x[fieldMapping["ProductStock.IsAvailable"]])
+                                    IsAvailable = ConvertToBooleanValue(x[fieldMapping["ProductStock.IsAvailable"]]),
+                                    Price = ConvertToDecimalValue(x[fieldMapping["Price"]]),
+                                    OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]])
                                 });
                             }
 
@@ -161,7 +163,9 @@ namespace Shop.Api.DataSynchronization.Import
                                     StockNumber = ParseStringValue(x[fieldMapping["ProductStock.StockNumber"]]),
                                     Size = ParseStringValue(x[fieldMapping["ProductStock.Size"]]),
                                     Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]]),
-                                    IsAvailable = ConvertToBooleanValue(x[fieldMapping["ProductStock.IsAvailable"]])
+                                    IsAvailable = ConvertToBooleanValue(x[fieldMapping["ProductStock.IsAvailable"]]),
+                                    Price = ConvertToDecimalValue(x[fieldMapping["Price"]]),
+                                    OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]])
                                 });
                             }
 
@@ -199,6 +203,13 @@ namespace Shop.Api.DataSynchronization.Import
                                 }
 
                             }
+                        }
+
+                        foreach (var importedProduct in products)
+                        {
+                            var price = product.ImportedProductStocks.FirstOrDefault(p => p.IsAvailable);
+                            importedProduct.Price = price != null ? price.Price : 0;
+                            importedProduct.OldPrice = price != null ? price.OldPrice : 0;
                         }
                     }
                 }
