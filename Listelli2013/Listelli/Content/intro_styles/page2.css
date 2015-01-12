@@ -52,6 +52,8 @@
     /*margin-left: -225px;*/
     color: #fff;
     text-align: center;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
+    -webkit-font-smoothing: antialiased;
 }
 
 .page2 .left .info .romb {
