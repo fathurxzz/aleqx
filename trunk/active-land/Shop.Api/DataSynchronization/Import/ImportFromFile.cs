@@ -130,7 +130,8 @@ namespace Shop.Api.DataSynchronization.Import
                                     Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]]),
                                     IsAvailable = ConvertToBooleanValue(x[fieldMapping["ProductStock.IsAvailable"]]),
                                     Price = ConvertToDecimalValue(x[fieldMapping["Price"]]),
-                                    OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]])
+                                    OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]]),
+                                    IsDiscount = ConvertToBooleanValue(x[fieldMapping["IsDiscount"]])
                                 });
                             }
 
@@ -165,7 +166,8 @@ namespace Shop.Api.DataSynchronization.Import
                                     Color = ParseStringValue(x[fieldMapping["ProductStock.Color"]]),
                                     IsAvailable = ConvertToBooleanValue(x[fieldMapping["ProductStock.IsAvailable"]]),
                                     Price = ConvertToDecimalValue(x[fieldMapping["Price"]]),
-                                    OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]])
+                                    OldPrice = ConvertToDecimalValue(x[fieldMapping["OldPrice"]]),
+                                    IsDiscount = ConvertToBooleanValue(x[fieldMapping["IsDiscount"]])
                                 });
                             }
 
@@ -212,6 +214,7 @@ namespace Shop.Api.DataSynchronization.Import
                     var price = importedProduct.ImportedProductStocks.FirstOrDefault(p => p.IsAvailable);
                     importedProduct.Price = price != null ? price.Price : 0;
                     importedProduct.OldPrice = price != null ? price.OldPrice : 0;
+                    importedProduct.IsDiscount = price != null && price.IsDiscount;
                 }
                 return products;
             }
