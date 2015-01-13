@@ -465,6 +465,9 @@
     <Content Include="Views\Shared\SubscribeSuccess.cshtml" />
     <Content Include="Views\Shared\SubscriberFormPanel.cshtml" />
     <Content Include="Views\Home\ConfirmSubscribe.cshtml" />
+    <Content Include="Views\Shared\Intro.cshtml" />
+    <Content Include="Views\Shared\Mobile.cshtml" />
+    <Content Include="Views\Shared\_LayoutIntro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">
