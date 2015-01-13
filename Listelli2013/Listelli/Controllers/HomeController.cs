@@ -17,9 +17,24 @@ namespace Listelli.Controllers
 {
     public class HomeController : DefaultController
     {
+
+        public bool IsMobile
+        {
+            get
+            {
+                var mombileExpression = new System.Text.RegularExpressions.Regex("(iphone)|(android)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                if (Request == null||Request.UserAgent==null)
+                    return false;
+                return mombileExpression.IsMatch(Request.UserAgent);
+            }
+        }
+
         public ActionResult Index(string id)
         {
-
+            if (id == null)
+            {
+                return View(IsMobile ? "Mobile" : "Intro");
+            }
             //Thread tr = (Thread)HttpContext.Application["mailSender"];
             //var aaa = tr.ThreadState;
 
