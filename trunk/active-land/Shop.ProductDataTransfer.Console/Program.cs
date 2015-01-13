@@ -242,13 +242,15 @@ namespace Shop.ProductDataTransfer.Console
                         }
 
 
-                        foreach (var importedProduct in products)
-                        {
-                            var price = product.ImportedProductStocks.FirstOrDefault(p => p.IsAvailable);
-                            importedProduct.Price = price != null ? price.Price : 0;
-                            importedProduct.OldPrice = price != null ? price.OldPrice : 0;
-                        }
+                       
                     }
+                }
+
+                foreach (var importedProduct in products)
+                {
+                    var price = importedProduct.ImportedProductStocks.FirstOrDefault(p => p.IsAvailable);
+                    importedProduct.Price = price != null ? price.Price : 0;
+                    importedProduct.OldPrice = price != null ? price.OldPrice : 0;
                 }
 
                 System.Console.ForegroundColor = ConsoleColor.Green;
