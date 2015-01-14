@@ -34,3 +34,29 @@ ul{
 .bx-pager {
     margin-bottom: -60px;
 }
+
+.scroll-top {
+    position: absolute;
+    margin-bottom: -20px;
+    bottom: 50%;
+    right: 100px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 1px 2px 3px rgb(0, 0, 0);
+    font-size: 14px;
+    display: block;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #ffffff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.scroll-top .inner {
+    background: url('../img/tostart.svg') no-repeat;
+    width: 30px;
+    height: 26px;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 16px;
+}
