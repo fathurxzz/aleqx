@@ -30,3 +30,7 @@ ul{
     border: 1px solid red;
     z-index: 2000;
 }
+
+.bx-pager {
+    margin-bottom: -60px;
+}
