@@ -38,7 +38,7 @@ namespace Listelli.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home", new {id = "main"});
                     }
                 }
                 else
