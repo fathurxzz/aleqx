@@ -12,13 +12,13 @@
     <script src="scripts/jquery.mousewheel.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption&subset=cyrillic' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Yeseva+One&subset=cyrillic' rel='stylesheet' type='text/css' />
-    <link href='Content/intro_styles/main.css?v=0.7' rel='stylesheet' type='text/css' />
-    <link href='Content/intro_styles/page1.css?v=0.7' rel='stylesheet' type='text/css' />
-    <link href='Content/intro_styles/page2.css?v=0.7' rel='stylesheet' type='text/css' />
-    <link href='Content/intro_styles/page3.css?v=0.7' rel='stylesheet' type='text/css' />
-    <link href='Content/intro_styles/page4.css?v=0.7' rel='stylesheet' type='text/css' />
-    <link href='Content/intro_styles/page5.css?v=0.7' rel='stylesheet' type='text/css' />
-    <link href='Content/intro_styles/page6.css?v=0.7' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/main.css?v=0.8' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page1.css?v=0.8' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page2.css?v=0.8' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page3.css?v=0.8' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page4.css?v=0.8' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page5.css?v=0.8' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/page6.css?v=0.8' rel='stylesheet' type='text/css' />
     <script>
         $(document).ready(function () {
             $(".more").click(function () {
@@ -42,6 +42,7 @@
 
             var sliderouter = $('.bxsliderouter').bxSlider({
                 controls: false,
+                pagerSelector:$("#custom-pager"),
                 mode: 'vertical',
                 pager: true,
                 pagerType: 'full',
@@ -206,13 +207,16 @@
 
             </li>
         </ul>
-        
+
         <a href="#" class="scroll-top">
-        <div>
-            <div class="inner"></div>
-            <span>в начало</span>
+            <div>
+                <div class="inner"></div>
+                <span>в начало</span>
+            </div>
+        </a>
+        <div id="custom-pager" class="bx-pager bx-default-pager">
+            
         </div>
-            </a>
 
     </div>
 </body>
