@@ -39,12 +39,12 @@ ul{
     position: absolute;
     margin-bottom: -20px;
     bottom: 50%;
-    right: 100px;
+    right: 40px;
     text-transform: uppercase;
     color: #fff;
     text-shadow: 1px 2px 3px rgb(0, 0, 0);
     font-size: 14px;
-    display: block;
+    display: none;
     letter-spacing: 2px;
     border-bottom: 1px solid #ffffff;
     text-decoration: none;
