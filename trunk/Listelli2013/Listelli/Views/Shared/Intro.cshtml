@@ -12,7 +12,7 @@
     <script src="scripts/jquery.mousewheel.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption&subset=cyrillic' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Yeseva+One&subset=cyrillic' rel='stylesheet' type='text/css' />
-    <link href='Content/intro_styles/main.css?v=0.8' rel='stylesheet' type='text/css' />
+    <link href='Content/intro_styles/main.css?v=0.9' rel='stylesheet' type='text/css' />
     <link href='Content/intro_styles/page1.css?v=0.8' rel='stylesheet' type='text/css' />
     <link href='Content/intro_styles/page2.css?v=0.8' rel='stylesheet' type='text/css' />
     <link href='Content/intro_styles/page3.css?v=0.8' rel='stylesheet' type='text/css' />
@@ -50,7 +50,14 @@
                 onSlideAfter: function ($slideElement, oldIndex, newIndex) {
                     //isSliding = false;
                     index = newIndex;
-                    console.log('onSlideAfter index:' + index);
+                    //console.log('onSlideAfter index:' + index);
+
+                    if (index > 0) {
+                        $(".scroll-top").css("display", "block");
+                    } else {
+                        $(".scroll-top").css("display", "none");
+                    }
+
                     setTimeout(function () { isSliding = false; }, 1000);
                 }
             });
