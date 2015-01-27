@@ -22,15 +22,37 @@
     bottom: 0;
 }
 
-.page6 .text {
-    width: 257px;
-    height: 186px;
+.page6 .ecologylogo {
+    /*width: 257px;
+    height: 186px;*/
+    width: 189px;
+    height: 138px;
     /*background: url("../img/page6/text.png");*/
     background: url("../img/page6/slide6-logo.svg") no-repeat;
     position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -95px;
+    background-size: cover;
+    /*border: 1px solid white;*/
+}
+
+.page6 .text {
+    /*width: 257px;
+    height: 186px;*/
+    position: absolute;
     top: 40%;
     left: 50%;
-    margin-left: -128px;
+    margin-left: -180px;
+}
+
+.page6 .text span {
+    background-color: #000;
+    color: #fff;
+    font-size: 19px;
+    line-height: 32px;
+    letter-spacing: 1px;
+    padding: 2px;
 }
 
 .page6 .site {
@@ -39,10 +61,10 @@
     height: 28px;
     background: url("../img/page1/slide1-to-site.svg");
     left: 50%;
-    top: 100%;
-    margin-top: -220px;
+    top: 65%;
+    /*margin-top: -320px;*/
     margin-left: -110px;
-    
+    /*border: 1px solid white;*/
 }
 
 .page6 .em
@@ -75,7 +97,8 @@
     width: 41px;
     height:32px;
     /*background: url("../img/page6/slide6-MBS-logo.svg");*/
-    background: url("../img/page6/em-logo.svg");
+    background: url("../img/page6/logo-white.png");
+    /*background: url("../img/page6/em-logo.svg");*/
     float: left;
     margin-right: 10px;
 }
