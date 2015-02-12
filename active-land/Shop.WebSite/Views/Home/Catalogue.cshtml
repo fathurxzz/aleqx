@@ -77,7 +77,7 @@ else
 
 
 
-    @if (Model.Products.Any())
+    @if (Model.Products!=null && Model.Products.Any())
     {
         <div id="filters-container">
             @using (Html.BeginForm("Catalogue", "Home", FormMethod.Get))
@@ -103,39 +103,8 @@ else
             }
 
             @Html.Partial("ProductFilters", Model.Filters)
-
-
-            @*@foreach (var productAttribute in Model.ProductAttributes.OrderBy(p => p.SortOrder))
-            {
-                if (productAttribute.ProductAttributeValues.Any(pav => pav.AvailableProductsCount > 0))
-                {
-                    <div class="selector checkbox-selector">
-                        <div class="title">@productAttribute.Title:</div>
-                        <div class="selectors">
-                            <ul>
-                                @foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a => a.Title))
-                                {
-                                    if (categoryValue.AvailableProductsCount > 0)
-                                    {
-                                        <li>
-                                            <input class="attribute-checkbox" @Html.Raw(Model.FilterArray.Contains(categoryValue.Id.ToString()) ? "checked" : "") filter="@CatalogueFilterHelper.GetFilterStringForCheckbox(Model.FilterArray, categoryValue.Id.ToString(), Model.FilterArray.Contains(categoryValue.Id.ToString()))" type="checkbox" id="cb_@categoryValue.Id">
-
-                                            <label for="cb_@categoryValue.Id">@categoryValue.Title (@categoryValue.AvailableProductsCount)</label>
-                                    
-                                        </li>
-                                    }
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                }
-             }*@
         </div>
-    }
-
-
-
-
+    
 
 
     <div id="products">
@@ -162,6 +131,7 @@ else
 
     </div>
     <div class="clearfix"></div>
+    }
 
 </div>
 @*<div>
