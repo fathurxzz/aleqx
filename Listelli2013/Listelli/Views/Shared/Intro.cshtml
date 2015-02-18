@@ -38,7 +38,7 @@
             });
 
             var isSliding = false;
-            var index = 0;
+            var currentSlide = 0;
 
             var sliderouter = $('.bxsliderouter').bxSlider({
                 controls: false,
@@ -49,16 +49,16 @@
                 infiniteLoop: false,
                 onSlideAfter: function ($slideElement, oldIndex, newIndex) {
                     //isSliding = false;
-                    index = newIndex;
-                    //console.log('onSlideAfter index:' + index);
+                    currentSlide = newIndex;
+                    console.log('onSlideAfter called, currentSlide:' + currentSlide);
 
-                    if (index > 0) {
-                        $(".scroll-top").css("display", "block");
+                    if (currentSlide > 0) {
+                        $(".scroll-top").fadeIn();
                     } else {
-                        $(".scroll-top").css("display", "none");
+                        $(".scroll-top").fadeOut();
                     }
 
-                    setTimeout(function () { isSliding = false; }, 1000);
+                    setTimeout(function () { isSliding = false; }, 500);
                 }
             });
 
@@ -71,22 +71,31 @@
 
             var slider = $('.bxslider').bxSlider({
                 controls: false,
-                mode: 'horizontal',
+                mode: 'fade',
                 pager: true,
                 pagerType: 'full',
-                infiniteLoop: false
+                infiniteLoop: true,
+                auto: true,
+                speed: 1500
             });
 
             $(document).mousewheel(function (event, delta) {
-                console.log('delta: ' + delta + '; isSliding: ' + isSliding + '; index: ' + index);
-                if (delta == 1) {
-                    if (!isSliding && index > 0) {
+                
+                if(delta>1){
+                    delta=1;
+                }
+                if(delta<-1){
+                    delta=-1;
+                }
+                console.log('delta: ' + delta + '; isSliding: ' + isSliding + '; currentSlide: ' + currentSlide);
+                if (delta > 0) {
+                    if (!isSliding && currentSlide > 0) {
                         isSliding = true;
                         sliderouter.goToPrevSlide();
                     }
                 }
                 else {
-                    if (!isSliding && index < 5) {
+                    if (!isSliding && currentSlide < 5) {
                         isSliding = true;
                         sliderouter.goToNextSlide();
                     }
