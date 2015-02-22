@@ -156,6 +156,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\EventAnnouncementController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainBannerController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -163,6 +164,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\PictureSize.cs" />
     <Compile Include="Helpers\ThumbnailPicture.cs" />
@@ -244,6 +246,10 @@
     <Content Include="Areas\Admin\Views\MainBanner\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Menu.cshtml" />
     <Content Include="Areas\Admin\Views\MainBanner\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\EventAnnouncement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EventAnnouncement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\MainBanner\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\EventAnnouncement\Edit.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -279,6 +285,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="Content\tmpImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

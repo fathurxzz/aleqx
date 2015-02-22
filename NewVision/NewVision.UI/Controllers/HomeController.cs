@@ -18,6 +18,8 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Index()
         {
+            return RedirectToAction("Index", "MainBanner", new {area = "Admin"});
+
             var content = _context.MainBanners.ToList();
             return View(content);
         }

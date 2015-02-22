@@ -1,6 +1,6 @@
 ﻿@using NewVision.UI
 @using NewVision.UI.Helpers
-@model IEnumerable<NewVision.UI.Models.MainBanner>
+@model IEnumerable<NewVision.UI.Models.EventAnnouncement>
 
 @{
     ViewBag.Title = "Контент главной страницы";
@@ -9,7 +9,7 @@
 
 @section AdminNavigation
 {
-    @Html.Partial("Menu","MainBanner")
+    @Html.Partial("Menu","EventAnnouncement")
 }
 
 <p>
@@ -24,10 +24,10 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Text)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImageSrc)
+            
         </th>
         <th></th>
     </tr>
@@ -39,10 +39,17 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Text)
             </td>
             <td>
-                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("mainBannerPreview")))
+                @foreach (var image in item.EventAnnouncementImages)
+                {
+                    <div style="float: left">
+                        @Html.ActionLink("Удалить","DeleteImage","EventAnnouncement",new{area="Admin",id=image.Id},new{ onclick = "return confirm('Удалить запись?')", @class="adminLink"})
+                        <br/>
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventAnnouncementPreview")))
+                    </div>
+                }
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
@@ -52,4 +59,3 @@
     }
 
 </table>
-
