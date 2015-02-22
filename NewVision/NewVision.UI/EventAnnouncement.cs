@@ -9,20 +9,5 @@
 
 namespace NewVision.UI
 {
-    using System;
-    using System.Collections.Generic;
     
-    public partial class EventAnnouncement
-    {
-        public EventAnnouncement()
-        {
-            this.EventAnnouncementImages = new HashSet<EventAnnouncementImage>();
-        }
-    
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Text { get; set; }
-    
-        public virtual ICollection<EventAnnouncementImage> EventAnnouncementImages { get; set; }
-    }
 }
