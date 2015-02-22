@@ -2,4 +2,210 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        (function(nv){
+            var settings;
+            if (nv.settings === null){
+                nv.settings = settings = {};
+            } else{
+                settings = nv.settings;
+            }
 
+            if (!('controlsDescriptors' in settings)){
+                settings.controlsDescriptors = {};
+            }
+
+            if (!('dataModels' in settings)){
+                settings.dataModels = {};
+            }
+        }(NV));
+    </script>
+    
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                l10n = a9.l10n;
+
+            if (!('locale' in settings)) {
+                settings.locale = 'rus';
+            }
+
+            if (!('dictionary' in settings)) {
+                settings.dictionary = {
+                    copyright: '&copy; {year} 2014 New Vision Productions',
+                    emMadeIn: 'Сделано в',
+                    emStudio: 'Студии Евгения Миллера',
+                    joinUs: 'как попасть<br>в арт-коллектив',
+                    mainPageDetails: 'Подробнее о нас',
+                    eventWillBe: 'проект состоится',
+                    learnMore: 'узнать больше',
+                    orderTicket: 'заказать билет'
+                }
+            }
+
+            l10n.locale = settings.locale;
+            l10n.dictionary = settings.dictionary;
+
+        }(NV, A9));
+    </script>
+    
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                l10n = a9.l10n,
+                controlsDescriptors = settings.controlsDescriptors;
+            controlsDescriptors.site = {
+                urlEM: 'http://eugene-miller.com',
+                contentImagesPath: '/content/images/',
+                mainPageSlideTimeout: 10000
+            };
+
+        }(NV, A9));
+    </script>
+    
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                dataModels = settings.dataModels;
+
+            dataModels.mainMenu = [
+                {
+                    title: 'расписание проектов',
+                    selected: false,
+                    active: false,
+                    url: 'events.html'
+
+                },
+                {
+                    title: 'новости и события',
+                    selected: false,
+                    active: false,
+                    url: 'news.html'
+                },
+                {
+                    title: 'медиа',
+                    selected: false,
+                    active: false,
+                    url: 'media.html'
+                },
+                {
+                    title: 'спонсорство и партнерство',
+                    selected: false,
+                    active: false,
+                    url: '#'
+                },
+                {
+                    title: 'контактная информация',
+                    selected: false,
+                    active: false,
+                    url: '#'
+                }
+            ];
+
+        }(NV, A9));
+    </script>
+    
+    
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                dataModels = settings.dataModels;
+
+            dataModels.mainMenu = [
+                {
+                    title: 'расписание проектов',
+                    selected: false,
+                    active: false,
+                    url: 'events.html'
+
+                },
+                {
+                    title: 'новости и события',
+                    selected: false,
+                    active: false,
+                    url: 'news.html'
+                },
+                {
+                    title: 'медиа',
+                    selected: false,
+                    active: false,
+                    url: 'media.html'
+                },
+                {
+                    title: 'спонсорство и партнерство',
+                    selected: false,
+                    active: false,
+                    url: '#'
+                },
+                {
+                    title: 'контактная информация',
+                    selected: false,
+                    active: false,
+                    url: '#'
+                }
+            ]
+
+        }(NV, A9));
+    </script>
+    
+    
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                    dataModels = settings.dataModels;
+            
+            @Html.Raw(ViewBag.MainPage);
+
+            //dataModels.mainPage = {
+            //    mainBanners: [
+            //        {
+            //            imageSrc: 'main.jpg',
+            //            title: 'Заголовок<br> на тему описания',
+            //            description: 'Тема описания может быть краткой, или же<br>в нескольких строчках, сто подчеркнет ее<br>творческий охват'
+            //        },
+            //        {
+            //            imageSrc: 'cover_2048.jpg',
+            //            title: 'Еще один заголовок<br> на еще одну тему описания',
+            //            description: 'Тема описания может быть краткой, или же<br>в нескольких строчках, сто подчеркнет ее<br>творческий охват'
+            //        }
+            //    ],
+            //    eventAnnouncements: [
+            //        {
+            //            title: 'наше видение1',
+            //            text: 'Театр родился из древнейших охотничьих, сельскохозяйственных и других ритуальных празднеств, в аллегорической форме воспроизводивших явления природы или трудовые процессы.<br>Однако обрядовые действа сами по себе ещё не были театром: как считают искусствоведы, театр начинается там, где появляется зритель, — он предполагает не только коллективные усилия в процессе создания произведения, но и коллективное восприятие, и своей эстетической цели театр достигает лишь в том случае, если сценическое действие находит отклик у зрителей.',
+            //            images: [
+            //                    'main-page-block-bg0.jpg',
+            //                    '5.jpg',
+            //                    '204820.jpg',
+            //                    '204825.jpg',
+            //                    '204826.jpg',
+            //                    '2048.jpg',
+            //                    '20481.jpg',
+            //                    '2048t.jpg',
+            //                    '204817.jpg'
+            //            ]
+            //        },
+            //        {
+            //            title: 'наше видение2',
+            //            text: 'Театр родился из древнейших охотничьих, сельскохозяйственных и других ритуальных празднеств, в аллегорической форме воспроизводивших явления природы или трудовые процессы.<br>Однако обрядовые действа сами по себе ещё не были театром: как считают искусствоведы, театр начинается там, где появляется зритель, — он предполагает не только коллективные усилия в процессе создания произведения, но и коллективное восприятие, и своей эстетической цели театр достигает лишь в том случае, если сценическое действие находит отклик у зрителей.',
+            //            images: [
+            //                'main-page-block-bg1.jpg',
+            //                '10684110_290072504519482_631549677_n.jpg',
+            //                'cover_2048.jpg',
+            //                'gti.jpg'
+            //            ]
+            //        }
+            //    ]
+            //};
+
+        }(NV, A9));
+    </script>
+}
+
+<div class="page">
+    <div id="mainPage">
+    </div>
+    <div id="footer"></div>
+</div>

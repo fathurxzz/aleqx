@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using NewVision.UI.Models;
+using NewVision.UI.Models.SiteViewModels;
 
 namespace NewVision.UI.Controllers
 {
@@ -22,11 +24,49 @@ namespace NewVision.UI.Controllers
 
             ViewBag.Title = "New Vision Pro";
 
-            var content = _context.MainBanners.ToList();
+            var mb = _context.MainBanners.ToList();
+            var ea = _context.EventAnnouncements.ToList();
 
 
+            var mainBanners = new List<mainBanner>();
 
-            return View(content);
+            foreach (var mainBanner in mb)
+            {
+                mainBanners.Add(new mainBanner
+                {
+                    title = mainBanner.Title,
+                    description = mainBanner.Description,
+                    imageSrc = mainBanner.ImageSrc
+                });
+            }
+
+            var eventAnnouncements = new List<eventAnnouncement>();
+
+            foreach (var eventAnnouncement in ea)
+            {
+                var ev = new eventAnnouncement()
+                {
+                    title = eventAnnouncement.Title,
+                    text = eventAnnouncement.Text,
+                    images = new List<object>()
+                };
+
+                foreach (var image in eventAnnouncement.EventAnnouncementImages)
+                {
+                    ev.images.Add(image.ImageSrc);
+                }
+
+                eventAnnouncements.Add(ev);
+            }
+
+
+            var mainPage = new mainPage {mainBanners = mainBanners, eventAnnouncements = eventAnnouncements};
+
+
+            ViewBag.MainPage = "dataModels.mainPage = " + JsonConvert.SerializeObject(mainPage);
+
+
+            return View();
         }
 
     }

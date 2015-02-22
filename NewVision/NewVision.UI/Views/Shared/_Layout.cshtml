@@ -1,9 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@using NewVision.UI
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+
+    <script type="text/javascript" src="/scripts/vendor/jquery-1.11.2.min.js?v=@SiteSettings.Version"></script>
+    <script type="text/javascript" src="/scripts/vendor/jquery.bxslider.min.js?v=@SiteSettings.Version"></script>
+    <script type="text/javascript" src="/scripts/vendor/init.js?v=@SiteSettings.Version"></script>
+    <script type="text/javascript" src="/scripts/main.min.js?v=@SiteSettings.Version"></script>
+    
+    <link rel="stylesheet" type="text/css" href="/styles/main.min.css?v=@SiteSettings.Version" media="screen"/>
 
     @RenderSection("scripts", required: false)
 </head>
