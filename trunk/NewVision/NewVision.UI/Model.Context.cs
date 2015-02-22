@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using NewVision.UI.Models;
+
 namespace NewVision.UI
 {
     using System;

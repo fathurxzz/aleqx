@@ -30,7 +30,8 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+
+            return View(new MainBanner());
         }
 
         //
