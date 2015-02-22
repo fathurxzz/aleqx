@@ -12,7 +12,110 @@
     <script type="text/javascript" src="/scripts/main.min.js?v=@SiteSettings.Version"></script>
     
     <link rel="stylesheet" type="text/css" href="/styles/main.min.css?v=@SiteSettings.Version" media="screen"/>
+    
+      <script type="text/javascript">
+        (function(nv){
+            var settings;
+            if (nv.settings === null){
+                nv.settings = settings = {};
+            } else{
+                settings = nv.settings;
+            }
 
+            if (!('controlsDescriptors' in settings)){
+                settings.controlsDescriptors = {};
+            }
+
+            if (!('dataModels' in settings)){
+                settings.dataModels = {};
+            }
+        }(NV));
+    </script>
+    
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                l10n = a9.l10n;
+
+            if (!('locale' in settings)) {
+                settings.locale = 'rus';
+            }
+
+            if (!('dictionary' in settings)) {
+                settings.dictionary = {
+                    copyright: '&copy; {year} 2014 New Vision Productions',
+                    emMadeIn: 'Сделано в',
+                    emStudio: 'Студии Евгения Миллера',
+                    joinUs: 'как попасть<br>в арт-коллектив',
+                    mainPageDetails: 'Подробнее о нас',
+                    eventWillBe: 'проект состоится',
+                    learnMore: 'узнать больше',
+                    orderTicket: 'заказать билет'
+                }
+            }
+
+            l10n.locale = settings.locale;
+            l10n.dictionary = settings.dictionary;
+
+        }(NV, A9));
+    </script>
+    
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                l10n = a9.l10n,
+                controlsDescriptors = settings.controlsDescriptors;
+            controlsDescriptors.site = {
+                urlEM: 'http://eugene-miller.com',
+                contentImagesPath: '/content/images/',
+                mainPageSlideTimeout: 10000
+            };
+
+        }(NV, A9));
+    </script>
+    
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                dataModels = settings.dataModels;
+
+            dataModels.mainMenu = [
+                {
+                    title: 'расписание проектов',
+                    selected: false,
+                    active: false,
+                    url: 'events.html'
+
+                },
+                {
+                    title: 'новости и события',
+                    selected: false,
+                    active: false,
+                    url: 'news.html'
+                },
+                {
+                    title: 'медиа',
+                    selected: false,
+                    active: false,
+                    url: 'media.html'
+                },
+                {
+                    title: 'спонсорство и партнерство',
+                    selected: false,
+                    active: false,
+                    url: '#'
+                },
+                {
+                    title: 'контактная информация',
+                    selected: false,
+                    active: false,
+                    url: '#'
+                }
+            ];
+
+        }(NV, A9));
+    </script>
+    
     @RenderSection("scripts", required: false)
 </head>
 <body>
