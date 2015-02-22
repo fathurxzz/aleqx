@@ -12,6 +12,14 @@ namespace NewVision.UI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("favicon.ico");
+
+            routes.MapRoute(
+               "Login",
+               "login",
+               new { controller = "Auth", action = "Login" },
+               new[] { "NewVision.UI.Controllers" }
+           );
 
             routes.MapRoute(
                 name: "Default",

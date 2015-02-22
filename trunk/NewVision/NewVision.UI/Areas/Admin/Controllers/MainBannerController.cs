@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
     public class MainBannerController : Controller
     {
+
+        private readonly SiteContext _context;
+
+        public MainBannerController(SiteContext context)
+        {
+            _context = context;
+        }
         //
         // GET: /Admin/MainBanner/
 
         public ActionResult Index()
         {
-            return View();
-
+            var mainBanners = _context.MainBanners.ToList();
+            return View(mainBanners);
         }
 
         //
