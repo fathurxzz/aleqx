@@ -99,3 +99,7 @@
 #productsId {
     padding: 6px;
 }
+
+.adminLink {
+    color: #f00;
+}
