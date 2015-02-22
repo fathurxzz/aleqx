@@ -1,0 +1,55 @@
+﻿@using NewVision.UI
+@using NewVision.UI.Helpers
+@model IEnumerable<NewVision.UI.Models.MainBanner>
+
+@{
+    ViewBag.Title = "Контент главной страницы";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu","MainBanner")
+}
+
+<p>
+    @*<button type="button" class="btn btn-success btn-sm">*@
+        @Html.ActionLink("Добавить", "Create")
+    @*</button>*@
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("mainBannerPreview")))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+            </td>
+        </tr>
+    }
+
+</table>
+
