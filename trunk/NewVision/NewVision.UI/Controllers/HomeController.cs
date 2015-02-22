@@ -18,9 +18,14 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("Index", "MainBanner", new {area = "Admin"});
+            //return RedirectToAction("Index", "MainBanner", new {area = "Admin"});
+
+            ViewBag.Title = "New Vision Pro";
 
             var content = _context.MainBanners.ToList();
+
+
+
             return View(content);
         }
 

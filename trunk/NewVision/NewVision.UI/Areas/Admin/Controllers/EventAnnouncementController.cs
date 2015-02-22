@@ -28,14 +28,6 @@ namespace NewVision.UI.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/Announcement/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
         // GET: /Admin/Announcement/Create
 
         public ActionResult Create()
@@ -56,18 +48,21 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 for (int i = 0; i < Request.Files.Count; i++)
                 {
                     var file = Request.Files[i];
-                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
-                    string filePath = Server.MapPath("~/Content/Images");
-
-                    filePath = Path.Combine(filePath, fileName);
-                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
-
-                    var eai = new EventAnnouncementImage()
+                    if (file != null && !string.IsNullOrEmpty(file.FileName))
                     {
-                        ImageSrc = fileName
-                    };
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
 
-                    eventAnnouncement.EventAnnouncementImages.Add(eai);
+                        filePath = Path.Combine(filePath, fileName);
+                        GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+
+                        var eai = new EventAnnouncementImage()
+                        {
+                            ImageSrc = fileName
+                        };
+
+                        eventAnnouncement.EventAnnouncementImages.Add(eai);
+                    }
                 }
 
                 _context.EventAnnouncements.Add(eventAnnouncement);
@@ -108,18 +103,22 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 for (int i = 0; i < Request.Files.Count; i++)
                 {
                     var file = Request.Files[i];
-                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
-                    string filePath = Server.MapPath("~/Content/Images");
 
-                    filePath = Path.Combine(filePath, fileName);
-                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
-
-                    var eai = new EventAnnouncementImage
+                    if (file != null && !string.IsNullOrEmpty(file.FileName))
                     {
-                        ImageSrc = fileName
-                    };
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
 
-                    eventAnnouncement.EventAnnouncementImages.Add(eai);
+                        filePath = Path.Combine(filePath, fileName);
+                        GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+
+                        var eai = new EventAnnouncementImage
+                        {
+                            ImageSrc = fileName
+                        };
+
+                        eventAnnouncement.EventAnnouncementImages.Add(eai);
+                    }
                 }
 
                 _context.SaveChanges();
