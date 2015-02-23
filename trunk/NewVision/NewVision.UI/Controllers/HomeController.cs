@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using NewVision.UI.Helpers;
 using NewVision.UI.Models;
 using NewVision.UI.Models.SiteViewModels;
 
 namespace NewVision.UI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : DefaultController
     {
         private readonly SiteContext _context;
 
@@ -22,7 +23,7 @@ namespace NewVision.UI.Controllers
         {
             //return RedirectToAction("Index", "MainBanner", new {area = "Admin"});
 
-            ViewBag.Title = "New Vision Pro";
+            //ViewBag.Title = "New Vision Pro";
 
             var mb = _context.MainBanners.ToList();
             var ea = _context.EventAnnouncements.ToList();
@@ -69,5 +70,34 @@ namespace NewVision.UI.Controllers
             return View();
         }
 
+
+        public ActionResult Events()
+        {
+            return View();
+        }
+        public ActionResult Partnership()
+        {
+            return View();
+        }
+        public ActionResult News()
+        {
+            return View();
+        }
+        public ActionResult Media()
+        {
+            return View();
+        }
+
+        public ActionResult Contacts()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult Feedback(string name, string email, string question)
+        {
+            MailHelper.Notify(new FeedbackForm(){Email = email,Name = name, Question = question});
+            return Json("1");
+        }
     }
 }

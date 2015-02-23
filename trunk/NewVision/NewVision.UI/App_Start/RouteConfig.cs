@@ -21,6 +21,47 @@ namespace NewVision.UI
                new[] { "NewVision.UI.Controllers" }
            );
 
+
+            routes.MapRoute(
+               "contacts",
+               "contacts",
+               new { controller = "Home", action = "Contacts" },
+               new[] { "NewVision.UI.Controllers" }
+           );
+
+            routes.MapRoute(
+               "feedback",
+               "feedback",
+               new { controller = "Home", action = "Feedback" },
+               new[] { "NewVision.UI.Controllers" }
+           );
+
+            routes.MapRoute(
+               "events",
+               "events",
+               new { controller = "Home", action = "Events" },
+               new[] { "NewVision.UI.Controllers" }
+           );
+
+            routes.MapRoute(
+               "partnership",
+               "partnership",
+               new { controller = "Home", action = "Partnership" },
+               new[] { "NewVision.UI.Controllers" }
+           );
+            routes.MapRoute(
+              "news",
+              "news",
+              new { controller = "Home", action = "News" },
+              new[] { "NewVision.UI.Controllers" }
+          );
+            routes.MapRoute(
+              "media",
+              "media",
+              new { controller = "Home", action = "Media" },
+              new[] { "NewVision.UI.Controllers" }
+          );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

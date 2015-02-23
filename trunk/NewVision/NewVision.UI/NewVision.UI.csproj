@@ -159,6 +159,7 @@
     <Compile Include="Areas\Admin\Controllers\EventAnnouncementController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainBannerController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,10 +167,12 @@
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\PictureSize.cs" />
     <Compile Include="Helpers\ThumbnailPicture.cs" />
     <Compile Include="Models\EventAnnouncement.cs" />
     <Compile Include="Models\EventAnnouncementImage.cs" />
+    <Compile Include="Models\FeedbackForm.cs" />
     <Compile Include="Models\SiteContext.cs" />
     <Compile Include="Models\MainBanner.cs" />
     <Compile Include="Models\Mapping\EventAnnouncementImageMap.cs" />
@@ -265,8 +268,6 @@
     <Content Include="images\stripe-left-bg.png" />
     <Content Include="images\stripe-right-bg.png" />
     <Content Include="images\wave.png" />
-    <Content Include="Scripts\jquery-1.11.2.min.js" />
-    <Content Include="Scripts\jquery.bxslider.min.js" />
     <Content Include="Scripts\main.min.js" />
     <Content Include="Scripts\vendor\init.js" />
     <Content Include="Scripts\vendor\jquery-1.11.2.min.js" />
@@ -289,6 +290,11 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Shared\InputImages.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\Home\Events.cshtml" />
+    <Content Include="Views\Home\Partnership.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\Media.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
