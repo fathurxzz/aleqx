@@ -53,7 +53,7 @@ namespace NewVision.UI
 
         public static string Version
         {
-            get { return "0.0.1"; }
+            get { return "0.0.2"; }
         }
 
         public static string MailTo
