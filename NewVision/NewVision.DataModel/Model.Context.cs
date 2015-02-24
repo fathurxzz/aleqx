@@ -28,5 +28,8 @@ namespace NewVision.DataModel
         public DbSet<MainBanner> MainBanner { get; set; }
         public DbSet<EventAnnouncement> EventAnnouncement { get; set; }
         public DbSet<EventAnnouncementImage> EventAnnouncementImage { get; set; }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<PreviewContentImage> PreviewContentImage { get; set; }
+        public DbSet<ContentImage> ContentImage { get; set; }
     }
 }
