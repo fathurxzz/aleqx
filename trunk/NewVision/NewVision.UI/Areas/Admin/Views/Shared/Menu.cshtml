@@ -3,5 +3,6 @@
     <ul class="nav nav-tabs" role="tablist">
         <li class="@(Model == "MainBanner" ? "active" : "")">@Html.ActionLink("Основное изображение главной страницы", "Index", "MainBanner", new { area = "Admin" }, null)</li>
         <li class="@(Model == "EventAnnouncement" ? "active" : "")">@Html.ActionLink("Анонсы на главной странице", "Index", "EventAnnouncement", new { area = "Admin" }, null)</li>
+        <li class="@(Model == "Event" ? "active" : "")">@Html.ActionLink("Расписание проектов", "Index", "Event", new { area = "Admin" }, null)</li>
     </ul>
 </div>

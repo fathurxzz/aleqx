@@ -1,0 +1,161 @@
+﻿@using NewVision.UI
+@using NewVision.UI.Helpers
+@model IEnumerable<NewVision.UI.Models.Event>
+
+@{
+    ViewBag.Title = "Расписание проектов";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Event")
+}
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighlightedText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsHighlighted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketOrderType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviewContentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviewContentSrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IntervalQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighlightedText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHighlighted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketOrderType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreviewContentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreviewContentSrc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntervalQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+
+            <td>
+                @foreach (var image in item.PreviewContentImages)
+                {
+                    <div style="float: left">
+                        @Html.ActionLink("Удалить", "DeletePreviewContentImage", "Event", new { area = "Admin", id = image.Id }, new { onclick = "return confirm('Удалить запись?')", @class = "adminLink" })
+                        <br />
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventAnnouncementPreview")))
+                    </div>
+                }
+            </td>
+            <td>
+                @foreach (var image in item.ContentImages)
+                {
+                    <div style="float: left">
+                        @Html.ActionLink("Удалить", "DeleteContentImage", "Event", new { area = "Admin", id = image.Id }, new { onclick = "return confirm('Удалить запись?')", @class = "adminLink" })
+                        <br />
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventAnnouncementPreview")))
+                    </div>
+                }
+            </td>
+
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+            </td>
+        </tr>
+    }
+
+</table>

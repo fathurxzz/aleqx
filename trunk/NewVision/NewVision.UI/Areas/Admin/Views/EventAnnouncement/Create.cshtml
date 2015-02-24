@@ -9,8 +9,9 @@
 {
     @Html.Partial("Menu", "EventAnnouncement")
 }
+
 <div class="container">
-    <h3>Добавление новости</h3>
+    <h3>Добавление анонса</h3>
     @using (Html.BeginForm("Create", "EventAnnouncement", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
