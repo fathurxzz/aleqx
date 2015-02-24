@@ -9,6 +9,11 @@
         <EntityTypeShape EntityType="Model.EventAnnouncement" Width="1.875" PointX="3.125" PointY="0.75" />
         <EntityTypeShape EntityType="Model.EventAnnouncementImage" Width="2.25" PointX="5.625" PointY="0.75" />
         <AssociationConnector Association="Model.EventAnnouncementEventAnnouncementImage" />
+        <EntityTypeShape EntityType="Model.Event" Width="1.75" PointX="9.625" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.PreviewContentImage" Width="2" PointX="13" PointY="5.25" />
+        <AssociationConnector Association="Model.EventPreviewContentImage" />
+        <EntityTypeShape EntityType="Model.ContentImage" Width="1.5" PointX="13" PointY="8.25" />
+        <AssociationConnector Association="Model.EventContentImage" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
