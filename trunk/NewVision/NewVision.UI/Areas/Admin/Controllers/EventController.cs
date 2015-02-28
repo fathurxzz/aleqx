@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NewVision.UI.Helpers;
 using NewVision.UI.Models;
+using NewVision.UI.Models.SiteViewModels;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
@@ -30,19 +32,75 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View(new Event());
+            return View(new Event { Date = DateTime.Now });
         }
 
         //
         // POST: /Admin/Event/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Event model, IEnumerable<HttpPostedFileBase> files, IEnumerable<HttpPostedFileBase> filesAnother)
         {
             try
             {
-                // TODO: Add insert logic here
+                var ev = new Event
+                {
+                    Title = model.Title,
+                    TitleDescription = model.TitleDescription,
+                    Date = model.Date,
+                    HighlightedText = model.HighlightedText,
+                    LocationAddress  = model.LocationAddress,
+                    LocationTitle = model.LocationTitle,
+                    TicketOrderType = model.TicketOrderType,
+                    PreviewContentType = model.PreviewContentType,
+                    ArtGroup = model.ArtGroup,
+                    Action = model.Action,
+                    Location = model.Location,
+                    Duration = model.Duration,
+                    Description = model.Description,
+                    IntervalQuantity = model.IntervalQuantity,
+                    PreviewContentVideoSrc = model.PreviewContentVideoSrc,
+                    Price = model.Price
+                };
 
+                ev.IsHighlighted = !string.IsNullOrEmpty(ev.HighlightedText);
+
+                foreach (var file in files)
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+
+                    var ci = new ContentImage
+                    {
+                        ImageSrc = fileName
+                    };
+
+                    ev.ContentImages.Add(ci);
+                }
+
+                foreach (var file in filesAnother)
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+
+                    var ci = new PreviewContentImage
+                    {
+                        ImageSrc = fileName
+                    };
+
+                    ev.PreviewContentImages.Add(ci);
+                }
+
+
+                _context.Events.Add(ev);
+                _context.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -56,19 +114,79 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var ev = _context.Events.First(e => e.Id == id);
+            return View(ev);
         }
 
         //
         // POST: /Admin/Event/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, IEnumerable<HttpPostedFileBase> files, IEnumerable<HttpPostedFileBase> filesAnother)
         {
             try
             {
-                // TODO: Add update logic here
+                var ev = _context.Events.First(e => e.Id == id);
+                TryUpdateModel(ev, new[]
+                {
+                    "Title",
+                    "TitleDescription",
+                    "Date",
+                    "HighlightedText",
+                    "LocationAddress",
+                    "HighlightedText",
+                    "LocationAddress",
+                    "LocationTitle",
+                    "TicketOrderType",
+                    "PreviewContentType",
+                    "ArtGroup",
+                    "Action",
+                    "Location",
+                    "Duration",
+                    "Description",
+                    "IntervalQuantity",
+                    "PreviewContentVideoSrc",
+                    "Price"
+                });
 
+                ev.IsHighlighted = !string.IsNullOrEmpty(ev.HighlightedText);
+
+
+                foreach (var file in files)
+                {
+                    if (file == null) continue;
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+
+                    var ci = new ContentImage
+                    {
+                        ImageSrc = fileName
+                    };
+
+                    ev.ContentImages.Add(ci);
+                }
+
+                foreach (var file in filesAnother)
+                {
+                    if (file == null) continue;
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+
+                    var ci = new PreviewContentImage
+                    {
+                        ImageSrc = fileName
+                    };
+
+                    ev.PreviewContentImages.Add(ci);
+                }
+
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -82,25 +200,21 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
+            var ev = _context.Events.First(e => e.Id == id);
 
-        //
-        // POST: /Admin/Event/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            foreach (var image in ev.ContentImages)
             {
-                // TODO: Add delete logic here
+                ImageHelper.DeleteImage(image.ImageSrc);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            foreach (var image in ev.PreviewContentImages)
             {
-                return View();
+                ImageHelper.DeleteImage(image.ImageSrc);
             }
+
+            _context.Events.Remove(ev);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public ActionResult DeletePreviewContentImage(int id)

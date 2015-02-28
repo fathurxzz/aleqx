@@ -29,7 +29,10 @@ namespace NewVision.UI.Models.Mapping
             this.Property(t => t.Description)
                 .HasMaxLength(10000);
 
-            this.Property(t => t.PreviewContentSrc)
+            this.Property(t => t.PreviewContentImageSrc)
+                .HasMaxLength(1000);
+            
+            this.Property(t => t.PreviewContentVideoSrc)
                 .HasMaxLength(1000);
 
             this.Property(t => t.Action)
@@ -63,7 +66,8 @@ namespace NewVision.UI.Models.Mapping
             this.Property(t => t.Description).HasColumnName("Description");
             this.Property(t => t.TicketOrderType).HasColumnName("TicketOrderType");
             this.Property(t => t.PreviewContentType).HasColumnName("PreviewContentType");
-            this.Property(t => t.PreviewContentSrc).HasColumnName("PreviewContentSrc");
+            this.Property(t => t.PreviewContentImageSrc).HasColumnName("PreviewContentImageSrc");
+            this.Property(t => t.PreviewContentVideoSrc).HasColumnName("PreviewContentVideoSrc");
             this.Property(t => t.Action).HasColumnName("Action");
             this.Property(t => t.Location).HasColumnName("Location");
             this.Property(t => t.ArtGroup).HasColumnName("ArtGroup");

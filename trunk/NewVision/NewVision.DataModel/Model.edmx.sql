@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/24/2015 21:55:27
+-- Date Created: 02/28/2015 20:38:57
 -- Generated from EDMX file: C:\vsp\NewVision\NewVision.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `gbua_new_vision`;
-CREATE DATABASE `gbua_new_vision`;
-USE `gbua_new_vision`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -82,13 +79,14 @@ CREATE TABLE `Event`(
 	`Description` varchar (10000), 
 	`TicketOrderType` int NOT NULL, 
 	`PreviewContentType` int NOT NULL, 
-	`PreviewContentSrc` varchar (1000), 
+	`PreviewContentImageSrc` varchar (1000), 
 	`Action` longtext, 
 	`Location` longtext, 
 	`ArtGroup` longtext, 
 	`Duration` varchar (100), 
 	`IntervalQuantity` varchar (100), 
-	`Price` varchar (100));
+	`Price` varchar (100), 
+	`PreviewContentVideoSrc` varchar (1000));
 
 ALTER TABLE `Event` ADD PRIMARY KEY (Id);
 

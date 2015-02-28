@@ -65,13 +65,14 @@
     <Property Name="Description" Type="varchar" Nullable="true" MaxLength="10000" />
     <Property Name="TicketOrderType" Type="int" Nullable="false" />
     <Property Name="PreviewContentType" Type="int" Nullable="false" />
-    <Property Name="PreviewContentSrc" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="PreviewContentImageSrc" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="Action" Type="longtext" Nullable="true" />
     <Property Name="Location" Type="longtext" Nullable="true" />
     <Property Name="ArtGroup" Type="longtext" Nullable="true" />
     <Property Name="Duration" Type="varchar" Nullable="true" MaxLength="100" />
     <Property Name="IntervalQuantity" Type="varchar" Nullable="true" MaxLength="100" />
     <Property Name="Price" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="PreviewContentVideoSrc" Type="varchar" Nullable="true" MaxLength="1000" />
   </EntityType>
   <EntityType Name="PreviewContentImage">
     <Key>
@@ -203,7 +204,7 @@
           <Property Type="String" Name="Description" MaxLength="10000" />
           <Property Type="Int32" Name="TicketOrderType" Nullable="false" />
           <Property Type="Int32" Name="PreviewContentType" Nullable="false" />
-          <Property Type="String" Name="PreviewContentSrc" MaxLength="1000" />
+          <Property Type="String" Name="PreviewContentImageSrc" MaxLength="1000" />
           <NavigationProperty Name="PreviewContentImages" Relationship="Model.EventPreviewContentImage" FromRole="Event" ToRole="PreviewContentImage" />
           <Property Type="String" Name="Action" />
           <Property Type="String" Name="Location" />
@@ -212,6 +213,7 @@
           <Property Type="String" Name="Duration" MaxLength="100" />
           <Property Type="String" Name="IntervalQuantity" MaxLength="100" />
           <Property Type="String" Name="Price" MaxLength="100" />
+          <Property Type="String" Name="PreviewContentVideoSrc" MaxLength="1000" />
         </EntityType>
         <EntityType Name="PreviewContentImage">
           <Key>
@@ -303,13 +305,14 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="TicketOrderType" ColumnName="TicketOrderType" />
           <ScalarProperty Name="PreviewContentType" ColumnName="PreviewContentType" />
-          <ScalarProperty Name="PreviewContentSrc" ColumnName="PreviewContentSrc" />
+          <ScalarProperty Name="PreviewContentImageSrc" ColumnName="PreviewContentImageSrc" />
           <ScalarProperty Name="Action" ColumnName="Action" />
           <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="ArtGroup" ColumnName="ArtGroup" />
           <ScalarProperty Name="Duration" ColumnName="Duration" />
           <ScalarProperty Name="IntervalQuantity" ColumnName="IntervalQuantity" />
           <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="PreviewContentVideoSrc" ColumnName="PreviewContentVideoSrc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

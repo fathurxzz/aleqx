@@ -36,14 +36,20 @@ namespace NewVision.UI.Models
         [Display(Name = "Описание")]
         public string Description { get; set; }
 
-        [Display(Name = "Способ заказа билетов")]
+        [Display(Name = "Тип заказа билетов")]
         public int TicketOrderType { get; set; }
 
         [Display(Name = "Тип контента превью")]
         public int PreviewContentType { get; set; }
 
-        [Display(Name = "Изображение или видео")]
-        public string PreviewContentSrc { get; set; }
+        [Display(Name = "Изображения превью")]
+        public int PreviewContentImages { get; set; }
+
+        [Display(Name = "Изображение")]
+        public string PreviewContentImageSrc { get; set; }
+        
+        [Display(Name = "Адрес видеоролика")]
+        public string PreviewContentVideoSrc { get; set; }
 
         [Display(Name = "Действо")]
         public string Action { get; set; }
