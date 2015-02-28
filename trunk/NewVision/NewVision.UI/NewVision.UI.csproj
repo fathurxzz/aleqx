@@ -309,6 +309,7 @@
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Media.cshtml" />
     <Content Include="Views\Shared\InputAnotherImages.cshtml" />
+    <Content Include="Views\Home\EventDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title += " — Event details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                    dataModels = settings.dataModels;
+            @Html.Raw(ViewBag.Event);
+        }(NV, A9));
+    </script>
+}
+
+<div class="page">
+    <div id="eventDetails">
+    </div>
+</div>
