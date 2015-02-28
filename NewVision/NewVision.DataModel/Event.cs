@@ -31,13 +31,14 @@ namespace NewVision.DataModel
         public string Description { get; set; }
         public int TicketOrderType { get; set; }
         public int PreviewContentType { get; set; }
-        public string PreviewContentSrc { get; set; }
+        public string PreviewContentImageSrc { get; set; }
         public string Action { get; set; }
         public string Location { get; set; }
         public string ArtGroup { get; set; }
         public string Duration { get; set; }
         public string IntervalQuantity { get; set; }
         public string Price { get; set; }
+        public string PreviewContentVideoSrc { get; set; }
     
         public virtual ICollection<PreviewContentImage> PreviewContentImages { get; set; }
         public virtual ICollection<ContentImage> ContentImages { get; set; }

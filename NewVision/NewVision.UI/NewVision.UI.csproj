@@ -170,6 +170,7 @@
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\PictureSize.cs" />
+    <Compile Include="Helpers\SiteContentHelper.cs" />
     <Compile Include="Helpers\ThumbnailPicture.cs" />
     <Compile Include="Models\ContentImage.cs" />
     <Compile Include="Models\Event.cs" />
@@ -237,6 +238,7 @@
     <Content Include="fonts\MuseoSansCyrl_3.woff" />
     <Content Include="Areas\Admin\Views\Event\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Event\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Event\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\dev.pubxml" />
     <None Include="Properties\PublishProfiles\service.pubxml" />
     <Content Include="images\arrow-left.png" />
@@ -305,6 +307,7 @@
     <Content Include="Views\Home\Partnership.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Media.cshtml" />
+    <Content Include="Views\Shared\InputAnotherImages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

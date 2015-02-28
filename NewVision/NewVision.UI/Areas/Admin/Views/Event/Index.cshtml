@@ -49,7 +49,10 @@
             @Html.DisplayNameFor(model => model.PreviewContentType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PreviewContentSrc)
+            @Html.DisplayNameFor(model => model.PreviewContentImages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviewContentVideoSrc)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Action)
@@ -69,7 +72,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContentImages)
+        </th>
         <th></th>
         <th></th>
     </tr>
@@ -78,7 +83,8 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @Html.Raw(item.Date.ToShortDateString())
+                @*@Html.DisplayFor(modelItem => item.Date.ToShortDateString())*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -102,13 +108,25 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TicketOrderType)
+                @Html.Raw(SiteContentHelper.TicketOrderType[item.TicketOrderType])
+                @*@Html.DisplayFor(modelItem => item.TicketOrderType)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PreviewContentType)
+                @Html.Raw(SiteContentHelper.PreviewContentType[item.TicketOrderType])
+                @*@Html.DisplayFor(modelItem => item.PreviewContentType)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PreviewContentSrc)
+                @foreach (var image in item.PreviewContentImages)
+                {
+                    <div style="float: left">
+                        @Html.ActionLink("Удалить", "DeletePreviewContentImage", "Event", new { area = "Admin", id = image.Id }, new { onclick = "return confirm('Удалить запись?')", @class = "adminLink" })
+                        <br />
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventAnnouncementPreview")))
+                    </div>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreviewContentVideoSrc)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Action)
@@ -128,18 +146,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-
-
-            <td>
-                @foreach (var image in item.PreviewContentImages)
-                {
-                    <div style="float: left">
-                        @Html.ActionLink("Удалить", "DeletePreviewContentImage", "Event", new { area = "Admin", id = image.Id }, new { onclick = "return confirm('Удалить запись?')", @class = "adminLink" })
-                        <br />
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventAnnouncementPreview")))
-                    </div>
-                }
-            </td>
             <td>
                 @foreach (var image in item.ContentImages)
                 {
@@ -150,7 +156,6 @@
                     </div>
                 }
             </td>
-
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })

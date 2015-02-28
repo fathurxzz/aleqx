@@ -1,7 +1,7 @@
 ﻿<div class="inputImages">
-    <input type="file" id="files" name="files" multiple />
+    <input type="file" id="filesAnother" name="filesAnother" multiple />
     <div>
-        <output id="list"></output>
+        <output id="listAnother"></output>
     </div>
     <script type="text/javascript">
         function handleFileSelect(evt) {
@@ -15,12 +15,12 @@
                     return function (e) {
                         var span = document.createElement('span');
                         span.innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
-                        document.getElementById('list').insertBefore(span, null);
+                        document.getElementById('listAnother').insertBefore(span, null);
                     };
                 })(f);
                 reader.readAsDataURL(f);
             }
         }
-        document.getElementById('files').addEventListener('change', handleFileSelect, false);
+        document.getElementById('filesAnother').addEventListener('change', handleFileSelect, false);
     </script>
 </div>

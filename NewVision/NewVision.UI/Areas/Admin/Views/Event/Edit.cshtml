@@ -13,9 +13,10 @@
 
 <div class="container">
     <h3>Добавление проекта</h3>
-    @using (Html.BeginForm("Create", "Event", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "Event", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model=>model.Id)
         @Html.ValidationSummary(true)
         <div class="form-group">
             @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
