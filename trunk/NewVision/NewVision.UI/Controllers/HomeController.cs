@@ -73,6 +73,52 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Events()
         {
+
+            var result = new List<object>();
+
+            var events = _context.Events.ToList();
+
+
+            foreach (var ev in events)
+            {
+                result.Add(new
+                {
+                    id = ev.Id,
+                    date = ev.Date.ToShortDateString(),
+                    title = ev.Title,
+                    titleDescription = ev.TitleDescription,
+                    location = new
+                    {
+                        title = ev.LocationTitle,
+                        address = ev.LocationAddress,
+                        highlightedTitlePart = ""
+                    },
+                    description = ev.Description,
+                    expired = DateTime.Now>ev.Date,
+                    ticketOrderType = SiteContentHelper.TicketOrderTypeKeys[ev.TicketOrderType],
+                    highlighted = ev.IsHighlighted,
+                    highlightText = ev.HighlightedText,
+                    previewContent = new
+                    {
+                        contentType = SiteContentHelper.PreviewContentTypeKeys[ev.PreviewContentType],
+                        videoSrc = ev.PreviewContentVideoSrc,
+                        contentImages = ev.PreviewContentImages.Select(image => image.ImageSrc).ToList()
+                    },
+                    content = new
+                    {
+                        action = ev.Action,
+                        location = ev.Location,
+                        artGroup = ev.ArtGroup
+                    },
+                    images = ev.ContentImages.Select(image => image.ImageSrc).ToList(),
+                    duration = ev.Duration,
+                    intervalQuantity = ev.IntervalQuantity,
+                    price = ev.Price
+                });
+            }
+
+            ViewBag.Events = "dataModels.events = " + JsonConvert.SerializeObject(result);
+
             return View();
         }
         public ActionResult Partnership()

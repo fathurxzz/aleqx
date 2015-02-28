@@ -186,6 +186,7 @@
     <Compile Include="Models\Mapping\EventAnnouncementImageMap.cs" />
     <Compile Include="Models\Mapping\EventAnnouncementMap.cs" />
     <Compile Include="Models\Mapping\MainBannerMap.cs" />
+    <Compile Include="Models\SiteViewModels\event.cs" />
     <Compile Include="Models\SiteViewModels\eventAnnouncement.cs" />
     <Compile Include="Models\SiteViewModels\MainBanner.cs" />
     <Compile Include="Models\SiteViewModels\mainPage.cs" />
