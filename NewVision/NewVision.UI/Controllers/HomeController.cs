@@ -121,6 +121,50 @@ namespace NewVision.UI.Controllers
 
             return View();
         }
+
+        public ActionResult EventDetails(int id)
+        {
+            var ev = _context.Events.First(e => e.Id == id);
+
+
+            ViewBag.Event = "dataModels.event = " + JsonConvert.SerializeObject(new
+            {
+                id = ev.Id,
+                date = ev.Date.ToShortDateString(),
+                title = ev.Title,
+                titleDescription = ev.TitleDescription,
+                location = new
+                {
+                    title = ev.LocationTitle,
+                    address = ev.LocationAddress,
+                    highlightedTitlePart = ""
+                },
+                description = ev.Description,
+                expired = DateTime.Now > ev.Date,
+                ticketOrderType = SiteContentHelper.TicketOrderTypeKeys[ev.TicketOrderType],
+                highlighted = ev.IsHighlighted,
+                highlightText = ev.HighlightedText,
+                previewContent = new
+                {
+                    contentType = SiteContentHelper.PreviewContentTypeKeys[ev.PreviewContentType],
+                    videoSrc = ev.PreviewContentVideoSrc,
+                    contentImages = ev.PreviewContentImages.Select(image => image.ImageSrc).ToList()
+                },
+                content = new
+                {
+                    action = ev.Action,
+                    location = ev.Location,
+                    artGroup = ev.ArtGroup
+                },
+                images = ev.ContentImages.Select(image => image.ImageSrc).ToList(),
+                duration = ev.Duration,
+                intervalQuantity = ev.IntervalQuantity,
+                price = ev.Price
+            });
+
+            return View();
+        }
+
         public ActionResult Partnership()
         {
             return View();

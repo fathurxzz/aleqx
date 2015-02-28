@@ -63,6 +63,13 @@ namespace NewVision.UI
           );
 
             routes.MapRoute(
+              "eventDetails",
+              "event-details/{id}",
+              new { controller = "Home", action = "EventDetails", id = UrlParameter.Optional },
+              new[] { "NewVision.UI.Controllers" }
+          );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
