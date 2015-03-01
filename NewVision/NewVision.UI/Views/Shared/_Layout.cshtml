@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-
+    <script type="text/javascript" src="/scripts/main.min.js?v=@SiteSettings.Version"></script>
     <script type="text/javascript" src="/scripts/vendor/jquery-1.11.2.min.js?v=@SiteSettings.Version"></script>
     <script type="text/javascript" src="/scripts/vendor/jquery.bxslider.min.js?v=@SiteSettings.Version"></script>
     <script type="text/javascript" src="/scripts/vendor/init.js?v=@SiteSettings.Version"></script>
-    <script type="text/javascript" src="/scripts/main.min.js?v=@SiteSettings.Version"></script>
     
     <link rel="stylesheet" type="text/css" href="/styles/main.min.css?v=@SiteSettings.Version" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="/styles/vendor/jquery.bxslider.css?v=@SiteSettings.Version" media="screen"/>
     
       <script type="text/javascript">
         (function(nv){
@@ -79,6 +79,12 @@
                 contentImagesPath: '/content/images/',
                 mainPageSlideTimeout: 10000,
                 mainPageUrl: '/',
+                newsPageUrl: '/news',
+                eventsPageUrl: '/events',
+                eventDetailsPageUrl: '/event-details/{id}',
+                mediaPageUrl: '/media',
+                partnershipPageUrl: '/partnership',
+                contactsPageUrl: '/contacts',
                 joinUsUrl: '#',
                 antiSpamAnswer: '321'
             };
@@ -96,32 +102,32 @@
                     title: 'расписание проектов',
                     selected: false,
                     active: false,
-                    url: '/events'
+                    url: settings.controlsDescriptors.site.eventsPageUrl
 
                 },
                 {
                     title: 'новости и события',
                     selected: false,
                     active: false,
-                    url: '/news'
+                    url: settings.controlsDescriptors.site.newsPageUrl
                 },
                 {
                     title: 'медиа',
                     selected: false,
                     active: false,
-                    url: '/media'
+                    url: settings.controlsDescriptors.site.mediaPageUrl
                 },
                 {
                     title: 'спонсорство и партнерство',
                     selected: false,
                     active: false,
-                    url: '/partnership'
+                    url: settings.controlsDescriptors.site.partnershipPageUrl
                 },
                 {
                     title: 'контактная информация',
                     selected: false,
                     active: false,
-                    url: '/contacts'
+                    url: settings.controlsDescriptors.site.contactsPageUrl
                 }
             ];
 

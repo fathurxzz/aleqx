@@ -156,6 +156,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventAnnouncementController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainBannerController.cs" />
@@ -240,6 +241,7 @@
     <Content Include="Areas\Admin\Views\Event\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Event\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Event\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <None Include="Properties\PublishProfiles\dev.pubxml" />
     <None Include="Properties\PublishProfiles\service.pubxml" />
     <Content Include="images\arrow-left.png" />

@@ -8,9 +8,24 @@
     <script type="text/javascript">
         (function (nv, a9) {
             var settings = nv.settings,
-                    dataModels = settings.dataModels;
+                dataModels = settings.dataModels;
             @Html.Raw(ViewBag.Event);
         }(NV, A9));
+    </script>
+    <script type="application/javascript">
+        $(function () {
+            $(".show-more-button").click(function () {
+
+                var container = $(this).parent().parent();
+                if (container.hasClass("full")) {
+                    container.removeClass("full");
+                }
+                else {
+                    container.addClass("full");
+                }
+
+            });
+        })
     </script>
 }
 
@@ -18,3 +33,4 @@
     <div id="eventDetails">
     </div>
 </div>
+

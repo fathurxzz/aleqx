@@ -167,6 +167,64 @@ namespace NewVision.UI.Helpers
         }
 
 
+        private static void ScaleAndSaveOriginalImage(Bitmap image, Stream saveTo, int width, int height, ScaleMode scaleMode)
+        {
+            Size thumbImage = new Size(width, height);
+            int delta = 0;
+            Rectangle sourceRect = CalculateSourceRect(image.Size, thumbImage, scaleMode);
+
+            //Rectangle sourceRect = new Rectangle(0, 0, image.Width, image.Height);
+
+            Rectangle destRect = CalculateDestRect(image.Size, thumbImage, scaleMode, delta);
+
+
+            //Rectangle destRect;
+            //int resultSourceImageWidth = image.Width;
+            //int resultSourceImageHeight = image.Height;
+            //if (image.Width <= width && image.Height <= height)
+            //{
+            //    destRect = new Rectangle(0, 0, image.Width, image.Height);
+            //}
+            //else
+            //{
+            //    double wRatio = (double)width / image.Width; // ?
+            //    double hRatio = (double)height / image.Height; // ?
+            //    double ratio = hRatio < wRatio ? hRatio : wRatio;
+            //    resultSourceImageWidth = (int)(image.Width * ratio);
+            //    resultSourceImageHeight = (int)(image.Height * ratio);
+            //    destRect = new Rectangle(0, 0, resultSourceImageWidth, resultSourceImageHeight);
+            //}
+
+            //Bitmap thumbnailImage = new Bitmap(resultSourceImageWidth, resultSourceImageHeight);
+
+            //System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
+            //graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, resultSourceImageWidth, resultSourceImageHeight);
+            //graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            //graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
+
+            //thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
+            //saveTo.Position = 0;
+
+            Bitmap thumbnailImage;
+
+
+            if (scaleMode == ScaleMode.Insert)
+                thumbnailImage = new Bitmap(thumbImage.Width, thumbImage.Height);
+            else
+                thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
+
+            System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
+            if (scaleMode == ScaleMode.Insert)
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, thumbImage.Width, thumbImage.Height);
+            else
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, destRect.Width, destRect.Height);
+            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
+
+            thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
+            saveTo.Position = 0;
+
+        }
 
         private static void ScaleAndSaveOriginalImage(int limitLength, Bitmap image, Stream saveTo)
         {
@@ -331,6 +389,25 @@ namespace NewVision.UI.Helpers
             using (FileStream stream = new FileStream(filePath, FileMode.CreateNew))
             {
                 ScaleAndSaveOriginalImage(limitLength, image, stream);
+            }
+            IOHelper.DeleteFile("~/Content/tmpImages", fileName);
+        }
+
+        public static void SaveOriginalImageWithDefinedDimentions(string filePath, string fileName, HttpPostedFileBase file, int destinationWidth, int destinationHeight, ScaleMode scaleMode)
+        {
+            string tmpFilePath = HttpContext.Current.Server.MapPath("~/Content/tmpImages");
+            tmpFilePath = Path.Combine(tmpFilePath, fileName);
+            file.SaveAs(tmpFilePath);
+
+            Bitmap image;
+            string sourcePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/tmpImages"), fileName);
+            using (FileStream stream = new FileStream(sourcePath, FileMode.Open))
+            {
+                image = new Bitmap(stream);
+            }
+            using (FileStream stream = new FileStream(filePath, FileMode.CreateNew))
+            {
+                ScaleAndSaveOriginalImage(image, stream, destinationWidth, destinationHeight, scaleMode);
             }
             IOHelper.DeleteFile("~/Content/tmpImages", fileName);
         }
