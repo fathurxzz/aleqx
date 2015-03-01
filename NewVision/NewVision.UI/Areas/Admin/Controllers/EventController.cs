@@ -90,7 +90,8 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Images");
 
                     filePath = Path.Combine(filePath, fileName);
-                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 788, 500, ScaleMode.Crop);
 
                     var ci = new PreviewContentImage
                     {
@@ -180,7 +181,8 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Images");
 
                     filePath = Path.Combine(filePath, fileName);
-                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 788, 500, ScaleMode.Crop);
 
                     var ci = new PreviewContentImage
                     {
