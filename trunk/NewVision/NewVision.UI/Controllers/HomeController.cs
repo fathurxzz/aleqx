@@ -79,7 +79,7 @@ namespace NewVision.UI.Controllers
             var events = _context.Events.ToList();
 
 
-            foreach (var ev in events)
+            foreach (var ev in events.OrderBy(e => e.Date))
             {
                 result.Add(new
                 {

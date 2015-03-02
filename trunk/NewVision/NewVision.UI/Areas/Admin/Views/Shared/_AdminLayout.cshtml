@@ -1,9 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@using NewVision.UI
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>New Vision Productions &mdash; Система администрирования &mdash; @ViewBag.Title</title>
     @Styles.Render("~/Content/css/bootstrap.min.css", "~/Content/css/bootstrap-select.min.css", "~/Content/css/jquery-ui.min.css", "~/Content/css/jquery-ui.structure.min.css", "~/Content/css/Admin.css")
+    <script type="text/javascript" src="/scripts/vendor/jquery-1.11.2.min.js?v=@SiteSettings.Version"></script>
+    <style>
+        div.clip {
+            white-space: nowrap; /* Запрещаем перенос строк */
+            overflow: hidden; /* Обрезаем все, что не помещается в область */
+            text-overflow: ellipsis; /* Добавляем многоточие */
+            max-width: 100px;
+        }
+    </style>
 </head>
 <body>
     @Html.Partial("LogOut")

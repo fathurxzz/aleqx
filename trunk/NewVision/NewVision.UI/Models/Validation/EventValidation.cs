@@ -21,25 +21,25 @@ namespace NewVision.UI.Models
         [Display(Name = "Заголовок")]
         public string Title { get; set; }
 
-        [Display(Name = "Описание заголовка")]
+        [Display(Name = "Предзаголовок")]
         public string TitleDescription { get; set; }
 
-        [Display(Name = "Выделенный текст")]
+        [Display(Name = "Флажок (если нужен)")]
         public string HighlightedText { get; set; }
 
-        [Display(Name = "Адрес")]
+        [Display(Name = "Адрес локации")]
         public string LocationAddress { get; set; }
 
-        //[Display(Name = "Заголовок")]
-        //public string LocationTitle { get; set; }
+        [Display(Name = "Заголовок локации")]
+        public string LocationTitle { get; set; }
 
-        [Display(Name = "Описание")]
+        [Display(Name = "Описание мероприятия")]
         public string Description { get; set; }
 
         [Display(Name = "Тип заказа билетов")]
         public int TicketOrderType { get; set; }
 
-        [Display(Name = "Тип контента превью")]
+        [Display(Name = "Видео или Фото?")]
         public int PreviewContentType { get; set; }
 
         [Display(Name = "Изображения превью")]
@@ -51,13 +51,13 @@ namespace NewVision.UI.Models
         [Display(Name = "Адрес видеоролика")]
         public string PreviewContentVideoSrc { get; set; }
 
-        [Display(Name = "Действо")]
+        [Display(Name = "Описание действа")]
         public string Action { get; set; }
 
-        [Display(Name = "Локация")]
+        [Display(Name = "Описание локации")]
         public string Location { get; set; }
 
-        [Display(Name = "Арт-группа")]
+        [Display(Name = "Описание арт-группы")]
         public string ArtGroup { get; set; }
 
         [Display(Name = "Длительность действа")]
@@ -68,5 +68,9 @@ namespace NewVision.UI.Models
 
         [Display(Name = "Цены на билеты")]
         public string Price { get; set; }
+
+        [Display(Name = "Загрузка в ленту картинок")]
+        public string ContentImages { get; set; }
+        
     }
 }

@@ -8,9 +8,14 @@
     <script type="text/javascript">
         (function (nv, a9) {
             var settings = nv.settings,
-                    dataModels = settings.dataModels;
+                dataModels = settings.dataModels;
             @Html.Raw(ViewBag.Events);
         }(NV, A9));
+    </script>
+    <script type="text/javascript">
+        (function (nv) {
+            nv.settings.controlsDescriptors.site.activeMenuItemId = 1;
+        }(NV));
     </script>
 
      @*<script type="text/javascript">

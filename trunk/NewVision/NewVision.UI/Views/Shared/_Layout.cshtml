@@ -6,14 +6,25 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <script type="text/javascript" src="/scripts/main.min.js?v=@SiteSettings.Version"></script>
-    <script type="text/javascript" src="/scripts/vendor/jquery-1.11.2.min.js?v=@SiteSettings.Version"></script>
+    @*<script type="text/javascript" src="/scripts/vendor/jquery-1.11.2.min.js?v=@SiteSettings.Version"></script>*@
+    <script type="text/javascript" src="/scripts/vendor/jquery-1.5.1.min.js?v=@SiteSettings.Version"></script>
     <script type="text/javascript" src="/scripts/vendor/jquery.bxslider.min.js?v=@SiteSettings.Version"></script>
+    <script type="text/javascript" src="/scripts/vendor/jquery.scrolling-parallax.js?v=@SiteSettings.Version"></script>
     <script type="text/javascript" src="/scripts/vendor/init.js?v=@SiteSettings.Version"></script>
     
     <link rel="stylesheet" type="text/css" href="/styles/main.min.css?v=@SiteSettings.Version" media="screen"/>
     <link rel="stylesheet" type="text/css" href="/styles/vendor/jquery.bxslider.css?v=@SiteSettings.Version" media="screen"/>
     
-      <script type="text/javascript">
+     <script type="text/javascript">
+         $(function () {
+             $.scrollingParallax('/images/site-bg.png', {
+                 staticSpeed: .2,
+                 bgRepeat:true
+                });
+            });
+        </script>
+
+    <script type="text/javascript">
         (function(nv){
             var settings;
             if (nv.settings === null){
@@ -50,7 +61,10 @@
                     mainPageDetails: 'Подробнее о нас',
                     eventWillBe: 'проект состоится',
                     learnMore: 'узнать больше',
-                    orderTicket: 'заказать билет',
+                    ticketType_orderTicket: 'заказать билет',
+                    ticketType_eventIsFree: 'вход свободный',
+                    ticketType_getInvite: 'получить приглас.',
+                    ticketType_noSeats: 'мест нет',
                     contactsTitle: 'контактная информация и обратная связь',
                     address: 'Украина, 02002, г. Киев, ул. Ованеса Туманяна, 15-А, оф. 630<br>Телефон: +38 066 8450056',
                     feedbackTitle: 'отправить мгновенное сообщение',
@@ -99,6 +113,7 @@
 
             dataModels.mainMenu = [
                 {
+                    id:1,
                     title: 'расписание проектов',
                     selected: false,
                     active: false,
@@ -106,24 +121,28 @@
 
                 },
                 {
+                    id: 2,
                     title: 'новости и события',
                     selected: false,
                     active: false,
                     url: settings.controlsDescriptors.site.newsPageUrl
                 },
                 {
+                    id: 3,
                     title: 'медиа',
                     selected: false,
                     active: false,
                     url: settings.controlsDescriptors.site.mediaPageUrl
                 },
                 {
+                    id: 4,
                     title: 'спонсорство и партнерство',
                     selected: false,
                     active: false,
                     url: settings.controlsDescriptors.site.partnershipPageUrl
                 },
                 {
+                    id: 5,
                     title: 'контактная информация',
                     selected: false,
                     active: false,

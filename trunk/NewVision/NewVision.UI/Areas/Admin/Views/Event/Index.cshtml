@@ -22,16 +22,13 @@
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TitleDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HighlightedText)
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsHighlighted)
+            @Html.DisplayNameFor(model => model.HighlightedText)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LocationAddress)
@@ -79,7 +76,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(e => e.Date))
     {
         <tr>
             <td>
@@ -87,25 +84,24 @@
                 @*@Html.DisplayFor(modelItem => item.Date.ToShortDateString())*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @Html.DisplayFor(modelItem => item.TitleDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TitleDescription)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HighlightedText)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsHighlighted)
-            </td>
-            <td>
+           <td>
                 @Html.DisplayFor(modelItem => item.LocationAddress)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LocationTitle)
             </td>
             <td>
+                <div class="clip">
                 @Html.DisplayFor(modelItem => item.Description)
+                    </div>
             </td>
             <td>
                 @Html.Raw(SiteContentHelper.TicketOrderType[item.TicketOrderType])
@@ -115,27 +111,35 @@
                 @Html.Raw(SiteContentHelper.PreviewContentType[item.TicketOrderType])
                 @*@Html.DisplayFor(modelItem => item.PreviewContentType)*@
             </td>
-            <td>
+            <td style="min-width: 200px">
                 @foreach (var image in item.PreviewContentImages)
                 {
-                    <div style="float: left">
+                    <div style="float: left; padding-bottom: 5px">
                         @Html.ActionLink("Удалить", "DeletePreviewContentImage", "Event", new { area = "Admin", id = image.Id }, new { onclick = "return confirm('Удалить запись?')", @class = "adminLink" })
                         <br />
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventAnnouncementPreview")))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventImagePreview")))
                     </div>
                 }
             </td>
             <td>
+                <div class="clip">
                 @Html.DisplayFor(modelItem => item.PreviewContentVideoSrc)
+                    </div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Action)
+                <div class="clip">
+                    @Html.DisplayFor(modelItem => item.Action)
+                </div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Location)
+                <div class="clip">
+                    @Html.DisplayFor(modelItem => item.Location)
+                </div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ArtGroup)
+                <div class="clip">
+                    @Html.DisplayFor(modelItem => item.ArtGroup)
+                </div>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Duration)
@@ -146,13 +150,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td>
+            <td style="min-width: 200px">
                 @foreach (var image in item.ContentImages)
                 {
-                    <div style="float: left">
+                    <div style="float: left; padding-bottom: 5px">
                         @Html.ActionLink("Удалить", "DeleteContentImage", "Event", new { area = "Admin", id = image.Id }, new { onclick = "return confirm('Удалить запись?')", @class = "adminLink" })
                         <br />
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventAnnouncementPreview")))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventImagePreview")))
                     </div>
                 }
             </td>
