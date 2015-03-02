@@ -39,6 +39,7 @@ namespace NewVision.DataModel
         public string IntervalQuantity { get; set; }
         public string Price { get; set; }
         public string PreviewContentVideoSrc { get; set; }
+        public string LocationAddressMapUrl { get; set; }
     
         public virtual ICollection<PreviewContentImage> PreviewContentImages { get; set; }
         public virtual ICollection<ContentImage> ContentImages { get; set; }

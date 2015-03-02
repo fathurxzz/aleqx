@@ -91,7 +91,7 @@ namespace NewVision.UI.Controllers
                     {
                         title = ev.LocationTitle,
                         address = ev.LocationAddress,
-                        highlightedTitlePart = ""
+                        addressMapUrl = ev.LocationAddressMapUrl
                     },
                     description = ev.Description,
                     expired = DateTime.Now>ev.Date,

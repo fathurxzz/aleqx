@@ -29,6 +29,9 @@ namespace NewVision.UI.Models
 
         [Display(Name = "Адрес локации")]
         public string LocationAddress { get; set; }
+        
+        [Display(Name = "Ссылка на карту адреса локации")]
+        public string LocationAddressMapUrl { get; set; }
 
         [Display(Name = "Заголовок локации")]
         public string LocationTitle { get; set; }

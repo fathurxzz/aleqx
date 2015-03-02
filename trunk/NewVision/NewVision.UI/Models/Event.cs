@@ -18,6 +18,7 @@ namespace NewVision.UI.Models
         public string HighlightedText { get; set; }
         public bool IsHighlighted { get; set; }
         public string LocationAddress { get; set; }
+        public string LocationAddressMapUrl { get; set; }
         public string LocationTitle { get; set; }
         public string Description { get; set; }
         public int TicketOrderType { get; set; }

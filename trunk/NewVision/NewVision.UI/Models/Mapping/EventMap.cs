@@ -22,6 +22,8 @@ namespace NewVision.UI.Models.Mapping
 
             this.Property(t => t.LocationAddress)
                 .HasMaxLength(1000);
+            this.Property(t => t.LocationAddressMapUrl)
+                .HasMaxLength(500);
 
             this.Property(t => t.LocationTitle)
                 .HasMaxLength(1000);
@@ -62,6 +64,7 @@ namespace NewVision.UI.Models.Mapping
             this.Property(t => t.HighlightedText).HasColumnName("HighlightedText");
             this.Property(t => t.IsHighlighted).HasColumnName("IsHighlighted");
             this.Property(t => t.LocationAddress).HasColumnName("LocationAddress");
+            this.Property(t => t.LocationAddressMapUrl).HasColumnName("LocationAddressMapUrl");
             this.Property(t => t.LocationTitle).HasColumnName("LocationTitle");
             this.Property(t => t.Description).HasColumnName("Description");
             this.Property(t => t.TicketOrderType).HasColumnName("TicketOrderType");

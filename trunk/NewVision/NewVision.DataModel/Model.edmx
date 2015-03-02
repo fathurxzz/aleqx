@@ -73,6 +73,7 @@
     <Property Name="IntervalQuantity" Type="varchar" Nullable="true" MaxLength="100" />
     <Property Name="Price" Type="varchar" Nullable="true" MaxLength="100" />
     <Property Name="PreviewContentVideoSrc" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="LocationAddressMapUrl" Type="varchar" Nullable="true" MaxLength="500" />
   </EntityType>
   <EntityType Name="PreviewContentImage">
     <Key>
@@ -214,6 +215,7 @@
           <Property Type="String" Name="IntervalQuantity" MaxLength="100" />
           <Property Type="String" Name="Price" MaxLength="100" />
           <Property Type="String" Name="PreviewContentVideoSrc" MaxLength="1000" />
+          <Property Type="String" Name="LocationAddressMapUrl" MaxLength="500" />
         </EntityType>
         <EntityType Name="PreviewContentImage">
           <Key>
@@ -313,6 +315,7 @@
           <ScalarProperty Name="IntervalQuantity" ColumnName="IntervalQuantity" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="PreviewContentVideoSrc" ColumnName="PreviewContentVideoSrc" />
+          <ScalarProperty Name="LocationAddressMapUrl" ColumnName="LocationAddressMapUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
