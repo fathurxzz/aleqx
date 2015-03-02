@@ -2,7 +2,14 @@
     ViewBag.Title += " — News";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section scripts
+{
+    <script type="text/javascript">
+        (function (nv) {
+            nv.settings.controlsDescriptors.site.activeMenuItemId = 2;
+        }(NV));
+    </script>
+}
 <div class="page">
     <div class="news-content-wrapper">
         <div class="header">

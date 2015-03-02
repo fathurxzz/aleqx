@@ -2,7 +2,14 @@
     ViewBag.Title += " — Partnership";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section scripts
+{
+     <script type="text/javascript">
+        (function (nv) {
+            nv.settings.controlsDescriptors.site.activeMenuItemId = 4;
+        }(NV));
+    </script>
+}
 <div class="page">
     <div id="partnership">
     </div>

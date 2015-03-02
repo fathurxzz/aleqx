@@ -67,6 +67,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
                 foreach (var file in files)
                 {
+                    if (file == null) continue;
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
 
@@ -86,6 +87,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
                 foreach (var file in filesAnother)
                 {
+                    if (file == null) continue;
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
 
