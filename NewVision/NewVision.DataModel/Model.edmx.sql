@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/28/2015 20:38:57
+-- Date Created: 03/03/2015 00:40:38
 -- Generated from EDMX file: C:\vsp\NewVision\NewVision.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -86,7 +86,8 @@ CREATE TABLE `Event`(
 	`Duration` varchar (100), 
 	`IntervalQuantity` varchar (100), 
 	`Price` varchar (100), 
-	`PreviewContentVideoSrc` varchar (1000));
+	`PreviewContentVideoSrc` varchar (1000), 
+	`LocationAddressMapUrl` varchar (500));
 
 ALTER TABLE `Event` ADD PRIMARY KEY (Id);
 
