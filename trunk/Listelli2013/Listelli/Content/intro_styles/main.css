@@ -102,4 +102,16 @@ margin-bottom: 10px;
     text-align: center;
 }
 
-.intro-language-switcher a{ color: #fff;}
+.intro-language-switcher a,
+.mobile-intro-language-switcher a
+{ color: #fff;}
+
+.mobile-intro-language-switcher {
+    color: #0099fa;
+    font-size: 14px;
+    font-family: PTSans;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 10px;
+    text-align: center;
+}
