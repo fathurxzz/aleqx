@@ -269,6 +269,7 @@
     <Content Include="images\get-invite-center.png" />
     <Content Include="images\get-invite-left.png" />
     <Content Include="images\get-invite-right.png" />
+    <Content Include="images\left-wave-grey.png" />
     <Content Include="images\left-wave.png" />
     <Content Include="images\logo-copyright.png" />
     <Content Include="images\logo-medium.png" />
@@ -277,6 +278,7 @@
     <Content Include="images\logo.png" />
     <Content Include="images\main-page-details-arrow.png" />
     <Content Include="images\more-less-btn.png" />
+    <Content Include="images\right-wave-grey.png" />
     <Content Include="images\right-wave.png" />
     <Content Include="images\site-bg.png" />
     <Content Include="images\stripe-center-bg.png" />
