@@ -66,6 +66,10 @@
     margin-left: -110px;
     /*border: 1px solid white;*/
 }
+    .page6 .site.en {
+        /* TODO: add eng version */
+        background: url("../img/page1/slide1-to-site.svg");
+    }
 
 .page6 .em
 {
