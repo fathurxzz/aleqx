@@ -89,3 +89,17 @@ margin-bottom: 10px;
 #custom-pager a.bx-pager-link.active {
     background: #000;
 }
+
+
+.intro-language-switcher {
+    width: 120px;
+    color: #0099fa;
+    font-size: 10px;
+    font-family: PTSans;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.intro-language-switcher a{ color: #fff;}
