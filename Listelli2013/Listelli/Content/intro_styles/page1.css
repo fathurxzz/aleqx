@@ -59,14 +59,23 @@
     margin-top: -118px;
     margin-left: -84px;
 }
+.page1 .more.en {
+    /* TODO: add eng version */
+    background: url("../img/page1/slide1-uvidet-bolshe.svg");
+}
 
 .page1 .site {
     position: absolute;
     width: 220px;
     height: 28px;
-    background: url("../img/page1/slide1-to-site.svg") no-repeat;;
+    background: url("../img/page1/slide1-to-site.svg") no-repeat;
     left: 100%;
     top: 0;
     margin-top: 40px;
     margin-left: -264px;
+}
+
+.page1 .site.en {
+    /* TODO: add eng version */
+    background: url("../img/page1/slide1-to-site.svg") no-repeat;
 }
