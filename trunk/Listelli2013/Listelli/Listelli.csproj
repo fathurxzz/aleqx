@@ -470,6 +470,8 @@
     <Content Include="Views\Shared\Intro.cshtml" />
     <Content Include="Views\Shared\Mobile.cshtml" />
     <Content Include="Views\Shared\_LayoutIntro.cshtml" />
+    <Content Include="Views\Shared\MobileEn.cshtml" />
+    <Content Include="Views\Shared\IntroEn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">

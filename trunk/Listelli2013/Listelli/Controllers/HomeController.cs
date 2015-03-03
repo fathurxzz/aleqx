@@ -33,6 +33,10 @@ namespace Listelli.Controllers
         {
             if (id == null)
             {
+
+                if(CurrentLang.Code=="en")
+                    return View(IsMobile ? "MobileEn" : "IntroEn");
+
                 return View(IsMobile ? "Mobile" : "Intro");
             }
             //Thread tr = (Thread)HttpContext.Application["mailSender"];
