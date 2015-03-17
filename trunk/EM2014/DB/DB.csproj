@@ -30,7 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -42,6 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blank.cs">
+      <DependentUpon>Brief.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BlankItem.cs">
+      <DependentUpon>Brief.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brief.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Brief.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brief.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Brief.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Brief.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Brief.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Content.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -76,6 +101,7 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Brief.edmx.sql" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -93,6 +119,32 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Brief.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Brief.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Brief.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Brief.edmx</DependentUpon>
+      <LastGenOutput>Brief.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Brief.edmx.diagram">
+      <DependentUpon>Brief.edmx</DependentUpon>
+    </None>
+    <None Include="Brief.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Brief.edmx</DependentUpon>
+      <LastGenOutput>Brief.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
