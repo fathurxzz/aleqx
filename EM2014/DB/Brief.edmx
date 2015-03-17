@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Brief.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BriefStoreContainer">
+    <EntitySet Name="Blank" EntityType="Brief.Store.Blank" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BlankItem" EntityType="Brief.Store.BlankItem" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="BlankBlankItem" Association="Brief.Store.BlankBlankItem">
+      <End Role="Blank" EntitySet="Blank" />
+      <End Role="BlankItem" EntitySet="BlankItem" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Blank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="CustomerName" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlankItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="varchar" Nullable="true" MaxLength="2000" />
+    <Property Name="QuestionDescription" Type="varchar" Nullable="true" MaxLength="2000" />
+    <Property Name="Answer" Type="longtext" Nullable="true" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="BlankId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="BlankBlankItem">
+    <End Role="Blank" Type="Brief.Store.Blank" Multiplicity="1" />
+    <End Role="BlankItem" Type="Brief.Store.BlankItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blank">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BlankItem">
+        <PropertyRef Name="BlankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Brief" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="BriefContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Blank" EntityType="Brief.Blank" />
+          <EntitySet Name="BlankItem" EntityType="Brief.BlankItem" />
+          <AssociationSet Name="BlankBlankItem" Association="Brief.BlankBlankItem">
+            <End Role="Blank" EntitySet="Blank" />
+            <End Role="BlankItem" EntitySet="BlankItem" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Blank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="500" />
+          <Property Type="String" Name="Title" MaxLength="500" />
+          <Property Type="String" Name="CustomerName" MaxLength="500" />
+          <NavigationProperty Name="BlankItems" Relationship="Brief.BlankBlankItem" FromRole="Blank" ToRole="BlankItem" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlankItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Question" MaxLength="2000" />
+          <Property Type="String" Name="QuestionDescription" MaxLength="2000" />
+          <Property Type="String" Name="Answer" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="false" />
+          <NavigationProperty Name="Blank" Relationship="Brief.BlankBlankItem" FromRole="BlankItem" ToRole="Blank" />
+          <Property Type="Int32" Name="BlankId" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+        </EntityType>
+        <Association Name="BlankBlankItem">
+          <End Type="Brief.Blank" Role="Blank" Multiplicity="1" />
+          <End Type="Brief.BlankItem" Role="BlankItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BlankItem">
+              <PropertyRef Name="BlankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BriefStoreContainer" CdmEntityContainer="BriefContainer">
+    <EntitySetMapping Name="Blank">
+      <EntityTypeMapping TypeName="IsTypeOf(Brief.Blank)">
+        <MappingFragment StoreEntitySet="Blank">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlankItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Brief.BlankItem)">
+        <MappingFragment StoreEntitySet="BlankItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="QuestionDescription" ColumnName="QuestionDescription" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="BlankId" ColumnName="BlankId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
