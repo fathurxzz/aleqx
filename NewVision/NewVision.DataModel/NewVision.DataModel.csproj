@@ -76,6 +76,9 @@
     <Compile Include="MainBanner.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Media.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model.Context.cs">
       <DependentUpon>Model.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -90,6 +93,9 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Partnership.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="PreviewContentImage.cs">
       <DependentUpon>Model.tt</DependentUpon>

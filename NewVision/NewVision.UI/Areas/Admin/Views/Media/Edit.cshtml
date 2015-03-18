@@ -1,0 +1,91 @@
+﻿@using NewVision.UI.Helpers
+@model NewVision.UI.Models.Media
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Media")
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            if ($("#PreviewContentType").val() == 1) {
+                $("#PreviewContentImagesWrapper").css("display", "none");
+                $("#PreviewContentVideoSrcWrapper").css("display", "block");
+            } else {
+                $("#PreviewContentImagesWrapper").css("display", "block");
+                $("#PreviewContentVideoSrcWrapper").css("display", "none");
+            }
+
+            $("#PreviewContentType").change(function(e) {
+                if (e.target.selectedIndex == 1) {
+                    $("#PreviewContentImagesWrapper").css("display", "none");
+                    $("#PreviewContentVideoSrcWrapper").css("display", "block");
+                } else {
+                    $("#PreviewContentImagesWrapper").css("display", "block");
+                    $("#PreviewContentVideoSrcWrapper").css("display", "none");
+                }
+            });
+        });
+    </script>
+}
+
+<div class="container">
+    <h3>Редактирование контента</h3>
+    @using (Html.BeginForm("Edit", "Media", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model=>model.Id)
+        @Html.ValidationSummary(true)
+       <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Title" id="Title" placeholder="Введите заголовок" value="@Model.Title">
+            </div>
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="Text">@Model.Text</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentType, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <select class="selectpicker" name="ContentType" id="PreviewContentType">
+                    <option value="0" @(Model.ContentType==0?"selected":"")>@SiteContentHelper.PreviewContentType[0]</option>
+                    <option value="1" @(Model.ContentType==1?"selected":"")>@SiteContentHelper.PreviewContentType[1]</option>
+                </select>
+            </div>
+            @Html.ValidationMessageFor(model => model.ContentType)
+        </div>
+       
+        <div class="form-group" id="PreviewContentImagesWrapper">
+            @Html.LabelFor(model => model.ImageSrc, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="file" name="file"/>
+            </div>
+        </div>
+        <div class="form-group" id="PreviewContentVideoSrcWrapper">
+            @Html.LabelFor(model => model.VideoSrc, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="VideoSrc" id="VideoSrc" placeholder="Введите адрес видеоролика" value="@Model.VideoSrc">
+            </div>
+            @Html.ValidationMessageFor(model => model.VideoSrc)
+        </div>
+        
+        <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "Media", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,73 @@
+﻿@using NewVision.UI
+@using NewVision.UI.Helpers
+@model IEnumerable<NewVision.UI.Models.Media>
+
+@{
+    ViewBag.Title = "Новости";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Media")
+}
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+          <th>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoSrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.OrderBy(e => e.SortOrder))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+             <td>
+                @Html.Raw(SiteContentHelper.PreviewContentType[item.ContentType])
+            </td>
+            <td style="min-width: 200px">
+                <div style="float: left; padding-bottom: 5px">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("articlePreview")))
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VideoSrc)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.SortOrder)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+            </td>
+        </tr>
+    }
+
+</table>

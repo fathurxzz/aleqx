@@ -192,6 +192,21 @@ namespace NewVision.UI.Controllers
         }
         public ActionResult Media()
         {
+            var result = new List<object>();
+
+            var articles = _context.Media.ToList();
+            foreach (var article in articles.OrderBy(c=>c.SortOrder))
+            {
+                result.Add(new
+                {
+                    id = article.Id,
+                    title = article.Title,
+                    text = article.Title,
+                    mediaType = article.ContentType==0?"image":"video",
+                    mediaSrc = article.ContentType == 0 ? article.ImageSrc : article.VideoSrc
+                });
+                ViewBag.Media = "dataModels.media = " + JsonConvert.SerializeObject(result);
+            }
             return View();
         }
 
