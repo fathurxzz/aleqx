@@ -18,19 +18,19 @@ namespace NewVision.UI.Models
         public string HighlightedText { get; set; }
         public bool IsHighlighted { get; set; }
         public string LocationAddress { get; set; }
-        public string LocationAddressMapUrl { get; set; }
         public string LocationTitle { get; set; }
         public string Description { get; set; }
         public int TicketOrderType { get; set; }
         public int PreviewContentType { get; set; }
         public string PreviewContentImageSrc { get; set; }
-        public string PreviewContentVideoSrc { get; set; }
         public string Action { get; set; }
         public string Location { get; set; }
         public string ArtGroup { get; set; }
         public string Duration { get; set; }
         public string IntervalQuantity { get; set; }
         public string Price { get; set; }
+        public string PreviewContentVideoSrc { get; set; }
+        public string LocationAddressMapUrl { get; set; }
         public virtual ICollection<ContentImage> ContentImages { get; set; }
         public virtual ICollection<PreviewContentImage> PreviewContentImages { get; set; }
     }
