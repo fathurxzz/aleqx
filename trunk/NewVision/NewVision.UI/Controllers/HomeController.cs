@@ -61,7 +61,7 @@ namespace NewVision.UI.Controllers
             }
 
 
-            var mainPage = new mainPage {mainBanners = mainBanners, eventAnnouncements = eventAnnouncements};
+            var mainPage = new mainPage { mainBanners = mainBanners, eventAnnouncements = eventAnnouncements };
 
 
             ViewBag.MainPage = "dataModels.mainPage = " + JsonConvert.SerializeObject(mainPage);
@@ -69,7 +69,6 @@ namespace NewVision.UI.Controllers
 
             return View();
         }
-
 
         public ActionResult Events()
         {
@@ -94,7 +93,7 @@ namespace NewVision.UI.Controllers
                         addressMapUrl = ev.LocationAddressMapUrl
                     },
                     description = ev.Description,
-                    expired = DateTime.Now>ev.Date,
+                    expired = DateTime.Now > ev.Date,
                     ticketOrderType = SiteContentHelper.TicketOrderTypeKeys[ev.TicketOrderType],
                     highlighted = ev.IsHighlighted,
                     highlightText = ev.HighlightedText,
@@ -167,6 +166,18 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Partnership()
         {
+            var content = _context.Contents.FirstOrDefault();
+            if (content != null)
+            {
+                ViewBag.Partnership = "dataModels.partnership = " + JsonConvert.SerializeObject(new
+                {
+                    id = content.Id,
+                    title = content.Title,
+                    text = content.Title,
+                    imageSrc = content.ImageSrc
+                });
+            }
+
             return View();
         }
         public ActionResult News()
@@ -178,7 +189,7 @@ namespace NewVision.UI.Controllers
             {
                 result.Add(new
                 {
-                    id=article.Id,
+                    id = article.Id,
                     title = article.Title,
                     date = article.Date.ToShortDateString(),
                     imageSrc = article.ImageSrc,
@@ -195,14 +206,14 @@ namespace NewVision.UI.Controllers
             var result = new List<object>();
 
             var articles = _context.Media.ToList();
-            foreach (var article in articles.OrderBy(c=>c.SortOrder))
+            foreach (var article in articles.OrderBy(c => c.SortOrder))
             {
                 result.Add(new
                 {
                     id = article.Id,
                     title = article.Title,
                     text = article.Title,
-                    mediaType = article.ContentType==0?"image":"video",
+                    mediaType = article.ContentType == 0 ? "image" : "video",
                     mediaSrc = article.ContentType == 0 ? article.ImageSrc : article.VideoSrc
                 });
                 ViewBag.Media = "dataModels.media = " + JsonConvert.SerializeObject(result);
@@ -212,27 +223,14 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Contacts()
         {
-            var result = new List<object>();
 
-            var articles = _context.Partnerships.ToList();
-            foreach (var article in articles)
-            {
-                result.Add(new
-                {
-                    id = article.Id,
-                    title = article.Title,
-                    text = article.Title,
-                    imageSrc = article.ImageSrc
-                });
-                ViewBag.Partnership = "dataModels.partnership = " + JsonConvert.SerializeObject(result);
-            }
             return View();
         }
 
         [HttpPost]
         public JsonResult Feedback(string name, string email, string question)
         {
-            MailHelper.Notify(new FeedbackForm(){Email = email,Name = name, Question = question});
+            MailHelper.Notify(new FeedbackForm() { Email = email, Name = name, Question = question });
             return Json("1");
         }
     }

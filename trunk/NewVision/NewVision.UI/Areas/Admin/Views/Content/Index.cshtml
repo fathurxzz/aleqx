@@ -1,6 +1,6 @@
 ﻿@using NewVision.UI
 @using NewVision.UI.Helpers
-@model IEnumerable<NewVision.UI.Models.Partnership>
+@model IEnumerable<NewVision.UI.Models.Content>
 
 @{
     ViewBag.Title = "Новости";
@@ -9,7 +9,7 @@
 
 @section AdminNavigation
 {
-    @Html.Partial("Menu", "Partnership")
+    @Html.Partial("Menu", "Content")
 }
 
 <p>
@@ -18,6 +18,9 @@
 
 <table class="table table-striped">
     <tr>
+         <th>
+            @Html.DisplayNameFor(model => model.MenuTitle)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -27,12 +30,18 @@
         <th>
             @Html.DisplayNameFor(model => model.ImageSrc)
         </th>
+         <th>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuTitle)
+            </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -44,6 +53,9 @@
                     @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("articlePreview")))
                 </div>
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortOrder)
+            </td> 
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })

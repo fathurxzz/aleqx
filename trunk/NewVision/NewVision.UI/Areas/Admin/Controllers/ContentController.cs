@@ -9,18 +9,18 @@ using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
-    public class PartnershipController : Controller
+    public class ContentController : AdminController
     {
         private readonly SiteContext _context;
 
-        public PartnershipController(SiteContext context)
+        public ContentController(SiteContext context)
         {
             _context = context;
         }
 
         public ActionResult Index()
         {
-            var contents = _context.Partnerships.ToList();
+            var contents = _context.Contents.ToList();
             return View(contents);
         }
 
@@ -29,21 +29,23 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View(new Partnership());
+            return View(new Content{SortOrder = 0});
         }
 
         //
         // POST: /Admin/Partnership/Create
 
         [HttpPost]
-        public ActionResult Create(Partnership model, HttpPostedFileBase file)
+        public ActionResult Create(Content model, HttpPostedFileBase file)
         {
             try
             {
-                var content = new Partnership
+                var content = new Content
                 {
                     Title = model.Title,
-                    Text = model.Text
+                    Text = model.Text,
+                    MenuTitle = model.MenuTitle,
+                    SortOrder = model.SortOrder
                 };
 
                 if (file != null)
@@ -54,7 +56,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
                     content.ImageSrc = fileName;
                 }
-                _context.Partnerships.Add(content);
+                _context.Contents.Add(content);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -69,7 +71,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            var article = _context.Partnerships.First(e => e.Id == id);
+            var article = _context.Contents.First(e => e.Id == id);
             return View(article);
         }
 
@@ -81,8 +83,8 @@ namespace NewVision.UI.Areas.Admin.Controllers
         {
             try
             {
-                var article = _context.Partnerships.First(e => e.Id == id);
-                TryUpdateModel(article, new[] {"Title", "Text"});
+                var article = _context.Contents.First(e => e.Id == id);
+                TryUpdateModel(article, new[] {"Title", "Text","MenuTitle","SortOrder"});
                 if (file != null)
                 {
                     if (!string.IsNullOrEmpty(article.ImageSrc))
@@ -110,9 +112,9 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            var article = _context.Partnerships.First(e => e.Id == id);
+            var article = _context.Contents.First(e => e.Id == id);
             ImageHelper.DeleteImage(article.ImageSrc);
-            _context.Partnerships.Remove(article);
+            _context.Contents.Remove(article);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

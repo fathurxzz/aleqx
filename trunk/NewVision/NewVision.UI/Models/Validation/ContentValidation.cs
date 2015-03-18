@@ -6,14 +6,17 @@ using System.Web;
 
 namespace NewVision.UI.Models
 {
-    [MetadataType(typeof(PartnershipValidation))]
-    partial class Partnership
+    [MetadataType(typeof(ContentValidation))]
+    partial class Content
     {
 
     }
 
-    public class PartnershipValidation
+    public class ContentValidation
     {
+        [Display(Name = "Заголовок пункта меню")]
+        public string MenuTitle { get; set; }
+
         [Display(Name = "Заголовок")]
         public string Title { get; set; }
 
@@ -22,5 +25,8 @@ namespace NewVision.UI.Models
 
         [Display(Name = "Фото")]
         public string ImageSrc { get; set; }
+
+        [Display(Name = "Порядок отображения")]
+        public string SortOrder { get; set; }
     }
 }
