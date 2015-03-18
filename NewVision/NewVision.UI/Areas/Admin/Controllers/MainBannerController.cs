@@ -6,7 +6,7 @@ using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
-    public class MainBannerController : Controller
+    public class MainBannerController : AdminController
     {
 
         private readonly SiteContext _context;

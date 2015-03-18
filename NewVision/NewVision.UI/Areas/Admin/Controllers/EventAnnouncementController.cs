@@ -10,7 +10,7 @@ using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
-    public class EventAnnouncementController : Controller
+    public class EventAnnouncementController : AdminController
     {
         private readonly SiteContext _context;
         //

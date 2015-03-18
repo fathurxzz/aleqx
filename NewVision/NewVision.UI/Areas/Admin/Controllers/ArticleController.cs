@@ -9,7 +9,7 @@ using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
-    public class ArticleController : Controller
+    public class ArticleController : AdminController
     {
         private readonly SiteContext _context;
 
