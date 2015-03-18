@@ -10,7 +10,7 @@
     @Html.Partial("Menu", "MainBanner")
 }
 <div class="container">
-    <h3>Добавление новости</h3>
+    <h3>Редактирование контента</h3>
     @using (Html.BeginForm("Edit", "MainBanner", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()

@@ -16,6 +16,7 @@ namespace NewVision.UI
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
                                     {"mainBannerPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =200 ,Width = 400 }, CacheFolder = "mainBannerPreview", ScaleMode = ScaleMode.Crop}},
+                                    {"articlePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =145 ,Width = 170 }, CacheFolder = "articlePreview", ScaleMode = ScaleMode.Crop}},
                                     {"eventAnnouncementPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =100 ,Width = 100 }, CacheFolder = "eventAnnouncementPreview", ScaleMode = ScaleMode.Crop}},
                                     {"eventImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 50 }, CacheFolder = "eventImagePreview", ScaleMode = ScaleMode.Crop}},
                                     //{"siteProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =215 ,Width = 268 }, CacheFolder = "siteProductPreview", ScaleMode = ScaleMode.Insert}},
