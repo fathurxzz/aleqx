@@ -171,6 +171,23 @@ namespace NewVision.UI.Controllers
         }
         public ActionResult News()
         {
+            var result = new List<object>();
+
+            var articles = _context.Articles.ToList();
+            foreach (var article in articles)
+            {
+                result.Add(new
+                {
+                    id=article.Id,
+                    title = article.Title,
+                    date = article.Date.ToShortDateString(),
+                    imageSrc = article.ImageSrc,
+                    size = "1x1",
+                    titlePosition = SiteContentHelper.TitlePositionKeys[article.TitlePosition]
+                });
+                ViewBag.News = "dataModels.news = " + JsonConvert.SerializeObject(result);
+            }
+
             return View();
         }
         public ActionResult Media()
