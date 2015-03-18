@@ -204,6 +204,7 @@
     <Compile Include="Models\Validation\EventValidation.cs" />
     <Compile Include="Models\Validation\MainBannerValidation.cs" />
     <Compile Include="Models\Validation\MediaValidation.cs" />
+    <Compile Include="Models\Validation\PartnershipValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSettings.cs" />
   </ItemGroup>
@@ -260,6 +261,9 @@
     <Content Include="Areas\Admin\Views\Media\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Media\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Media\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Partnership\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Partnership\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Partnership\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\dev.pubxml" />
     <None Include="Properties\PublishProfiles\service.pubxml" />
     <Content Include="images\arrow-left.png" />

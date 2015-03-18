@@ -212,6 +212,20 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Contacts()
         {
+            var result = new List<object>();
+
+            var articles = _context.Partnerships.ToList();
+            foreach (var article in articles)
+            {
+                result.Add(new
+                {
+                    id = article.Id,
+                    title = article.Title,
+                    text = article.Title,
+                    imageSrc = article.ImageSrc
+                });
+                ViewBag.Partnership = "dataModels.partnership = " + JsonConvert.SerializeObject(result);
+            }
             return View();
         }
 

@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewVision.UI.Helpers;
+using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
     public class PartnershipController : Controller
     {
-        //
-        // GET: /Admin/Partnership/
+        private readonly SiteContext _context;
+
+        public PartnershipController(SiteContext context)
+        {
+            _context = context;
+        }
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        //
-        // GET: /Admin/Partnership/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
+            var contents = _context.Partnerships.ToList();
+            return View(contents);
         }
 
         //
@@ -29,19 +29,33 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Partnership());
         }
 
         //
         // POST: /Admin/Partnership/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Partnership model, HttpPostedFileBase file)
         {
             try
             {
-                // TODO: Add insert logic here
+                var content = new Partnership
+                {
+                    Title = model.Title,
+                    Text = model.Text
+                };
 
+                if (file != null)
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    content.ImageSrc = fileName;
+                }
+                _context.Partnerships.Add(content);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -55,19 +69,34 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var article = _context.Partnerships.First(e => e.Id == id);
+            return View(article);
         }
 
         //
         // POST: /Admin/Partnership/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, HttpPostedFileBase file)
         {
             try
             {
-                // TODO: Add update logic here
+                var article = _context.Partnerships.First(e => e.Id == id);
+                TryUpdateModel(article, new[] {"Title", "Text"});
+                if (file != null)
+                {
+                    if (!string.IsNullOrEmpty(article.ImageSrc))
+                    {
+                        ImageHelper.DeleteImage(article.ImageSrc);
+                    }
 
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    article.ImageSrc = fileName;
+                }
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -81,25 +110,13 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            var article = _context.Partnerships.First(e => e.Id == id);
+            ImageHelper.DeleteImage(article.ImageSrc);
+            _context.Partnerships.Remove(article);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        //
-        // POST: /Admin/Partnership/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
     }
 }
