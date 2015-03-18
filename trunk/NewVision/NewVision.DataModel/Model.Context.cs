@@ -31,5 +31,6 @@ namespace NewVision.DataModel
         public DbSet<Event> Event { get; set; }
         public DbSet<PreviewContentImage> PreviewContentImage { get; set; }
         public DbSet<ContentImage> ContentImage { get; set; }
+        public DbSet<Article> Article { get; set; }
     }
 }

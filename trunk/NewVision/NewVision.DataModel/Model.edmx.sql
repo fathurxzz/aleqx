@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/03/2015 00:40:38
+-- Date Created: 03/18/2015 20:10:22
 -- Generated from EDMX file: C:\vsp\NewVision\NewVision.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -30,6 +30,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Event`;
     DROP TABLE IF EXISTS `PreviewContentImage`;
     DROP TABLE IF EXISTS `ContentImage`;
+    DROP TABLE IF EXISTS `Article`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -110,6 +111,20 @@ CREATE TABLE `ContentImage`(
 	`EventId` int NOT NULL);
 
 ALTER TABLE `ContentImage` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `Article`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Title` varchar (500), 
+	`Date` datetime NOT NULL, 
+	`TitlePosition` bool NOT NULL, 
+	`Text` longtext, 
+	`Size` int NOT NULL, 
+	`ImageSrc` varchar (500));
+
+ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 
 
 

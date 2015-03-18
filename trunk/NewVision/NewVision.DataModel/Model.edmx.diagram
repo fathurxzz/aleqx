@@ -14,6 +14,7 @@
         <AssociationConnector Association="Model.EventPreviewContentImage" />
         <EntityTypeShape EntityType="Model.ContentImage" Width="1.5" PointX="13" PointY="8.25" />
         <AssociationConnector Association="Model.EventContentImage" />
+        <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="4.875" PointY="5.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
