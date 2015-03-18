@@ -99,7 +99,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="Date" Type="datetime" Nullable="false" />
-    <Property Name="TitlePosition" Type="bool" Nullable="false" />
+    <Property Name="TitlePosition" Type="int" Nullable="false" />
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="Size" Type="int" Nullable="false" />
     <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
@@ -280,7 +280,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" MaxLength="500" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
-          <Property Type="Boolean" Name="TitlePosition" Nullable="false" />
+          <Property Type="Int32" Name="TitlePosition" Nullable="false" />
           <Property Type="String" Name="Text" />
           <Property Type="Int32" Name="Size" Nullable="false" />
           <Property Type="String" Name="ImageSrc" MaxLength="500" />

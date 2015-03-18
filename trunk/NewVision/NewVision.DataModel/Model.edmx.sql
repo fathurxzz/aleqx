@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/18/2015 20:10:22
+-- Date Created: 03/18/2015 20:23:54
 -- Generated from EDMX file: C:\vsp\NewVision\NewVision.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `gbua_new_vision`;
+CREATE DATABASE `gbua_new_vision`;
+USE `gbua_new_vision`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -119,7 +122,7 @@ CREATE TABLE `Article`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Title` varchar (500), 
 	`Date` datetime NOT NULL, 
-	`TitlePosition` bool NOT NULL, 
+	`TitlePosition` int NOT NULL, 
 	`Text` longtext, 
 	`Size` int NOT NULL, 
 	`ImageSrc` varchar (500));
