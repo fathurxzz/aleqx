@@ -10,6 +10,7 @@ namespace NewVision.UI.Models
         public string MenuTitle { get; set; }
         public string ImageSrc { get; set; }
         public string Text { get; set; }
+        public string Name { get; set; }
         public int SortOrder { get; set; }
     }
 }

@@ -16,8 +16,8 @@
         <AssociationConnector Association="Model.EventContentImage" />
         <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="4.875" PointY="5.625" />
         <EntityTypeShape EntityType="Model.Media" Width="1.5" PointX="12.375" PointY="1.125" />
-        <EntityTypeShape EntityType="Model.Partnership" Width="1.5" PointX="15.5" PointY="1.125" />
-        <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="18" PointY="2.375" />
+        <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="17" PointY="2" />
+        <EntityTypeShape EntityType="Model.ArticleImages" Width="1.5" PointX="6.875" PointY="5.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

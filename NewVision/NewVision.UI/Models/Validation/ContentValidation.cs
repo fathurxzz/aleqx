@@ -23,6 +23,9 @@ namespace NewVision.UI.Models
         [Display(Name = "Текст")]
         public string Text { get; set; }
 
+        [Display(Name = "Идентификатор")]
+        public string Name { get; set; }
+
         [Display(Name = "Фото")]
         public string ImageSrc { get; set; }
 

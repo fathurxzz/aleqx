@@ -61,6 +61,9 @@
     <Compile Include="Article.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArticleImages.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Content.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -96,9 +99,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Partnership.cs">
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="PreviewContentImage.cs">
       <DependentUpon>Model.tt</DependentUpon>

@@ -14,6 +14,9 @@ namespace NewVision.UI.Models.Mapping
             this.Property(t => t.Title)
                 .HasMaxLength(500);
 
+            this.Property(t => t.Name)
+                .HasMaxLength(500);
+
             this.Property(t => t.MenuTitle)
                 .HasMaxLength(500);
 
@@ -27,6 +30,7 @@ namespace NewVision.UI.Models.Mapping
             this.ToTable("Content", "gbua_new_vision");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.MenuTitle).HasColumnName("MenuTitle");
             this.Property(t => t.ImageSrc).HasColumnName("ImageSrc");
             this.Property(t => t.Text).HasColumnName("Text");

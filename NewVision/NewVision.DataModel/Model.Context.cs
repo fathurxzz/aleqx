@@ -33,7 +33,7 @@ namespace NewVision.DataModel
         public DbSet<ContentImage> ContentImage { get; set; }
         public DbSet<Article> Article { get; set; }
         public DbSet<Media> Media { get; set; }
-        public DbSet<Partnership> Partnership { get; set; }
         public DbSet<Content> Content { get; set; }
+        public DbSet<ArticleImages> ArticleImages { get; set; }
     }
 }
