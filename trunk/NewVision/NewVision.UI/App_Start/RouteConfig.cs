@@ -19,7 +19,14 @@ namespace NewVision.UI
                "login",
                new { controller = "Auth", action = "Login" },
                new[] { "NewVision.UI.Controllers" }
-           );
+            );
+
+            routes.MapRoute(
+               "Logout",
+               "logout",
+               new { controller = "Auth", action = "Logout" },
+               new[] { "NewVision.UI.Controllers" }
+            );
 
 
             routes.MapRoute(
@@ -56,18 +63,32 @@ namespace NewVision.UI
               new[] { "NewVision.UI.Controllers" }
           );
             routes.MapRoute(
+              "newsDetails",
+              "news-details/{id}",
+              new { controller = "Home", action = "NewsDetails", id = UrlParameter.Optional },
+              new[] { "NewVision.UI.Controllers" }
+          );
+            routes.MapRoute(
               "media",
               "media",
               new { controller = "Home", action = "Media" },
               new[] { "NewVision.UI.Controllers" }
           );
 
-            routes.MapRoute(
+          routes.MapRoute(
               "eventDetails",
               "event-details/{id}",
               new { controller = "Home", action = "EventDetails", id = UrlParameter.Optional },
               new[] { "NewVision.UI.Controllers" }
           );
+
+          routes.MapRoute(
+          "content",
+          "{id}",
+          new { controller = "Home", action = "SiteContent"},
+          new[] { "NewVision.UI.Controllers" }
+          );
+
 
             routes.MapRoute(
                 name: "Default",

@@ -20,5 +20,6 @@ namespace NewVision.DataModel
         public string ImageSrc { get; set; }
         public string Text { get; set; }
         public int SortOrder { get; set; }
+        public string Name { get; set; }
     }
 }

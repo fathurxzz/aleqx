@@ -96,6 +96,7 @@
                 mainPageSlideTimeout: 10000,
                 mainPageUrl: '/',
                 newsPageUrl: '/news',
+                newsDetailsPageUrl: '/news-details/{id}',
                 eventsPageUrl: '/events',
                 eventDetailsPageUrl: '/event-details/{id}',
                 mediaPageUrl: '/media',
@@ -113,116 +114,49 @@
             var settings = nv.settings,
                 dataModels = settings.dataModels;
 
-            dataModels.mainMenu = [
-                {
-                    id:1,
-                    title: 'расписание проектов',
-                    selected: false,
-                    active: false,
-                    url: settings.controlsDescriptors.site.eventsPageUrl
+            @Html.Raw(ViewBag.MainMenu);
 
-                },
-                {
-                    id: 2,
-                    title: 'новости и события',
-                    selected: false,
-                    active: false,
-                    url: settings.controlsDescriptors.site.newsPageUrl
-                },
-                {
-                    id: 3,
-                    title: 'медиа',
-                    selected: false,
-                    active: false,
-                    url: settings.controlsDescriptors.site.mediaPageUrl
-                },
-                {
-                    id: 4,
-                    title: 'спонсорство и партнерство',
-                    selected: false,
-                    active: false,
-                    url: settings.controlsDescriptors.site.partnershipPageUrl
-                },
-                {
-                    id: 5,
-                    title: 'контактная информация',
-                    selected: false,
-                    active: false,
-                    url: settings.controlsDescriptors.site.contactsPageUrl
-                }
-            ];
+            //dataModels.mainMenu = [
+            //    {
+            //        id:1,
+            //        title: 'расписание проектов',
+            //        selected: false,
+            //        active: false,
+            //        url: settings.controlsDescriptors.site.eventsPageUrl
+
+            //    },
+            //    {
+            //        id: 2,
+            //        title: 'новости и события',
+            //        selected: false,
+            //        active: false,
+            //        url: settings.controlsDescriptors.site.newsPageUrl
+            //    },
+            //    {
+            //        id: 3,
+            //        title: 'медиа',
+            //        selected: false,
+            //        active: false,
+            //        url: settings.controlsDescriptors.site.mediaPageUrl
+            //    },
+            //    {
+            //        id: 4,
+            //        title: 'спонсорство и партнерство',
+            //        selected: false,
+            //        active: false,
+            //        url: settings.controlsDescriptors.site.partnershipPageUrl
+            //    },
+            //    {
+            //        id: 5,
+            //        title: 'контактная информация',
+            //        selected: false,
+            //        active: false,
+            //        url: settings.controlsDescriptors.site.contactsPageUrl
+            //    }
+            //];
 
         }(NV, A9));
     </script>
-    
-   @* <script type="text/javascript">
-        (function (nv, a9) {
-            var settings = nv.settings,
-                    dataModels = settings.dataModels;
-
-            dataModels.news = [
-                {
-                    title: 'Свежая новость',
-                    date: '16.11.2015',
-                    imageSrc: '11111.jpg',
-                    size: '1x1',
-                    titlePosition: 'top'
-                },
-                {
-                    title: 'Вчерашняя новость',
-                    date: '25.02.1983',
-                    imageSrc: '11111.jpg',
-                    size: '1x1',
-                    titlePosition: 'bottom'
-                },
-                {
-                    title: 'Вчерашняя новость нижним заголовком',
-                    date: '25.02.1983',
-                    imageSrc: '11111.jpg',
-                    size: '1x1',
-                    titlePosition: 'bottom'
-                },
-                {
-                    title: 'Очень длинный заголовок новости',
-                    date: '25.02.1983',
-                    imageSrc: '11111.jpg',
-                    size: '1x1',
-                    titlePosition: 'top'
-                },
-                {
-                    title: 'Свежая новость',
-                    date: '16.11.2015',
-                    imageSrc: '11111.jpg',
-                    size: '1x1',
-                    titlePosition: 'bottom'
-                },
-                {
-                    title: 'Вчерашняя новость',
-                    date: '25.02.1983',
-                    imageSrc: '11111.jpg',
-                    size: '1x1',
-                    titlePosition: 'top'
-                },
-                {
-                    title: 'Вчерашняя новость нижним заголовком',
-                    date: '25.02.1983',
-                    imageSrc: '11111.jpg',
-                    size: '1x1',
-                    titlePosition: 'bottom'
-                },
-                {
-                    title: 'Очень длинный заголовок новости',
-                    date: '25.02.1983',
-                    imageSrc: '11111.jpg',
-                    size: '1x1',
-                    titlePosition: 'top'
-                }
-
-            ]
-
-        }(NV, A9));
-</script>*@
-    
     @RenderSection("scripts", required: false)
 </head>
 <body>

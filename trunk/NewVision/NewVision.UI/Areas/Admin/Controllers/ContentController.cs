@@ -44,6 +44,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 {
                     Title = model.Title,
                     Text = model.Text,
+                    Name = model.Name,
                     MenuTitle = model.MenuTitle,
                     SortOrder = model.SortOrder
                 };
@@ -84,7 +85,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
             try
             {
                 var article = _context.Contents.First(e => e.Id == id);
-                TryUpdateModel(article, new[] {"Title", "Text","MenuTitle","SortOrder"});
+                TryUpdateModel(article, new[] {"Title","Name", "Text","MenuTitle","SortOrder"});
                 if (file != null)
                 {
                     if (!string.IsNullOrEmpty(article.ImageSrc))

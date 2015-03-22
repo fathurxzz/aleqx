@@ -19,11 +19,30 @@ namespace NewVision.UI.Controllers
             _context = context;
         }
 
+        private string GenerateMainMenu(int activeMenuItemId, bool active=false)
+        {
+
+            var contents = _context.Contents.ToList();
+
+            var result = new List<object>();
+
+            result.Add(new { id = 1, title = "расписание проектов", selected = activeMenuItemId == 1, active = activeMenuItemId == 1 && active, url = "/events" });
+            result.Add(new { id = 2, title = "новости и события", selected = activeMenuItemId == 2, active = activeMenuItemId == 2 && active, url = "/news" });
+            result.Add(new { id = 3, title = "медиа", selected = activeMenuItemId == 3, active = activeMenuItemId == 3 && active, url = "/media" });
+
+            foreach (var content in contents.OrderBy(c => c.SortOrder))
+            {
+                result.Add(new { id = content.Id, title = content.MenuTitle, selected = activeMenuItemId == content.Id, active = activeMenuItemId == content.Id && active, url = "/" + content.Name });
+            }
+
+            result.Add(new { id = 4, title = "контактная информация", selected = activeMenuItemId == 4, active = activeMenuItemId == 4 && active, url = "/contacts" });
+            return "dataModels.mainMenu = " + JsonConvert.SerializeObject(result);
+
+        }
+
         public ActionResult Index()
         {
-            //return RedirectToAction("Index", "MainBanner", new {area = "Admin"});
-
-            //ViewBag.Title = "New Vision Pro";
+            ViewBag.MainMenu = GenerateMainMenu(0);
 
             var mb = _context.MainBanners.ToList();
             var ea = _context.EventAnnouncements.ToList();
@@ -45,7 +64,7 @@ namespace NewVision.UI.Controllers
 
             foreach (var eventAnnouncement in ea)
             {
-                var ev = new eventAnnouncement()
+                var ev = new eventAnnouncement
                 {
                     title = eventAnnouncement.Title,
                     text = eventAnnouncement.Text,
@@ -70,12 +89,31 @@ namespace NewVision.UI.Controllers
             return View();
         }
 
+
+        public ActionResult SiteContent(string id)
+        {
+            var content = _context.Contents.First(c => c.Name == id);
+            ViewBag.SiteContent = "dataModels.siteContent = " + JsonConvert.SerializeObject(new
+            {
+                id = content.Id,
+                title = content.Title,
+                text = content.Text,
+                imageSrc = content.ImageSrc
+            });
+            ViewBag.MainMenu = GenerateMainMenu(content.Id);
+            return View();
+        }
+
+
         public ActionResult Events()
         {
+
+            ViewBag.MainMenu = GenerateMainMenu(1);
 
             var result = new List<object>();
 
             var events = _context.Events.ToList();
+
 
 
             foreach (var ev in events.OrderByDescending(e => e.Date))
@@ -118,11 +156,16 @@ namespace NewVision.UI.Controllers
 
             ViewBag.Events = "dataModels.events = " + JsonConvert.SerializeObject(result);
 
+
+
+
             return View();
         }
 
         public ActionResult EventDetails(int id)
         {
+            ViewBag.MainMenu = GenerateMainMenu(1, true);
+
             var ev = _context.Events.First(e => e.Id == id);
 
 
@@ -164,24 +207,9 @@ namespace NewVision.UI.Controllers
             return View();
         }
 
-        public ActionResult Partnership()
-        {
-            var content = _context.Contents.FirstOrDefault();
-            if (content != null)
-            {
-                ViewBag.Partnership = "dataModels.partnership = " + JsonConvert.SerializeObject(new
-                {
-                    id = content.Id,
-                    title = content.Title,
-                    text = content.Title,
-                    imageSrc = content.ImageSrc
-                });
-            }
-
-            return View();
-        }
         public ActionResult News()
         {
+            ViewBag.MainMenu = GenerateMainMenu(2);
             var result = new List<object>();
 
             var articles = _context.Articles.ToList();
@@ -201,8 +229,16 @@ namespace NewVision.UI.Controllers
 
             return View();
         }
+
+        public ActionResult NewsDetails(int id)
+        {
+            ViewBag.MainMenu = GenerateMainMenu(2, true);
+            return View();
+        }
+
         public ActionResult Media()
         {
+            ViewBag.MainMenu = GenerateMainMenu(3);
             var result = new List<object>();
 
             var articles = _context.Media.ToList();
@@ -223,14 +259,14 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Contacts()
         {
-
+            ViewBag.MainMenu = GenerateMainMenu(4);
             return View();
         }
 
         [HttpPost]
         public JsonResult Feedback(string name, string email, string question)
         {
-            MailHelper.Notify(new FeedbackForm() { Email = email, Name = name, Question = question });
+            MailHelper.Notify(new FeedbackForm { Email = email, Name = name, Question = question });
             return Json("1");
         }
     }

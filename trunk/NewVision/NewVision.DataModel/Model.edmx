@@ -14,7 +14,6 @@
     <EntitySet Name="ContentImage" EntityType="Model.Store.ContentImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Article" EntityType="Model.Store.Article" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Media" EntityType="Model.Store.Media" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Partnership" EntityType="Model.Store.Partnership" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Model.Store.Content" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="EventAnnouncementEventAnnouncementImage" Association="Model.Store.EventAnnouncementEventAnnouncementImage">
       <End Role="EventAnnouncement" EntitySet="EventAnnouncement" />
@@ -119,15 +118,6 @@
     <Property Name="VideoSrc" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="ContentType" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Partnership">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
-    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="500" />
-    <Property Name="Text" Type="longtext" Nullable="true" />
-  </EntityType>
   <EntityType Name="Content">
     <Key>
       <PropertyRef Name="Id" />
@@ -138,6 +128,7 @@
     <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="true" MaxLength="500" />
   </EntityType>
   <Association Name="EventAnnouncementEventAnnouncementImage">
     <End Role="EventAnnouncement" Type="Model.Store.EventAnnouncement" Multiplicity="1" />
@@ -200,8 +191,8 @@
           </AssociationSet>
           <EntitySet Name="Article" EntityType="Model.Article" />
           <EntitySet Name="Media" EntityType="Model.Media" />
-          <EntitySet Name="Partnership" EntityType="Model.Partnership" />
           <EntitySet Name="Content" EntityType="Model.Content" />
+          <EntitySet Name="ArticleImages" EntityType="Model.ArticleImages" />
         </EntityContainer>
         <EntityType Name="MainBanner">
           <Key>
@@ -322,6 +313,7 @@
           <Property Type="String" Name="Text" />
           <Property Type="Int32" Name="Size" Nullable="false" />
           <Property Type="String" Name="ImageSrc" MaxLength="500" />
+          <Property Type="String" Name="VideoSrc" MaxLength="500" />
         </EntityType>
         <EntityType Name="Media">
           <Key>
@@ -335,15 +327,6 @@
           <Property Type="String" Name="VideoSrc" MaxLength="500" />
           <Property Type="Int32" Name="ContentType" Nullable="false" />
         </EntityType>
-        <EntityType Name="Partnership">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ImageSrc" MaxLength="500" />
-          <Property Type="String" Name="Title" MaxLength="500" />
-          <Property Type="String" Name="Text" />
-        </EntityType>
         <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
@@ -354,6 +337,14 @@
           <Property Type="String" Name="ImageSrc" MaxLength="500" />
           <Property Type="String" Name="Text" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ArticleImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSrc" MaxLength="500" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -459,16 +450,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Partnership">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Partnership)">
-        <MappingFragment StoreEntitySet="Partnership">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Content">
       <EntityTypeMapping TypeName="IsTypeOf(Model.Content)">
         <MappingFragment StoreEntitySet="Content">
@@ -478,6 +459,7 @@
           <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
