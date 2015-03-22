@@ -41,11 +41,12 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 var media = new Media
                 {
                     Title = model.Title,
-                    Text = model.Text,
                     ContentType = model.ContentType,
                     SortOrder = model.SortOrder,
                     VideoSrc = model.VideoSrc
                 };
+
+                media.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 if (file != null)
                 {
@@ -78,12 +79,13 @@ namespace NewVision.UI.Areas.Admin.Controllers
     
 
         [HttpPost]
-        public ActionResult Edit(int id, HttpPostedFileBase file)
+        public ActionResult Edit(Media model, int id, HttpPostedFileBase file)
         {
             try
             {
                 var article = _context.Media.First(e => e.Id == id);
-                TryUpdateModel(article, new[] { "Title", "Text", "ContentType", "SortOrder", "VideoSrc" });
+                TryUpdateModel(article, new[] { "Title",  "ContentType", "SortOrder", "VideoSrc" });
+                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
                 if (file != null)
                 {
                     if (!string.IsNullOrEmpty(article.ImageSrc))

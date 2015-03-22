@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Text)
+                @Html.Raw(item.Text)
             </td>
             <td style="min-width: 200px">
                 <div style="float: left; padding-bottom: 5px">

@@ -43,11 +43,12 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 var content = new Content
                 {
                     Title = model.Title,
-                    Text = model.Text,
                     Name = model.Name,
                     MenuTitle = model.MenuTitle,
                     SortOrder = model.SortOrder
                 };
+
+                content.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 if (file != null)
                 {
@@ -80,12 +81,13 @@ namespace NewVision.UI.Areas.Admin.Controllers
         // POST: /Admin/Partnership/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, HttpPostedFileBase file)
+        public ActionResult Edit(Content model, int id, HttpPostedFileBase file)
         {
             try
             {
                 var article = _context.Contents.First(e => e.Id == id);
-                TryUpdateModel(article, new[] {"Title","Name", "Text","MenuTitle","SortOrder"});
+                TryUpdateModel(article, new[] {"Title","Name","MenuTitle","SortOrder"});
+                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
                 if (file != null)
                 {
                     if (!string.IsNullOrEmpty(article.ImageSrc))
