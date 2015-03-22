@@ -12,5 +12,7 @@ namespace NewVision.UI.Models
         public string Text { get; set; }
         public int Size { get; set; }
         public string ImageSrc { get; set; }
+        public string VideoSrc { get; set; }
+        public virtual ICollection<ArticleImage> ArticleImages { get; set; }
     }
 }

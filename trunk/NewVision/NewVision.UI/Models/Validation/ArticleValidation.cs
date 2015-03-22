@@ -27,5 +27,11 @@ namespace NewVision.UI.Models
 
         [Display(Name = "Изображение")]
         public string ImageSrc { get; set; }
+
+        [Display(Name = "Загрузка в ленту картинок")]
+        public string ArticleImages { get; set; }
+
+        [Display(Name = "Адрес видеоролика")]
+        public string VideoSrc { get; set; }
     }
 }

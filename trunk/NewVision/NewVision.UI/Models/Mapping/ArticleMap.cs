@@ -29,6 +29,7 @@ namespace NewVision.UI.Models.Mapping
             this.Property(t => t.Text).HasColumnName("Text");
             this.Property(t => t.Size).HasColumnName("Size");
             this.Property(t => t.ImageSrc).HasColumnName("ImageSrc");
+            this.Property(t => t.VideoSrc).HasColumnName("VideoSrc");
         }
     }
 }

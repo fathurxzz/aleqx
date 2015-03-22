@@ -61,7 +61,7 @@
     <Compile Include="Article.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ArticleImages.cs">
+    <Compile Include="ArticleImage.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Content.cs">

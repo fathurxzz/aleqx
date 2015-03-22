@@ -33,6 +33,12 @@
         <th>
             @Html.DisplayNameFor(model => model.ImageSrc)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoSrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArticleImages)
+        </th>
         <th></th>
     </tr>
 
@@ -55,6 +61,19 @@
                 <div style="float: left; padding-bottom: 5px">
                     @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("articlePreview")))
                 </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VideoSrc)
+            </td>
+            <td style="min-width: 200px">
+                @foreach (var image in item.ArticleImages)
+                {
+                    <div style="float: left; padding-bottom: 5px">
+                        @Html.ActionLink("Удалить", "DeleteArticleImage", "Article", new { area = "Admin", id = image.Id }, new { onclick = "return confirm('Удалить запись?')", @class = "adminLink" })
+                        <br />
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSrc, SiteSettings.GetThumbnail("eventImagePreview")))
+                    </div>
+                }
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |

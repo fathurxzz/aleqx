@@ -7,6 +7,7 @@ using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
 

@@ -12,22 +12,12 @@ namespace NewVision.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Article
+    public partial class ArticleImage
     {
-        public Article()
-        {
-            this.ArticleImages = new HashSet<ArticleImage>();
-        }
-    
         public int Id { get; set; }
-        public string Title { get; set; }
-        public System.DateTime Date { get; set; }
-        public int TitlePosition { get; set; }
-        public string Text { get; set; }
-        public int Size { get; set; }
         public string ImageSrc { get; set; }
-        public string VideoSrc { get; set; }
+        public int ArticleId { get; set; }
     
-        public virtual ICollection<ArticleImage> ArticleImages { get; set; }
+        public virtual Article Article { get; set; }
     }
 }
