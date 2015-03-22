@@ -5,6 +5,11 @@ namespace NewVision.UI.Models
 {
     public partial class Article
     {
+        public Article()
+        {
+            this.ArticleImages = new List<ArticleImage>();
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
         public System.DateTime Date { get; set; }

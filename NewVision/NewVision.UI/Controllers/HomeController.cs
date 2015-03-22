@@ -19,7 +19,7 @@ namespace NewVision.UI.Controllers
             _context = context;
         }
 
-        private string GenerateMainMenu(int activeMenuItemId, bool active=false)
+        private string GenerateMainMenu(int activeMenuItemId, bool active = false)
         {
 
             var contents = _context.Contents.ToList();
@@ -233,12 +233,14 @@ namespace NewVision.UI.Controllers
         {
             ViewBag.MainMenu = GenerateMainMenu(2, true);
             var article = _context.Articles.First(a => a.Id == id);
-            ViewBag.Article = "dataModels.article = " + JsonConvert.SerializeObject(new
+            ViewBag.Article = "dataModels.newsDetails = " + JsonConvert.SerializeObject(new
             {
                 id = article.Id,
                 title = article.Title,
                 date = article.Date.ToShortDateString(),
-                images = article.ArticleImages.Select(image => image.ImageSrc).ToList()
+                images = article.ArticleImages.Select(image => image.ImageSrc).ToList(),
+                videoSrc = article.VideoSrc,
+                text = article.Text
             });
             return View();
         }

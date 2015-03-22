@@ -38,7 +38,7 @@ namespace NewVision.UI.Controllers
         public ActionResult Login(LoginModel loginModel, string returnUrl)
         {
             //if (Membership.ValidateUser(loginModel.Name, loginModel.Password))
-            if (loginModel.Name == "admin" && loginModel.Password == "newvisionpro")
+            if (loginModel.Name == "admin" && loginModel.Password == "cde32wsx")
             {
                 FormsAuthentication.SetAuthCookie(loginModel.Name, loginModel.Keep);
                 return RedirectToLocal(returnUrl);
