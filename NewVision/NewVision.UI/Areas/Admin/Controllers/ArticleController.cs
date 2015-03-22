@@ -30,7 +30,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Article model, HttpPostedFileBase file)
+        public ActionResult Create(Article model, HttpPostedFileBase file, IEnumerable<HttpPostedFileBase> files)
         {
             try
             {
@@ -40,6 +40,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     Date = model.Date,
                     Text = model.Text,
                     TitlePosition = model.TitlePosition,
+                    VideoSrc = model.VideoSrc
                 };
 
                 if (file != null)
@@ -49,6 +50,26 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     filePath = Path.Combine(filePath, fileName);
                     GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 340, 290, ScaleMode.Crop);
                     article.ImageSrc = fileName;
+                }
+
+                foreach (var f in files)
+                {
+                    if (f == null) continue;
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", f.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+
+                    // h: 283
+                    // w: 400
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, f, 400, 283, ScaleMode.Crop);
+
+                    var ai = new ArticleImage
+                    {
+                        ImageSrc = fileName
+                    };
+
+                    article.ArticleImages.Add(ai);
                 }
 
                 _context.Articles.Add(article);
@@ -75,13 +96,13 @@ namespace NewVision.UI.Areas.Admin.Controllers
         // POST: /Admin/Article/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, HttpPostedFileBase file)
+        public ActionResult Edit(int id, HttpPostedFileBase file, IEnumerable<HttpPostedFileBase> files)
         {
             try
             {
                 var article = _context.Articles.First(a => a.Id == id);
 
-                TryUpdateModel(article, new[] {"Title", "Date", "Text", "TitlePosition"});
+                TryUpdateModel(article, new[] {"Title", "Date","VideoSrc", "Text", "TitlePosition"});
 
                 if (file != null)
                 {
@@ -96,6 +117,24 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 340, 290, ScaleMode.Crop);
                     article.ImageSrc = fileName;
 
+                }
+
+                foreach (var f in files)
+                {
+                    if (f == null) continue;
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", f.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, f, 400, 283, ScaleMode.Crop);
+
+                    var ai = new ArticleImage
+                    {
+                        ImageSrc = fileName
+                    };
+
+                    article.ArticleImages.Add(ai);
                 }
 
                 _context.SaveChanges();
@@ -115,7 +154,22 @@ namespace NewVision.UI.Areas.Admin.Controllers
         {
             var article = _context.Articles.First(e => e.Id == id);
             ImageHelper.DeleteImage(article.ImageSrc);
+
+            foreach (var image in article.ArticleImages)
+            {
+                ImageHelper.DeleteImage(image.ImageSrc);
+            }
+
             _context.Articles.Remove(article);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteArticleImage(int id)
+        {
+            var articleImage = _context.ArticleImages.First(ai => ai.Id == id);
+            ImageHelper.DeleteImage(articleImage.ImageSrc);
+            _context.ArticleImages.Remove(articleImage);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

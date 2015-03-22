@@ -17,7 +17,8 @@
         <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="4.875" PointY="5.625" />
         <EntityTypeShape EntityType="Model.Media" Width="1.5" PointX="12.375" PointY="1.125" />
         <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="17" PointY="2" />
-        <EntityTypeShape EntityType="Model.ArticleImages" Width="1.5" PointX="6.875" PointY="5.625" />
+        <EntityTypeShape EntityType="Model.ArticleImage" Width="1.5" PointX="6.875" PointY="5.625" />
+        <AssociationConnector Association="Model.ArticleArticleImage" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

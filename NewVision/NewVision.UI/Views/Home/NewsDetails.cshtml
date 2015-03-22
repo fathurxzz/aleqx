@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title += " — Article details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                dataModels = settings.dataModels;
+            @Html.Raw(ViewBag.Article);
+        }(NV, A9));
+    </script>
+}
+
+<div class="page">
+    <div id="articleDetails">
+    </div>
+</div>
+

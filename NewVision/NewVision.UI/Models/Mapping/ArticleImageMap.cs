@@ -1,10 +1,10 @@
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 
 namespace NewVision.UI.Models.Mapping
 {
-    public class ContentImageMap : EntityTypeConfiguration<ContentImage>
+    public class ArticleImageMap : EntityTypeConfiguration<ArticleImage>
     {
-        public ContentImageMap()
+        public ArticleImageMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);
@@ -15,15 +15,15 @@ namespace NewVision.UI.Models.Mapping
                 .HasMaxLength(500);
 
             // Table & Column Mappings
-            this.ToTable("ContentImage", "gbua_new_vision");
+            this.ToTable("ArticleImage", "gbua_new_vision");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.ImageSrc).HasColumnName("ImageSrc");
-            this.Property(t => t.EventId).HasColumnName("EventId");
+            this.Property(t => t.ArticleId).HasColumnName("ArticleId");
 
             // Relationships
-            this.HasRequired(t => t.Event)
-                .WithMany(t => t.ContentImages)
-                .HasForeignKey(d => d.EventId);
+            this.HasRequired(t => t.Article)
+                .WithMany(t => t.ArticleImages)
+                .HasForeignKey(d => d.ArticleId);
 
         }
     }

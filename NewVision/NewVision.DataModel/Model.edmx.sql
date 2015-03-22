@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/22/2015 11:02:57
+-- Date Created: 03/22/2015 12:58:40
 -- Generated from EDMX file: C:\vsp\NewVision\NewVision.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -127,7 +127,8 @@ CREATE TABLE `Article`(
 	`TitlePosition` int NOT NULL, 
 	`Text` longtext, 
 	`Size` int NOT NULL, 
-	`ImageSrc` varchar (500));
+	`ImageSrc` varchar (500), 
+	`VideoSrc` varchar (500));
 
 ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 
@@ -158,6 +159,16 @@ CREATE TABLE `Content`(
 	`Name` varchar (500));
 
 ALTER TABLE `Content` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ArticleImage`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`ImageSrc` varchar (500), 
+	`ArticleId` int NOT NULL);
+
+ALTER TABLE `ArticleImage` ADD PRIMARY KEY (Id);
 
 
 
@@ -212,6 +223,21 @@ ADD CONSTRAINT `FK_EventContentImage`
 CREATE INDEX `IX_FK_EventContentImage` 
     ON `ContentImage`
     (`EventId`);
+
+-- Creating foreign key on `ArticleId` in table 'ArticleImage'
+
+ALTER TABLE `ArticleImage`
+ADD CONSTRAINT `FK_ArticleArticleImage`
+    FOREIGN KEY (`ArticleId`)
+    REFERENCES `Article`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArticleArticleImage'
+
+CREATE INDEX `IX_FK_ArticleArticleImage` 
+    ON `ArticleImage`
+    (`ArticleId`);
 
 -- --------------------------------------------------
 -- Script has ended

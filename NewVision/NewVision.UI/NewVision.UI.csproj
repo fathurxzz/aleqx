@@ -177,6 +177,7 @@
     <Compile Include="Helpers\SiteContentHelper.cs" />
     <Compile Include="Helpers\ThumbnailPicture.cs" />
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleImage.cs" />
     <Compile Include="Models\Content.cs" />
     <Compile Include="Models\ContentImage.cs" />
     <Compile Include="Models\Event.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Models\EventAnnouncementImage.cs" />
     <Compile Include="Models\FeedbackForm.cs" />
     <Compile Include="Models\gbua_new_visionContext.cs" />
+    <Compile Include="Models\Mapping\ArticleImageMap.cs" />
     <Compile Include="Models\Mapping\ArticleMap.cs" />
     <Compile Include="Models\Mapping\ContentImageMap.cs" />
     <Compile Include="Models\Mapping\ContentMap.cs" />
@@ -338,6 +340,7 @@
     <Content Include="Views\Home\Media.cshtml" />
     <Content Include="Views\Shared\InputAnotherImages.cshtml" />
     <Content Include="Views\Home\EventDetails.cshtml" />
+    <Content Include="Views\Home\NewsDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

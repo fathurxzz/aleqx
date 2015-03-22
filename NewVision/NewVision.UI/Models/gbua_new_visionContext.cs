@@ -17,6 +17,7 @@ namespace NewVision.UI.Models
         }
 
         public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleImage> ArticleImages { get; set; }
         public DbSet<Content> Contents { get; set; }
         public DbSet<ContentImage> ContentImages { get; set; }
         public DbSet<Event> Events { get; set; }
@@ -29,6 +30,7 @@ namespace NewVision.UI.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ArticleMap());
+            modelBuilder.Configurations.Add(new ArticleImageMap());
             modelBuilder.Configurations.Add(new ContentMap());
             modelBuilder.Configurations.Add(new ContentImageMap());
             modelBuilder.Configurations.Add(new EventMap());

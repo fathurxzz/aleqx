@@ -168,7 +168,6 @@ namespace NewVision.UI.Controllers
 
             var ev = _context.Events.First(e => e.Id == id);
 
-
             ViewBag.Event = "dataModels.event = " + JsonConvert.SerializeObject(new
             {
                 id = ev.Id,
@@ -233,6 +232,14 @@ namespace NewVision.UI.Controllers
         public ActionResult NewsDetails(int id)
         {
             ViewBag.MainMenu = GenerateMainMenu(2, true);
+            var article = _context.Articles.First(a => a.Id == id);
+            ViewBag.Article = "dataModels.article = " + JsonConvert.SerializeObject(new
+            {
+                id = article.Id,
+                title = article.Title,
+                date = article.Date.ToShortDateString(),
+                images = article.ArticleImages.Select(image => image.ImageSrc).ToList()
+            });
             return View();
         }
 

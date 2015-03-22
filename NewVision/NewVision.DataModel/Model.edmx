@@ -15,6 +15,7 @@
     <EntitySet Name="Article" EntityType="Model.Store.Article" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Media" EntityType="Model.Store.Media" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Model.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleImage" EntityType="Model.Store.ArticleImage" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="EventAnnouncementEventAnnouncementImage" Association="Model.Store.EventAnnouncementEventAnnouncementImage">
       <End Role="EventAnnouncement" EntitySet="EventAnnouncement" />
       <End Role="EventAnnouncementImage" EntitySet="EventAnnouncementImage" />
@@ -26,6 +27,10 @@
     <AssociationSet Name="EventContentImage" Association="Model.Store.EventContentImage">
       <End Role="Event" EntitySet="Event" />
       <End Role="ContentImage" EntitySet="ContentImage" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleArticleImage" Association="Model.Store.ArticleArticleImage">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="ArticleImage" EntitySet="ArticleImage" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="MainBanner">
@@ -105,6 +110,7 @@
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="Size" Type="int" Nullable="false" />
     <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="VideoSrc" Type="varchar" Nullable="true" MaxLength="500" />
   </EntityType>
   <EntityType Name="Media">
     <Key>
@@ -129,6 +135,14 @@
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" Nullable="true" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ArticleImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="ArticleId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="EventAnnouncementEventAnnouncementImage">
     <End Role="EventAnnouncement" Type="Model.Store.EventAnnouncement" Multiplicity="1" />
@@ -166,6 +180,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ArticleArticleImage">
+    <End Role="Article" Type="Model.Store.Article" Multiplicity="1" />
+    <End Role="ArticleImage" Type="Model.Store.ArticleImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleImage">
+        <PropertyRef Name="ArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -192,7 +218,11 @@
           <EntitySet Name="Article" EntityType="Model.Article" />
           <EntitySet Name="Media" EntityType="Model.Media" />
           <EntitySet Name="Content" EntityType="Model.Content" />
-          <EntitySet Name="ArticleImages" EntityType="Model.ArticleImages" />
+          <EntitySet Name="ArticleImage" EntityType="Model.ArticleImage" />
+          <AssociationSet Name="ArticleArticleImage" Association="Model.ArticleArticleImage">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleImage" EntitySet="ArticleImage" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="MainBanner">
           <Key>
@@ -314,6 +344,7 @@
           <Property Type="Int32" Name="Size" Nullable="false" />
           <Property Type="String" Name="ImageSrc" MaxLength="500" />
           <Property Type="String" Name="VideoSrc" MaxLength="500" />
+          <NavigationProperty Name="ArticleImages" Relationship="Model.ArticleArticleImage" FromRole="Article" ToRole="ArticleImage" />
         </EntityType>
         <EntityType Name="Media">
           <Key>
@@ -339,13 +370,27 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="500" />
         </EntityType>
-        <EntityType Name="ArticleImages">
+        <EntityType Name="ArticleImage">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="ImageSrc" MaxLength="500" />
+          <NavigationProperty Name="Article" Relationship="Model.ArticleArticleImage" FromRole="ArticleImage" ToRole="Article" />
+          <Property Type="Int32" Name="ArticleId" Nullable="false" />
         </EntityType>
+        <Association Name="ArticleArticleImage">
+          <End Type="Model.Article" Role="Article" Multiplicity="1" />
+          <End Type="Model.ArticleImage" Role="ArticleImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleImage">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -434,6 +479,7 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
+          <ScalarProperty Name="VideoSrc" ColumnName="VideoSrc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -460,6 +506,15 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ArticleImage)">
+        <MappingFragment StoreEntitySet="ArticleImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

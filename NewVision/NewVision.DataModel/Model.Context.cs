@@ -34,6 +34,6 @@ namespace NewVision.DataModel
         public DbSet<Article> Article { get; set; }
         public DbSet<Media> Media { get; set; }
         public DbSet<Content> Content { get; set; }
-        public DbSet<ArticleImages> ArticleImages { get; set; }
+        public DbSet<ArticleImage> ArticleImage { get; set; }
     }
 }
