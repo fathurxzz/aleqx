@@ -38,10 +38,11 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 {
                     Title = model.Title,
                     Date = model.Date,
-                    Text = model.Text,
                     TitlePosition = model.TitlePosition,
                     VideoSrc = model.VideoSrc
                 };
+
+                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 if (file != null)
                 {
@@ -96,13 +97,15 @@ namespace NewVision.UI.Areas.Admin.Controllers
         // POST: /Admin/Article/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, HttpPostedFileBase file, IEnumerable<HttpPostedFileBase> files)
+        public ActionResult Edit(Article model, int id, HttpPostedFileBase file, IEnumerable<HttpPostedFileBase> files)
         {
             try
             {
                 var article = _context.Articles.First(a => a.Id == id);
 
-                TryUpdateModel(article, new[] {"Title", "Date","VideoSrc", "Text", "TitlePosition"});
+                TryUpdateModel(article, new[] {"Title", "Date","VideoSrc", "TitlePosition"});
+                
+                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 if (file != null)
                 {
