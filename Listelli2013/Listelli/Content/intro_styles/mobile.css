@@ -101,3 +101,11 @@
     margin-top: -20px;
     margin-left: -140px;
 }
+.mobile.page6 .site.en {
+    background: url("../img/mobile/site-en.png");
+}
+
+.mobile.page6 .text{
+    color: #000;
+    text-align: center;
+}
