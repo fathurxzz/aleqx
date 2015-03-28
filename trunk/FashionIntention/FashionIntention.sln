@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FashionIntention.UI", "FashionIntention.UI\FashionIntention.UI.csproj", "{6250A93A-D4D8-44B9-A557-8669371FCA7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FashionIntention.DataModel", "FashionIntention.DataModel\FashionIntention.DataModel.csproj", "{AC40ED28-B098-4CD4-A54B-6818F4EA3F46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6250A93A-D4D8-44B9-A557-8669371FCA7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6250A93A-D4D8-44B9-A557-8669371FCA7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6250A93A-D4D8-44B9-A557-8669371FCA7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6250A93A-D4D8-44B9-A557-8669371FCA7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC40ED28-B098-4CD4-A54B-6818F4EA3F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC40ED28-B098-4CD4-A54B-6818F4EA3F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC40ED28-B098-4CD4-A54B-6818F4EA3F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC40ED28-B098-4CD4-A54B-6818F4EA3F46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

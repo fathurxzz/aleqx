@@ -1,0 +1,7 @@
+﻿@model string
+<div class="menu">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="@(Model == "Post" ? "active" : "")">@Html.ActionLink("Посты", "Index", "Post", new { area = "Admin" }, null)</li>
+        <li class="@(Model == "Tag" ? "active" : "")">@Html.ActionLink("Теги", "Index", "Tag", new { area = "Admin" }, null)</li>
+    </ul>
+</div>

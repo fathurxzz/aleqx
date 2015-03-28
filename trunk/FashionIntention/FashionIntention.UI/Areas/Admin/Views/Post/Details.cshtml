@@ -1,0 +1,24 @@
+﻿@using FashionIntention.UI.Helpers
+@model FashionIntention.UI.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Post")
+}
+
+<div class="container">
+    <h3>@Model.Title</h3>
+    <div>@Model.Description</div>
+    <div class="details">
+        
+        <p>
+            @Html.ActionLink("Добавить", "Create", "PostItem")
+        </p>
+
+    </div>
+</div>
