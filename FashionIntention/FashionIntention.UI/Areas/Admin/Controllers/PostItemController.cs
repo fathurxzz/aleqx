@@ -22,37 +22,32 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
         public ActionResult Create(int id)
         {
             var post = _context.Posts.First(p => p.Id == id);
-            return View(new PostItem{Post = post});
+            return View(new PostItem{Post = post, PostId = post.Id});
         }
 
-        //
-        // POST: /Admin/PostItem/Create
-
         [HttpPost]
-        public ActionResult Create(int postid, PostItem model, FormCollection collection)
+        public ActionResult Create(int postid, PostItem model, HttpPostedFileBase file)
         {
             try
             {
-                var post = new PostItem
+                var post = _context.Posts.First(p => p.Id == postid);
+                var postItem = new PostItem
                 {
-                    Title = model.Title,
-                    Date = model.Date,
-                    Description = model.Description,
-                    Published = model.Published
+                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
+                    Post = post
                 };
-
-                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 if (file != null)
                 {
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 360, 360, ScaleMode.Crop);
-                    post.ImageSrc = fileName;
+                    file.SaveAs(filePath);
+                    //GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 360, 360, ScaleMode.Crop);
+                    postItem.ImageSrc = fileName;
                 }
 
-                _context.Posts.Add(post);
+                _context.PostItems.Add(postItem);
                 _context.SaveChanges();
 
                 return RedirectToAction("Details", "Post", new {id = postid});
@@ -63,56 +58,58 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/PostItem/Edit/5
-
         public ActionResult Edit(int id)
         {
-            return View();
+            var postItem = _context.PostItems.First(p => p.Id == id);
+            return View(postItem);
         }
 
-        //
-        // POST: /Admin/PostItem/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, PostItem model, HttpPostedFileBase file)
         {
             try
             {
-                // TODO: Add update logic here
+                var postItem = _context.PostItems.First(p => p.Id == id);
 
-                return RedirectToAction("Index");
+                postItem.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+               
+                if (file != null)
+                {
+                    if (!string.IsNullOrEmpty(postItem.ImageSrc))
+                    {
+                        ImageHelper.DeleteImage(postItem.ImageSrc);
+                    }
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+                    //GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 360, 360, ScaleMode.Crop);
+                    postItem.ImageSrc = fileName;
+
+                }
+
+                _context.SaveChanges();
+
+                return RedirectToAction("Details", "Post", new { id = postItem.PostId });
             }
             catch
             {
                 return View();
             }
         }
-
-        //
-        // GET: /Admin/PostItem/Delete/5
 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/PostItem/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            var postItem = _context.PostItems.First(p => p.Id == id);
+            var postId = postItem.PostId;
+            if (!string.IsNullOrEmpty(postItem.ImageSrc))
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                ImageHelper.DeleteImage(postItem.ImageSrc);
             }
-            catch
-            {
-                return View();
-            }
+            _context.PostItems.Remove(postItem);
+            _context.SaveChanges();
+            return RedirectToAction("Details", "Post", new { id = postId });
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@using FashionIntention.UI.Helpers
+﻿@using FashionIntention.UI
+@using FashionIntention.UI.Helpers
 @model FashionIntention.UI.Models.Post
 
 @{
@@ -15,10 +16,36 @@
     <h3>@Model.Title</h3>
     <div>@Model.Description</div>
     <div class="details">
-        
+
         <p>
-            @Html.ActionLink("Добавить", "Create", "PostItem")
+            @Html.ActionLink("Добавить", "Create", "PostItem",new{id=Model.Id},null)
         </p>
+
+
+        <div>
+            <table class="table table-striped">
+                @foreach (var item in Model.PostItems.OrderByDescending(e => e.SortOrder))
+                {
+                    <tr>
+                        <td>
+                            @Html.Raw(item.Text)
+                        </td>
+
+                        <td style="min-width: 200px">
+                            <div style="float: left; padding-bottom: 5px">
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("articlePreview")))
+                            </div>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Редактировать", "Edit","PostItem", new { id = item.Id },null) |
+                            @Html.ActionLink("Удалить", "Delete", "PostItem", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
 
     </div>
 </div>
