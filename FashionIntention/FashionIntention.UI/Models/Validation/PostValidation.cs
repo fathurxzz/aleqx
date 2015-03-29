@@ -26,6 +26,9 @@ namespace FashionIntention.UI.Models
         [Display(Name = "Изображение")]
         public string ImageSrc { get; set; }
 
+        [Display(Name = "Тэги")]
+        public string Tags { get; set; }
+
         [Display(Name = "Опубликовано")]
         public bool Published { get; set; }
     }

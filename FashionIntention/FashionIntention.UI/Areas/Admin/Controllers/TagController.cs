@@ -78,6 +78,10 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             var tag = _context.Tags.First(t => t.Id == id);
+            
+            tag.Posts.Clear();
+            tag.Posts = null;
+
             _context.Tags.Remove(tag);
             _context.SaveChanges();
             return RedirectToAction("Index");
