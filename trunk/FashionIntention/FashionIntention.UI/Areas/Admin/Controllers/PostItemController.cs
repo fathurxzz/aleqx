@@ -42,8 +42,8 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    file.SaveAs(filePath);
-                    //GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 360, 360, ScaleMode.Crop);
+                    //file.SaveAs(filePath);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 556, 0, ScaleMode.FixedWidth);
                     postItem.ImageSrc = fileName;
                 }
 
@@ -83,8 +83,8 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    file.SaveAs(filePath);
-                    //GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 360, 360, ScaleMode.Crop);
+                    //file.SaveAs(filePath);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 556, 0, ScaleMode.FixedWidth);
                     postItem.ImageSrc = fileName;
 
                 }

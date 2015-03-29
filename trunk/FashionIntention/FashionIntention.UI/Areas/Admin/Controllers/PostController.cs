@@ -38,6 +38,7 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Tags = _context.Tags.ToList();
             return View(new Post{Date = DateTime.Now});
         }
 
@@ -45,7 +46,7 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
         // POST: /Admin/Post/Create
 
         [HttpPost]
-        public ActionResult Create(Post model, HttpPostedFileBase file)
+        public ActionResult Create(Post model, FormCollection form, HttpPostedFileBase file)
         {
             try
             {
@@ -66,7 +67,21 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
                     post.ImageSrc = fileName;
                 }
 
+                PostCheckboxesData tags = form.ProcessPostCheckboxesData("tag");
+                foreach (var kvp in tags)
+                {
+                    var tagId = kvp.Key;
+                    bool ischecked = kvp.Value;
+
+                    if (ischecked)
+                    {
+                        var tag = _context.Tags.First(t => t.Id == tagId);
+                        post.Tags.Add(tag);
+                    }
+                }
+
                 _context.Posts.Add(post);
+
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -82,6 +97,7 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
+            ViewBag.Tags = _context.Tags.ToList();
             var post = _context.Posts.First(p => p.Id == id);
             return View(post);
         }
@@ -90,7 +106,7 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
         // POST: /Admin/Post/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, Post model, HttpPostedFileBase file)
+        public ActionResult Edit(int id, Post model, FormCollection form, HttpPostedFileBase file)
         {
             try
             {
@@ -112,6 +128,27 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
 
                 }
 
+                PostCheckboxesData tags = form.ProcessPostCheckboxesData("tag");
+                foreach (var kvp in tags)
+                {
+                    var tagId = kvp.Key;
+                    bool ischecked = kvp.Value;
+                    var tag = _context.Tags.First(t => t.Id == tagId);
+
+                    if (ischecked)
+                    {
+                        post.Tags.Add(tag);
+                    }
+                    else
+                    {
+                        if (post.Tags.Contains(tag))
+                        {
+                            post.Tags.Remove(tag);
+                        }
+                    }
+                }
+
+
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -130,10 +167,20 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
             var post = _context.Posts.First(e => e.Id == id);
             ImageHelper.DeleteImage(post.ImageSrc);
 
+            post.Tags.Clear();
+            post.Tags = null;
+
             //foreach (var image in article.ArticleImages)
             //{
             //    ImageHelper.DeleteImage(image.ImageSrc);
             //}
+
+            while (post.PostItems.Any())
+            {
+                var pi = post.PostItems.First();
+                ImageHelper.DeleteImage(pi.ImageSrc);
+                _context.PostItems.Remove(pi);
+            }
 
             _context.Posts.Remove(post);
             _context.SaveChanges();

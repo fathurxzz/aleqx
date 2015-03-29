@@ -154,10 +154,12 @@
     <Compile Include="Areas\Admin\Controllers\PostItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FormCollectionExtender.cs" />
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
@@ -165,12 +167,14 @@
     <Compile Include="Helpers\PictureSize.cs" />
     <Compile Include="Helpers\SiteContentHelper.cs" />
     <Compile Include="Helpers\ThumbnailPicture.cs" />
+    <Compile Include="Models\CalendarItem.cs" />
     <Compile Include="Models\gbua_fashintContext.cs" />
     <Compile Include="Models\Mapping\PostItemMap.cs" />
     <Compile Include="Models\Mapping\PostMap.cs" />
     <Compile Include="Models\Mapping\TagMap.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostItem.cs" />
+    <Compile Include="Models\SiteViewModels\post.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Validation\PostItemValidation.cs" />
     <Compile Include="Models\Validation\PostValidation.cs" />
@@ -200,22 +204,25 @@
     <Content Include="Areas\Admin\Views\Post\Details.cshtml" />
     <Content Include="Areas\Admin\Views\PostItem\Create.cshtml" />
     <Content Include="Areas\Admin\Views\PostItem\Edit.cshtml" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="images\em-logo.png" />
+    <Content Include="images\inc-bottom.png" />
+    <Content Include="images\inc-top.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\menu-close-button.png" />
+    <Content Include="images\menu-item-author.png" />
+    <Content Include="images\menu-item-category.png" />
+    <Content Include="images\menu-item-media.png" />
+    <Content Include="images\menu-item-press.png" />
+    <Content Include="images\menu-item-travel.png" />
+    <Content Include="images\menu-underline-dot.png" />
+    <Content Include="images\menu.png" />
+    <Content Include="images\search-arrow.png" />
+    <Content Include="images\social-fb.png" />
+    <Content Include="images\social-pin.png" />
+    <Content Include="images\social-twitter.png" />
+    <Content Include="images\text-block-pattern.png" />
+    <Content Include="Scripts\main.min.js" />
+    <Content Include="styles\main.min.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -238,6 +245,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\PostDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Posts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\prod.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -19,7 +19,7 @@ namespace FashionIntention.UI
                                     {"articlePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =145 ,Width = 170 }, CacheFolder = "articlePreview", ScaleMode = ScaleMode.Crop}},
                                     {"eventAnnouncementPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =100 ,Width = 100 }, CacheFolder = "eventAnnouncementPreview", ScaleMode = ScaleMode.Crop}},
                                     {"eventImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 50 }, CacheFolder = "eventImagePreview", ScaleMode = ScaleMode.Crop}},
-                                    //{"siteProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =215 ,Width = 268 }, CacheFolder = "siteProductPreview", ScaleMode = ScaleMode.Insert}},
+                                    {"postImage",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 300 }, CacheFolder = "postImage", ScaleMode = ScaleMode.FixedWidth}},
                                     //{"siteProductDetailsMainImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =344 ,Width = 597 }, CacheFolder = "siteProductDetailsMainImage", ScaleMode = ScaleMode.Insert}},
                                     //{"siteProductDetailsThumbnail",new ThumbnailPicture{ PictureSize =new PictureSize {Height =90 ,Width = 90 }, CacheFolder = "siteProductDetailsThumbnail", ScaleMode = ScaleMode.Insert}},
                                     
@@ -55,7 +55,7 @@ namespace FashionIntention.UI
 
         public static string Version
         {
-            get { return "0.0.0"; }
+            get { return "0.0.2"; }
         }
 
         public static string MailTo

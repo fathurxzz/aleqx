@@ -1,16 +1,113 @@
-﻿<!DOCTYPE html>
+﻿@using FashionIntention.UI
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display+SC:400,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/scripts/main.min.js?v=@SiteSettings.Version"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/main.min.css?v=@SiteSettings.Version" media="screen"/>    
+    <script type="text/javascript">
+        (function (fin) {
+            var settings;
+            if (fin.settings === null) {
+                fin.settings = settings = {};
+            } else {
+                settings = fin.settings;
+            }
+
+            if (!('controlsDescriptors' in settings)) {
+                settings.controlsDescriptors = {};
+            }
+
+            if (!('dataModels' in settings)) {
+                settings.dataModels = {};
+            }
+        }(FIN));
+    </script>
+    
+    <script type="text/javascript">
+        (function (fin, a9) {
+            var settings = fin.settings,
+                l10n = a9.l10n;
+
+            if (!('locale' in settings)) {
+                settings.locale = 'rus';
+            }
+
+            if (!('dictionary' in settings)) {
+                settings.dictionary = {
+                    copyright: '&copy; {year} 2014 New Vision Productions',
+                    emMadeIn: 'Сделано в',
+                    emStudio: 'Студии Евгения Миллера',
+                    joinUs: 'как попасть<br>в арт-коллектив',
+                    mainPageDetails: 'Подробнее о нас',
+                    eventWillBe: 'проект состоится',
+                    eventPass: 'проект состоялся',
+                    learnMore: 'узнать больше',
+                    ticketType_orderTicket: 'заказать билет',
+                    ticketType_eventIsFree: 'вход свободный',
+                    ticketType_getInvite: 'получить приглас.',
+                    ticketType_noSeats: 'мест нет',
+                    contactsTitle: 'контактная информация и обратная связь',
+                    address: 'Украина, 02002, г. Киев, ул. Ованеса Туманяна, 15-А, оф. 630<br>Телефон: +38 066 8450056',
+                    feedbackFields_Name: 'назовитесь:',
+                    feedbackFields_Email: 'Емейл, на который<br/>хотите получить ответ:',
+                    feedbackFields_AntiSpam: 'Антиспам-проверка:<br/>наберите три два один (цифрами)',
+                    feedbackFields_Question: 'Вопрос:',
+                    feedbackFields_checkEntries: 'Заполните правильно поля формы',
+                    feedbackFields_thanks: 'Спасибо, Ваше сообщение отправлено',
+
+
+
+
+                    subscribeTitle: 'быть в курсе нового',
+                    feedbackTitle: 'обратная связь'
+                }
+            }
+
+            l10n.locale = settings.locale;
+            l10n.dictionary = settings.dictionary;
+
+        }(FIN, A9));
+    </script>
+    
+    <script type="text/javascript">
+        (function (fin, a9) {
+            var settings = fin.settings,
+                l10n = a9.l10n,
+                controlsDescriptors = settings.controlsDescriptors;
+            controlsDescriptors.site = {
+                urlEM: 'http://eugene-miller.com',
+                contentImagesPath: '/content/images/',
+                mainPageSlideTimeout: 10000,
+                mainPageUrl: '/',
+                newsPageUrl: 'news.html',
+                eventsPageUrl: 'events.html',
+                eventDetailsPageUrl: 'event-details.html/{id}',
+                mediaPageUrl: 'media.html',
+                partnershipPageUrl: 'partnership.html',
+                contactsPageUrl: 'contacts.html',
+                postDetailsUrl: 'post/{id}',
+                postsUrl: '/posts/{year}/{month}'
+            };
+
+        }(FIN, A9));
+    </script>
+     <script type="text/javascript">
+         (function (fin, a9) {
+             var settings = fin.settings,
+                 dataModels = settings.dataModels;
+             @Html.Raw(ViewBag.Calendar);
+        }(FIN, A9));
+    </script>
+
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     @RenderBody()
-
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

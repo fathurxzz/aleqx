@@ -5,18 +5,17 @@
 
 @section scripts
 {
-  
-    
     <script type="text/javascript">
         (function (fin, a9) {
             var settings = fin.settings,
                     dataModels = settings.dataModels;
             @Html.Raw(ViewBag.Posts);
+            @Html.Raw(ViewBag.Post);
         }(FIN, A9));
     </script>
 }
 
 <div class="page">
-    <div id="mainPage">
+    <div id="postDetails">
     </div>
 </div>
