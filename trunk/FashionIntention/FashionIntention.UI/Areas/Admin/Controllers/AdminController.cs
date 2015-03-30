@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace FashionIntention.UI.Areas.Admin.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         public ActionResult Default()

@@ -150,6 +150,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContentItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MediaItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
@@ -167,15 +171,27 @@
     <Compile Include="Helpers\PictureSize.cs" />
     <Compile Include="Helpers\SiteContentHelper.cs" />
     <Compile Include="Helpers\ThumbnailPicture.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleItem.cs" />
     <Compile Include="Models\CalendarItem.cs" />
+    <Compile Include="Models\ContentItem.cs" />
     <Compile Include="Models\gbua_fashintContext.cs" />
+    <Compile Include="Models\Mapping\ArticleItemMap.cs" />
+    <Compile Include="Models\Mapping\ArticleMap.cs" />
+    <Compile Include="Models\Mapping\ContentItemMap.cs" />
+    <Compile Include="Models\Mapping\MediaItemMap.cs" />
     <Compile Include="Models\Mapping\PostItemMap.cs" />
     <Compile Include="Models\Mapping\PostMap.cs" />
     <Compile Include="Models\Mapping\TagMap.cs" />
+    <Compile Include="Models\MediaItem.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostItem.cs" />
     <Compile Include="Models\SiteViewModels\post.cs" />
     <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\Validation\ArticleItemValidation.cs" />
+    <Compile Include="Models\Validation\ArticleValidation.cs" />
+    <Compile Include="Models\Validation\ContentItemValidation.cs" />
+    <Compile Include="Models\Validation\MediaItemValidation.cs" />
     <Compile Include="Models\Validation\PostItemValidation.cs" />
     <Compile Include="Models\Validation\PostValidation.cs" />
     <Compile Include="Models\Validation\TagValidation.cs" />
@@ -253,7 +269,24 @@
     <Content Include="Views\Home\Posts.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\ContentItem\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MediaItem\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MediaItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\MediaItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ArticleItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ArticleItem\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\prod.pubxml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Media.cshtml" />
+    <Content Include="Views\Home\Articles.cshtml" />
+    <Content Include="Views\Home\Travel.cshtml" />
+    <Content Include="Views\Home\ArticleDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

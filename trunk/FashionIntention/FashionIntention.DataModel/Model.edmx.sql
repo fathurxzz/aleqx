@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/28/2015 20:44:29
+-- Date Created: 03/30/2015 19:53:02
 -- Generated from EDMX file: C:\vsp\FashionIntention\FashionIntention.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -71,6 +71,51 @@ ALTER TABLE `PostItem` ADD PRIMARY KEY (Id);
 
 
 
+CREATE TABLE `Article`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Date` datetime NOT NULL, 
+	`Title` varchar (500), 
+	`Description` varchar (1000));
+
+ALTER TABLE `Article` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ArticleItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`ImageSrc` varchar (500), 
+	`Text` longtext, 
+	`SortOrder` int NOT NULL, 
+	`ArticleId` int NOT NULL, 
+	`VideoSrc` varchar (500));
+
+ALTER TABLE `ArticleItem` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ContentItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`ImageSrc` varchar (500), 
+	`Text` longtext);
+
+ALTER TABLE `ContentItem` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `MediaItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`VideoSrc` varchar (500), 
+	`ImageSrc` varchar (500), 
+	`Text` longtext);
+
+ALTER TABLE `MediaItem` ADD PRIMARY KEY (Id);
+
+
+
+
 CREATE TABLE `PostTag`(
 	`Posts_Id` int NOT NULL, 
 	`Tags_Id` int NOT NULL);
@@ -124,6 +169,21 @@ ADD CONSTRAINT `FK_PostTag_Tag`
 CREATE INDEX `IX_FK_PostTag_Tag` 
     ON `PostTag`
     (`Tags_Id`);
+
+-- Creating foreign key on `ArticleId` in table 'ArticleItem'
+
+ALTER TABLE `ArticleItem`
+ADD CONSTRAINT `FK_ArticleArticleItem`
+    FOREIGN KEY (`ArticleId`)
+    REFERENCES `Article`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArticleArticleItem'
+
+CREATE INDEX `IX_FK_ArticleArticleItem` 
+    ON `ArticleItem`
+    (`ArticleId`);
 
 -- --------------------------------------------------
 -- Script has ended
