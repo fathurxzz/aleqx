@@ -10,6 +10,11 @@
         <EntityTypeShape EntityType="Model.PostItem" Width="1.5" PointX="11.375" PointY="6.125" />
         <AssociationConnector Association="Model.PostPostItem" />
         <AssociationConnector Association="Model.PostTag" />
+        <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="1.875" PointY="1.5" />
+        <EntityTypeShape EntityType="Model.ArticleItem" Width="1.5" PointX="4.375" PointY="1.5" />
+        <AssociationConnector Association="Model.ArticleArticleItem" />
+        <EntityTypeShape EntityType="Model.ContentItem" Width="1.5" PointX="1.75" PointY="4.375" />
+        <EntityTypeShape EntityType="Model.MediaItem" Width="1.5" PointX="5" PointY="4.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
