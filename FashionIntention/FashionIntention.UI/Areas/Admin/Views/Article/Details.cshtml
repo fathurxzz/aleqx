@@ -1,0 +1,51 @@
+﻿@using FashionIntention.UI
+@using FashionIntention.UI.Helpers
+@model FashionIntention.UI.Models.Article
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Article")
+}
+
+<div style="padding:0 20px">
+    <h3>@Model.Title</h3>
+    <div>@Model.Description</div>
+    <div class="details">
+
+        <p>
+            @Html.ActionLink("Добавить", "Create", "ArticleItem",new{id=Model.Id},null)
+        </p>
+
+
+        <div>
+            <table class="table table-striped">
+                @foreach (var item in Model.ArticleItems.OrderByDescending(e => e.SortOrder))
+                {
+                    <tr>
+                        <td>
+                            @Html.Raw(item.Text)
+                        </td>
+
+                        <td style="min-width: 200px">
+                            <div style="float: left; padding-bottom: 5px">
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("postImage")))
+                            </div>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Редактировать", "Edit","ArticleItem", new { id = item.Id },null) |
+                            @Html.ActionLink("Удалить", "Delete", "ArticleItem", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+    </div>
+</div>

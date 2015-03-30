@@ -55,7 +55,7 @@ namespace FashionIntention.UI
 
         public static string Version
         {
-            get { return "0.0.2"; }
+            get { return "0.0.5"; }
         }
 
         public static string MailTo

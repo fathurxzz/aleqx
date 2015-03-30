@@ -40,32 +40,16 @@
 
             if (!('dictionary' in settings)) {
                 settings.dictionary = {
-                    copyright: '&copy; {year} 2014 New Vision Productions',
                     emMadeIn: 'Сделано в',
                     emStudio: 'Студии Евгения Миллера',
-                    joinUs: 'как попасть<br>в арт-коллектив',
-                    mainPageDetails: 'Подробнее о нас',
-                    eventWillBe: 'проект состоится',
-                    eventPass: 'проект состоялся',
-                    learnMore: 'узнать больше',
-                    ticketType_orderTicket: 'заказать билет',
-                    ticketType_eventIsFree: 'вход свободный',
-                    ticketType_getInvite: 'получить приглас.',
-                    ticketType_noSeats: 'мест нет',
-                    contactsTitle: 'контактная информация и обратная связь',
-                    address: 'Украина, 02002, г. Киев, ул. Ованеса Туманяна, 15-А, оф. 630<br>Телефон: +38 066 8450056',
-                    feedbackFields_Name: 'назовитесь:',
-                    feedbackFields_Email: 'Емейл, на который<br/>хотите получить ответ:',
-                    feedbackFields_AntiSpam: 'Антиспам-проверка:<br/>наберите три два один (цифрами)',
-                    feedbackFields_Question: 'Вопрос:',
-                    feedbackFields_checkEntries: 'Заполните правильно поля формы',
-                    feedbackFields_thanks: 'Спасибо, Ваше сообщение отправлено',
-
-
-
-
                     subscribeTitle: 'быть в курсе нового',
-                    feedbackTitle: 'обратная связь'
+                    subscribeEnterEmail: 'Введите email',
+                    subscribeSuccessful: 'Вы успешно подписались на рассылку',
+                    feedbackTitle: 'обратная связь',
+                    searchInputText: 'Поиск по сайту',
+                    articlesTitle: 'Пресса',
+                    aboutTitle: 'Оксана Литвиненко',
+                    mediaTitle: 'медиа'
                 }
             }
 
@@ -80,6 +64,7 @@
             var settings = fin.settings,
                 l10n = a9.l10n,
                 controlsDescriptors = settings.controlsDescriptors;
+
             controlsDescriptors.site = {
                 urlEM: 'http://eugene-miller.com',
                 contentImagesPath: '/content/images/',
@@ -92,8 +77,16 @@
                 partnershipPageUrl: 'partnership.html',
                 contactsPageUrl: 'contacts.html',
                 postDetailsUrl: '/post/{id}',
-                postsUrl: '/posts/{year}/{month}'
+                postsUrl: '/posts/{year}/{month}',
+                articleDetailsUrl: '/press/{id}'
             };
+
+            fin.settings.controlsDescriptors.site.url = {
+                em: 'http://eugene-miller.com',
+                fb: 'https://www.facebook.com',
+                twitter: 'https://twitter.com/',
+                pinterest: 'https://ru.pinterest.com/'
+            }
 
         }(FIN, A9));
     </script>
@@ -102,6 +95,7 @@
              var settings = fin.settings,
                  dataModels = settings.dataModels;
              @Html.Raw(ViewBag.Calendar);
+             @Html.Raw(ViewBag.MainMenu);
         }(FIN, A9));
     </script>
 
