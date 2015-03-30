@@ -28,5 +28,9 @@ namespace FashionIntention.DataModel
         public DbSet<Post> Post { get; set; }
         public DbSet<Tag> Tag { get; set; }
         public DbSet<PostItem> PostItem { get; set; }
+        public DbSet<Article> Article { get; set; }
+        public DbSet<ArticleItem> ArticleItem { get; set; }
+        public DbSet<ContentItem> ContentItem { get; set; }
+        public DbSet<MediaItem> MediaItem { get; set; }
     }
 }
