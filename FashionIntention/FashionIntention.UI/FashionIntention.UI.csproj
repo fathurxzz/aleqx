@@ -153,6 +153,7 @@
     <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticleItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MainBannerController.cs" />
     <Compile Include="Areas\Admin\Controllers\MediaItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostItemController.cs" />
@@ -281,6 +282,9 @@
     <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ArticleItem\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ArticleItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MainBanner\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MainBanner\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\MainBanner\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\prod.pubxml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Media.cshtml" />

@@ -176,6 +176,7 @@
           </AssociationSet>
           <EntitySet Name="ContentItem" EntityType="Model.ContentItem" />
           <EntitySet Name="MediaItem" EntityType="Model.MediaItem" />
+          <EntitySet Name="MainBanner" EntityType="Model.MainBanner" />
         </EntityContainer>
         <EntityType Name="Post">
           <Key>
@@ -275,6 +276,14 @@
           <Property Type="String" Name="VideoSrc" MaxLength="500" />
           <Property Type="String" Name="ImageSrc" MaxLength="500" />
           <Property Type="String" Name="Text" />
+        </EntityType>
+        <EntityType Name="MainBanner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Url" MaxLength="500" />
+          <Property Type="String" Name="ImageSrc" MaxLength="500" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

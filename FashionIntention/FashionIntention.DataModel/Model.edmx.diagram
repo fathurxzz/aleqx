@@ -15,6 +15,7 @@
         <AssociationConnector Association="Model.ArticleArticleItem" />
         <EntityTypeShape EntityType="Model.ContentItem" Width="1.5" PointX="1.75" PointY="4.375" />
         <EntityTypeShape EntityType="Model.MediaItem" Width="1.5" PointX="5" PointY="4.375" />
+        <EntityTypeShape EntityType="Model.MainBanner" Width="1.5" PointX="7.375" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

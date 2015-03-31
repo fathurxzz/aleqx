@@ -1,5 +1,5 @@
 ﻿@using FashionIntention.UI.Helpers
-@model FashionIntention.UI.Models.ContentItem
+@model FashionIntention.UI.Models.MainBanner
 
 @{
     ViewBag.Title = "Create";
@@ -8,16 +8,17 @@
 
 @section AdminNavigation
 {
-    @Html.Partial("Menu", "ContentItem")
+    @Html.Partial("Menu", "MainBanner")
 }
 
 
 <div class="container">
     <h3>Добавление новости</h3>
-    @using (Html.BeginForm("Create", "ContentItem", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "MainBanner", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
+        @Html.HiddenFor(model=>model.Id)
        <div class="form-group">
             @Html.LabelFor(model => model.Text, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
@@ -32,7 +33,7 @@
         </div>
      
         <div class="form-group">
-            @Html.ActionLink("Назад", "Index", "ContentItem", null, new { @class = "col-sm-2 control-label" })
+            @Html.ActionLink("Назад", "Index", "MainBanner", null, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 <button type="submit" class="btn btn-success">Сохранить</button>
             </div>
@@ -42,6 +43,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 }
