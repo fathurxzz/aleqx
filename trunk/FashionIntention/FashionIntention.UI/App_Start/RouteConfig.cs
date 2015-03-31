@@ -70,6 +70,13 @@ namespace FashionIntention.UI
         );
 
             routes.MapRoute(
+              "tag",
+              "tag/{id}",
+              new { controller = "Home", action = "Tags" },
+              new[] { "NewVision.UI.Controllers" }
+          );
+
+            routes.MapRoute(
           "pressDetails",
           "press/{id}",
           new { controller = "Home", action = "ArticleDetails" },

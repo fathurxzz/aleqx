@@ -239,6 +239,35 @@ namespace FashionIntention.UI.Controllers
             return View();
         }
 
+        public ActionResult Tags(int id)
+        {
+            ViewBag.MainMenu = GenerateMainMenu(0);
+            var tag = _context.Tags.FirstOrDefault(t => t.Id == id);
+            var posts = new List<object>();
+
+            if (tag != null)
+            {
+                var postList = tag.Posts;
+
+                foreach (var p in postList)
+                {
+                    posts.Add(new
+                    {
+                        id = p.Id,
+                        date = p.Date.ToShortDateString(),
+                        title = p.Title,
+                        description = p.Description,
+                        imageSrc = p.ImageSrc,
+                        tags = p.Tags.Select(t => t.Title).Cast<object>().ToList()
+                    });
+                }
+            }
+
+
+            ViewBag.Posts = "dataModels.posts = " + JsonConvert.SerializeObject(posts);
+            return View();
+        }
+
 
     }
 }
