@@ -57,6 +57,9 @@
     <Compile Include="ContentItem.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="MainBanner.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="MediaItem.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

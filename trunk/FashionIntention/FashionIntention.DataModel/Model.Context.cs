@@ -32,5 +32,6 @@ namespace FashionIntention.DataModel
         public DbSet<ArticleItem> ArticleItem { get; set; }
         public DbSet<ContentItem> ContentItem { get; set; }
         public DbSet<MediaItem> MediaItem { get; set; }
+        public DbSet<MainBanner> MainBanner { get; set; }
     }
 }
