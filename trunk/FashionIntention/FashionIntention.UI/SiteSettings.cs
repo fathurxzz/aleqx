@@ -17,6 +17,7 @@ namespace FashionIntention.UI
                               {
                                     {"mainBannerPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =200 ,Width = 400 }, CacheFolder = "mainBannerPreview", ScaleMode = ScaleMode.Crop}},
                                     {"articlePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =145 ,Width = 170 }, CacheFolder = "articlePreview", ScaleMode = ScaleMode.Crop}},
+                                    {"bannerPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =100 ,Width = 400 }, CacheFolder = "bannerPreview", ScaleMode = ScaleMode.Crop}},
                                     {"eventAnnouncementPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =100 ,Width = 100 }, CacheFolder = "eventAnnouncementPreview", ScaleMode = ScaleMode.Crop}},
                                     {"eventImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 50 }, CacheFolder = "eventImagePreview", ScaleMode = ScaleMode.Crop}},
                                     {"postImage",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 300 }, CacheFolder = "postImage", ScaleMode = ScaleMode.FixedWidth}},
@@ -55,7 +56,7 @@ namespace FashionIntention.UI
 
         public static string Version
         {
-            get { return "0.0.5"; }
+            get { return "0.0.7"; }
         }
 
         public static string MailTo

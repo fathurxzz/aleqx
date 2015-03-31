@@ -19,6 +19,7 @@ namespace FashionIntention.UI.Models
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleItem> ArticleItems { get; set; }
         public DbSet<ContentItem> ContentItems { get; set; }
+        public DbSet<MainBanner> MainBanners { get; set; }
         public DbSet<MediaItem> MediaItems { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostItem> PostItems { get; set; }
@@ -29,6 +30,7 @@ namespace FashionIntention.UI.Models
             modelBuilder.Configurations.Add(new ArticleMap());
             modelBuilder.Configurations.Add(new ArticleItemMap());
             modelBuilder.Configurations.Add(new ContentItemMap());
+            modelBuilder.Configurations.Add(new MainBannerMap());
             modelBuilder.Configurations.Add(new MediaItemMap());
             modelBuilder.Configurations.Add(new PostMap());
             modelBuilder.Configurations.Add(new PostItemMap());

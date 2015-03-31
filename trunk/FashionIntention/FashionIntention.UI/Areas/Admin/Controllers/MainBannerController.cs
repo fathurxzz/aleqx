@@ -50,7 +50,7 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
                     //file.SaveAs(filePath);
-                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 556, 0, ScaleMode.FixedWidth);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 1440, 435, ScaleMode.FixedWidth);
                     contentItem.ImageSrc = fileName;
                 }
 
@@ -97,7 +97,7 @@ namespace FashionIntention.UI.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
                     //file.SaveAs(filePath);
-                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 556, 0, ScaleMode.FixedWidth);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, file, 1440, 435, ScaleMode.FixedWidth);
                     contentItem.ImageSrc = fileName;
 
                 }
