@@ -13,6 +13,7 @@
     <EntitySet Name="ArticleItem" EntityType="Model.Store.ArticleItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ContentItem" EntityType="Model.Store.ContentItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MediaItem" EntityType="Model.Store.MediaItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MainBanner" EntityType="Model.Store.MainBanner" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PostTag" EntityType="Model.Store.PostTag" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="PostPostItem" Association="Model.Store.PostPostItem">
       <End Role="Post" EntitySet="Post" />
@@ -95,6 +96,14 @@
     <Property Name="VideoSrc" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="Text" Type="longtext" Nullable="true" />
+  </EntityType>
+  <EntityType Name="MainBanner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
   </EntityType>
   <EntityType Name="PostTag">
     <Key>
@@ -360,6 +369,15 @@
           <ScalarProperty Name="VideoSrc" ColumnName="VideoSrc" />
           <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MainBanner">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.MainBanner)">
+        <MappingFragment StoreEntitySet="MainBanner">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

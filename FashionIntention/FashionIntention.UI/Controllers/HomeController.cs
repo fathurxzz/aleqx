@@ -28,7 +28,7 @@ namespace FashionIntention.UI.Controllers
             result.Add(new { title = "оксана<br>литвиненко", cssClass = "author two-lines", selected = activeMenuItemId == 1, active = activeMenuItemId == 1 && active, url = "/about" });
             result.Add(new { title = "пресса", cssClass = "press one-line", selected = activeMenuItemId == 2, active = activeMenuItemId == 2 && active, url = "/press" });
             result.Add(new { title = "путешествия", cssClass = "travel one-line", selected = activeMenuItemId == 3, active = activeMenuItemId == 3 && active, url = "/travel" });
-            result.Add(new { title = "категории", cssClass = "category one-line", selected = activeMenuItemId == 4, active = activeMenuItemId == 4 && active, url = "#" });
+            result.Add(new { title = "категории", cssClass = "category one-line", selected = activeMenuItemId == 4, active = activeMenuItemId == 4 && active, url = "#", isCategoryMenuItem = true });
             result.Add(new { title = "медиа", cssClass = "media one-line", selected = activeMenuItemId == 5, active = activeMenuItemId == 5 && active, url = "/media" });
 
 
@@ -41,9 +41,13 @@ namespace FashionIntention.UI.Controllers
 
         }
 
+        
+
         public ActionResult Index()
         {
             ViewBag.MainMenu = GenerateMainMenu(0);
+
+            
 
             var posts = new List<object>();
             var postList = _context.Posts.OrderByDescending(p => p.Date).Take(4).ToList();

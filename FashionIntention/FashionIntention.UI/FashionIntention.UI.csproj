@@ -177,9 +177,11 @@
     <Compile Include="Models\CalendarItem.cs" />
     <Compile Include="Models\ContentItem.cs" />
     <Compile Include="Models\gbua_fashintContext.cs" />
+    <Compile Include="Models\MainBanner.cs" />
     <Compile Include="Models\Mapping\ArticleItemMap.cs" />
     <Compile Include="Models\Mapping\ArticleMap.cs" />
     <Compile Include="Models\Mapping\ContentItemMap.cs" />
+    <Compile Include="Models\Mapping\MainBannerMap.cs" />
     <Compile Include="Models\Mapping\MediaItemMap.cs" />
     <Compile Include="Models\Mapping\PostItemMap.cs" />
     <Compile Include="Models\Mapping\PostMap.cs" />
@@ -192,6 +194,7 @@
     <Compile Include="Models\Validation\ArticleItemValidation.cs" />
     <Compile Include="Models\Validation\ArticleValidation.cs" />
     <Compile Include="Models\Validation\ContentItemValidation.cs" />
+    <Compile Include="Models\Validation\MainBannerValidation.cs" />
     <Compile Include="Models\Validation\MediaItemValidation.cs" />
     <Compile Include="Models\Validation\PostItemValidation.cs" />
     <Compile Include="Models\Validation\PostValidation.cs" />
@@ -225,6 +228,8 @@
     <Content Include="images\inc-bottom.png" />
     <Content Include="images\inc-top.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\main-banner-next-slide.png" />
+    <Content Include="images\main-banner-prev-slide.png" />
     <Content Include="images\menu-close-button.png" />
     <Content Include="images\menu-item-author.png" />
     <Content Include="images\menu-item-category.png" />
@@ -291,6 +296,7 @@
     <Content Include="Views\Home\Articles.cshtml" />
     <Content Include="Views\Home\Travel.cshtml" />
     <Content Include="Views\Home\ArticleDetails.cshtml" />
+    <Content Include="Views\Home\Tags.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

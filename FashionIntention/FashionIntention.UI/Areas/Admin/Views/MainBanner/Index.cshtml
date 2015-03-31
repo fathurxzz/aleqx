@@ -19,7 +19,7 @@
 <table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Url)
         </th>
      
         <th>
@@ -33,13 +33,13 @@
         <tr>
            
             <td>
-                @Html.Raw(item.Text)
+                 @Html.DisplayFor(modelItem => item.Url)
             </td>
            
             
             <td style="min-width: 200px">
                 <div style="float: left; padding-bottom: 5px">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("articlePreview")))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSrc, SiteSettings.GetThumbnail("bannerPreview")))
                 </div>
             </td>
          

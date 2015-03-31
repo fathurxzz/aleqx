@@ -19,11 +19,12 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model=>model.Id)
-       <div class="form-group">
-            @Html.LabelFor(model => model.Text, new { @class = "col-sm-2 control-label" })
+      <div class="form-group">
+            @Html.LabelFor(model => model.Url, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                <textarea class="form-control ckeditor" rows="10" name="Text">@Model.Text</textarea>
+                <input type="text" class="form-control" name="Url" id="Url" placeholder="Введите адрес ссылки" value="@Model.Url">
             </div>
+            @Html.ValidationMessageFor(model => model.Url)
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.ImageSrc, new { @class = "col-sm-2 control-label" })

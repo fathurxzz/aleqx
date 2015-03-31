@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/30/2015 19:53:02
+-- Date Created: 03/31/2015 20:11:55
 -- Generated from EDMX file: C:\vsp\FashionIntention\FashionIntention.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -22,6 +22,7 @@ USE `gbua_fashint`;
 --    ALTER TABLE `PostItem` DROP CONSTRAINT `FK_PostPostItem`;
 --    ALTER TABLE `PostTag` DROP CONSTRAINT `FK_PostTag_Post`;
 --    ALTER TABLE `PostTag` DROP CONSTRAINT `FK_PostTag_Tag`;
+--    ALTER TABLE `ArticleItem` DROP CONSTRAINT `FK_ArticleArticleItem`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -30,6 +31,10 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Post`;
     DROP TABLE IF EXISTS `Tag`;
     DROP TABLE IF EXISTS `PostItem`;
+    DROP TABLE IF EXISTS `Article`;
+    DROP TABLE IF EXISTS `ArticleItem`;
+    DROP TABLE IF EXISTS `ContentItem`;
+    DROP TABLE IF EXISTS `MediaItem`;
     DROP TABLE IF EXISTS `PostTag`;
 SET foreign_key_checks = 1;
 
@@ -112,6 +117,16 @@ CREATE TABLE `MediaItem`(
 	`Text` longtext);
 
 ALTER TABLE `MediaItem` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `MainBanner`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Url` varchar (500), 
+	`ImageSrc` varchar (500));
+
+ALTER TABLE `MainBanner` ADD PRIMARY KEY (Id);
 
 
 
