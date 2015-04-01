@@ -272,6 +272,40 @@ namespace FashionIntention.UI.Controllers
             return View();
         }
 
+        
+        [HttpPost]
+        public int Subscribe(string email)
+        {
+            try
+            {
+                var cache = _context.Subscribers.FirstOrDefault(s => s.Email == email);
+                if (cache == null)
+                {
+                    var subscriber = new Subscriber
+                    {
+                        Email = email,
+                        IsActive = true,
+                        Guid = Guid.NewGuid().ToString("N")
+                    };
+                    _context.Subscribers.Add(subscriber);
+                    _context.SaveChanges();
+                }
+            }
+            catch
+            {
+                
+                
+            }
+            return 0;
+        }
+
+
+        public ActionResult UnSubscribe(string id)
+        {
+            ViewBag.MainMenu = GenerateMainMenu(0);
+            return View();
+        }
+
 
     }
 }

@@ -157,6 +157,7 @@
     <Compile Include="Areas\Admin\Controllers\MediaItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SubscriberController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -185,11 +186,13 @@
     <Compile Include="Models\Mapping\MediaItemMap.cs" />
     <Compile Include="Models\Mapping\PostItemMap.cs" />
     <Compile Include="Models\Mapping\PostMap.cs" />
+    <Compile Include="Models\Mapping\SubscriberMap.cs" />
     <Compile Include="Models\Mapping\TagMap.cs" />
     <Compile Include="Models\MediaItem.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostItem.cs" />
     <Compile Include="Models\SiteViewModels\post.cs" />
+    <Compile Include="Models\Subscriber.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Validation\ArticleItemValidation.cs" />
     <Compile Include="Models\Validation\ArticleValidation.cs" />
@@ -198,6 +201,7 @@
     <Compile Include="Models\Validation\MediaItemValidation.cs" />
     <Compile Include="Models\Validation\PostItemValidation.cs" />
     <Compile Include="Models\Validation\PostValidation.cs" />
+    <Compile Include="Models\Validation\SubscriberValidation.cs" />
     <Compile Include="Models\Validation\TagValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSettings.cs" />
@@ -290,6 +294,9 @@
     <Content Include="Areas\Admin\Views\MainBanner\Index.cshtml" />
     <Content Include="Areas\Admin\Views\MainBanner\Create.cshtml" />
     <Content Include="Areas\Admin\Views\MainBanner\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriber\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriber\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriber\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\prod.pubxml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Media.cshtml" />
@@ -297,6 +304,7 @@
     <Content Include="Views\Home\Travel.cshtml" />
     <Content Include="Views\Home\ArticleDetails.cshtml" />
     <Content Include="Views\Home\Tags.cshtml" />
+    <Content Include="Views\Home\UnSubscribe.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,45 @@
+﻿@using FashionIntention.UI.Helpers
+@model FashionIntention.UI.Models.Subscriber
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Subscriber")
+}
+
+
+<div class="container">
+    <h3>Добавление адреса email</h3>
+    @using (Html.BeginForm("Create", "Subscriber", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+      <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Email" id="Email" placeholder="Введите email" value="@Model.Email">
+            </div>
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+       <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive)
+                    </label>
+                </div>
+            </div>
+        </div>
+     
+        <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "Subscriber", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </div>
+    }
+</div>
