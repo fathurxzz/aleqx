@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section scripts
+{
+  
+    
+    <script type="text/javascript">
+        (function (fin, a9) {
+            var settings = fin.settings,
+                    dataModels = settings.dataModels;
+            @Html.Raw(ViewBag.Posts);
+        }(FIN, A9));
+    </script>
+}
+
+<div class="page">
+    <div id="mainPage">
+    </div>
+</div>

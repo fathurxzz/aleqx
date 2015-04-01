@@ -1,0 +1,51 @@
+﻿@using FashionIntention.UI
+@using FashionIntention.UI.Helpers
+@model IEnumerable<FashionIntention.UI.Models.Subscriber>
+
+@{
+    ViewBag.Title = "Адреса рассылки";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Subscriber")
+}
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+     
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.OrderBy(s=>s.Email))
+    {
+        <tr>
+           
+            <td>
+                 @Html.DisplayFor(modelItem => item.Email)
+            </td>
+           
+            <td>
+                 @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            
+         
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+            </td>
+        </tr>
+    }
+
+</table>

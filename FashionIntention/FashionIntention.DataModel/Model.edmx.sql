@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/31/2015 20:11:55
+-- Date Created: 04/01/2015 22:48:00
 -- Generated from EDMX file: C:\vsp\FashionIntention\FashionIntention.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -35,6 +35,8 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ArticleItem`;
     DROP TABLE IF EXISTS `ContentItem`;
     DROP TABLE IF EXISTS `MediaItem`;
+    DROP TABLE IF EXISTS `MainBanner`;
+    DROP TABLE IF EXISTS `Subscriber`;
     DROP TABLE IF EXISTS `PostTag`;
 SET foreign_key_checks = 1;
 
@@ -127,6 +129,17 @@ CREATE TABLE `MainBanner`(
 	`ImageSrc` varchar (500));
 
 ALTER TABLE `MainBanner` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `Subscriber`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Email` varchar (500) NOT NULL, 
+	`IsActive` bool NOT NULL, 
+	`Guid` varchar (500) NOT NULL);
+
+ALTER TABLE `Subscriber` ADD PRIMARY KEY (Id);
 
 
 

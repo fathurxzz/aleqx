@@ -7,5 +7,6 @@
         <li class="@(Model == "MediaItem" ? "active" : "")">@Html.ActionLink("Медиа", "Index", "MediaItem", new { area = "Admin" }, null)</li>
         <li class="@(Model == "Article" ? "active" : "")">@Html.ActionLink("Пресса", "Index", "Article", new { area = "Admin" }, null)</li>
         <li class="@(Model == "MainBanner" ? "active" : "")">@Html.ActionLink("Основной баннер", "Index", "MainBanner", new { area = "Admin" }, null)</li>
+        <li class="@(Model == "Subscriber" ? "active" : "")">@Html.ActionLink("Адреса рассылки", "Index", "Subscriber", new { area = "Admin" }, null)</li>
     </ul>
 </div>

@@ -14,6 +14,7 @@
     <EntitySet Name="ContentItem" EntityType="Model.Store.ContentItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MediaItem" EntityType="Model.Store.MediaItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MainBanner" EntityType="Model.Store.MainBanner" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subscriber" EntityType="Model.Store.Subscriber" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PostTag" EntityType="Model.Store.PostTag" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="PostPostItem" Association="Model.Store.PostPostItem">
       <End Role="Post" EntitySet="Post" />
@@ -105,6 +106,15 @@
     <Property Name="Url" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
   </EntityType>
+  <EntityType Name="Subscriber">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="IsActive" Type="bool" Nullable="false" />
+    <Property Name="Guid" Type="varchar" Nullable="false" MaxLength="500" />
+  </EntityType>
   <EntityType Name="PostTag">
     <Key>
       <PropertyRef Name="Posts_Id" />
@@ -186,6 +196,7 @@
           <EntitySet Name="ContentItem" EntityType="Model.ContentItem" />
           <EntitySet Name="MediaItem" EntityType="Model.MediaItem" />
           <EntitySet Name="MainBanner" EntityType="Model.MainBanner" />
+          <EntitySet Name="Subscriber" EntityType="Model.Subscriber" />
         </EntityContainer>
         <EntityType Name="Post">
           <Key>
@@ -294,6 +305,15 @@
           <Property Type="String" Name="Url" MaxLength="500" />
           <Property Type="String" Name="ImageSrc" MaxLength="500" />
         </EntityType>
+        <EntityType Name="Subscriber">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="500" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="Guid" Nullable="false" MaxLength="500" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -378,6 +398,16 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Url" ColumnName="Url" />
           <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscriber">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Subscriber)">
+        <MappingFragment StoreEntitySet="Subscriber">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

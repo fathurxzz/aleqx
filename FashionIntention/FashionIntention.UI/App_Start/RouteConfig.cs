@@ -77,6 +77,23 @@ namespace FashionIntention.UI
           );
 
             routes.MapRoute(
+              "subscribe",
+              "subscribe",
+              new { controller = "Home", action = "Subscribe" },
+              new[] { "NewVision.UI.Controllers" }
+          );
+
+            routes.MapRoute(
+             "unsubscribe",
+             "unsubscribe/{id}",
+             new { controller = "Home", action = "UnSubscribe" },
+             new[] { "NewVision.UI.Controllers" }
+         );
+
+
+
+
+            routes.MapRoute(
           "pressDetails",
           "press/{id}",
           new { controller = "Home", action = "ArticleDetails" },
