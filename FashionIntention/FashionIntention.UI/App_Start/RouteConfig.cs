@@ -90,6 +90,13 @@ namespace FashionIntention.UI
              new[] { "NewVision.UI.Controllers" }
          );
 
+            routes.MapRoute(
+          "search",
+          "search",
+          new { controller = "Home", action = "Search" },
+          new[] { "NewVision.UI.Controllers" }
+      );
+
 
 
 
