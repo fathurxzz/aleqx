@@ -3,7 +3,7 @@
     <ul class="nav nav-tabs" role="tablist">
         <li class="@(Model == "Post" ? "active" : "")">@Html.ActionLink("Посты", "Index", "Post", new { area = "Admin" }, null)</li>
         <li class="@(Model == "Tag" ? "active" : "")">@Html.ActionLink("Теги", "Index", "Tag", new { area = "Admin" }, null)</li>
-        <li class="@(Model == "ContentItem" ? "active" : "")">@Html.ActionLink("Об авторе", "Index", "ContentItem", new { area = "Admin" }, null)</li>
+        <li class="@(Model == "ContentItem" ? "active" : "")">@Html.ActionLink("Оксана Литвиненко", "Index", "ContentItem", new { area = "Admin" }, null)</li>
         <li class="@(Model == "MediaItem" ? "active" : "")">@Html.ActionLink("Медиа", "Index", "MediaItem", new { area = "Admin" }, null)</li>
         <li class="@(Model == "Article" ? "active" : "")">@Html.ActionLink("Пресса", "Index", "Article", new { area = "Admin" }, null)</li>
         <li class="@(Model == "MainBanner" ? "active" : "")">@Html.ActionLink("Основной баннер", "Index", "MainBanner", new { area = "Admin" }, null)</li>
