@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using FashionIntention.UI.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Schema;
 
 namespace FashionIntention.UI.Controllers
 {
@@ -306,6 +307,61 @@ namespace FashionIntention.UI.Controllers
             return View();
         }
 
+        
+        [ValidateInput(false)] 
+        public ActionResult Search(string q)
+        {
+            ViewBag.MainMenu = GenerateMainMenu(0);
+
+            var posts = new List<object>();
+
+            ViewBag.Query = q;
+
+            if (q != null && q.Length > 1)
+            {
+
+
+                var query = HttpUtility.HtmlDecode(q).ToLower();
+
+                var allPosts = _context.Posts.ToList();
+
+                var selected = new List<Post>();
+
+
+                foreach (var post in allPosts)
+                {
+                    if (post.Title != null && post.Title.ToLower().Contains(query))
+                    {
+                        selected.Add(post);
+                        continue;
+                    }
+
+
+                    if (post.PostItems.Any(postItem => postItem.Text != null && postItem.Text.ToLower().Contains(query)))
+                    {
+                        selected.Add(post);
+                    }
+                }
+
+                foreach (var p in selected)
+                {
+                    posts.Add(new
+                    {
+                        id = p.Id,
+                        date = p.Date.ToShortDateString(),
+                        title = p.Title,
+                        description = p.Description,
+                        imageSrc = p.ImageSrc,
+                        tags = p.Tags.Select(t => t.Title).Cast<object>().ToList()
+                    });
+                }
+
+            }
+
+            ViewBag.Posts = "dataModels.posts = " + JsonConvert.SerializeObject(posts);
+           
+            return View();
+        }
 
     }
 }

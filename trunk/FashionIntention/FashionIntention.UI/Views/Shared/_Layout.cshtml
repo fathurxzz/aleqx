@@ -49,6 +49,12 @@
                     searchInputText: 'Поиск по сайту',
                     articlesTitle: 'Пресса',
                     aboutTitle: 'Оксана Литвиненко',
+                    authorName: 'Оксана Литвиненко',
+                    phone: '+38 (099) 522-78-42',
+                    email: 'mail@oksana.com',
+                    fb: 'фейсбук',
+                    vk: 'вконтакте',
+                    instagram: 'инстаграм',
                     mediaTitle: 'медиа'
                 }
             }
@@ -78,15 +84,19 @@
                 contactsPageUrl: 'contacts.html',
                 postDetailsUrl: '/post/{id}',
                 postsUrl: '/posts/{year}/{month}',
-                articleDetailsUrl: '/press/{id}'
+                articleDetailsUrl: '/press/{id}',
+                searchUrl:'/search'
             };
 
             fin.settings.controlsDescriptors.site.url = {
                 em: 'http://eugene-miller.com',
                 fb: 'https://www.facebook.com',
                 twitter: 'https://twitter.com/',
+                instagram: 'https://instagram.com',
                 pinterest: 'https://ru.pinterest.com/'
-            }
+            };
+
+            controlsDescriptors.searchQuery = '@ViewBag.Query';
 
         }(FIN, A9));
     </script>

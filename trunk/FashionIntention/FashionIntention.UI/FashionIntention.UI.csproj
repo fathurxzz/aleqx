@@ -305,6 +305,7 @@
     <Content Include="Views\Home\ArticleDetails.cshtml" />
     <Content Include="Views\Home\Tags.cshtml" />
     <Content Include="Views\Home\UnSubscribe.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
