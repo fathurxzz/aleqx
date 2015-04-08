@@ -148,5 +148,11 @@ namespace Shop.DataAccess.Repositories
         void DeleteMainPageBanner(int id, Action<string> deleteImages);
 
 
+        // SiteProperties
+        void SaveSiteProperty(SiteProperty siteProperty);
+        SiteProperty GetSiteProperty(string name);
+        IEnumerable<SiteProperty> GetSiteProperties();
+
+
     }
 }
