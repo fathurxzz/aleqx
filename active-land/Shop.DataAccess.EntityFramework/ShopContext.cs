@@ -55,6 +55,7 @@ namespace Shop.DataAccess.EntityFramework
         public DbSet<QuickAdviceLang> QuickAdviceLangs { get; set; }
         public DbSet<ShopSetting> ShopSettings  { get; set; }
         public DbSet<MainPageBanner> MainPageBanners  { get; set; }
+        public DbSet<SiteProperty> SiteProperties { get; set; }
 
 
         
@@ -92,6 +93,7 @@ namespace Shop.DataAccess.EntityFramework
             modelBuilder.Configurations.Add(new QuickAdviceLangMap());
             modelBuilder.Configurations.Add(new ShopSettingMap());
             modelBuilder.Configurations.Add(new MainPageBannerMap());
+            modelBuilder.Configurations.Add(new SitePropertyMap());
         }
     }
 }
