@@ -156,6 +156,11 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.MainPageBanners; }
         }
 
+        public IDbSet<SiteProperty> SiteProperties
+        {
+            get { return _context.SiteProperties; }
+        }
+
 
         public int SaveChanges()
         {
