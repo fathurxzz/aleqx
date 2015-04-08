@@ -56,5 +56,6 @@ namespace Shop.DatabaseModel
         public DbSet<ShopSetting> ShopSetting { get; set; }
         public DbSet<ProductStock> ProductStock { get; set; }
         public DbSet<MainPageBanner> MainPageBanner { get; set; }
+        public DbSet<SiteProperty> SiteProperty { get; set; }
     }
 }

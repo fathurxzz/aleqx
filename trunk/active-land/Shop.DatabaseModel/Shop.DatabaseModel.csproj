@@ -155,6 +155,9 @@
     <Compile Include="ShopSetting.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
+    <Compile Include="SiteProperty.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Shop.edmx">
