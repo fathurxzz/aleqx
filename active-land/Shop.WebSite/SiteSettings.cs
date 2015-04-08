@@ -37,6 +37,7 @@ namespace Shop.WebSite
                                     {"mainPageBanner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =478 ,Width = 1195 }, CacheFolder = "mainPageBanner", ScaleMode = ScaleMode.Crop}},
                                     {"siteBanner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =132 ,Width = 558 }, CacheFolder = "siteBanner", ScaleMode = ScaleMode.Crop}},
                                     {"adminMainPageBanner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =120 ,Width = 300 }, CacheFolder = "adminMainPageBanner", ScaleMode = ScaleMode.Crop}},
+                                    {"avatar",new ThumbnailPicture{ PictureSize =new PictureSize {Height =181 ,Width = 181 }, CacheFolder = "avatar", ScaleMode = ScaleMode.Crop}},
 
                                   //{"adminPreviewProductImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 200,Width = 200}, CacheFolder = "adminPreviewProductImage", ScaleMode = ScaleMode.Crop}},
 
@@ -74,7 +75,7 @@ namespace Shop.WebSite
 
         public static string Version
         {
-            get { return "0.0.35"; }
+            get { return "0.0.36"; }
         }
 
         public static string MailTo
