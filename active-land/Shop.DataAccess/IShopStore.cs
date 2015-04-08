@@ -53,6 +53,8 @@ namespace Shop.DataAccess
         IDbSet<ShopSetting> ShopSettings { get; }
 
         IDbSet<MainPageBanner> MainPageBanners { get; }
+        
+        IDbSet<SiteProperty> SiteProperties { get; }
 
         int SaveChanges();
     }

@@ -94,6 +94,7 @@
     <Compile Include="Entities\QuickAdvice.cs" />
     <Compile Include="Entities\QuickAdviceLang.cs" />
     <Compile Include="Entities\ShopSettings.cs" />
+    <Compile Include="Entities\SiteProperty.cs" />
     <Compile Include="Entities\Validation\ArticleValidation.cs" />
     <Compile Include="Entities\Validation\CategoryValidation.cs" />
     <Compile Include="Entities\Validation\ContentValidation.cs" />
