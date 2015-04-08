@@ -1,0 +1,33 @@
+﻿@model Shop.WebSite.Models.MainPageInfo
+@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "MainPageInfo")
+}
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+        <tr>
+            <td>
+                @Html.Raw(Html.CachedImage("~/Content/Images/",   @Model.AuthorAvatarImageSource, SiteSettings.GetThumbnail("avatar")))
+            </td>
+            <td>
+                @Html.Raw(@Model.AuthorGreetingText)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit")
+            </td>
+       </tr>
+    
+
+</table>
