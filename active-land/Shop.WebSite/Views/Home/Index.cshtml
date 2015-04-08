@@ -67,16 +67,11 @@ else
 @if (Model.Content.IsMainPage)
 {
     <div id="about">
-        <div id="avatar"></div>
+        <div id="avatar">
+            @Html.Raw(Html.CachedImage("~/Content/Images/",   @Model.MainPageInfo.AuthorAvatarImageSource, SiteSettings.GetThumbnail("avatar")))
+        </div>
         <div class="text">
-            
-            Привет, хочу представить Вам новый интернет-магазин велосипедов, физически мы находимся в Голосеевском р-не. 
-            Сайт в процессе доработки, но всё, что Вы видите, можно заказать. И главное, велосипеды &mdash; давнее пристрастие, поэтому учтены все пробы, ошибки, падения и подъёмы :)
-            
-
-            @*Привет! Я &mdash; Григорий Войтишин, создатель &laquo;Эктив Лэнда&raquo;. Велосипеды &mdash; моё давнее
-            пристрастие, поэтому, всё что ты здесь увидишь, отобрано в ходе большого опыта, проб, ошибок,
-            падений &mdash; и подъемов :)*@
+            @Html.Raw(Model.MainPageInfo.AuthorGreetingText)
         </div>
         @*<div id="glad-to-see-you">Рад тебя видеть и с удовольствием помогу тебе</div>*@
     </div>
