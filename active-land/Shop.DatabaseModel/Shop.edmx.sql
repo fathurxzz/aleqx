@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 12/08/2014 22:41:34
+-- Date Created: 04/08/2015 22:07:42
 -- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -487,6 +487,17 @@ CREATE TABLE `MainPageBanner`(
 	`Url` varchar (500));
 
 ALTER TABLE `MainPageBanner` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `SiteProperty`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Name` varchar (500), 
+	`Title` varchar (500), 
+	`Value` varchar (10000));
+
+ALTER TABLE `SiteProperty` ADD PRIMARY KEY (Id);
 
 
 

@@ -37,6 +37,7 @@
     <EntitySet Name="ShopSetting" EntityType="Shop.Store.ShopSetting" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductStock" EntityType="Shop.Store.ProductStock" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MainPageBanner" EntityType="Shop.Store.MainPageBanner" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SiteProperty" EntityType="Shop.Store.SiteProperty" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Shop.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValueProduct" EntityType="Shop.Store.ProductAttributeValueProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProduct" EntityType="Shop.Store.ProductProduct" store:Type="Tables" Schema="dbo" />
@@ -528,6 +529,15 @@
     <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="IsSiteBanner" Type="bool" Nullable="false" />
     <Property Name="Url" Type="varchar" Nullable="true" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="SiteProperty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="Value" Type="varchar" Nullable="true" MaxLength="10000" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -1233,6 +1243,7 @@
             <End Role="Product1" EntitySet="Product" />
           </AssociationSet>
           <EntitySet Name="MainPageBanner" EntityType="Shop.MainPageBanner" />
+          <EntitySet Name="SiteProperty" EntityType="Shop.SiteProperty" />
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -2066,6 +2077,15 @@
           <Property Type="Boolean" Name="IsSiteBanner" Nullable="false" />
           <Property Type="String" Name="Url" MaxLength="500" />
         </EntityType>
+        <EntityType Name="SiteProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="500" />
+          <Property Type="String" Name="Title" MaxLength="500" />
+          <Property Type="String" Name="Value" MaxLength="10000" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2424,6 +2444,16 @@
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="IsSiteBanner" ColumnName="IsSiteBanner" />
           <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteProperty">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.SiteProperty)">
+        <MappingFragment StoreEntitySet="SiteProperty">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
