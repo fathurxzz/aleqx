@@ -36,6 +36,7 @@ namespace Shop.WebSite.Models
         public IEnumerable<MainPageBanner> MainPageBanners { get; set; }
         public IEnumerable<MainPageBanner> SiteBanners { get; set; }
         public Article Article { get; set; }
+        public MainPageInfo MainPageInfo { get; set; }
 
 
         protected Stopwatch _sw = new Stopwatch();
@@ -67,6 +68,18 @@ namespace Shop.WebSite.Models
             Content = contentName != null ? (contentName == "category" ? repository.GetCatalogueContent() : repository.GetContent(contentName)) : repository.GetContent();
             MainPageBanners = repository.GetMainPageBanners();
             SiteBanners = repository.GetSiteBanners().OrderBy(p => Guid.NewGuid()).Take(2).ToList();
+
+            MainPageInfo = new MainPageInfo();
+            var authorAvatarImageSource = repository.GetSiteProperty("AuthorAvatarImageSource");
+            if (authorAvatarImageSource != null)
+            {
+                MainPageInfo.AuthorAvatarImageSource = authorAvatarImageSource.Value;
+            }
+            var authorGreetingText = repository.GetSiteProperty("AuthorGreetingText");
+            if (authorGreetingText != null)
+            {
+                MainPageInfo.AuthorGreetingText = authorGreetingText.Value;
+            }
 
             if (Content.ContentType == 2)
             {
