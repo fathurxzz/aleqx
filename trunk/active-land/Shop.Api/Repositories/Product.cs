@@ -12,24 +12,7 @@ namespace Shop.Api.Repositories
 {
     public partial class ShopRepository : IShopRepository
     {
-        //public IEnumerable<Product> GetProducts()
-        //{
-        //    var products = _store.Products.ToList();
-        //    foreach (var product in products)
-        //    {
-        //        product.CurrentLang = LangId;
-        //        product.Category.CurrentLang = LangId;
-
-        //        if (product.ProductImages.Any())
-        //        {
-        //            var pi = product.ProductImages.FirstOrDefault(c => c.IsDefault) ?? product.ProductImages.First();
-        //            product.ImageSource = pi.ImageSource;
-        //        }
-        //    }
-        //    return products;
-        //}
-
-        public IQueryable<Product> GetAllProducts()
+       public IQueryable<Product> GetAllProducts()
         {
             return _store.Products;
         }
@@ -94,7 +77,6 @@ namespace Shop.Api.Repositories
             if (product == null)
             {
                 return null;
-                throw new ObjectNotFoundException(string.Format("Product with id={0} not found", id));
             }
             product.CurrentLang = LangId;
 
@@ -189,48 +171,68 @@ namespace Shop.Api.Repositories
                 product.ImageSource = pp.ImageSource;
             }
 
-            //foreach (var image in product.ProductImages.Where(pi=>pi.IsDefault))
-            //{
-            //    product.ImageSource = image.ImageSource;
-            //}
 
             return product;
         }
 
         public Product GetProductByExternalId(string externalId)
         {
+            //Log.DebugFormat("GetProductByExternalId started ExternalId:{0}", externalId);
             var product = _store.Products.SingleOrDefault(p => p.ExternalId == externalId);
             if (product == null)
             {
+                //Log.Debug("GetProductByExternalId Product not found");
                 return null;
             }
+            //Log.DebugFormat("GetProductByExternalId set current lang started");
             product.CurrentLang = LangId;
+            //Log.DebugFormat("GetProductByExternalId set current lang finished");
 
+
+            //Log.DebugFormat("GetProductByExternalId read ProductAttributeValues started");
             foreach (var productAttributeValue in product.ProductAttributeValues)
             {
+                //Log.DebugFormat("GetProductByExternalId set productAttributeValue current lang started");
                 productAttributeValue.CurrentLang = LangId;
+                //Log.DebugFormat("GetProductByExternalId set productAttributeValue current lang finished");
 
                 if (productAttributeValue.ProductAttributeValueTag != null)
                 {
+                    //Log.DebugFormat("GetProductByExternalId set ProductAttributeValueTag current lang started");
                     productAttributeValue.ProductAttributeValueTag.CurrentLang = LangId;
+                    //Log.DebugFormat("GetProductByExternalId set ProductAttributeValueTag current lang finished");
                 }
             }
+            //Log.DebugFormat("GetProductByExternalId read ProductAttributeValues finished");
 
+
+            //Log.DebugFormat("GetProductByExternalId read ProductAttributeStaticValues started");
             foreach (var productAttributeStaticValue in product.ProductAttributeStaticValues)
             {
+                //Log.DebugFormat("GetProductByExternalId set productAttributeStaticValue current lang started");
                 productAttributeStaticValue.CurrentLang = LangId;
+                //Log.DebugFormat("GetProductByExternalId set productAttributeStaticValue current lang finished");
             }
+            //Log.DebugFormat("GetProductByExternalId read ProductAttributeStaticValues finished");
 
+
+            //Log.DebugFormat("GetProductByExternalId read Category.ProductAttributes started");
             foreach (var productAttribute in product.Category.ProductAttributes)
             {
+                //Log.DebugFormat("GetProductByExternalId set Category.ProductAttribute current lang started");
                 productAttribute.CurrentLang = LangId;
+                //Log.DebugFormat("GetProductByExternalId set Category.ProductAttribute current lang finished");
             }
+            //Log.DebugFormat("GetProductByExternalId read Category.ProductAttributes finished");
 
+            //Log.DebugFormat("GetProductByExternalId read IsDefaultProductImage started");
             foreach (var image in product.ProductImages.Where(pi => pi.IsDefault))
             {
                 product.ImageSource = image.ImageSource;
             }
+            //Log.DebugFormat("GetProductByExternalId read IsDefaultProductImage finished");
 
+            //Log.DebugFormat("GetProductByExternalId finished");
             return product;
         }
 
@@ -251,26 +253,9 @@ namespace Shop.Api.Repositories
                 _store.ProductLangs.Remove(productLang);
             }
             product.ProductLangs = null;
-            //_store.SaveChanges();
-
-            //while (product.ProductAttributeValues.Any())
-            //{
-            //    var pav = product.ProductAttributeValues.First();
-
-            //    while (pav.ProductAttributeValueLangs.Any())
-            //    {
-            //        var pavl = pav.ProductAttributeValueLangs.First();
-            //        //_store.ProductAttributeValueLangs.Remove(pavl);
-            //        pav.ProductAttributeValueLangs.Remove(pavl);
-            //    }
-            //    pav.ProductAttributeValueLangs = null;
-            //    product.ProductAttributeValues.Remove(pav);
-            //}
-            
-            //product.ProductAttributeValues = null;
+         
             product.ProductAttributeValues.Clear();
             _store.SaveChanges();
-
 
             while (product.ProductStocks.Any())
             {
@@ -280,21 +265,7 @@ namespace Shop.Api.Repositories
             product.ProductStocks = null;
             _store.SaveChanges();
 
-            //while (product.ProductAttributeStaticValues.Any())
-            //{
-            //    var pav = product.ProductAttributeStaticValues.First();
-
-            //    while (pav.ProductAttributeStaticValueLangs.Any())
-            //    {
-            //        var pavl = pav.ProductAttributeStaticValueLangs.First();
-            //        //_store.ProductAttributeStaticValueLangs.Remove(pavl);
-            //        pav.ProductAttributeStaticValueLangs.Remove(pavl);
-            //    }
-            //    pav.ProductAttributeStaticValueLangs = null;
-            //    product.ProductAttributeStaticValues.Remove(pav);
-            //}
             product.ProductAttributeStaticValues = null;
-            //_store.SaveChanges();
 
             while (product.ProductImages.Any())
             {
@@ -303,7 +274,6 @@ namespace Shop.Api.Repositories
                 _store.ProductImages.Remove(pi);
             }
             product.ProductImages = null;
-            //_store.SaveChanges();
 
             _store.Products.Remove(product);
             _store.SaveChanges();
@@ -331,56 +301,70 @@ namespace Shop.Api.Repositories
 
         public void SaveProduct(Product product)
         {
+            //Log.DebugFormat("SaveProduct started");
             var cache = _store.Products.Single(c => c.Id == product.Id);
-            //if (cache.Name != category.Name)
-            //{
-            //    if (_store.Categories.Any(c => c.Name == category.Name))
-            //    {
-            //        throw new Exception(string.Format("Category {0} already exists", category.Name));
-            //    }
-            //}
-
-
-            //cache.Name = category.Name;
-            //cache.SortOrder = category.SortOrder;
-            //cache.Title = category.Title;
-            //cache.SeoDescription = category.SeoDescription;
-            //cache.SeoKeywords = category.SeoKeywords;
-            //cache.SeoText = category.SeoText;
-
+            //Log.DebugFormat("SaveProduct CreateOrChangeEntityLanguage started");
             CreateOrChangeEntityLanguage(cache);
+            //Log.DebugFormat("SaveProduct CreateOrChangeEntityLanguage finished");
             string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " ")) + " " + product.Name;
             product.SearchCriteria = searchCriteria;
+            //Log.DebugFormat("SaveProduct _store.SaveChanges() started");
             _store.SaveChanges();
+            //Log.DebugFormat("SaveProduct _store.SaveChanges() finished");
+            //Log.DebugFormat("SaveProduct finished");
         }
 
         private void CreateOrChangeEntityLanguage(Product cache)
         {
-            var categoryLang = _store.ProductLangs.FirstOrDefault(r => r.ProductId == cache.Id && r.LanguageId == LangId);
-            if (categoryLang == null)
+            try
             {
-                var entityLang = new ProductLang
+                //Log.DebugFormat("private void CreateOrChangeEntityLanguage started");
+
+                //Log.DebugFormat("product {0}", cache);
+                //Log.DebugFormat("LangId {0}", LangId);
+
+                //Log.DebugFormat("var categoryLang = _store.ProductLangs.FirstOrDefault(r => r.ProductId == cache.Id && r.LanguageId == LangId);");
+
+                var categoryLang = _store.ProductLangs.FirstOrDefault(r => r.ProductId == cache.Id && r.LanguageId == LangId);
+                //Log.DebugFormat("product lang {0}", categoryLang);
+                if (categoryLang == null)
                 {
-                    ProductId = cache.Id,
-                    LanguageId = LangId,
+                    //Log.DebugFormat("product lang not found. creating new ProductLang");
 
-                    Title = cache.Title,
-                    Description = cache.Description,
-                    SeoDescription = cache.SeoDescription,
-                    SeoKeywords = cache.SeoKeywords,
-                    SeoText = cache.SeoText,
-                };
-                _store.ProductLangs.Add(entityLang);
+                    var entityLang = new ProductLang
+                    {
+                        ProductId = cache.Id,
+                        LanguageId = LangId,
+
+                        Title = cache.Title,
+                        Description = cache.Description,
+                        SeoDescription = cache.SeoDescription,
+                        SeoKeywords = cache.SeoKeywords,
+                        SeoText = cache.SeoText,
+                    };
+                    //Log.DebugFormat("new ProductLang created");
+                    //Log.DebugFormat(" _store.ProductLangs.Add(entityLang) started");
+                    _store.ProductLangs.Add(entityLang);
+                    //Log.DebugFormat(" _store.ProductLangs.Add(entityLang) finished");
+
+                }
+                else
+                {
+                    //Log.DebugFormat("product langfound. updating lang");
+                    categoryLang.Title = cache.Title;
+                    categoryLang.Description = cache.Description;
+                    categoryLang.SeoDescription = cache.SeoDescription;
+                    categoryLang.SeoKeywords = cache.SeoKeywords;
+                    categoryLang.SeoText = cache.SeoText;
+                }
+
+                //Log.DebugFormat("private void CreateOrChangeEntityLanguage finished");
             }
-            else
+            catch (Exception ex)
             {
-                categoryLang.Title = cache.Title;
-                categoryLang.Description = cache.Description;
-                categoryLang.SeoDescription = cache.SeoDescription;
-                categoryLang.SeoKeywords = cache.SeoKeywords;
-                categoryLang.SeoText = cache.SeoText;
-            }
 
+                Log.ErrorFormat("exception {0}", ex);
+            }
         }
     }
 }
