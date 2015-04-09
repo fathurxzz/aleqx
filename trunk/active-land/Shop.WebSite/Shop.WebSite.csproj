@@ -188,6 +188,7 @@
     <Compile Include="Areas\Admin\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\DataTrasferController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainPageBannerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MainPageInfoController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeValueController.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Areas\Admin\Controllers\QuickAdviceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShopSettingController.cs" />
     <Compile Include="Areas\Admin\Controllers\SiteBannerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SitePropertyController.cs" />
     <Compile Include="Areas\Admin\Models\DataTransferModel.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -230,6 +232,7 @@
     <Compile Include="Models\FeedbackForm.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\MainMenuModel.cs" />
+    <Compile Include="Models\MainPageInfo.cs" />
     <Compile Include="Models\ProductDetailsModel.cs" />
     <Compile Include="Models\ProductPreview.cs" />
     <Compile Include="Models\ProductPreviewLabel.cs" />
@@ -413,6 +416,8 @@
     <Content Include="Areas\Admin\Views\SiteBanner\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SiteBanner\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SiteBanner\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MainPageInfo\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MainPageInfo\Index.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>
