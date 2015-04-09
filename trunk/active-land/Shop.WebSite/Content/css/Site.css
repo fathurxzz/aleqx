@@ -63,10 +63,15 @@ body {
 #about #avatar{
     width: 181px;
     height: 181px;
-    background: url("../img/avatar.png");
+    /*background: url("../img/avatar.png");*/
     position: absolute;
     margin-top: -5px;
     margin-left: 7px;
+
+    -webkit-border-radius: 90px;
+	-moz-border-radius: 90px;
+    overflow: hidden
+
 }
 
 #chose-your-bike {
