@@ -99,6 +99,14 @@
     {
         <li>@Html.ActionLink("Баннера", "Index", "SiteBanner", new { area = "Admin" }, null)</li>
     }
+    @if (Model == "MainPageInfo")
+    {
+        <li class="active">@Html.ActionLink("Информация главной страницы", "Index", "MainPageInfo", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Информация главной страницы", "Index", "MainPageInfo", new { area = "Admin" }, null)</li>
+    }
     
     @if (Model == "Export")
     {
