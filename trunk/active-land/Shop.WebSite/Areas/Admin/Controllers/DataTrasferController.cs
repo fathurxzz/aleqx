@@ -103,10 +103,12 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             if (result.ErrorCode == 0)
             {
                 RefreshSearchData();
-                Cache.Default.Clear();
+                
 
                 Log.DebugFormat("{0} finish importing products ", DateTime.Now);
             }
+            Cache.Default.Clear();
+
             return View("Index", new DataTransferModel {Categories = categories, ImportResult = result});
         }
 
