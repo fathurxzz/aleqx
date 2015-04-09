@@ -61,7 +61,7 @@ namespace Shop.DataAccess.Entities
 
         public override string ToString()
         {
-            return Title;
+            return string.Format("title:{0} id:{1} externalId:{2}", Title, Id, ExternalId);
         }
     }
 }
