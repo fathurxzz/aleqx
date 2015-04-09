@@ -23,21 +23,30 @@ namespace Shop.Api.Repositories
 
         public IEnumerable<ProductAttribute> GetProductAttributes(int categoryId)
         {
-            var categories =
-                _store.Categories.Include(
-                    c => c.ProductAttributes.Select(pa => pa.ProductAttributeValues));
-          var category = categories.Single(x => x.Id == categoryId);
-            //.Single(c => c.Id == categoryId);
-            foreach (var productAttribute in category.ProductAttributes)
-            {
-                productAttribute.CurrentLang = LangId;
+            //Log.DebugFormat("GetProductAttributes started");
+            var categories =_store.Categories.Include(c => c.ProductAttributes.Select(pa => pa.ProductAttributeValues));
+            //Log.DebugFormat("GetProductAttributes categories_count:{0}", categories.Count());
 
-                foreach (var value in productAttribute.ProductAttributeValues)
+            if (categories.Any())
+            {
+                //Log.DebugFormat("GetProductAttributes started");
+                var category = categories.Single(x => x.Id == categoryId);
+
+                foreach (var productAttribute in category.ProductAttributes)
                 {
-                    value.CurrentLang = LangId;
+                    productAttribute.CurrentLang = LangId;
+
+                    foreach (var value in productAttribute.ProductAttributeValues)
+                    {
+                        value.CurrentLang = LangId;
+                    }
                 }
+                //Log.DebugFormat("GetProductAttributes finished");
+                return category.ProductAttributes;
             }
-            return category.ProductAttributes;
+            Log.Error("cant find category");
+            //Log.DebugFormat("GetProductAttributes finished");
+            return null;
         }
 
         public ProductAttribute GetProductAttribute(int id)
