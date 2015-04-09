@@ -3,16 +3,19 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using log4net;
 using Shop.Api.DataSynchronization.Export;
 using Shop.Api.DataSynchronization.Import;
 using Shop.DataAccess;
 using Shop.DataAccess.Repositories;
 using Shop.WebSite.Areas.Admin.Models;
+using Shop.WebSite.Models;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
 {
     public class DataTrasferController : AdminController
     {
+        protected static readonly ILog Log = LogManager.GetLogger(typeof(CatalogueModel));
         //
         // GET: /Admin/DataTrasfer/
 
@@ -38,12 +41,17 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             try
             {
+
+                Log.DebugFormat("{0} start updating search metadata", DateTime.Now);
                 _repository.LangId = CurrentLangId;
                 var products = _repository.GetAllProducts().ToList();
+
+                var totalProducst = products.Count;
+                var productsCount = 0;
                 foreach (var p in products)
                 {
+                    productsCount++;
                     var product = _repository.GetProduct(p.Id);
-
                     string searchCriteriaAttributes = "";
                     foreach (var productAttributeValue in product.ProductAttributeValues)
                     {
@@ -51,12 +59,13 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     }
                     product.SearchCriteriaAttributes = searchCriteriaAttributes;
                     _repository.SaveProduct(product);
+                    Log.DebugFormat("{0} product search metadata updated {1} of {2}", DateTime.Now, productsCount, totalProducst);
                 }
+                Log.DebugFormat("{0} finish updating search metadata", DateTime.Now);
             }
             catch (Exception ex)
             {
-
-
+                Log.ErrorFormat("updating search metadata error {0}" , ex.Message);
             }
         }
 
@@ -80,8 +89,9 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
         public ActionResult Import(HttpPostedFileBase fileUpload)
         {
+            Log.DebugFormat("{0} start importing products ", DateTime.Now);
             _repository.LangId = CurrentLangId;
-            var categories = _repository.GetCategories();
+            var categories = _repository.GetCategories().ToList();
             var result = new ImportResult { ErrorCode = 1, ErrorMessage = "Не выбран файл для загрузки" };
             if (fileUpload != null)
             {
@@ -90,13 +100,14 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 result = ImportFromFile.Execute(_repository, reader, categoryName, CurrentLangId);
             }
 
+            if (result.ErrorCode == 0)
+            {
+                RefreshSearchData();
+                Cache.Default.Clear();
 
-
-            RefreshSearchData();
-            Cache.Default.Clear();
-
+                Log.DebugFormat("{0} finish importing products ", DateTime.Now);
+            }
             return View("Index", new DataTransferModel {Categories = categories, ImportResult = result});
-            //return RedirectToAction("Index", new { message = result.ErrorMessage, errorCode = result.ErrorCode });
         }
 
         private void SaveToFile(string text, string categoryName)
