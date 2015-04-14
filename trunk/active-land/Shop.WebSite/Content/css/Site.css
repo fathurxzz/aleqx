@@ -67,7 +67,7 @@ body {
     position: absolute;
     margin-top: -5px;
     margin-left: 7px;
-
+    border-radius: 90px;
     -webkit-border-radius: 90px;
 	-moz-border-radius: 90px;
     overflow: hidden
