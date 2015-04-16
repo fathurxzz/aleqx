@@ -480,14 +480,22 @@ namespace ConsoleApplication1
                 modelName = "_" + modelName;
             }
 
+
+            //object car = new {color = "red"};
+
+
             var carsToJson = new List<object>();
+
             foreach (var c in cars)
             {
                 var attrToJson = new List<object>();
+
                 foreach (var attribute in c.attributes)
                 {
-                    attrToJson.Add(new { attr = attribute.Key.Trim() + attribute.Value.Trim() });
+                    attrToJson.Add(new{key=attribute.Key, value=attribute.Value});
                 }
+
+
 
                 carsToJson.Add(new
                 {
@@ -509,6 +517,39 @@ namespace ConsoleApplication1
             string json = JsonConvert.SerializeObject(carsToJson.ToArray());
 
             System.IO.File.WriteAllText(brandName + modelName + ".json", json);
+        }
+    }
+
+
+    class MyConverter : JsonConverter
+    {
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            List<KeyValuePair<string, object>> list = value as List<KeyValuePair<string, object>>;
+            writer.WriteStartArray();
+            foreach (var item in list)
+            {
+                writer.WriteStartObject();
+                writer.WritePropertyName(item.Key);
+                writer.WriteValue(item.Value);
+                writer.WriteEndObject();
+            }
+            writer.WriteEndArray();
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        //{
+        //    // TODO...
+        //}
+
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(List<KeyValuePair<string, object>>);
         }
     }
 }
