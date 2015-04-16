@@ -202,9 +202,13 @@ namespace ConsoleApplication1
 
         //private static readonly string[] _skipBrands = { "Aixam", "Alfa Romeo", "Asia", "Aston Martin", "Audi", "Austin", "Bentley", "BMW", "Cadillac", "Chevrolet", "Chrysler" };
         private static readonly string[] _skipBrands = { };
+        private static List<string> skipBrands = new List<string>();
 
         static void Main(string[] args)
         {
+
+            
+
             HtmlNodeCollection nodes;
 
             var errorCnt = 0;
@@ -215,6 +219,13 @@ namespace ConsoleApplication1
 
             try
             {
+                var downloadedBrandsJson = File.ReadAllText("downloadedbrands.json");
+                if (!string.IsNullOrEmpty(downloadedBrandsJson))
+                {
+                    skipBrands = JsonConvert.DeserializeObject<List<string>>(downloadedBrandsJson);
+                }
+
+
                 Console.WriteLine(args.Length);
 
 
@@ -226,7 +237,7 @@ namespace ConsoleApplication1
 
 
 
-                foreach (var brand in brands.Where(b => !_skipBrands.Contains(b.Value) && (args.Length == 0 || args.Contains(b.Value))))
+                foreach (var brand in brands.Where(b => !skipBrands.Contains(b.Value) && (args.Length == 0 || args.Contains(b.Value))))
                 {
                     List<Car> carsByBrand = new List<Car>();
 
@@ -465,6 +476,10 @@ namespace ConsoleApplication1
                     }
 
                     SaveCarsToFile(carsByBrand, brand.Value);
+                    skipBrands.Add(brand.Value);
+
+                    string json = JsonConvert.SerializeObject(skipBrands.ToArray());
+                    System.IO.File.WriteAllText("downloadedbrands.json", json);
                 }
 
             }
@@ -476,13 +491,16 @@ namespace ConsoleApplication1
 
         private static void SaveCarsToFile(IEnumerable<Car> cars, string brandName, string modelName = null)
         {
+            string path = "";
             if (modelName == null)
             {
                 modelName = string.Empty;
+                path = "brands\\";
             }
             else
             {
                 modelName = "_" + modelName;
+                path = "brands_models\\";
             }
 
             //object car = new {color = "red"};
@@ -517,7 +535,10 @@ namespace ConsoleApplication1
 
             string json = JsonConvert.SerializeObject(carsToJson.ToArray());
 
-            System.IO.File.WriteAllText(brandName + modelName + ".json", json);
+            System.IO.File.WriteAllText(path + brandName + modelName + ".json", json);
+
+
+            
         }
     }
 
