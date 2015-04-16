@@ -210,9 +210,12 @@ namespace ConsoleApplication1
             var errorCnt = 0;
 
 
+            //var loadOnlyThatBrands = args;
+            //string[] loadOnlyThatBrands = {"Honda"};
+
             try
             {
-
+                Console.WriteLine(args.Length);
 
 
                 var brandsUrl = "http://auto.ria.com/map/bu/";
@@ -221,7 +224,9 @@ namespace ConsoleApplication1
                 var brands = GetBrands(doc);
 
 
-                foreach (var brand in brands.Where(b => !_skipBrands.Contains(b.Value)))
+
+
+                foreach (var brand in brands.Where(b => !_skipBrands.Contains(b.Value) && (args.Length == 0 || args.Contains(b.Value))))
                 {
                     List<Car> carsByBrand = new List<Car>();
 
@@ -480,9 +485,7 @@ namespace ConsoleApplication1
                 modelName = "_" + modelName;
             }
 
-
             //object car = new {color = "red"};
-
 
             var carsToJson = new List<object>();
 
@@ -494,8 +497,6 @@ namespace ConsoleApplication1
                 {
                     attrToJson.Add(new{key=attribute.Key, value=attribute.Value});
                 }
-
-
 
                 carsToJson.Add(new
                 {
@@ -521,35 +522,35 @@ namespace ConsoleApplication1
     }
 
 
-    class MyConverter : JsonConverter
-    {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            List<KeyValuePair<string, object>> list = value as List<KeyValuePair<string, object>>;
-            writer.WriteStartArray();
-            foreach (var item in list)
-            {
-                writer.WriteStartObject();
-                writer.WritePropertyName(item.Key);
-                writer.WriteValue(item.Value);
-                writer.WriteEndObject();
-            }
-            writer.WriteEndArray();
-        }
+    //class MyConverter : JsonConverter
+    //{
+    //    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    //    {
+    //        List<KeyValuePair<string, object>> list = value as List<KeyValuePair<string, object>>;
+    //        writer.WriteStartArray();
+    //        foreach (var item in list)
+    //        {
+    //            writer.WriteStartObject();
+    //            writer.WritePropertyName(item.Key);
+    //            writer.WriteValue(item.Value);
+    //            writer.WriteEndObject();
+    //        }
+    //        writer.WriteEndArray();
+    //    }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
+    //    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        //public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        //{
-        //    // TODO...
-        //}
+    //    //public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    //    //{
+    //    //    // TODO...
+    //    //}
 
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(List<KeyValuePair<string, object>>);
-        }
-    }
+    //    public override bool CanConvert(Type objectType)
+    //    {
+    //        return objectType == typeof(List<KeyValuePair<string, object>>);
+    //    }
+    //}
 }
