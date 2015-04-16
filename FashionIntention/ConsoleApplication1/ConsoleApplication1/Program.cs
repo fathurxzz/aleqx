@@ -69,19 +69,17 @@ namespace ConsoleApplication1
             {
                 HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(url);
 
-                IWebProxy proxy = myWebRequest.Proxy;
-                if (proxy != null)
-                {
-                    string proxyuri = proxy.GetProxy(myWebRequest.RequestUri).ToString();
-                    myWebRequest.UseDefaultCredentials = true;
-                    myWebRequest.Proxy = new WebProxy(proxyuri, false);
-                    myWebRequest.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
-                }
+                //IWebProxy proxy = myWebRequest.Proxy;
+                //if (proxy != null)
+                //{
+                //    string proxyuri = proxy.GetProxy(myWebRequest.RequestUri).ToString();
+                //    myWebRequest.UseDefaultCredentials = true;
+                //    myWebRequest.Proxy = new WebProxy(proxyuri, false);
+                //    myWebRequest.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                //}
 
                 using (HttpWebResponse response = (HttpWebResponse)myWebRequest.GetResponse())
                 {
-                    //if (response.StatusCode == HttpStatusCode.OK)
-                    //{
                     using (Stream responseStream = response.GetResponseStream())
                     {
                         StreamReader readStream = null;
@@ -99,7 +97,6 @@ namespace ConsoleApplication1
                         readStream.Close();
                         result.Success = true;
                     }
-                    //}
                 }
             }
             catch (WebException ex)
@@ -440,26 +437,28 @@ namespace ConsoleApplication1
                                 Console.WriteLine("brand:{0} model:{1}  model {4} of {5}  car {2} of {3} errors:{6} downloadSize:{7}MB, {8}GB", brand.Value, model.Value, carcount, cars.Count, modelcount, models.Count, errorCnt, Math.Round(_totalDownloadDataSize / 1024 / 1024, 1), Math.Round(_totalDownloadDataSize / 1024 / 1024 / 1024, 3));
                                 Console.WriteLine(realCar);
                                 Console.WriteLine("");
-                                Console.WriteLine("--- attributes ---");
-                                foreach (var attribute in realCar.attributes)
-                                {
-                                    Console.WriteLine(attribute.Key + " " + attribute.Value);
-                                }
-                                Console.WriteLine("------------------");
-                                Console.WriteLine("");
+                                
+                                //Console.WriteLine("--- attributes ---");
+                                //foreach (var attribute in realCar.attributes)
+                                //{
+                                //    Console.WriteLine(attribute.Key + " " + attribute.Value);
+                                //}
+                                //Console.WriteLine("------------------");
+                                //Console.WriteLine("");
                                 Console.WriteLine("--- description ---");
                                 Console.WriteLine(realCar.description);
                                 Console.WriteLine("-------------------");
-                                Console.WriteLine("");
-                                Console.WriteLine("--- images ---");
-                                foreach (var url in realCar.imagesUrl)
-                                {
-                                    Console.WriteLine(url);
-                                }
-                                Console.WriteLine("--------------");
+                                //Console.WriteLine("");
+                                Console.WriteLine("images:{0}",realCar.imagesUrl.Count);
+                                //Console.WriteLine("--- images ---");
+                                //foreach (var url in realCar.imagesUrl)
+                                //{
+                                //    Console.WriteLine(url);
+                                //}
+                                //Console.WriteLine("--------------");
 
-                                Console.WriteLine("");
-                                Console.WriteLine("");
+                                //Console.WriteLine("");
+                                //Console.WriteLine("");
 
 
                             }
