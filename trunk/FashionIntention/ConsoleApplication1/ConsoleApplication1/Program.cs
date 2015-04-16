@@ -200,7 +200,8 @@ namespace ConsoleApplication1
 
 
 
-        private static readonly string[] _skipBrands = { "Aixam", "Alfa Romeo", "Asia", "Aston Martin", "Audi", "Austin", "Bentley", "BMW", "Cadillac", "Chevrolet", "Chrysler" };
+        //private static readonly string[] _skipBrands = { "Aixam", "Alfa Romeo", "Asia", "Aston Martin", "Audi", "Austin", "Bentley", "BMW", "Cadillac", "Chevrolet", "Chrysler" };
+        private static readonly string[] _skipBrands = { };
 
         static void Main(string[] args)
         {
