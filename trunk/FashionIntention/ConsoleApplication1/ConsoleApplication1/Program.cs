@@ -13,6 +13,13 @@ using Newtonsoft.Json;
 
 namespace ConsoleApplication1
 {
+    class GetHtmlResult
+    {
+        public string ResultHtml;
+        public bool Success;
+        public string ErrorMessage;
+    }
+
     class Auto
     {
         public string BaseUrl;
@@ -44,47 +51,77 @@ namespace ConsoleApplication1
 
         private static HtmlDocument GetHtmlDocument(string url)
         {
-            var html = GetHtml(url);
-            var decodedHtml = System.Web.HttpUtility.HtmlDecode(html);
+            GetHtmlResult htmlResult = GetHtml(url);
+            if (!htmlResult.Success)
+            {
+                throw new Exception(htmlResult.ErrorMessage);
+            }
+            var decodedHtml = System.Web.HttpUtility.HtmlDecode(htmlResult.ResultHtml);
             var doc = new HtmlDocument();
             doc.LoadHtml(decodedHtml);
             return doc;
         }
 
-        private static string GetHtml(string url)
+        private static GetHtmlResult GetHtml(string url)
         {
-            string result = string.Empty;
-
-            HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(url);
-
-            IWebProxy proxy = myWebRequest.Proxy;
-            if (proxy != null)
+            var result = new GetHtmlResult();
+            try
             {
-                string proxyuri = proxy.GetProxy(myWebRequest.RequestUri).ToString();
-                myWebRequest.UseDefaultCredentials = true;
-                myWebRequest.Proxy = new WebProxy(proxyuri, false);
-                myWebRequest.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
-            }
+                HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(url);
 
-            HttpWebResponse response = (HttpWebResponse)myWebRequest.GetResponse();
-            //WebResponse webResponse = myWebRequest.GetResponse();
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                Stream receiveStream = response.GetResponseStream();
-                StreamReader readStream = null;
-                if (response.CharacterSet == null)
+                IWebProxy proxy = myWebRequest.Proxy;
+                if (proxy != null)
                 {
-                    readStream = new StreamReader(receiveStream);
+                    string proxyuri = proxy.GetProxy(myWebRequest.RequestUri).ToString();
+                    myWebRequest.UseDefaultCredentials = true;
+                    myWebRequest.Proxy = new WebProxy(proxyuri, false);
+                    myWebRequest.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                }
+
+                using (HttpWebResponse response = (HttpWebResponse)myWebRequest.GetResponse())
+                {
+                    //if (response.StatusCode == HttpStatusCode.OK)
+                    //{
+                    using (Stream responseStream = response.GetResponseStream())
+                    {
+                        StreamReader readStream = null;
+                        if (response.CharacterSet == null)
+                        {
+                            readStream = new StreamReader(responseStream);
+                        }
+                        else
+                        {
+                            readStream = new StreamReader(responseStream, Encoding.GetEncoding(response.CharacterSet));
+                        }
+                        result.ResultHtml = readStream.ReadToEnd();
+                        _totalDownloadDataSize += result.ResultHtml.Length;
+                        response.Close();
+                        readStream.Close();
+                        result.Success = true;
+                    }
+                    //}
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.ProtocolError && ex.Response != null)
+                {
+                    var resp = (HttpWebResponse)ex.Response;
+                    if (resp.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        result.ErrorMessage = "file not found " + url;
+                    }
+                    else
+                    {
+                        result.ErrorMessage = ex.Message + "response.StatusCode:" + resp.StatusCode;
+                    }
                 }
                 else
                 {
-                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                    result.ErrorMessage = ex.Message + "ex.Status:" + ex.Status;
                 }
-                result = readStream.ReadToEnd();
-                _totalDownloadDataSize += result.Length;
-                response.Close();
-                readStream.Close();
             }
+
             return result;
         }
 
@@ -129,11 +166,12 @@ namespace ConsoleApplication1
             foreach (var n in nodes)
             {
                 var s = n.SelectSingleNode(".//strong");
-                var keyValue = trimmer.Replace(n.InnerText.Replace("\n", ""), " ").Trim();
+                var keyValue = trimmer.Replace(n.InnerText.Replace("\n", ""), " ").Replace("Указать","").Trim();
                 if (s != null)
                 {
                     var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
                     var key = !string.IsNullOrEmpty(value) ? keyValue.Replace(value, "") : keyValue;
+                    key = key.Trim();
                     if (string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
                     {
                         realCar.attributes.Add(value, value);
@@ -142,15 +180,13 @@ namespace ConsoleApplication1
                     {
                         if (swapKeyValues)
                         {
-                            realCar.attributes.Add(value,key);
+                            realCar.attributes.Add(value, key);
                         }
                         else
                         {
                             realCar.attributes.Add(key, value);
                         }
-                        
                     }
-
                 }
                 else
                 {
@@ -172,349 +208,306 @@ namespace ConsoleApplication1
 
             var errorCnt = 0;
 
-            var brandsUrl = "http://auto.ria.com/map/bu/";
 
-            HtmlDocument doc = GetHtmlDocument(brandsUrl);
-            var brands = GetBrands(doc);
-
-
-            foreach (var brand in brands.Where(b => !_skipBrands.Contains(b.Value)))
+            try
             {
-                List<Car> carsByBrand = new List<Car>();
-                doc = GetHtmlDocument(brand.Key);
-                Dictionary<string, string> models = GetModels(doc);
 
-                var modelcount = 0;
-                foreach (var model in models)
+
+
+                var brandsUrl = "http://auto.ria.com/map/bu/";
+
+                HtmlDocument doc = GetHtmlDocument(brandsUrl);
+                var brands = GetBrands(doc);
+
+
+                foreach (var brand in brands.Where(b => !_skipBrands.Contains(b.Value)))
                 {
-                    modelcount++;
-                    doc = GetHtmlDocument(model.Key);
-                    Dictionary<string, string> cars = GetCars(doc);
+                    List<Car> carsByBrand = new List<Car>();
 
-                    var carcount = 0;
-                    try
+                    doc = GetHtmlDocument(brand.Key);
+                    Dictionary<string, string> models = GetModels(doc);
+
+                    var modelcount = 0;
+                    foreach (var model in models)
                     {
+                        List<Car> carsByBrandAndModel = new List<Car>();
+                        modelcount++;
+                        doc = GetHtmlDocument(model.Key);
+                        Dictionary<string, string> cars = GetCars(doc);
 
-                        foreach (var car in cars)
+                        var carcount = 0;
+                        try
                         {
-                            carcount++;
-                            var realCar = new Car
+
+                            foreach (var car in cars)
                             {
-                                attributes = new Dictionary<string, string>(),
-                                imagesUrl = new List<string>(),
-                                url = car.Key,
-                                brand = brand.Value,
-                                model = model.Value
-                            };
-
-                            doc = GetHtmlDocument(car.Key);
-                            HtmlNode node = doc.DocumentNode.SelectSingleNode("//h1[@class='head-cars']");
-
-                            // year
-                            if (node != null && node.InnerHtml != null)
-                            {
-                                var year = node.SelectSingleNode("//span[@class='year']");
-                                realCar.year = year.InnerText;
-                            }
-
-                            if (node != null && node.InnerText != null)
-                            {
-                                realCar.modelFull = trimmer.Replace(node.InnerText.Replace("\n", ""), " ").Trim();
-                            }
-
-                            // price
-                            node = doc.DocumentNode.SelectSingleNode("//div[@class='price-seller']");
-                            if (node != null && node.InnerHtml != null)
-                            {
-                                var price = node.SelectSingleNode("//span[@class='price']");
-                                realCar.priceSeller = price.InnerText;
-                            }
-
-
-                            // price-at-rate
-                            node = doc.DocumentNode.SelectSingleNode("//div[@class='price-at-rate']");
-                            if (node != null && node.InnerText != null)
-                            {
-                                realCar.priceAtRate = trimmer.Replace(node.InnerText.Replace("\n", ""), " ").Trim();
-                            }
-
-
-                            node = doc.DocumentNode.SelectSingleNode("//div[@class='characteristic delimeter']");
-                            if (node != null)
-                            {
-                                nodes = node.SelectNodes(".//p[@class='item-param']");
-                                if (nodes != null)
+                                carcount++;
+                                var realCar = new Car
                                 {
+                                    attributes = new Dictionary<string, string>(),
+                                    imagesUrl = new List<string>(),
+                                    url = car.Key,
+                                    brand = brand.Value,
+                                    model = model.Value
+                                };
 
-                                    ReadCarAttributes(ref realCar, nodes);
+                                doc = GetHtmlDocument(car.Key);
+                                HtmlNode node = doc.DocumentNode.SelectSingleNode("//h1[@class='head-cars']");
 
-                                    //foreach (var n in nodes)
-                                    //{
-                                    //    var s = n.SelectSingleNode(".//strong");
-                                    //    var keyValue = trimmer.Replace(n.InnerText.Replace("\n", ""), " ").Trim();
-                                    //    if (s != null)
-                                    //    {
-                                    //        var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
-                                    //        var key = !string.IsNullOrEmpty(value) ? keyValue.Replace(value, "") : keyValue;
-                                    //        if (string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
-                                    //        {
-                                    //            realCar.attributes.Add(value, value);
-                                    //        }
-                                    //        else if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
-                                    //        {
-                                    //            realCar.attributes.Add(key, value);
-                                    //        }
-
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        realCar.attributes.Add(keyValue, keyValue);
-                                    //    }
-                                    //}
+                                // year
+                                if (node != null && node.InnerHtml != null)
+                                {
+                                    var year = node.SelectSingleNode("//span[@class='year']");
+                                    realCar.year = year.InnerText;
                                 }
-                            }
+
+                                if (node != null && node.InnerText != null)
+                                {
+                                    realCar.modelFull = trimmer.Replace(node.InnerText.Replace("\n", ""), " ").Trim();
+                                }
+
+                                // price
+                                node = doc.DocumentNode.SelectSingleNode("//div[@class='price-seller']");
+                                if (node != null && node.InnerHtml != null)
+                                {
+                                    var price = node.SelectSingleNode("//span[@class='price']");
+                                    realCar.priceSeller = price.InnerText;
+                                }
+
+                                // price-at-rate
+                                node = doc.DocumentNode.SelectSingleNode("//div[@class='price-at-rate']");
+                                if (node != null && node.InnerText != null)
+                                {
+                                    realCar.priceAtRate = trimmer.Replace(node.InnerText.Replace("\n", ""), " ").Trim();
+                                }
 
 
-
-                            node = doc.DocumentNode.SelectSingleNode("//div[@class='box-panel rocon']");
-                            if (node != null)
-                            {
-                                node = node.SelectSingleNode(".//dl[@class='unordered-list']");
+                                // read attributes
+                                node = doc.DocumentNode.SelectSingleNode("//div[@class='characteristic delimeter']");
                                 if (node != null)
                                 {
-                                    nodes = node.SelectNodes(".//dd");
+                                    nodes = node.SelectNodes(".//p[@class='item-param']");
                                     if (nodes != null)
                                     {
                                         ReadCarAttributes(ref realCar, nodes);
-
-                                        //foreach (var n in nodes)
-                                        //{
-                                        //    var s = n.SelectSingleNode(".//strong");
-                                        //    var keyValue = trimmer.Replace(n.InnerText.Replace("\n", ""), " ").Trim();
-                                        //    if (s != null)
-                                        //    {
-                                        //        var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
-                                        //        var key = keyValue.Replace(value, "");
-                                        //        realCar.attributes.Add(key, value);
-                                        //    }
-                                        //    else
-                                        //    {
-                                        //        realCar.attributes.Add(keyValue, keyValue);
-                                        //    }
-                                        //}
                                     }
                                 }
-                            }
 
-                            node = doc.DocumentNode.SelectSingleNode("//div[@class='box-panel rocon']");
-                            if (node != null)
-                            {
-                                nodes = node.SelectNodes(".//p[@class='additional-data']");
+                                // read attributes
+                                node = doc.DocumentNode.SelectSingleNode("//div[@class='box-panel rocon']");
+                                if (node != null)
+                                {
+                                    node = node.SelectSingleNode(".//dl[@class='unordered-list']");
+                                    if (node != null)
+                                    {
+                                        nodes = node.SelectNodes(".//dd");
+                                        if (nodes != null)
+                                        {
+                                            ReadCarAttributes(ref realCar, nodes);
+                                        }
+                                    }
+                                }
+
+                                // read attributes
+                                node = doc.DocumentNode.SelectSingleNode("//div[@class='box-panel rocon']");
+                                if (node != null)
+                                {
+                                    nodes = node.SelectNodes(".//p[@class='additional-data']");
+                                    if (nodes != null)
+                                    {
+                                        ReadCarAttributes(ref realCar, nodes, true);
+                                    }
+                                }
+
+
+                                // read description
+                                node = doc.DocumentNode.SelectSingleNode("//div[@class='box-panel rocon']");
+                                if (node != null)
+                                {
+                                    node = node.SelectSingleNode(".//p[@id='description']");
+                                    if (node != null && node.InnerHtml != null)
+                                    {
+                                        realCar.description = node.InnerHtml;
+                                    }
+                                }
+
+                                // read car id and date added
+                                nodes = doc.DocumentNode.SelectNodes("//p[@class='item-param']");
                                 if (nodes != null)
                                 {
-                                    ReadCarAttributes(ref realCar, nodes, true);
-
-                                    //foreach (var n in nodes)
-                                    //{
-                                    //    var s = n.SelectSingleNode(".//strong");
-                                    //    var keyValue = trimmer.Replace(n.InnerText.Replace("\n", ""), " ").Trim();
-                                    //    if (s != null)
-                                    //    {
-                                    //        var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
-                                    //        var key = keyValue.Replace(value, "");
-                                    //        realCar.attributes.Add(value, key);
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        realCar.attributes.Add(keyValue, keyValue);
-                                    //    }
-                                    //}
-                                }
-                            }
-
-
-                            // read description
-                            node = doc.DocumentNode.SelectSingleNode("//div[@class='box-panel rocon']");
-                            if (node != null)
-                            {
-                                node = node.SelectSingleNode(".//p[@id='description']");
-                                if (node != null && node.InnerHtml != null)
-                                {
-                                    realCar.description = node.InnerHtml;
-                                }
-                            }
-
-                            // car 
-                            nodes = doc.DocumentNode.SelectNodes("//p[@class='item-param']");
-                            if (nodes != null)
-                            {
-                                foreach (var n in nodes)
-                                {
-                                    if (n.InnerHtml != null)
+                                    foreach (var n in nodes)
                                     {
-                                        if (n.InnerHtml.Contains("icon-id-item"))
+                                        if (n.InnerHtml != null)
                                         {
-                                            var s = n.SelectSingleNode(".//strong");
-                                            if (s != null)
+                                            if (n.InnerHtml.Contains("icon-id-item"))
                                             {
-                                                var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
-                                                realCar.carId = value;
+                                                var s = n.SelectSingleNode(".//strong");
+                                                if (s != null)
+                                                {
+                                                    var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
+                                                    realCar.carId = value;
+                                                }
                                             }
-                                        }
-                                        else if (n.InnerHtml.Contains("final_page__add_date"))
-                                        {
-                                            var s = n.SelectSingleNode(".//strong");
-                                            if (s != null)
+                                            else if (n.InnerHtml.Contains("final_page__add_date"))
                                             {
-                                                var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
-                                                realCar.dateAdded = value;
+                                                var s = n.SelectSingleNode(".//strong");
+                                                if (s != null)
+                                                {
+                                                    var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
+                                                    realCar.dateAdded = value;
+                                                }
                                             }
                                         }
                                     }
                                 }
-                            }
 
-
-                            if (realCar.carId != null)
-                            {
-                                var photolink = "http://auto.ria.com/old/auto_photo/megaphoto/" + realCar.carId + "/";
-
-                                doc = GetHtmlDocument(photolink);
-
-                                node = doc.DocumentNode.SelectSingleNode("//script[@type='text/javascript']");
-                                //nodes = doc.DocumentNode.SelectNodes("//a");
-
-                                if (node != null && node.InnerHtml != null && node.InnerHtml.Contains("window.Ria.Auto.AutoId"))
+                                // read photos
+                                if (realCar.carId != null)
                                 {
+                                    var photolink = "http://auto.ria.com/old/auto_photo/megaphoto/" + realCar.carId + "/";
 
-                                    var xxx = node.InnerHtml.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                                    doc = GetHtmlDocument(photolink);
 
-                                    var key1 = "window.Ria =";
-                                    var value1 = xxx[0].Substring(xxx[0].IndexOf(key1, StringComparison.OrdinalIgnoreCase) + key1.Length).Trim();
-                                    value1 = trimmer.Replace(value1.Replace("\n", ""), " ").Trim();
-                                    var obj1 = JsonConvert.DeserializeObject<Ria>(value1);
+                                    node = doc.DocumentNode.SelectSingleNode("//script[@type='text/javascript']");
+                                    //nodes = doc.DocumentNode.SelectNodes("//a");
 
-
-                                    var key2 = "window.Ria.Auto.AutoId = ";
-                                    var value2 = xxx[1].Substring(xxx[1].IndexOf(key2, StringComparison.OrdinalIgnoreCase) + key2.Length).Trim();
-                                    value2 = trimmer.Replace(value2.Replace("\n", ""), " ").Trim();
-
-                                    var key3 = "window.Ria.Auto.PhotoData =";
-                                    var value3 = xxx[3].Substring(xxx[3].IndexOf(key3, StringComparison.OrdinalIgnoreCase) + key3.Length).Trim();
-                                    value3 = trimmer.Replace(value3.Replace("\n", ""), " ").Trim();
-                                    var obj3 = JsonConvert.DeserializeObject<PhotoData>("{photoDataItems:" + value3 + "}");
-
-
-                                    foreach (var item in obj3.photoDataItems)
+                                    if (node != null && node.InnerHtml != null && node.InnerHtml.Contains("window.Ria.Auto.AutoId"))
                                     {
-                                        if (item.url.EndsWith(".jpg"))
-                                        {
-                                            item.url = item.url.Replace(".jpg", "fx.jpg");
-                                        }
-                                        if (item.url.EndsWith(".png"))
-                                        {
-                                            item.url = item.url.Replace(".jpg", "fx.png");
-                                        }
-                                        if (item.url.EndsWith(".jpeg"))
-                                        {
-                                            item.url = item.url.Replace(".jpeg", "fx.jpeg");
-                                        }
-                                        if (item.url.EndsWith(".gif"))
-                                        {
-                                            item.url = item.url.Replace(".gif", "fx.gif");
-                                        }
 
-                                        realCar.imagesUrl.Add("https://cdn.riastatic.com/photos/" + item.url);
+                                        var xxx = node.InnerHtml.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+
+                                        var key1 = "window.Ria =";
+                                        var value1 = xxx[0].Substring(xxx[0].IndexOf(key1, StringComparison.OrdinalIgnoreCase) + key1.Length).Trim();
+                                        value1 = trimmer.Replace(value1.Replace("\n", ""), " ").Trim();
+                                        var obj1 = JsonConvert.DeserializeObject<Ria>(value1);
+
+
+                                        var key2 = "window.Ria.Auto.AutoId = ";
+                                        var value2 = xxx[1].Substring(xxx[1].IndexOf(key2, StringComparison.OrdinalIgnoreCase) + key2.Length).Trim();
+                                        value2 = trimmer.Replace(value2.Replace("\n", ""), " ").Trim();
+
+                                        var key3 = "window.Ria.Auto.PhotoData =";
+                                        var value3 = xxx[3].Substring(xxx[3].IndexOf(key3, StringComparison.OrdinalIgnoreCase) + key3.Length).Trim();
+                                        value3 = trimmer.Replace(value3.Replace("\n", ""), " ").Trim();
+                                        var obj3 = JsonConvert.DeserializeObject<PhotoData>("{photoDataItems:" + value3 + "}");
+
+
+                                        foreach (var item in obj3.photoDataItems)
+                                        {
+                                            if (item.url.EndsWith(".jpg"))
+                                            {
+                                                item.url = item.url.Replace(".jpg", "fx.jpg");
+                                            }
+                                            if (item.url.EndsWith(".png"))
+                                            {
+                                                item.url = item.url.Replace(".jpg", "fx.png");
+                                            }
+                                            if (item.url.EndsWith(".jpeg"))
+                                            {
+                                                item.url = item.url.Replace(".jpeg", "fx.jpeg");
+                                            }
+                                            if (item.url.EndsWith(".gif"))
+                                            {
+                                                item.url = item.url.Replace(".gif", "fx.gif");
+                                            }
+
+                                            realCar.imagesUrl.Add("https://cdn.riastatic.com/photos/" + item.url);
+                                        }
                                     }
-
-
                                 }
 
+                                carsByBrand.Add(realCar);
+                                carsByBrandAndModel.Add(realCar);
 
+                                Console.Clear();
+                                Console.WriteLine("brand:{0} model:{1}  model {4} of {5}  car {2} of {3} errors:{6} downloadSize:{7}MB, {8}GB", brand.Value, model.Value, carcount, cars.Count, modelcount, models.Count, errorCnt, Math.Round(_totalDownloadDataSize / 1024 / 1024, 1), Math.Round(_totalDownloadDataSize / 1024 / 1024 / 1024, 3));
+                                Console.WriteLine(realCar);
+                                Console.WriteLine("");
+                                Console.WriteLine("--- attributes ---");
+                                foreach (var attribute in realCar.attributes)
+                                {
+                                    Console.WriteLine(attribute.Key + " " + attribute.Value);
+                                }
+                                Console.WriteLine("------------------");
+                                Console.WriteLine("");
+                                Console.WriteLine("--- description ---");
+                                Console.WriteLine(realCar.description);
+                                Console.WriteLine("-------------------");
+                                Console.WriteLine("");
+                                Console.WriteLine("--- images ---");
+                                foreach (var url in realCar.imagesUrl)
+                                {
+                                    Console.WriteLine(url);
+                                }
+                                Console.WriteLine("--------------");
 
-
-
-                                //doc = new HtmlDocument();
-                                //doc.LoadHtml(node.InnerHtml);
-
+                                Console.WriteLine("");
+                                Console.WriteLine("");
 
 
                             }
-
-                            carsByBrand.Add(realCar);
-
-                            Console.WriteLine("brand:{0} model:{1}  model {4} of {5}  car {2} of {3} errors:{6} downloadSize:{7}KB, {8}MB, {9}GB", brand.Value, model.Value, carcount, cars.Count, modelcount, models.Count, errorCnt, Math.Round(_totalDownloadDataSize / 1024, 0), Math.Round(_totalDownloadDataSize / 1024 / 1024, 1), Math.Round(_totalDownloadDataSize / 1024 / 1024 / 1024,3));
                         }
+                        catch (Exception ex)
+                        {
+                            errorCnt++;
+                            Console.WriteLine(ex.Message);
+                        }
+
+
+                        // save cars by model 
+                        SaveCarsToFile(carsByBrand, brand.Value, model.Value);
                     }
-                    catch (Exception ex)
-                    {
-                        errorCnt++;
-                        Console.WriteLine(ex.Message);
-                    }
+
+                    SaveCarsToFile(carsByBrand, brand.Value);
                 }
-
-
-
-                var carsToJson = new List<object>();
-
-
-                foreach (var c in carsByBrand)
-                {
-                    var attrToJson = new List<object>();
-                    foreach (var attribute in c.attributes)
-                    {
-                        string a = attribute.Key;
-                        attrToJson.Add(new { a = attribute.Value });
-                    }
-
-                    carsToJson.Add(new
-                    {
-
-                        brand = c.brand,
-                        model = c.model,
-                        modelFull = c.modelFull,
-                        year = c.year,
-                        priceSeller = c.priceSeller,
-                        priceAtRate = c.priceAtRate,
-                        carId = c.carId,
-                        dateAdded = c.dateAdded,
-                        url = c.url,
-                        description = c.description,
-                        attributes = attrToJson,
-                        imagesUrl = c.imagesUrl
-                    });
-
-
-
-
-
-
-                    Console.WriteLine(c);
-                    Console.WriteLine("------");
-                    foreach (var attribute in c.attributes)
-                    {
-                        Console.WriteLine(attribute.Key + " " + attribute.Value);
-                    }
-                    Console.WriteLine("------");
-                    Console.WriteLine(c.description);
-                    Console.WriteLine("------");
-                    foreach (var url in c.imagesUrl)
-                    {
-                        Console.WriteLine(url);
-                    }
-                    Console.WriteLine("------");
-
-                    Console.WriteLine("");
-                    Console.WriteLine("");
-
-                }
-
-                string json = JsonConvert.SerializeObject(carsToJson.ToArray());
-
-                System.IO.File.WriteAllText(brand.Value + ".json", json);
 
             }
+            catch (Exception ex)
+            {
+                Console.Write("ERROR! " + ex.Message);
+            }
+        }
 
+        private static void SaveCarsToFile(IEnumerable<Car> cars, string brandName, string modelName = null)
+        {
+            if (modelName == null)
+            {
+                modelName = string.Empty;
+            }
+            else
+            {
+                modelName = "_" + modelName;
+            }
+
+            var carsToJson = new List<object>();
+            foreach (var c in cars)
+            {
+                var attrToJson = new List<object>();
+                foreach (var attribute in c.attributes)
+                {
+                    attrToJson.Add(new { attr = attribute.Key.Trim() + attribute.Value.Trim() });
+                }
+
+                carsToJson.Add(new
+                {
+                    brand = c.brand,
+                    model = c.model,
+                    modelFull = c.modelFull,
+                    year = c.year,
+                    priceSeller = c.priceSeller,
+                    priceAtRate = c.priceAtRate,
+                    carId = c.carId,
+                    dateAdded = c.dateAdded,
+                    url = c.url,
+                    description = c.description,
+                    attributes = attrToJson,
+                    imagesUrl = c.imagesUrl
+                });
+            }
+
+            string json = JsonConvert.SerializeObject(carsToJson.ToArray());
+
+            System.IO.File.WriteAllText(brandName + modelName + ".json", json);
         }
     }
 }
