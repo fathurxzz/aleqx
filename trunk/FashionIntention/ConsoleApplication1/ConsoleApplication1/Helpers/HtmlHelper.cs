@@ -38,7 +38,15 @@ namespace ConsoleApplication1.Helpers
                 {
                     if (n.Attributes[0] != null && ((isCar && !n.Attributes[0].Value.Contains("/map/bu")) || !n.Attributes[0].Value.Contains(".html")))
                     {
-                        result.Add(_baseUrl + n.Attributes[0].Value, n.InnerText);
+                        if (result.ContainsKey(_baseUrl + n.Attributes[0].Value))
+                        {
+
+                        }
+                        else
+                        {
+                            result.Add(_baseUrl + n.Attributes[0].Value, n.InnerText);
+                        }
+                        
                     }
                 }
             }
