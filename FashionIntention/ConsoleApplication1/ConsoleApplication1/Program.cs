@@ -8,211 +8,213 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Xml;
+using ConsoleApplication1.Helpers;
+using ConsoleApplication1.Model;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 
 namespace ConsoleApplication1
 {
-    class GetHtmlResult
-    {
-        public string ResultHtml;
-        public bool Success;
-        public string ErrorMessage;
-    }
-
-    class Auto
-    {
-        public string BaseUrl;
-        public string Auto_id;
-    }
-
-    class Ria
-    {
-        public Auto Auto;
-    }
-
-    class PhotoData
-    {
-        public List<PhotoDataItem> photoDataItems;
-    }
-
-    class PhotoDataItem
-    {
-        public string photo_id;
-        public string url;
-    }
-
-
-
-
     class Program
     {
-        private static double _totalDownloadDataSize;
-
-        private static HtmlDocument GetHtmlDocument(string url)
-        {
-            GetHtmlResult htmlResult = GetHtml(url);
-            if (!htmlResult.Success)
-            {
-                throw new Exception(htmlResult.ErrorMessage);
-            }
-            var decodedHtml = System.Web.HttpUtility.HtmlDecode(htmlResult.ResultHtml);
-            var doc = new HtmlDocument();
-            doc.LoadHtml(decodedHtml);
-            return doc;
-        }
-
-        private static GetHtmlResult GetHtml(string url)
-        {
-            var result = new GetHtmlResult();
-            try
-            {
-                HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(url);
-
-                //IWebProxy proxy = myWebRequest.Proxy;
-                //if (proxy != null)
-                //{
-                //    string proxyuri = proxy.GetProxy(myWebRequest.RequestUri).ToString();
-                //    myWebRequest.UseDefaultCredentials = true;
-                //    myWebRequest.Proxy = new WebProxy(proxyuri, false);
-                //    myWebRequest.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
-                //}
-
-                using (HttpWebResponse response = (HttpWebResponse)myWebRequest.GetResponse())
-                {
-                    using (Stream responseStream = response.GetResponseStream())
-                    {
-                        StreamReader readStream = null;
-                        if (response.CharacterSet == null)
-                        {
-                            readStream = new StreamReader(responseStream);
-                        }
-                        else
-                        {
-                            readStream = new StreamReader(responseStream, Encoding.GetEncoding(response.CharacterSet));
-                        }
-                        result.ResultHtml = readStream.ReadToEnd();
-                        _totalDownloadDataSize += result.ResultHtml.Length;
-                        response.Close();
-                        readStream.Close();
-                        result.Success = true;
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                if (ex.Status == WebExceptionStatus.ProtocolError && ex.Response != null)
-                {
-                    var resp = (HttpWebResponse)ex.Response;
-                    if (resp.StatusCode == HttpStatusCode.NotFound)
-                    {
-                        result.ErrorMessage = "file not found " + url;
-                    }
-                    else
-                    {
-                        result.ErrorMessage = ex.Message + "response.StatusCode:" + resp.StatusCode;
-                    }
-                }
-                else
-                {
-                    result.ErrorMessage = ex.Message + "ex.Status:" + ex.Status;
-                }
-            }
-
-            return result;
-        }
-
-        private static string _baseUrl = "http://auto.ria.com";
-
-        private static Dictionary<string, string> GetRiaEntity(HtmlDocument htmlDocument, bool isCar = false)
-        {
-            var result = new Dictionary<string, string>();
-            HtmlNode node = htmlDocument.DocumentNode.SelectSingleNode("//div[@class='content']");
-            HtmlNodeCollection nodes = node.SelectNodes(".//a");
-            foreach (var n in nodes)
-            {
-                if (n.HasAttributes)
-                {
-                    if (n.Attributes[0] != null && (isCar || !n.Attributes[0].Value.Contains(".html")))
-                    {
-                        result.Add(_baseUrl + n.Attributes[0].Value, n.InnerText);
-                    }
-                }
-            }
-            return result;
-        }
-
-        private static Dictionary<string, string> GetBrands(HtmlDocument htmlDocument)
-        {
-            return GetRiaEntity(htmlDocument);
-        }
-
-        private static Dictionary<string, string> GetModels(HtmlDocument htmlDocument)
-        {
-            return GetRiaEntity(htmlDocument);
-        }
-
-        private static Dictionary<string, string> GetCars(HtmlDocument htmlDocument)
-        {
-            return GetRiaEntity(htmlDocument, true);
-        }
-
-
-        private static void ReadCarAttributes(ref Car realCar, IEnumerable<HtmlNode> nodes, bool swapKeyValues = false)
-        {
-            foreach (var n in nodes)
-            {
-                var s = n.SelectSingleNode(".//strong");
-                var keyValue = trimmer.Replace(n.InnerText.Replace("\n", ""), " ").Replace("Указать","").Trim();
-                if (s != null)
-                {
-                    var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
-                    var key = !string.IsNullOrEmpty(value) ? keyValue.Replace(value, "") : keyValue;
-                    key = key.Trim();
-                    if (string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
-                    {
-                        realCar.attributes.Add(value, value);
-                    }
-                    else if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
-                    {
-                        if (swapKeyValues)
-                        {
-                            realCar.attributes.Add(value, key);
-                        }
-                        else
-                        {
-                            realCar.attributes.Add(key, value);
-                        }
-                    }
-                }
-                else
-                {
-                    realCar.attributes.Add(keyValue, keyValue);
-                }
-            }
-        }
-
-
-        static readonly Regex trimmer = new Regex(@"\s\s+");
-
-
+        private static Regex _trimmer = new Regex(@"\s\s+");
 
         //private static readonly string[] _skipBrands = { "Aixam", "Alfa Romeo", "Asia", "Aston Martin", "Audi", "Austin", "Bentley", "BMW", "Cadillac", "Chevrolet", "Chrysler" };
         private static readonly string[] _skipBrands = { };
         private static List<string> skipBrands = new List<string>();
 
+        private static double _totalDownloadDataSize;
+
+
+
+        private static void GetCarsMap()
+        {
+            var map = new CarsMap
+            {
+                Brands = new List<Brand>()
+            };
+
+            //string selectedBrand = "Honda";
+            //string selectedModel = "Honda Accord";
+
+
+            var brandsUrl = "http://auto.ria.com/map/bu/";
+            HtmlDocument doc = HtmlHelper.GetHtmlDocument(brandsUrl, ref _totalDownloadDataSize);
+            Console.WriteLine("get all brands");
+            var brandsPages = HtmlHelper.GetPages(doc);
+            Console.WriteLine("total pages:" + brandsPages.Count);
+            if (!brandsPages.Any())
+            {
+                var brandGroup = HtmlHelper.GetBrands(doc);
+                foreach (var kvp in brandGroup)
+                {
+                    Console.WriteLine("brandGroup {0} of {1}", kvp.Value, brandGroup.Count);
+                    map.Brands.Add(new Brand
+                    {
+                        Url = kvp.Key,
+                        Title = kvp.Value,
+                        Models = new List<Model.Model>()
+                    });
+                }
+            }
+            else
+            {
+                foreach (var page in brandsPages)
+                {
+                    Console.WriteLine("brandPage {0} of {1}", page, brandsPages.Count);
+                    HtmlDocument d = HtmlHelper.GetHtmlDocument(page, ref _totalDownloadDataSize);
+                    var brandGroup = HtmlHelper.GetBrands(d);
+                    foreach (var kvp in brandGroup)
+                    {
+                        Console.WriteLine("brandPage {0} of {1} brandGroup {2} of {3}", page, brandsPages.Count, kvp.Value, brandGroup.Count);
+                        map.Brands.Add(new Brand
+                        {
+                            Url = kvp.Key,
+                            Title = kvp.Value,
+                            Models = new List<Model.Model>()
+                        });
+                    }
+                }
+            }
+
+
+            foreach (var brand in map.Brands
+                //.Where(b => b.Title == selectedBrand)
+                )
+            {
+                
+                HtmlDocument brandDocument = HtmlHelper.GetHtmlDocument(brand.Url, ref _totalDownloadDataSize);
+                Console.WriteLine("brand:" + brand.Title + " total_size:" + _totalDownloadDataSize);
+                var modelsPages = HtmlHelper.GetPages(brandDocument);
+                if (!modelsPages.Any())
+                {
+                    var modelGroup = HtmlHelper.GetBrands(brandDocument);
+                    foreach (var kvp in modelGroup)
+                    {
+                        brand.Models.Add(new Model.Model
+                        {
+                            Url = kvp.Key,
+                            Title = kvp.Value,
+                            Cars = new List<Model.Car>()
+                        });
+                    }
+                }
+                else
+                {
+                    foreach (var page in modelsPages)
+                    {
+                        HtmlDocument modelDocument = HtmlHelper.GetHtmlDocument(page, ref _totalDownloadDataSize);
+                        Console.WriteLine("brand:" + brand.Title + " page:"+page +" total_size:" + _totalDownloadDataSize);
+                        var modelGroup = HtmlHelper.GetModels(modelDocument);
+                        foreach (var kvp in modelGroup)
+                        {
+                            brand.Models.Add(new Model.Model
+                            {
+                                Url = kvp.Key,
+                                Title = kvp.Value,
+                                Cars = new List<Model.Car>()
+                            });
+                        }
+                    }
+                }
+            }
+
+
+            foreach (var brand in map.Brands
+                //.Where(b => b.Title == selectedBrand)
+                )
+            {
+                foreach (var model in brand.Models //.Where(m => m.Title == selectedModel)
+                    )
+                {
+                    Console.WriteLine("brand:" + brand.Title+" model:" + model.Title + " url:" + model.Url + " total_size:" + _totalDownloadDataSize);
+                    HtmlDocument modelDocument = HtmlHelper.GetHtmlDocument(model.Url, ref _totalDownloadDataSize);
+                    var carsPages = HtmlHelper.GetPages(modelDocument);
+                    if (!carsPages.Any())
+                    {
+                        var carGroup = HtmlHelper.GetCars(modelDocument);
+                        foreach (var kvp in carGroup)
+                        {
+                            model.Cars.Add(new Model.Car
+                            {
+                                Url = kvp.Key,
+                                Title = kvp.Value
+                            });
+                        }
+                    }
+                    else
+                    {
+                        foreach (var page in carsPages)
+                        {
+                            HtmlDocument carDocument = HtmlHelper.GetHtmlDocument(page, ref _totalDownloadDataSize);
+                            var carGroup = HtmlHelper.GetCars(carDocument);
+                            foreach (var kvp in carGroup)
+                            {
+                                model.Cars.Add(new Model.Car
+                                {
+                                    Url = kvp.Key,
+                                    Title = kvp.Value
+                                });
+                            }
+                        }
+                    }
+
+                }
+            }
+
+
+            var cnt = map.Brands              //.Where(b => b.Title == "Honda")
+                .SelectMany(m => m.Models)    //.Where(m => m.Title == "Honda Accord")
+                .SelectMany(c => c.Cars)
+                .Count();
+
+
+
+            Console.WriteLine("total cars:" + cnt);
+            Console.ReadKey();
+
+
+
+
+
+            var carsToJson = new List<object>();
+
+            foreach (var brand in map.Brands)
+            {
+                foreach (var model in brand.Models)
+                {
+                    foreach (var c in model.Cars)
+                    {
+                        carsToJson.Add(new
+                        {
+                            brand = brand.Title,
+                            model = model.Title,
+                            modelFull = c.Title,
+                            url = c.Url
+                        });
+                    }
+                }
+            }
+
+            string json = JsonConvert.SerializeObject(carsToJson.ToArray());
+            System.IO.File.WriteAllText("cars_map.json", json);
+        }
+
+
         static void Main(string[] args)
         {
 
-            
+            GetCarsMap();
+
+            return;
+
 
             HtmlNodeCollection nodes;
-
             var errorCnt = 0;
-
-
             //var loadOnlyThatBrands = args;
             //string[] loadOnlyThatBrands = {"Honda"};
+
+            args = new[] { "Honda" };
 
             try
             {
@@ -223,31 +225,46 @@ namespace ConsoleApplication1
                 }
 
 
-                Console.WriteLine(args.Length);
+
 
 
                 var brandsUrl = "http://auto.ria.com/map/bu/";
-
-                HtmlDocument doc = GetHtmlDocument(brandsUrl);
-                var brands = GetBrands(doc);
-
+                HtmlDocument doc = HtmlHelper.GetHtmlDocument(brandsUrl, ref _totalDownloadDataSize);
+                var brandsPages = HtmlHelper.GetPages(doc);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                var brands = HtmlHelper.GetBrands(doc);
 
                 foreach (var brand in brands.Where(b => !skipBrands.Contains(b.Value) && (args.Length == 0 || args.Contains(b.Value))))
                 {
                     List<Car> carsByBrand = new List<Car>();
 
-                    doc = GetHtmlDocument(brand.Key);
-                    Dictionary<string, string> models = GetModels(doc);
+                    doc = HtmlHelper.GetHtmlDocument(brand.Key, ref _totalDownloadDataSize);
+                    var modelsPages = HtmlHelper.GetPages(doc);
+
+
+                    Dictionary<string, string> models = HtmlHelper.GetModels(doc);
 
                     var modelcount = 0;
                     foreach (var model in models)
                     {
                         List<Car> carsByBrandAndModel = new List<Car>();
                         modelcount++;
-                        doc = GetHtmlDocument(model.Key);
-                        Dictionary<string, string> cars = GetCars(doc);
+                        doc = HtmlHelper.GetHtmlDocument(model.Key, ref _totalDownloadDataSize);
+                        Dictionary<string, string> cars = HtmlHelper.GetCars(doc);
 
                         var carcount = 0;
                         try
@@ -265,7 +282,7 @@ namespace ConsoleApplication1
                                     model = model.Value
                                 };
 
-                                doc = GetHtmlDocument(car.Key);
+                                doc = HtmlHelper.GetHtmlDocument(car.Key, ref _totalDownloadDataSize);
                                 HtmlNode node = doc.DocumentNode.SelectSingleNode("//h1[@class='head-cars']");
 
                                 // year
@@ -277,7 +294,7 @@ namespace ConsoleApplication1
 
                                 if (node != null && node.InnerText != null)
                                 {
-                                    realCar.modelFull = trimmer.Replace(node.InnerText.Replace("\n", ""), " ").Trim();
+                                    realCar.modelFull = _trimmer.Replace(node.InnerText.Replace("\n", ""), " ").Trim();
                                 }
 
                                 // price
@@ -292,7 +309,7 @@ namespace ConsoleApplication1
                                 node = doc.DocumentNode.SelectSingleNode("//div[@class='price-at-rate']");
                                 if (node != null && node.InnerText != null)
                                 {
-                                    realCar.priceAtRate = trimmer.Replace(node.InnerText.Replace("\n", ""), " ").Trim();
+                                    realCar.priceAtRate = _trimmer.Replace(node.InnerText.Replace("\n", ""), " ").Trim();
                                 }
 
 
@@ -303,7 +320,7 @@ namespace ConsoleApplication1
                                     nodes = node.SelectNodes(".//p[@class='item-param']");
                                     if (nodes != null)
                                     {
-                                        ReadCarAttributes(ref realCar, nodes);
+                                        HtmlHelper.ReadCarAttributes(ref realCar, nodes);
                                     }
                                 }
 
@@ -317,7 +334,7 @@ namespace ConsoleApplication1
                                         nodes = node.SelectNodes(".//dd");
                                         if (nodes != null)
                                         {
-                                            ReadCarAttributes(ref realCar, nodes);
+                                            HtmlHelper.ReadCarAttributes(ref realCar, nodes);
                                         }
                                     }
                                 }
@@ -329,7 +346,7 @@ namespace ConsoleApplication1
                                     nodes = node.SelectNodes(".//p[@class='additional-data']");
                                     if (nodes != null)
                                     {
-                                        ReadCarAttributes(ref realCar, nodes, true);
+                                        HtmlHelper.ReadCarAttributes(ref realCar, nodes, true);
                                     }
                                 }
 
@@ -358,7 +375,7 @@ namespace ConsoleApplication1
                                                 var s = n.SelectSingleNode(".//strong");
                                                 if (s != null)
                                                 {
-                                                    var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
+                                                    var value = _trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
                                                     realCar.carId = value;
                                                 }
                                             }
@@ -367,7 +384,7 @@ namespace ConsoleApplication1
                                                 var s = n.SelectSingleNode(".//strong");
                                                 if (s != null)
                                                 {
-                                                    var value = trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
+                                                    var value = _trimmer.Replace(s.InnerText.Replace("\n", ""), " ").Trim();
                                                     realCar.dateAdded = value;
                                                 }
                                             }
@@ -380,7 +397,7 @@ namespace ConsoleApplication1
                                 {
                                     var photolink = "http://auto.ria.com/old/auto_photo/megaphoto/" + realCar.carId + "/";
 
-                                    doc = GetHtmlDocument(photolink);
+                                    doc = HtmlHelper.GetHtmlDocument(photolink, ref _totalDownloadDataSize);
 
                                     node = doc.DocumentNode.SelectSingleNode("//script[@type='text/javascript']");
                                     //nodes = doc.DocumentNode.SelectNodes("//a");
@@ -392,17 +409,17 @@ namespace ConsoleApplication1
 
                                         var key1 = "window.Ria =";
                                         var value1 = xxx[0].Substring(xxx[0].IndexOf(key1, StringComparison.OrdinalIgnoreCase) + key1.Length).Trim();
-                                        value1 = trimmer.Replace(value1.Replace("\n", ""), " ").Trim();
+                                        value1 = _trimmer.Replace(value1.Replace("\n", ""), " ").Trim();
                                         var obj1 = JsonConvert.DeserializeObject<Ria>(value1);
 
 
                                         var key2 = "window.Ria.Auto.AutoId = ";
                                         var value2 = xxx[1].Substring(xxx[1].IndexOf(key2, StringComparison.OrdinalIgnoreCase) + key2.Length).Trim();
-                                        value2 = trimmer.Replace(value2.Replace("\n", ""), " ").Trim();
+                                        value2 = _trimmer.Replace(value2.Replace("\n", ""), " ").Trim();
 
                                         var key3 = "window.Ria.Auto.PhotoData =";
                                         var value3 = xxx[3].Substring(xxx[3].IndexOf(key3, StringComparison.OrdinalIgnoreCase) + key3.Length).Trim();
-                                        value3 = trimmer.Replace(value3.Replace("\n", ""), " ").Trim();
+                                        value3 = _trimmer.Replace(value3.Replace("\n", ""), " ").Trim();
                                         var obj3 = JsonConvert.DeserializeObject<PhotoData>("{photoDataItems:" + value3 + "}");
 
 
@@ -437,7 +454,7 @@ namespace ConsoleApplication1
                                 Console.WriteLine("brand:{0} model:{1}  model {4} of {5}  car {2} of {3} errors:{6} downloadSize:{7}MB, {8}GB", brand.Value, model.Value, carcount, cars.Count, modelcount, models.Count, errorCnt, Math.Round(_totalDownloadDataSize / 1024 / 1024, 1), Math.Round(_totalDownloadDataSize / 1024 / 1024 / 1024, 3));
                                 Console.WriteLine(realCar);
                                 Console.WriteLine("");
-                                
+
                                 //Console.WriteLine("--- attributes ---");
                                 //foreach (var attribute in realCar.attributes)
                                 //{
@@ -449,7 +466,7 @@ namespace ConsoleApplication1
                                 Console.WriteLine(realCar.description);
                                 Console.WriteLine("-------------------");
                                 //Console.WriteLine("");
-                                Console.WriteLine("images:{0}",realCar.imagesUrl.Count);
+                                Console.WriteLine("images:{0}", realCar.imagesUrl.Count);
                                 //Console.WriteLine("--- images ---");
                                 //foreach (var url in realCar.imagesUrl)
                                 //{
@@ -471,7 +488,7 @@ namespace ConsoleApplication1
 
 
                         // save cars by model 
-                        SaveCarsToFile(carsByBrand, brand.Value, model.Value);
+                        SaveCarsToFile(carsByBrandAndModel, brand.Value, model.Value);
                     }
 
                     SaveCarsToFile(carsByBrand, brand.Value);
@@ -512,7 +529,7 @@ namespace ConsoleApplication1
 
                 foreach (var attribute in c.attributes)
                 {
-                    attrToJson.Add(new{key=attribute.Key, value=attribute.Value});
+                    attrToJson.Add(new { key = attribute.Key, value = attribute.Value });
                 }
 
                 carsToJson.Add(new
@@ -537,7 +554,7 @@ namespace ConsoleApplication1
             System.IO.File.WriteAllText(path + brandName + modelName + ".json", json);
 
 
-            
+
         }
     }
 
