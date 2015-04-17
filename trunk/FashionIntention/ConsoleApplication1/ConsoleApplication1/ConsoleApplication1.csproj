@@ -52,6 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
+    <Compile Include="GetHtmlResult.cs" />
+    <Compile Include="Helpers\HtmlHelper.cs" />
+    <Compile Include="Helpers\HttpHelper.cs" />
+    <Compile Include="Model\Auto.cs" />
+    <Compile Include="Model\Brand.cs" />
+    <Compile Include="Model\Car.cs" />
+    <Compile Include="Model\CarsMap.cs" />
+    <Compile Include="Model\CarsMapEntity.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\PhotoData.cs" />
+    <Compile Include="Model\PhotoDataItem.cs" />
+    <Compile Include="Model\Ria.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
