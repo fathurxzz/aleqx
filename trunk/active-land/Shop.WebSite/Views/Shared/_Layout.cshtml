@@ -100,7 +100,7 @@
 
 
     <body>
-      @RenderSection("Layout",false)
+        @RenderSection("Layout",false)
 
         @if (TempData["errorMessage"] != null)
         {
@@ -161,9 +161,9 @@
                             сб-вс: 10:00-18:00
                         </div>
                         <div class="phone">
-                        (097) 765-36-10,    
+                            (097) 765-36-10,    
                         </div>
-                         <div class="skype"><a href="skype:active-land">active-land</a></div>
+                        <div class="skype"><a href="skype:active-land">active-land</a></div>
                     </div>
                 </div>
             </div>
@@ -185,6 +185,17 @@
                 </div>
             </div>
         </div>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
+            ga('create', 'UA-62318091-1', 'auto');
+            ga('send', 'pageview');
+
+</script>
     </body>
 </html>
