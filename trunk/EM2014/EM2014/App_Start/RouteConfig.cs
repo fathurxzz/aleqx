@@ -28,6 +28,17 @@ namespace EM2014
             );
 
             routes.MapRoute(
+              name: "LogIn",
+              url: "login",
+              defaults: new { controller = "Auth", action = "LogIn" }
+            );
+            routes.MapRoute(
+              name: "admin",
+              url: "admin",
+              defaults: new { controller = "Auth", action = "LogIn" }
+            );
+
+            routes.MapRoute(
                 name: "LogOff",
                 url: "logoff",
                 defaults: new { controller = "Auth", action = "Logout"}
