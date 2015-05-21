@@ -37,7 +37,7 @@ namespace CashMachine.DataAccess.EntityFramework
         }
 
         public CardContext()
-            : base("Name=gbua_cardContext")
+            : base("Name=SiteContext")
         {
         }
 
