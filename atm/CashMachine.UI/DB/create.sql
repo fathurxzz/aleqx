@@ -1,13 +1,4 @@
-﻿-- -----------------------------------------------------------
--- Entity Designer DDL Script for MySQL Server 4.1 and higher
--- -----------------------------------------------------------
--- Date Created: 11/12/2013 00:55:37
--- Generated from EDMX file: D:\projects\CashMachine\CashMachine\Models\Model.edmx
--- Target version: 2.0.0.0
--- --------------------------------------------------
-
-
--- --------------------------------------------------
+﻿-- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
