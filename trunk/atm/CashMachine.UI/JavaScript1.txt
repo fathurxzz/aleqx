@@ -8,7 +8,7 @@
     <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
   </configSections>
   <connectionStrings>
-    <add name="SiteContext" connectionString="server=mysql304.1gb.ua;User Id=gbua_card;password=f59306b2c67;Persist Security Info=True;database=gbua_card" providerName="MySql.Data.MySqlClient" />
+    <add name="SiteContext" connectionString="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=mysql304.1gb.ua;User Id=gbua_card;password=f59306b2c67;Persist Security Info=True;database=gbua_card&quot;" providerName="System.Data.EntityClient" />
   </connectionStrings>
   <appSettings>
     <add key="webpages:Version" value="2.0.0.0" />
@@ -17,21 +17,17 @@
     <add key="ClientValidationEnabled" value="true" />
     <add key="UnobtrusiveJavaScriptEnabled" value="true" />
   </appSettings>
-  <!--<system.data>
+  <system.data>
     <DbProviderFactories>
       <clear />
       <remove invariant="MySql.Data.MySqlClient" />
       <add name="MySQL Data Provider" invariant="MySql.Data.MySqlClient" description=".Net Framework Data Provider for MySQL" type="MySql.Data.MySqlClient.MySqlClientFactory, MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
     </DbProviderFactories>
-  </system.data>-->
+  </system.data>
   <system.web>
-    <customErrors mode="On"></customErrors>
+      <customErrors mode="On"></customErrors>
     <httpRuntime targetFramework="4.5" />
-    <compilation debug="true" targetFramework="4.5">
-      <assemblies>
-        <add assembly="System.Data.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-      </assemblies>
-    </compilation>
+    <compilation debug="true" targetFramework="4.5"><assemblies><add assembly="System.Data.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /></assemblies></compilation>
     <authentication mode="Forms">
       <forms loginUrl="~/cardnumber" timeout="2880" />
     </authentication>
@@ -101,12 +97,12 @@
       </dependentAssembly>
     </assemblyBinding>
   </runtime>
-  <system.data>
+  <!--<system.data>
     <DbProviderFactories>
       <remove invariant="MySql.Data.MySqlClient" />
       <add name="MySQL Data Provider" invariant="MySql.Data.MySqlClient" description=".Net Framework Data Provider for MySQL" type="MySql.Data.MySqlClient.MySqlClientFactory, MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
     </DbProviderFactories>
-  </system.data>
+  </system.data>-->
   <entityFramework>
     <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
       <parameters>
