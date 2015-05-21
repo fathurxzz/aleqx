@@ -1,0 +1,21 @@
+﻿@model CashMachine.DataAccess.Entities.Card
+@{
+    ViewBag.Title = "CardPin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@ViewBag.CardNumber
+@using (Html.BeginForm("CardPin", "Auth", FormMethod.Post, new { id = "inputCardPinForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="enter-card-pin">
+        Введите пин-код<br />
+        @Html.HiddenFor(m => m.Number)
+        @Html.PasswordFor(m => m.Pin)
+        @Html.Partial("Numpad")
+        <div class="confirm-buttons card-pin">
+            <div class="button clear">Очистить</div>
+            <div class="button ok">OК</div>
+            @Html.ActionLink("Выход", "LogOut", "Auth", null, new { @class = "button exit" })
+        </div>
+    </div>
+}

@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashMachine.UI", "CashMachine.UI\CashMachine.UI.csproj", "{793D9F24-FA8D-4D51-95D2-4B9136B8BCE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashMachine.Api", "CashMachine.Api\CashMachine.Api.csproj", "{6610041B-9623-4487-9800-A3A66B3B139C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashMachine.DataAccess", "CashMachine.DataAccess\CashMachine.DataAccess.csproj", "{517A939B-D07D-40B0-B55A-87B4FB622218}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashMachine.DataAccess.EntityFramework", "CashMachine.DataAccess.EntityFramework\CashMachine.DataAccess.EntityFramework.csproj", "{7F03B47C-8839-40FE-825E-757A4B70CA1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{793D9F24-FA8D-4D51-95D2-4B9136B8BCE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793D9F24-FA8D-4D51-95D2-4B9136B8BCE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793D9F24-FA8D-4D51-95D2-4B9136B8BCE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793D9F24-FA8D-4D51-95D2-4B9136B8BCE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6610041B-9623-4487-9800-A3A66B3B139C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6610041B-9623-4487-9800-A3A66B3B139C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6610041B-9623-4487-9800-A3A66B3B139C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6610041B-9623-4487-9800-A3A66B3B139C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{517A939B-D07D-40B0-B55A-87B4FB622218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517A939B-D07D-40B0-B55A-87B4FB622218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{517A939B-D07D-40B0-B55A-87B4FB622218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{517A939B-D07D-40B0-B55A-87B4FB622218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F03B47C-8839-40FE-825E-757A4B70CA1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F03B47C-8839-40FE-825E-757A4B70CA1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F03B47C-8839-40FE-825E-757A4B70CA1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F03B47C-8839-40FE-825E-757A4B70CA1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

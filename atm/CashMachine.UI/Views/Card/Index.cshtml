@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Operations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Операции
+</h2>
+<ul>
+    <li>
+        @Html.ActionLink("Баланс", "ShowBalance", "Operations")
+    </li>
+    <li>
+        @Html.ActionLink("Снять сумму", "Withdraw", "Operations")
+    </li>
+</ul>
+
+<div class="logout">
+    @Html.ActionLink("Выход", "LogOut", "Auth")
+</div>
