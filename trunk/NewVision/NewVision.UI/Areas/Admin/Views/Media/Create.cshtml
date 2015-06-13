@@ -34,6 +34,10 @@
             });
         });
     </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 }
 
 <div class="container">
@@ -88,8 +92,3 @@
         </div>
     }
 </div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
-}
