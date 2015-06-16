@@ -14,11 +14,23 @@ namespace NewVision.UI.Models
 
     public class MainBannerValidation
     {
-        [Display(Name = "Заголовок")]
+        [Display(Name = "Заголовок RU")]
         public string Title { get; set; }
 
-        [Display(Name = "Описание")]
+        [Display(Name = "Заголовок EN")]
+        public string TitleEn { get; set; }
+
+        [Display(Name = "Заголовок UA")]
+        public string TitleUa { get; set; }
+
+        [Display(Name = "Описание RU")]
         public string Description { get; set; }
+
+        [Display(Name = "Описание EN")]
+        public string DescriptionEn { get; set; }
+
+        [Display(Name = "Описание UA")]
+        public string DescriptionUa { get; set; }
 
         [Display(Name = "Изображение")]
         public string ImageSrc { get; set; }

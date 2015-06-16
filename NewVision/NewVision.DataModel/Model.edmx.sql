@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/22/2015 12:58:40
+-- Date Created: 06/16/2015 22:16:52
 -- Generated from EDMX file: C:\vsp\NewVision\NewVision.DataModel\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -22,6 +22,7 @@ USE `gbua_new_vision`;
 --    ALTER TABLE `EventAnnouncementImage` DROP CONSTRAINT `FK_EventAnnouncementEventAnnouncementImage`;
 --    ALTER TABLE `PreviewContentImage` DROP CONSTRAINT `FK_EventPreviewContentImage`;
 --    ALTER TABLE `ContentImage` DROP CONSTRAINT `FK_EventContentImage`;
+--    ALTER TABLE `ArticleImage` DROP CONSTRAINT `FK_ArticleArticleImage`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -36,6 +37,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Article`;
     DROP TABLE IF EXISTS `Media`;
     DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `ArticleImage`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -46,7 +48,11 @@ CREATE TABLE `MainBanner`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`ImageSrc` varchar (500) NOT NULL, 
 	`Title` varchar (500) NOT NULL, 
-	`Description` varchar (2000) NOT NULL);
+	`Description` varchar (2000) NOT NULL, 
+	`TitleEn` varchar (500), 
+	`TitleUa` varchar (500), 
+	`DescriptionEn` varchar (2000), 
+	`DescriptionUa` varchar (2000));
 
 ALTER TABLE `MainBanner` ADD PRIMARY KEY (Id);
 
@@ -56,7 +62,11 @@ ALTER TABLE `MainBanner` ADD PRIMARY KEY (Id);
 CREATE TABLE `EventAnnouncement`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Title` varchar (500) NOT NULL, 
-	`Text` varchar (10000) NOT NULL);
+	`Text` varchar (10000) NOT NULL, 
+	`TitleEn` varchar (500), 
+	`TitleUa` varchar (500), 
+	`TextEn` varchar (10000), 
+	`TextUa` varchar (10000));
 
 ALTER TABLE `EventAnnouncement` ADD PRIMARY KEY (Id);
 
@@ -77,6 +87,8 @@ CREATE TABLE `Event`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Date` datetime NOT NULL, 
 	`Title` varchar (500), 
+	`TitleEn` varchar (500) NOT NULL, 
+	`TitleUa` varchar (500) NOT NULL, 
 	`TitleDescription` varchar (10000), 
 	`HighlightedText` varchar (1000), 
 	`IsHighlighted` bool NOT NULL, 
@@ -93,7 +105,23 @@ CREATE TABLE `Event`(
 	`IntervalQuantity` varchar (100), 
 	`Price` varchar (100), 
 	`PreviewContentVideoSrc` varchar (1000), 
-	`LocationAddressMapUrl` varchar (500));
+	`LocationAddressMapUrl` varchar (500), 
+	`TitleDescriptionEn` varchar (10000), 
+	`TitleDescriptionUa` varchar (10000), 
+	`HighlightedTextEn` varchar (1000), 
+	`HighlightedTextUa` varchar (1000), 
+	`LocationAddressEn` varchar (1000), 
+	`LocationAddressUa` varchar (1000), 
+	`LocationTitleEn` varchar (1000), 
+	`LocationTitleUa` varchar (1000), 
+	`DescriptionEn` varchar (10000), 
+	`DescriptionUa` varchar (10000), 
+	`ActionEn` longtext, 
+	`ActionUa` longtext, 
+	`LocationEn` longtext, 
+	`LocationUa` longtext, 
+	`ArtGroupEn` longtext, 
+	`ArtGroupUa` longtext);
 
 ALTER TABLE `Event` ADD PRIMARY KEY (Id);
 
@@ -128,7 +156,11 @@ CREATE TABLE `Article`(
 	`Text` longtext, 
 	`Size` int NOT NULL, 
 	`ImageSrc` varchar (500), 
-	`VideoSrc` varchar (500));
+	`VideoSrc` varchar (500), 
+	`TitleEn` varchar (500), 
+	`TitleUa` varchar (500), 
+	`TextEn` longtext, 
+	`TextUa` longtext);
 
 ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 
@@ -142,7 +174,11 @@ CREATE TABLE `Media`(
 	`SortOrder` int NOT NULL, 
 	`ImageSrc` varchar (500), 
 	`VideoSrc` varchar (500), 
-	`ContentType` int NOT NULL);
+	`ContentType` int NOT NULL, 
+	`TitleEn` varchar (500), 
+	`TitleUa` varchar (500), 
+	`TextEn` longtext, 
+	`TextUa` longtext);
 
 ALTER TABLE `Media` ADD PRIMARY KEY (Id);
 
@@ -156,7 +192,13 @@ CREATE TABLE `Content`(
 	`ImageSrc` varchar (500), 
 	`Text` longtext, 
 	`SortOrder` int NOT NULL, 
-	`Name` varchar (500));
+	`Name` varchar (500), 
+	`TitleEn` varchar (500), 
+	`TitleUa` varchar (500), 
+	`MenuTitleEn` varchar (500), 
+	`MenuTitleUa` varchar (500), 
+	`TextEn` longtext, 
+	`TextUa` longtext);
 
 ALTER TABLE `Content` ADD PRIMARY KEY (Id);
 

@@ -41,12 +41,16 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 var media = new Media
                 {
                     Title = model.Title,
+                    TitleEn = model.TitleEn,
+                    TitleUa = model.TitleUa,
                     ContentType = model.ContentType,
                     SortOrder = model.SortOrder,
                     VideoSrc = model.VideoSrc
                 };
 
                 media.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                media.TextEn = model.TextEn == null ? "" : HttpUtility.HtmlDecode(model.TextEn);
+                media.TextUa = model.TextUa == null ? "" : HttpUtility.HtmlDecode(model.TextUa);
 
                 if (file != null)
                 {
@@ -84,8 +88,10 @@ namespace NewVision.UI.Areas.Admin.Controllers
             try
             {
                 var article = _context.Media.First(e => e.Id == id);
-                TryUpdateModel(article, new[] { "Title",  "ContentType", "SortOrder", "VideoSrc" });
+                TryUpdateModel(article, new[] { "Title", "TitleEn", "TitleUa", "ContentType", "SortOrder", "VideoSrc" });
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                article.TextEn = model.TextEn == null ? "" : HttpUtility.HtmlDecode(model.TextEn);
+                article.TextUa = model.TextUa == null ? "" : HttpUtility.HtmlDecode(model.TextUa);
                 if (file != null)
                 {
                     if (!string.IsNullOrEmpty(article.ImageSrc))

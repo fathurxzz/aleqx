@@ -27,6 +27,10 @@ namespace NewVision.DataModel
         public int Size { get; set; }
         public string ImageSrc { get; set; }
         public string VideoSrc { get; set; }
+        public string TitleEn { get; set; }
+        public string TitleUa { get; set; }
+        public string TextEn { get; set; }
+        public string TextUa { get; set; }
     
         public virtual ICollection<ArticleImage> ArticleImages { get; set; }
     }

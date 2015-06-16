@@ -43,8 +43,15 @@ namespace NewVision.UI.Areas.Admin.Controllers
         {
             try
             {
-                var eventAnnouncement = new EventAnnouncement {Title = model.Title ?? ""};
+                var eventAnnouncement = new EventAnnouncement
+                {
+                    Title = model.Title ?? "",
+                    TitleEn = model.TitleEn ?? "",
+                    TitleUa = model.TitleUa ?? ""
+                };
                 eventAnnouncement.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                eventAnnouncement.TextEn = model.TextEn == null ? "" : HttpUtility.HtmlDecode(model.TextEn);
+                eventAnnouncement.TextUa = model.TextUa == null ? "" : HttpUtility.HtmlDecode(model.TextUa);
 
                 for (int i = 0; i < Request.Files.Count; i++)
                 {
@@ -98,7 +105,11 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 var eventAnnouncement = _context.EventAnnouncements.First(ea => ea.Id == id);
 
                 eventAnnouncement.Title = model.Title ?? "";
+                eventAnnouncement.TitleEn = model.TitleEn ?? "";
+                eventAnnouncement.TitleUa = model.TitleUa ?? "";
                 eventAnnouncement.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                eventAnnouncement.TextEn = model.TextEn == null ? "" : HttpUtility.HtmlDecode(model.TextEn);
+                eventAnnouncement.TextUa = model.TextUa == null ? "" : HttpUtility.HtmlDecode(model.TextUa);
 
 
                 for (int i = 0; i < Request.Files.Count; i++)

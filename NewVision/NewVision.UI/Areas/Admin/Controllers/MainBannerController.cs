@@ -41,7 +41,15 @@ namespace NewVision.UI.Areas.Admin.Controllers
         {
             try
             {
-                var mainBanner = new MainBanner { Title = model.Title ?? "", Description = model.Description ?? "" };
+                var mainBanner = new MainBanner
+                {
+                    Title = model.Title ?? "", 
+                    TitleEn = model.TitleEn ?? "", 
+                    TitleUa = model.TitleUa ?? "", 
+                    Description = model.Description ?? "",
+                    DescriptionEn = model.DescriptionEn ?? "",
+                    DescriptionUa = model.DescriptionUa ?? ""
+                };
 
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))
@@ -88,7 +96,11 @@ namespace NewVision.UI.Areas.Admin.Controllers
             {
                 var mainBanner = _context.MainBanners.First(b => b.Id == id);
                 mainBanner.Title = model.Title ?? "";
+                mainBanner.TitleEn = model.TitleEn ?? "";
+                mainBanner.TitleUa = model.TitleUa ?? "";
                 mainBanner.Description = model.Description ?? "";
+                mainBanner.DescriptionEn = model.DescriptionEn ?? "";
+                mainBanner.DescriptionUa = model.DescriptionUa ?? "";
 
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))

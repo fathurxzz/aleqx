@@ -21,5 +21,9 @@ namespace NewVision.DataModel
         public string ImageSrc { get; set; }
         public string VideoSrc { get; set; }
         public int ContentType { get; set; }
+        public string TitleEn { get; set; }
+        public string TitleUa { get; set; }
+        public string TextEn { get; set; }
+        public string TextUa { get; set; }
     }
 }

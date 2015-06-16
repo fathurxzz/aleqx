@@ -12,9 +12,13 @@ namespace NewVision.UI.Models
 
         public int Id { get; set; }
         public string Title { get; set; }
+        public string TitleEn { get; set; }
+        public string TitleUa { get; set; }
         public System.DateTime Date { get; set; }
         public int TitlePosition { get; set; }
         public string Text { get; set; }
+        public string TextEn { get; set; }
+        public string TextUa { get; set; }
         public int Size { get; set; }
         public string ImageSrc { get; set; }
         public string VideoSrc { get; set; }

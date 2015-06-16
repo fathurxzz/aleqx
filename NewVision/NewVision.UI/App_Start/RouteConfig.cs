@@ -31,69 +31,87 @@ namespace NewVision.UI
 
             routes.MapRoute(
                "contacts",
-               "contacts",
+               "{lang}/contacts",
                new { controller = "Home", action = "Contacts" },
+               new { lang = @"ru|ua|en" },
                new[] { "NewVision.UI.Controllers" }
            );
 
             routes.MapRoute(
                "feedback",
-               "feedback",
+               "{lang}/feedback",
                new { controller = "Home", action = "Feedback" },
+               new { lang = @"ru|ua|en" },
                new[] { "NewVision.UI.Controllers" }
            );
 
             routes.MapRoute(
                "events",
-               "events",
+               "{lang}/events",
                new { controller = "Home", action = "Events" },
+               new { lang = @"ru|ua|en" },
                new[] { "NewVision.UI.Controllers" }
            );
 
             routes.MapRoute(
                "partnership",
-               "partnership",
+               "{lang}/partnership",
                new { controller = "Home", action = "Partnership" },
+               new { lang = @"ru|ua|en" },
                new[] { "NewVision.UI.Controllers" }
            );
             routes.MapRoute(
               "news",
-              "news",
+              "{lang}/news",
               new { controller = "Home", action = "News" },
+              new { lang = @"ru|ua|en" },
               new[] { "NewVision.UI.Controllers" }
           );
             routes.MapRoute(
               "newsDetails",
-              "news-details/{id}",
+              "{lang}/news-details/{id}",
               new { controller = "Home", action = "NewsDetails", id = UrlParameter.Optional },
+              new { lang = @"ru|ua|en" },
               new[] { "NewVision.UI.Controllers" }
           );
             routes.MapRoute(
               "media",
-              "media",
+              "{lang}/media",
               new { controller = "Home", action = "Media" },
+              new { lang = @"ru|ua|en" },
               new[] { "NewVision.UI.Controllers" }
           );
 
           routes.MapRoute(
               "eventDetails",
-              "event-details/{id}",
+              "{lang}/event-details/{id}",
               new { controller = "Home", action = "EventDetails", id = UrlParameter.Optional },
+              new { lang = @"ru|ua|en" },
               new[] { "NewVision.UI.Controllers" }
           );
 
           routes.MapRoute(
           "content",
-          "{id}",
-          new { controller = "Home", action = "SiteContent"},
+          "{lang}/{id}",
+          new { controller = "Home", action = "SiteContent", lang = "ru" },
+          new { lang = @"ru|ua|en" },
           new[] { "NewVision.UI.Controllers" }
           );
 
+          routes.MapRoute(
+               "Default1",
+               "{lang}",
+               new { controller = "Home", action = "Index", lang = "ru" },
+               new { lang = @"ru|ua|en" },
+              new[] { "NewVision.UI.Controllers" }
+          );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                 "Default",
+                 "{controller}/{action}/{id}",
+                 new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang = "ru" },
+                 new { lang = @"ru|ua|en" },
+                new[] { "NewVision.UI.Controllers" }
             );
         }
     }
