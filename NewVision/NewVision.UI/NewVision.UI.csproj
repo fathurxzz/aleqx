@@ -217,7 +217,7 @@
     <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\css\jquery-ui.structure.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\temp.css" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\LogOut.cshtml" />
