@@ -1,6 +1,6 @@
 ﻿@using NewVision.UI
 @using NewVision.UI.Helpers
-@model IEnumerable<NewVision.UI.Models.Content>
+@model System.Collections.Generic.IEnumerable<NewVision.UI.Models.Content>
 
 @{
     ViewBag.Title = "Новости";
@@ -25,10 +25,28 @@
             @Html.DisplayNameFor(model => model.MenuTitle)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.MenuTitleEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuTitleUa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TitleEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleUa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextUa)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ImageSrc)
@@ -49,10 +67,28 @@
                 @Html.DisplayFor(modelItem => item.MenuTitle)
             </td> 
             <td>
+                @Html.DisplayFor(modelItem => item.MenuTitleEn)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuTitleUa)
+            </td> 
+            <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.TitleEn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleUa)
+            </td>
+            <td>
                 @Html.Raw(item.Text)
+            </td>
+            <td>
+                @Html.Raw(item.TextEn)
+            </td>
+            <td>
+                @Html.Raw(item.TextUa)
             </td>
             <td style="min-width: 200px">
                 <div style="float: left; padding-bottom: 5px">

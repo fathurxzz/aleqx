@@ -18,8 +18,20 @@ namespace NewVision.UI.Models.Mapping
             this.Property(t => t.Title)
                 .IsRequired()
                 .HasMaxLength(500);
+            this.Property(t => t.TitleEn)
+                .IsRequired()
+                .HasMaxLength(500);
+            this.Property(t => t.TitleUa)
+                .IsRequired()
+                .HasMaxLength(500);
 
             this.Property(t => t.Description)
+                .IsRequired()
+                .HasMaxLength(2000);
+            this.Property(t => t.DescriptionEn)
+                .IsRequired()
+                .HasMaxLength(2000);
+            this.Property(t => t.DescriptionUa)
                 .IsRequired()
                 .HasMaxLength(2000);
 
@@ -28,7 +40,11 @@ namespace NewVision.UI.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.ImageSrc).HasColumnName("ImageSrc");
             this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.TitleEn).HasColumnName("TitleEn");
+            this.Property(t => t.TitleUa).HasColumnName("TitleUa");
             this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.DescriptionEn).HasColumnName("DescriptionEn");
+            this.Property(t => t.DescriptionUa).HasColumnName("DescriptionUa");
         }
     }
 }

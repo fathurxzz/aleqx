@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using NewVision.UI.App_LocalResources;
 using NewVision.UI.Helpers;
 using NewVision.UI.Models;
 using NewVision.UI.Models.SiteViewModels;
@@ -26,16 +27,16 @@ namespace NewVision.UI.Controllers
 
             var result = new List<object>();
 
-            result.Add(new { id = 1, title = "расписание проектов", selected = activeMenuItemId == 1, active = activeMenuItemId == 1 && active, url = "/events" });
-            result.Add(new { id = 2, title = "новости и события", selected = activeMenuItemId == 2, active = activeMenuItemId == 2 && active, url = "/news" });
-            result.Add(new { id = 3, title = "медиа", selected = activeMenuItemId == 3, active = activeMenuItemId == 3 && active, url = "/media" });
+            result.Add(new { id = 1, title = GlobalRes.MainMenuSchedule, selected = activeMenuItemId == 1, active = activeMenuItemId == 1 && active, url ="/" + CurrentLangCode+ "/events" });
+            result.Add(new { id = 2, title = GlobalRes.MainMenuNews, selected = activeMenuItemId == 2, active = activeMenuItemId == 2 && active, url = "/" + CurrentLangCode + "/news" });
+            result.Add(new { id = 3, title = GlobalRes.Media, selected = activeMenuItemId == 3, active = activeMenuItemId == 3 && active, url = "/" + CurrentLangCode + "/media" });
 
             foreach (var content in contents.OrderBy(c => c.SortOrder))
             {
-                result.Add(new { id = content.Id, title = content.MenuTitle, selected = activeMenuItemId == content.Id, active = activeMenuItemId == content.Id && active, url = "/" + content.Name });
+                result.Add(new { id = content.Id, title = content.MenuTitle, selected = activeMenuItemId == content.Id, active = activeMenuItemId == content.Id && active, url = "/" + CurrentLangCode + "/" + content.Name });
             }
 
-            result.Add(new { id = 4, title = "контактная информация", selected = activeMenuItemId == 4, active = activeMenuItemId == 4 && active, url = "/contacts" });
+            result.Add(new { id = 4, title = GlobalRes.Contacts, selected = activeMenuItemId == 4, active = activeMenuItemId == 4 && active, url = "/" + CurrentLangCode + "/contacts" });
             return "dataModels.mainMenu = " + JsonConvert.SerializeObject(result);
 
         }
@@ -54,8 +55,8 @@ namespace NewVision.UI.Controllers
             {
                 mainBanners.Add(new mainBanner
                 {
-                    title = mainBanner.Title,
-                    description = mainBanner.Description,
+                    title = CurrentLang == SiteLanguage.en ? mainBanner.TitleEn : CurrentLang == SiteLanguage.ua ? mainBanner.TitleUa : mainBanner.Title,
+                    description = CurrentLang == SiteLanguage.en ? mainBanner.DescriptionEn : CurrentLang == SiteLanguage.ua ? mainBanner.DescriptionUa : mainBanner.Description,
                     imageSrc = mainBanner.ImageSrc
                 });
             }
@@ -66,8 +67,8 @@ namespace NewVision.UI.Controllers
             {
                 var ev = new eventAnnouncement
                 {
-                    title = eventAnnouncement.Title,
-                    text = eventAnnouncement.Text,
+                    title = CurrentLang == SiteLanguage.en ? eventAnnouncement.TitleEn : CurrentLang == SiteLanguage.ua ? eventAnnouncement.TitleUa : eventAnnouncement.Title,
+                    text = CurrentLang == SiteLanguage.en ? eventAnnouncement.TextEn : CurrentLang == SiteLanguage.ua ? eventAnnouncement.TextUa : eventAnnouncement.Text,
                     images = new List<object>()
                 };
 
@@ -96,8 +97,8 @@ namespace NewVision.UI.Controllers
             ViewBag.SiteContent = "dataModels.siteContent = " + JsonConvert.SerializeObject(new
             {
                 id = content.Id,
-                title = content.Title,
-                text = content.Text,
+                title = CurrentLang == SiteLanguage.en ? content.TitleEn : CurrentLang == SiteLanguage.ua ? content.TitleUa : content.Title,
+                text = CurrentLang == SiteLanguage.en ? content.TextEn : CurrentLang == SiteLanguage.ua ? content.TextUa : content.Text,
                 imageSrc = content.ImageSrc
             });
             ViewBag.MainMenu = GenerateMainMenu(content.Id);
@@ -122,19 +123,19 @@ namespace NewVision.UI.Controllers
                 {
                     id = ev.Id,
                     date = ev.Date.ToShortDateString(),
-                    title = ev.Title,
-                    titleDescription = ev.TitleDescription,
+                    title = CurrentLang == SiteLanguage.en ? ev.TitleEn : CurrentLang == SiteLanguage.ua ? ev.TitleUa : ev.Title,
+                    titleDescription = CurrentLang == SiteLanguage.en ? ev.TitleDescriptionEn : CurrentLang == SiteLanguage.ua ? ev.TitleDescriptionUa : ev.TitleDescription,
                     location = new
                     {
-                        title = ev.LocationTitle,
-                        address = ev.LocationAddress,
+                        title = CurrentLang == SiteLanguage.en ? ev.LocationTitleEn : CurrentLang == SiteLanguage.ua ? ev.LocationTitleUa : ev.LocationTitle,
+                        address = CurrentLang == SiteLanguage.en ? ev.LocationAddressEn : CurrentLang == SiteLanguage.ua ? ev.LocationAddressUa : ev.LocationAddress,
                         addressMapUrl = ev.LocationAddressMapUrl
                     },
-                    description = ev.Description,
+                    description = CurrentLang == SiteLanguage.en ? ev.DescriptionEn : CurrentLang == SiteLanguage.ua ? ev.DescriptionUa : ev.Description,
                     expired = DateTime.Now > ev.Date,
                     ticketOrderType = SiteContentHelper.TicketOrderTypeKeys[ev.TicketOrderType],
                     highlighted = ev.IsHighlighted,
-                    highlightText = ev.HighlightedText,
+                    highlightText = CurrentLang == SiteLanguage.en ? ev.HighlightedTextEn : CurrentLang == SiteLanguage.ua ? ev.HighlightedTextUa : ev.HighlightedText,
                     previewContent = new
                     {
                         contentType = SiteContentHelper.PreviewContentTypeKeys[ev.PreviewContentType],
@@ -143,9 +144,9 @@ namespace NewVision.UI.Controllers
                     },
                     content = new
                     {
-                        action = ev.Action,
-                        location = ev.Location,
-                        artGroup = ev.ArtGroup
+                        action = CurrentLang == SiteLanguage.en ? ev.ActionEn : CurrentLang == SiteLanguage.ua ? ev.ActionUa : ev.Action,
+                        location = CurrentLang == SiteLanguage.en ? ev.LocationEn : CurrentLang == SiteLanguage.ua ? ev.LocationUa : ev.Location,
+                        artGroup = CurrentLang == SiteLanguage.en ? ev.ArtGroupEn : CurrentLang == SiteLanguage.ua ? ev.ArtGroupUa : ev.ArtGroup
                     },
                     images = ev.ContentImages.Select(image => image.ImageSrc).ToList(),
                     duration = ev.Duration,
@@ -172,19 +173,19 @@ namespace NewVision.UI.Controllers
             {
                 id = ev.Id,
                 date = ev.Date.ToShortDateString(),
-                title = ev.Title,
-                titleDescription = ev.TitleDescription,
+                title = CurrentLang == SiteLanguage.en ? ev.TitleEn : CurrentLang == SiteLanguage.ua ? ev.TitleUa : ev.Title,
+                titleDescription = CurrentLang == SiteLanguage.en ? ev.TitleDescriptionEn : CurrentLang == SiteLanguage.ua ? ev.TitleDescriptionUa : ev.TitleDescription,
                 location = new
                 {
-                    title = ev.LocationTitle,
-                    address = ev.LocationAddress,
+                    title = CurrentLang == SiteLanguage.en ? ev.LocationTitleEn : CurrentLang == SiteLanguage.ua ? ev.LocationTitleUa : ev.LocationTitle,
+                    address = CurrentLang == SiteLanguage.en ? ev.LocationAddressEn : CurrentLang == SiteLanguage.ua ? ev.LocationAddressUa : ev.LocationAddress,
                     highlightedTitlePart = ""
                 },
-                description = ev.Description,
+                description = CurrentLang == SiteLanguage.en ? ev.DescriptionEn : CurrentLang == SiteLanguage.ua ? ev.DescriptionUa : ev.Description,
                 expired = DateTime.Now > ev.Date,
                 ticketOrderType = SiteContentHelper.TicketOrderTypeKeys[ev.TicketOrderType],
                 highlighted = ev.IsHighlighted,
-                highlightText = ev.HighlightedText,
+                highlightText = CurrentLang == SiteLanguage.en ? ev.HighlightedTextEn : CurrentLang == SiteLanguage.ua ? ev.HighlightedTextUa : ev.HighlightedText,
                 previewContent = new
                 {
                     contentType = SiteContentHelper.PreviewContentTypeKeys[ev.PreviewContentType],
@@ -193,9 +194,9 @@ namespace NewVision.UI.Controllers
                 },
                 content = new
                 {
-                    action = ev.Action,
-                    location = ev.Location,
-                    artGroup = ev.ArtGroup
+                    action = CurrentLang == SiteLanguage.en ? ev.ActionEn : CurrentLang == SiteLanguage.ua ? ev.ActionUa : ev.Action,
+                    location = CurrentLang == SiteLanguage.en ? ev.LocationEn : CurrentLang == SiteLanguage.ua ? ev.LocationUa : ev.Location,
+                    artGroup = CurrentLang == SiteLanguage.en ? ev.ArtGroupEn : CurrentLang == SiteLanguage.ua ? ev.ArtGroupUa : ev.ArtGroup
                 },
                 images = ev.ContentImages.Select(image => image.ImageSrc).ToList(),
                 duration = ev.Duration,
@@ -236,11 +237,11 @@ namespace NewVision.UI.Controllers
             ViewBag.Article = "dataModels.newsDetails = " + JsonConvert.SerializeObject(new
             {
                 id = article.Id,
-                title = article.Title,
+                title = CurrentLang == SiteLanguage.en ? article.TitleEn : CurrentLang == SiteLanguage.ua ? article.TitleUa : article.Title,
                 date = article.Date.ToShortDateString(),
                 images = article.ArticleImages.Select(image => image.ImageSrc).ToList(),
                 videoSrc = article.VideoSrc,
-                text = article.Text
+                text = CurrentLang == SiteLanguage.en ? article.TextEn : CurrentLang == SiteLanguage.ua ? article.TextUa : article.Text
             });
             return View();
         }
@@ -256,8 +257,8 @@ namespace NewVision.UI.Controllers
                 result.Add(new
                 {
                     id = article.Id,
-                    title = article.Title,
-                    text = article.Title,
+                    title = CurrentLang == SiteLanguage.en ? article.TitleEn : CurrentLang == SiteLanguage.ua ? article.TitleUa : article.Title,
+                    text = CurrentLang == SiteLanguage.en ? article.TextEn : CurrentLang == SiteLanguage.ua ? article.TextUa : article.Text,
                     mediaType = article.ContentType == 0 ? "image" : "video",
                     mediaSrc = article.ContentType == 0 ? article.ImageSrc : article.VideoSrc
                 });

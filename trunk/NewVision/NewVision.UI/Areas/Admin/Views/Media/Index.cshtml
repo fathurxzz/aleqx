@@ -1,6 +1,7 @@
-﻿@using NewVision.UI
+﻿@using System.Linq
+@using NewVision.UI
 @using NewVision.UI.Helpers
-@model IEnumerable<NewVision.UI.Models.Media>
+@model System.Collections.Generic.IEnumerable<NewVision.UI.Models.Media>
 
 @{
     ViewBag.Title = "Новости";
@@ -22,7 +23,19 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TitleEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleUa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextUa)
         </th>
           <th>
             @Html.DisplayNameFor(model => model.ContentType)
@@ -46,7 +59,19 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.TitleEn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleUa)
+            </td>
+            <td>
                 @Html.Raw(item.Text)
+            </td>
+            <td>
+                @Html.Raw(item.TextEn)
+            </td>
+            <td>
+                @Html.Raw(item.TextUa)
             </td>
              <td>
                 @Html.Raw(SiteContentHelper.PreviewContentType[item.ContentType])

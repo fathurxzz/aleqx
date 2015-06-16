@@ -1,6 +1,7 @@
-﻿@using NewVision.UI
+﻿@using System.Linq
+@using NewVision.UI
 @using NewVision.UI.Helpers
-@model IEnumerable<NewVision.UI.Models.Event>
+@model System.Collections.Generic.IEnumerable<NewVision.UI.Models.Event>
 
 @{
     ViewBag.Title = "Расписание проектов";
@@ -25,13 +26,37 @@
             @Html.DisplayNameFor(model => model.TitleDescription)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TitleDescriptionEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleDescriptionUa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleUa)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HighlightedText)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.HighlightedTextEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighlightedTextUa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.LocationAddress)
+        </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.LocationAddressEn)
+        </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.LocationAddressUa)
         </th> 
         <th>
             @Html.DisplayNameFor(model => model.LocationAddressMapUrl)
@@ -40,7 +65,19 @@
             @Html.DisplayNameFor(model => model.LocationTitle)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.LocationTitleEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationTitleUa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionUa)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TicketOrderType)
@@ -58,10 +95,28 @@
             @Html.DisplayNameFor(model => model.Action)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ActionEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActionUa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Location)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.LocationEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationUa)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ArtGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtGroupEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtGroupUa)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Duration)
@@ -90,13 +145,37 @@
                 @Html.DisplayFor(modelItem => item.TitleDescription)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.TitleDescriptionEn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleDescriptionUa)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleEn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleUa)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HighlightedText)
             </td>
-           <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighlightedTextEn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighlightedTextUa)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.LocationAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationAddressEn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationAddressUa)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LocationAddressMapUrl)
@@ -105,8 +184,24 @@
                 @Html.DisplayFor(modelItem => item.LocationTitle)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.LocationTitleEn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationTitleUa)
+            </td>
+            <td>
                 <div class="clip">
                 @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+            </td>
+            <td>
+                <div class="clip">
+                @Html.DisplayFor(modelItem => item.DescriptionEn)
+                    </div>
+            </td>
+            <td>
+                <div class="clip">
+                @Html.DisplayFor(modelItem => item.DescriptionUa)
                     </div>
             </td>
             <td>
@@ -139,12 +234,42 @@
             </td>
             <td>
                 <div class="clip">
+                    @Html.DisplayFor(modelItem => item.ActionEn)
+                </div>
+            </td>
+            <td>
+                <div class="clip">
+                    @Html.DisplayFor(modelItem => item.ActionUa)
+                </div>
+            </td>
+            <td>
+                <div class="clip">
                     @Html.DisplayFor(modelItem => item.Location)
                 </div>
             </td>
             <td>
                 <div class="clip">
+                    @Html.DisplayFor(modelItem => item.LocationEn)
+                </div>
+            </td>
+            <td>
+                <div class="clip">
+                    @Html.DisplayFor(modelItem => item.LocationUa)
+                </div>
+            </td>
+            <td>
+                <div class="clip">
                     @Html.DisplayFor(modelItem => item.ArtGroup)
+                </div>
+            </td>
+            <td>
+                <div class="clip">
+                    @Html.DisplayFor(modelItem => item.ArtGroupEn)
+                </div>
+            </td>
+            <td>
+                <div class="clip">
+                    @Html.DisplayFor(modelItem => item.ArtGroupUa)
                 </div>
             </td>
             <td>

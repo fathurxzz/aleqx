@@ -41,6 +41,10 @@
     <Property Name="ImageSrc" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="Description" Type="varchar" Nullable="false" MaxLength="2000" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="DescriptionEn" Type="varchar" Nullable="true" MaxLength="2000" />
+    <Property Name="DescriptionUa" Type="varchar" Nullable="true" MaxLength="2000" />
   </EntityType>
   <EntityType Name="EventAnnouncement">
     <Key>
@@ -49,6 +53,10 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TextEn" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="TextUa" Type="varchar" Nullable="true" MaxLength="10000" />
   </EntityType>
   <EntityType Name="EventAnnouncementImage">
     <Key>
@@ -65,6 +73,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleEn" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="TitleUa" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="TitleDescription" Type="varchar" Nullable="true" MaxLength="10000" />
     <Property Name="HighlightedText" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="IsHighlighted" Type="bool" Nullable="false" />
@@ -82,6 +92,22 @@
     <Property Name="Price" Type="varchar" Nullable="true" MaxLength="100" />
     <Property Name="PreviewContentVideoSrc" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="LocationAddressMapUrl" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleDescriptionEn" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="TitleDescriptionUa" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="HighlightedTextEn" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="HighlightedTextUa" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="LocationAddressEn" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="LocationAddressUa" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="LocationTitleEn" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="LocationTitleUa" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="DescriptionEn" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="DescriptionUa" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="ActionEn" Type="longtext" Nullable="true" />
+    <Property Name="ActionUa" Type="longtext" Nullable="true" />
+    <Property Name="LocationEn" Type="longtext" Nullable="true" />
+    <Property Name="LocationUa" Type="longtext" Nullable="true" />
+    <Property Name="ArtGroupEn" Type="longtext" Nullable="true" />
+    <Property Name="ArtGroupUa" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="PreviewContentImage">
     <Key>
@@ -111,6 +137,10 @@
     <Property Name="Size" Type="int" Nullable="false" />
     <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="VideoSrc" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TextEn" Type="longtext" Nullable="true" />
+    <Property Name="TextUa" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="Media">
     <Key>
@@ -123,6 +153,10 @@
     <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="VideoSrc" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="ContentType" Type="int" Nullable="false" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TextEn" Type="longtext" Nullable="true" />
+    <Property Name="TextUa" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="Content">
     <Key>
@@ -135,6 +169,12 @@
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="MenuTitleEn" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="MenuTitleUa" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="TextEn" Type="longtext" Nullable="true" />
+    <Property Name="TextUa" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ArticleImage">
     <Key>
@@ -232,6 +272,10 @@
           <Property Type="String" Name="ImageSrc" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="2000" />
+          <Property Type="String" Name="TitleEn" MaxLength="500" />
+          <Property Type="String" Name="TitleUa" MaxLength="500" />
+          <Property Type="String" Name="DescriptionEn" MaxLength="2000" />
+          <Property Type="String" Name="DescriptionUa" MaxLength="2000" />
         </EntityType>
         <EntityType Name="EventAnnouncement">
           <Key>
@@ -241,6 +285,10 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
           <NavigationProperty Name="EventAnnouncementImages" Relationship="Model.EventAnnouncementEventAnnouncementImage" FromRole="EventAnnouncement" ToRole="EventAnnouncementImage" />
+          <Property Type="String" Name="TitleEn" MaxLength="500" />
+          <Property Type="String" Name="TitleUa" MaxLength="500" />
+          <Property Type="String" Name="TextEn" MaxLength="10000" />
+          <Property Type="String" Name="TextUa" MaxLength="10000" />
         </EntityType>
         <EntityType Name="EventAnnouncementImage">
           <Key>
@@ -270,12 +318,14 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="String" Name="Title" MaxLength="500" />
-          <Property Type="String" Name="TitleDescription" MaxLength="10000" />
+          <Property Type="String" Name="TitleEn" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="TitleUa" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="TitleDescription" MaxLength="5000" />
           <Property Type="String" Name="HighlightedText" MaxLength="1000" />
           <Property Type="Boolean" Name="IsHighlighted" Nullable="false" />
           <Property Type="String" Name="LocationAddress" MaxLength="1000" />
           <Property Type="String" Name="LocationTitle" MaxLength="1000" />
-          <Property Type="String" Name="Description" MaxLength="10000" />
+          <Property Type="String" Name="Description" MaxLength="5000" />
           <Property Type="Int32" Name="TicketOrderType" Nullable="false" />
           <Property Type="Int32" Name="PreviewContentType" Nullable="false" />
           <Property Type="String" Name="PreviewContentImageSrc" MaxLength="1000" />
@@ -289,6 +339,22 @@
           <Property Type="String" Name="Price" MaxLength="100" />
           <Property Type="String" Name="PreviewContentVideoSrc" MaxLength="1000" />
           <Property Type="String" Name="LocationAddressMapUrl" MaxLength="500" />
+          <Property Type="String" Name="TitleDescriptionEn" MaxLength="5000" />
+          <Property Type="String" Name="TitleDescriptionUa" MaxLength="5000" />
+          <Property Type="String" Name="HighlightedTextEn" MaxLength="1000" />
+          <Property Type="String" Name="HighlightedTextUa" MaxLength="1000" />
+          <Property Type="String" Name="LocationAddressEn" MaxLength="1000" />
+          <Property Type="String" Name="LocationAddressUa" MaxLength="1000" />
+          <Property Type="String" Name="LocationTitleEn" MaxLength="1000" />
+          <Property Type="String" Name="LocationTitleUa" MaxLength="1000" />
+          <Property Type="String" Name="DescriptionEn" MaxLength="5000" />
+          <Property Type="String" Name="DescriptionUa" MaxLength="5000" />
+          <Property Type="String" Name="ActionEn" />
+          <Property Type="String" Name="ActionUa" />
+          <Property Type="String" Name="LocationEn" />
+          <Property Type="String" Name="LocationUa" />
+          <Property Type="String" Name="ArtGroupEn" />
+          <Property Type="String" Name="ArtGroupUa" />
         </EntityType>
         <EntityType Name="PreviewContentImage">
           <Key>
@@ -345,6 +411,10 @@
           <Property Type="String" Name="ImageSrc" MaxLength="500" />
           <Property Type="String" Name="VideoSrc" MaxLength="500" />
           <NavigationProperty Name="ArticleImages" Relationship="Model.ArticleArticleImage" FromRole="Article" ToRole="ArticleImage" />
+          <Property Type="String" Name="TitleEn" MaxLength="500" />
+          <Property Type="String" Name="TitleUa" MaxLength="500" />
+          <Property Type="String" Name="TextEn" />
+          <Property Type="String" Name="TextUa" />
         </EntityType>
         <EntityType Name="Media">
           <Key>
@@ -357,6 +427,10 @@
           <Property Type="String" Name="ImageSrc" MaxLength="500" />
           <Property Type="String" Name="VideoSrc" MaxLength="500" />
           <Property Type="Int32" Name="ContentType" Nullable="false" />
+          <Property Type="String" Name="TitleEn" MaxLength="500" />
+          <Property Type="String" Name="TitleUa" MaxLength="500" />
+          <Property Type="String" Name="TextEn" />
+          <Property Type="String" Name="TextUa" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -369,6 +443,12 @@
           <Property Type="String" Name="Text" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="500" />
+          <Property Type="String" Name="TitleEn" MaxLength="500" />
+          <Property Type="String" Name="TitleUa" MaxLength="500" />
+          <Property Type="String" Name="MenuTitleEn" MaxLength="500" />
+          <Property Type="String" Name="MenuTitleUa" MaxLength="500" />
+          <Property Type="String" Name="TextEn" />
+          <Property Type="String" Name="TextUa" />
         </EntityType>
         <EntityType Name="ArticleImage">
           <Key>
@@ -404,6 +484,10 @@
           <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+          <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+          <ScalarProperty Name="DescriptionUa" ColumnName="DescriptionUa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -413,6 +497,10 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+          <ScalarProperty Name="TextEn" ColumnName="TextEn" />
+          <ScalarProperty Name="TextUa" ColumnName="TextUa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -431,6 +519,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
           <ScalarProperty Name="TitleDescription" ColumnName="TitleDescription" />
           <ScalarProperty Name="HighlightedText" ColumnName="HighlightedText" />
           <ScalarProperty Name="IsHighlighted" ColumnName="IsHighlighted" />
@@ -448,6 +538,22 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="PreviewContentVideoSrc" ColumnName="PreviewContentVideoSrc" />
           <ScalarProperty Name="LocationAddressMapUrl" ColumnName="LocationAddressMapUrl" />
+          <ScalarProperty Name="TitleDescriptionEn" ColumnName="TitleDescriptionEn" />
+          <ScalarProperty Name="TitleDescriptionUa" ColumnName="TitleDescriptionUa" />
+          <ScalarProperty Name="HighlightedTextEn" ColumnName="HighlightedTextEn" />
+          <ScalarProperty Name="HighlightedTextUa" ColumnName="HighlightedTextUa" />
+          <ScalarProperty Name="LocationAddressEn" ColumnName="LocationAddressEn" />
+          <ScalarProperty Name="LocationAddressUa" ColumnName="LocationAddressUa" />
+          <ScalarProperty Name="LocationTitleEn" ColumnName="LocationTitleEn" />
+          <ScalarProperty Name="LocationTitleUa" ColumnName="LocationTitleUa" />
+          <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+          <ScalarProperty Name="DescriptionUa" ColumnName="DescriptionUa" />
+          <ScalarProperty Name="ActionEn" ColumnName="ActionEn" />
+          <ScalarProperty Name="ActionUa" ColumnName="ActionUa" />
+          <ScalarProperty Name="LocationEn" ColumnName="LocationEn" />
+          <ScalarProperty Name="LocationUa" ColumnName="LocationUa" />
+          <ScalarProperty Name="ArtGroupEn" ColumnName="ArtGroupEn" />
+          <ScalarProperty Name="ArtGroupUa" ColumnName="ArtGroupUa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -480,6 +586,10 @@
           <ScalarProperty Name="Size" ColumnName="Size" />
           <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
           <ScalarProperty Name="VideoSrc" ColumnName="VideoSrc" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+          <ScalarProperty Name="TextEn" ColumnName="TextEn" />
+          <ScalarProperty Name="TextUa" ColumnName="TextUa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -493,6 +603,10 @@
           <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
           <ScalarProperty Name="VideoSrc" ColumnName="VideoSrc" />
           <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+          <ScalarProperty Name="TextEn" ColumnName="TextEn" />
+          <ScalarProperty Name="TextUa" ColumnName="TextUa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -506,6 +620,12 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+          <ScalarProperty Name="MenuTitleEn" ColumnName="MenuTitleEn" />
+          <ScalarProperty Name="MenuTitleUa" ColumnName="MenuTitleUa" />
+          <ScalarProperty Name="TextEn" ColumnName="TextEn" />
+          <ScalarProperty Name="TextUa" ColumnName="TextUa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

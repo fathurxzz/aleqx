@@ -37,12 +37,16 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 var article = new Article
                 {
                     Title = model.Title,
+                    TitleEn = model.TitleEn,
+                    TitleUa = model.TitleUa,
                     Date = model.Date,
                     TitlePosition = model.TitlePosition,
                     VideoSrc = model.VideoSrc
                 };
 
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                article.TextEn = model.TextEn == null ? "" : HttpUtility.HtmlDecode(model.TextEn);
+                article.TextUa = model.TextUa == null ? "" : HttpUtility.HtmlDecode(model.TextUa);
 
                 if (file != null)
                 {
@@ -103,9 +107,11 @@ namespace NewVision.UI.Areas.Admin.Controllers
             {
                 var article = _context.Articles.First(a => a.Id == id);
 
-                TryUpdateModel(article, new[] {"Title", "Date","VideoSrc", "TitlePosition"});
+                TryUpdateModel(article, new[] { "Title", "TitleEn", "TitleUa", "Date", "VideoSrc", "TitlePosition" });
                 
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                article.TextEn = model.TextEn == null ? "" : HttpUtility.HtmlDecode(model.TextEn);
+                article.TextUa = model.TextUa == null ? "" : HttpUtility.HtmlDecode(model.TextUa);
 
                 if (file != null)
                 {

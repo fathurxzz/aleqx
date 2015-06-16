@@ -21,5 +21,11 @@ namespace NewVision.DataModel
         public string Text { get; set; }
         public int SortOrder { get; set; }
         public string Name { get; set; }
+        public string TitleEn { get; set; }
+        public string TitleUa { get; set; }
+        public string MenuTitleEn { get; set; }
+        public string MenuTitleUa { get; set; }
+        public string TextEn { get; set; }
+        public string TextUa { get; set; }
     }
 }

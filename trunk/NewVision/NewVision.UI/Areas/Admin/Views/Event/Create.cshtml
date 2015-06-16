@@ -57,11 +57,39 @@
             @Html.ValidationMessageFor(model => model.TitleDescription)
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.TitleDescriptionEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="TitleDescriptionEn" id="TitleDescriptionEn" placeholder="Введите описание заголовока" value="@Model.TitleDescriptionEn">
+            </div>
+            @Html.ValidationMessageFor(model => model.TitleDescriptionEn)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TitleDescriptionUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="TitleDescriptionUa" id="TitleDescriptionUa" placeholder="Введите описание заголовока" value="@Model.TitleDescriptionUa">
+            </div>
+            @Html.ValidationMessageFor(model => model.TitleDescriptionUa)
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="Title" id="Title" placeholder="Введите заголовок" value="@Model.Title">
             </div>
             @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TitleEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="TitleEn" id="TitleEn" placeholder="Введите заголовок" value="@Model.TitleEn">
+            </div>
+            @Html.ValidationMessageFor(model => model.TitleEn)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TitleUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="TitleUa" id="TitleUa" placeholder="Введите заголовок" value="@Model.TitleUa">
+            </div>
+            @Html.ValidationMessageFor(model => model.TitleUa)
         </div>
         
         <div class="form-group">
@@ -72,6 +100,20 @@
             @Html.ValidationMessageFor(model => model.HighlightedText)
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.HighlightedTextEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="HighlightedTextEn" id="HighlightedTextEn" placeholder="Введите выделенный текст" value="@Model.HighlightedTextEn">
+            </div>
+            @Html.ValidationMessageFor(model => model.HighlightedTextEn)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.HighlightedTextUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="HighlightedTextUa" id="HighlightedTextUa" placeholder="Введите выделенный текст" value="@Model.HighlightedTextUa">
+            </div>
+            @Html.ValidationMessageFor(model => model.HighlightedTextUa)
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.LocationTitle, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="LocationTitle" id="LocationTitle" placeholder="Введите заголовок локации" value="@Model.LocationTitle">
@@ -79,11 +121,39 @@
             @Html.ValidationMessageFor(model => model.LocationTitle)
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.LocationTitleEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="LocationTitleEn" id="LocationTitleEn" placeholder="Введите заголовок локации" value="@Model.LocationTitleEn">
+            </div>
+            @Html.ValidationMessageFor(model => model.LocationTitleEn)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LocationTitleUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="LocationTitleUa" id="LocationTitleUa" placeholder="Введите заголовок локации" value="@Model.LocationTitleUa">
+            </div>
+            @Html.ValidationMessageFor(model => model.LocationTitleUa)
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.LocationAddress, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="LocationAddress" id="LocationAddress" placeholder="Введите адрес локации" value="@Model.LocationAddress">
             </div>
             @Html.ValidationMessageFor(model => model.LocationTitle)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LocationAddressEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="LocationAddressEn" id="LocationAddressEn" placeholder="Введите адрес локации" value="@Model.LocationAddressEn">
+            </div>
+            @Html.ValidationMessageFor(model => model.LocationAddressEn)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LocationAddressUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="LocationAddressUa" id="LocationAddressUa" placeholder="Введите адрес локации" value="@Model.LocationAddressUa">
+            </div>
+            @Html.ValidationMessageFor(model => model.LocationAddressUa)
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.LocationAddressMapUrl, new { @class = "col-sm-2 control-label" })
@@ -96,6 +166,18 @@
             @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 <textarea class="form-control" rows="3" name="Description">@Model.Description</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescriptionEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="DescriptionEn">@Model.DescriptionEn</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DescriptionUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="DescriptionUa">@Model.DescriptionUa</textarea>
             </div>
         </div>
         <div class="form-group">
@@ -141,15 +223,51 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.ActionEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control ckeditor" rows="3" name="ActionEn">@Model.ActionEn</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ActionUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control ckeditor" rows="3" name="ActionUa">@Model.ActionUa</textarea>
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.Location, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 <textarea class="form-control ckeditor" rows="3" name="Location">@Model.Location</textarea>
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.LocationEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control ckeditor" rows="3" name="LocationEn">@Model.LocationEn</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LocationUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control ckeditor" rows="3" name="LocationUa">@Model.LocationUa</textarea>
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.ArtGroup, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 <textarea class="form-control ckeditor" rows="3" name="ArtGroup">@Model.ArtGroup</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtGroupEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control ckeditor" rows="3" name="ArtGroupEn">@Model.ArtGroupEn</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArtGroupUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control ckeditor" rows="3" name="ArtGroupUa">@Model.ArtGroupUa</textarea>
             </div>
         </div>
         <div class="form-group">

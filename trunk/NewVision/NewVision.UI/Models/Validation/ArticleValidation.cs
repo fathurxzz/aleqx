@@ -16,11 +16,23 @@ namespace NewVision.UI.Models
         [Display(Name = "Дата")]
         public System.DateTime Date { get; set; }
 
-        [Display(Name = "Заголовок")]
+        [Display(Name = "Заголовок RU")]
         public string Title { get; set; }
 
-        [Display(Name = "Текст")]
+        [Display(Name = "Заголовок EN")]
+        public string TitleEn { get; set; }
+        
+        [Display(Name = "Заголовок UA")]
+        public string TitleUa { get; set; }
+
+        [Display(Name = "Текст RU")]
         public string Text { get; set; }
+
+        [Display(Name = "Текст EN")]
+        public string TextEn { get; set; }
+
+        [Display(Name = "Текст UA")]
+        public string TextUa { get; set; }
 
         [Display(Name = "Размещение заголовка")]
         public int TitlePosition{ get; set; }

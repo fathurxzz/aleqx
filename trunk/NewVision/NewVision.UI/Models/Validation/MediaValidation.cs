@@ -14,11 +14,23 @@ namespace NewVision.UI.Models
 
     public class MediaValidation
     {
-        [Display(Name = "Заголовок")]
+        [Display(Name = "Заголовок RU")]
         public string Title { get; set; }
 
-        [Display(Name = "Текст")]
+        [Display(Name = "Заголовок EN")]
+        public string TitleEn { get; set; }
+
+        [Display(Name = "Заголовок UA")]
+        public string TitleUa { get; set; }
+
+        [Display(Name = "Текст RU")]
         public string Text { get; set; }
+
+        [Display(Name = "Текст EN")]
+        public string TextEn { get; set; }
+
+        [Display(Name = "Текст UA")]
+        public string TextUa { get; set; }
 
         [Display(Name = "Фото")]
         public string ImageSrc { get; set; }
