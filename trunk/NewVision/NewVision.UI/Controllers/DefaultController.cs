@@ -43,6 +43,8 @@ namespace NewVision.UI.Controllers
                         break;
                 }
 
+                ViewBag.Locale = CurrentLangCode;
+
                 var ci = new CultureInfo(CurrentLangCode == "ua" ? "uk" : CurrentLangCode);
                 Thread.CurrentThread.CurrentUICulture = ci;
                 Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
