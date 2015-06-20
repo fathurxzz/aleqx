@@ -42,6 +42,7 @@
             if (!('dataModels' in settings)){
                 settings.dataModels = {};
             }
+
         }(NV));
     </script>
     
@@ -50,14 +51,32 @@
             var settings = nv.settings,
                 l10n = a9.l10n;
 
+            if (!('languages' in settings)) {
+                settings.languages = [
+                    {
+                        code: 'ru',
+                        label: 'ru'
+                    },
+                    {
+                        code: 'ua',
+                        label: 'ukr'
+                    },
+                    {
+                        code: 'en',
+                        label: 'eng'
+                    }
+                ];
+            }
+
             if (!('locale' in settings)) {
-                settings.locale = '@ViewBag.Locale';
+                settings.currentLanguage = '@ViewBag.Locale';
+                settings.locale = settings.currentLanguage;
             }
 
             if (!('dictionary' in settings)) {
                 settings.dictionary = {
                     ru: {
-                        copyright: '&copy; {year} 2014 New Vision Productions',
+                        copyright: '&copy; {year} New Vision Productions',
                         emMadeIn: 'Сделано в',
                         emStudio: 'Студии Евгения Миллера',
                         joinUs: 'как попасть<br>в арт-коллектив',
@@ -80,50 +99,50 @@
                         feedbackFields_thanks: 'Спасибо, Ваше сообщение отправлено'
                     },
                     ua: {
-                        copyright: '&copy; {year} 2014 New Vision Productions',
-                        emMadeIn: 'Сделано в',
-                        emStudio: 'Студии Евгения Миллера',
-                        joinUs: 'как попасть<br>в арт-коллектив',
-                        mainPageDetails: 'Подробнее о нас',
-                        eventWillBe: 'проект состоится',
-                        eventPass: 'проект состоялся',
-                        learnMore: 'узнать больше',
-                        ticketType_orderTicket: 'заказать билет',
-                        ticketType_eventIsFree: 'вход свободный',
-                        ticketType_getInvite: 'получить приглас.',
-                        ticketType_noSeats: 'мест нет',
-                        contactsTitle: 'контактная информация и обратная связь',
-                        address: 'Украина, 02002, г. Киев, ул. Ованеса Туманяна, 15-А, оф. 630<br>Телефон: +38 066 8450056',
-                        feedbackTitle: 'отправить мгновенное сообщение',
-                        feedbackFields_Name: 'назовитесь:',
-                        feedbackFields_Email: 'Емейл, на который<br/>хотите получить ответ:',
-                        feedbackFields_AntiSpam: 'Антиспам-проверка:<br/>наберите три два один (цифрами)',
-                        feedbackFields_Question: 'Вопрос:',
-                        feedbackFields_checkEntries: 'Заполните правильно поля формы',
-                        feedbackFields_thanks: 'Спасибо, Ваше сообщение отправлено'
+                        copyright: '&copy; {year} New Vision Productions',
+                        emMadeIn: 'Зроблено',
+                        emStudio: 'Студією Євгенія Міллера',
+                        joinUs: 'як потрапити<br>в арт-колектив',
+                        mainPageDetails: 'Докладніше про нас',
+                        eventWillBe: 'проект відбудеться',
+                        eventPass: 'проект відбувся',
+                        learnMore: 'дізнатися більше',
+                        ticketType_orderTicket: 'замовити квиток',
+                        ticketType_eventIsFree: 'вхід безкоштовний',
+                        ticketType_getInvite: 'отримати запрошення',
+                        ticketType_noSeats: 'вільних місць немає',
+                        contactsTitle: 'контактна інформація та зворотній зв\'язок',
+                        address: 'Україна, 02002, г. Київ, вул. Ованеса Туманяна, 15-А, оф. 630<br>Телефон: +38 066 8450056',
+                        feedbackTitle: 'надіслати повідомлення',
+                        feedbackFields_Name: 'Ваше ім\'я:',
+                        feedbackFields_Email: 'Електронна адреса, на яку<br/>бажаєте отримати відповідь:',
+                        feedbackFields_AntiSpam: 'Антиспамова перевірка:<br/>наберіть три два один (цифрами)',
+                        feedbackFields_Question: 'Запитання:',
+                        feedbackFields_checkEntries: 'Заповніть вірно поля форми',
+                        feedbackFields_thanks: 'Дякуємо, Ваше повідомлення надіслано'
                     },
                     en: {
-                        copyright: '&copy; {year} 2014 New Vision Productions',
-                        emMadeIn: 'Сделано в',
-                        emStudio: 'Студии Евгения Миллера',
-                        joinUs: 'как попасть<br>в арт-коллектив',
-                        mainPageDetails: 'Подробнее о нас',
-                        eventWillBe: 'проект состоится',
-                        eventPass: 'проект состоялся',
+                        copyright: '&copy; {year} New Vision Productions',
+                        emMadeIn: 'Made by',
+                        emStudio: 'Eugene Miller Studio',
+                        joinUs: 'To become<br>team member',
+                        mainPageDetails: 'About Us',
+                        eventWillBe: 'Upcoming projects',
+                        eventPass: 'Previous projects',
                         learnMore: 'learn more',
-                        ticketType_orderTicket: 'заказать билет',
-                        ticketType_eventIsFree: 'вход свободный',
-                        ticketType_getInvite: 'получить приглас.',
-                        ticketType_noSeats: 'мест нет',
-                        contactsTitle: 'контактная информация и обратная связь',
-                        address: 'Украина, 02002, г. Киев, ул. Ованеса Туманяна, 15-А, оф. 630<br>Телефон: +38 066 8450056',
-                        feedbackTitle: 'отправить мгновенное сообщение',
-                        feedbackFields_Name: 'назовитесь:',
-                        feedbackFields_Email: 'Емейл, на который<br/>хотите получить ответ:',
-                        feedbackFields_AntiSpam: 'Антиспам-проверка:<br/>наберите три два один (цифрами)',
-                        feedbackFields_Question: 'Вопрос:',
-                        feedbackFields_checkEntries: 'Заполните правильно поля формы',
-                        feedbackFields_thanks: 'Спасибо, Ваше сообщение отправлено'
+                        ticketType_orderTicket: 'To book ticket',
+                        ticketType_eventIsFree: 'Free entrance',
+                        ticketType_getInvite: 'To get invitation',
+                        ticketType_noSeats: 'Sold out',
+                        contactsTitle: 'Contact information',
+                        address: 'Ukraine, 02002, Kiev, Hovhannes Tumanyan St., 15-А, office 630 <br>Телефон: +38 066 8450056',
+                        feedbackTitle: 'Send a letter',
+                        feedbackFields_Name: 'Your name:',
+                        feedbackFields_Email: 'E-mail:',
+                        feedbackFields_AntiSpam: 'Anti-Spam:<br/>type three two one (in numbers)',
+                        feedbackFields_Question: 'Question:',
+                        feedbackFields_checkEntries: 'Please, fill gaps correctly',
+                        feedbackFields_thanks: 'Thank you for your request'
                     }
                     
                 }
