@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="ArtWork.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="ArtWorkTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ArtWork" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ArtWorkContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Language" EntityType="ArtWork.Language" />
+          <EntitySet Name="Author" EntityType="ArtWork.Author" />
+          <EntitySet Name="Tag" EntityType="ArtWork.Tag" />
+          <EntitySet Name="Product" EntityType="ArtWork.Product" />
+          <AssociationSet Name="AuthorProduct" Association="ArtWork.AuthorProduct">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="AuthorTag" Association="ArtWork.AuthorTag">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="ProductTag" Association="ArtWork.ProductTag">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <EntitySet Name="AuthorLang" EntityType="ArtWork.AuthorLang" />
+          <EntitySet Name="ProductLang" EntityType="ArtWork.ProductLang" />
+          <AssociationSet Name="LanguageAuthorLang" Association="ArtWork.LanguageAuthorLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="AuthorLang" EntitySet="AuthorLang" />
+          </AssociationSet>
+          <AssociationSet Name="AuthorAuthorLang" Association="ArtWork.AuthorAuthorLang">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="AuthorLang" EntitySet="AuthorLang" />
+          </AssociationSet>
+          <AssociationSet Name="ProductProductLang" Association="ArtWork.ProductProductLang">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductLang" EntitySet="ProductLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageProductLang" Association="ArtWork.LanguageProductLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ProductLang" EntitySet="ProductLang" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" />
+          <Property Type="String" Name="Label" Nullable="false" />
+          <NavigationProperty Name="AuthorLangs" Relationship="ArtWork.LanguageAuthorLang" FromRole="Language" ToRole="AuthorLang" />
+          <NavigationProperty Name="ProductLangs" Relationship="ArtWork.LanguageProductLang" FromRole="Language" ToRole="ProductLang" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="ArtWork.AuthorProduct" FromRole="Author" ToRole="Product" />
+          <NavigationProperty Name="Tags" Relationship="ArtWork.AuthorTag" FromRole="Author" ToRole="Tag" />
+          <NavigationProperty Name="AuthorLangs" Relationship="ArtWork.AuthorAuthorLang" FromRole="Author" ToRole="AuthorLang" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="ArtWork.AuthorTag" FromRole="Tag" ToRole="Author" />
+          <Property Type="Int32" Name="AuthorId" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="ArtWork.ProductTag" FromRole="Tag" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="ArtWork.AuthorProduct" FromRole="Product" ToRole="Author" />
+          <Property Type="Int32" Name="AuthorId" Nullable="false" />
+          <NavigationProperty Name="Tags" Relationship="ArtWork.ProductTag" FromRole="Product" ToRole="Tag" />
+          <NavigationProperty Name="ProductLangs" Relationship="ArtWork.ProductProductLang" FromRole="Product" ToRole="ProductLang" />
+        </EntityType>
+        <Association Name="AuthorProduct">
+          <End Type="ArtWork.Author" Role="Author" Multiplicity="1" />
+          <End Type="ArtWork.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AuthorTag">
+          <End Type="ArtWork.Author" Role="Author" Multiplicity="1" />
+          <End Type="ArtWork.Tag" Role="Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductTag">
+          <End Type="ArtWork.Product" Role="Product" Multiplicity="1" />
+          <End Type="ArtWork.Tag" Role="Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AuthorLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Language" Relationship="ArtWork.LanguageAuthorLang" FromRole="AuthorLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="ArtWork.AuthorAuthorLang" FromRole="AuthorLang" ToRole="Author" />
+          <Property Type="Int32" Name="AuthorId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Product" Relationship="ArtWork.ProductProductLang" FromRole="ProductLang" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="ArtWork.LanguageProductLang" FromRole="ProductLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+        </EntityType>
+        <Association Name="LanguageAuthorLang">
+          <End Type="ArtWork.Language" Role="Language" Multiplicity="1" />
+          <End Type="ArtWork.AuthorLang" Role="AuthorLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AuthorLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AuthorAuthorLang">
+          <End Type="ArtWork.Author" Role="Author" Multiplicity="1" />
+          <End Type="ArtWork.AuthorLang" Role="AuthorLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AuthorLang">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductProductLang">
+          <End Type="ArtWork.Product" Role="Product" Multiplicity="1" />
+          <End Type="ArtWork.ProductLang" Role="ProductLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductLang">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageProductLang">
+          <End Type="ArtWork.Language" Role="Language" Multiplicity="1" />
+          <End Type="ArtWork.ProductLang" Role="ProductLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="ArtWork" />
+        <Alias Key="Target" Value="ArtWork.Store" />
+        <EntityContainerMapping CdmEntityContainer="ArtWorkContainer" StorageEntityContainer="ArtWorkTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
