@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0bfa0875f7074de19c1eee2f50b725c6" Name="Diagram1" >
+        <EntityTypeShape EntityType="ArtWork.Language" Width="1.5" PointX="9.125" PointY="4.875" />
+        <EntityTypeShape EntityType="ArtWork.Author" Width="1.5" PointX="2.75" PointY="1.75" />
+        <EntityTypeShape EntityType="ArtWork.Tag" Width="1.5" PointX="9.25" PointY="8.75" />
+        <EntityTypeShape EntityType="ArtWork.Product" Width="1.5" PointX="15.75" PointY="1.875" />
+        <AssociationConnector Association="ArtWork.AuthorProduct" />
+        <AssociationConnector Association="ArtWork.AuthorTag" />
+        <AssociationConnector Association="ArtWork.ProductTag" />
+        <EntityTypeShape EntityType="ArtWork.AuthorLang" Width="1.5" PointX="6.25" PointY="4.875" />
+        <EntityTypeShape EntityType="ArtWork.ProductLang" Width="1.5" PointX="11.875" PointY="4.875" />
+        <AssociationConnector Association="ArtWork.LanguageAuthorLang" />
+        <AssociationConnector Association="ArtWork.AuthorAuthorLang" />
+        <AssociationConnector Association="ArtWork.ProductProductLang" />
+        <AssociationConnector Association="ArtWork.LanguageProductLang" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
