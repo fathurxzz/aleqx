@@ -47,6 +47,15 @@
             <End Role="Language" EntitySet="Language" />
             <End Role="ProductLang" EntitySet="ProductLang" />
           </AssociationSet>
+          <EntitySet Name="TagLang" EntityType="ArtWork.TagLang" />
+          <AssociationSet Name="LanguageTagLang" Association="ArtWork.LanguageTagLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="TagLang" EntitySet="TagLang" />
+          </AssociationSet>
+          <AssociationSet Name="TagTagLang" Association="ArtWork.TagTagLang">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="TagLang" EntitySet="TagLang" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -57,6 +66,7 @@
           <Property Type="String" Name="Label" Nullable="false" />
           <NavigationProperty Name="AuthorLangs" Relationship="ArtWork.LanguageAuthorLang" FromRole="Language" ToRole="AuthorLang" />
           <NavigationProperty Name="ProductLangs" Relationship="ArtWork.LanguageProductLang" FromRole="Language" ToRole="ProductLang" />
+          <NavigationProperty Name="TagLangs" Relationship="ArtWork.LanguageTagLang" FromRole="Language" ToRole="TagLang" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -64,32 +74,35 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="Title" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="ArtWork.AuthorProduct" FromRole="Author" ToRole="Product" />
           <NavigationProperty Name="Tags" Relationship="ArtWork.AuthorTag" FromRole="Author" ToRole="Tag" />
           <NavigationProperty Name="AuthorLangs" Relationship="ArtWork.AuthorAuthorLang" FromRole="Author" ToRole="AuthorLang" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="About" Nullable="false" />
+          <Property Type="String" Name="Photo" Nullable="false" />
+          <Property Type="String" Name="Avatar" Nullable="false" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" />
           <NavigationProperty Name="Author" Relationship="ArtWork.AuthorTag" FromRole="Tag" ToRole="Author" />
           <Property Type="Int32" Name="AuthorId" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="ArtWork.ProductTag" FromRole="Tag" ToRole="Product" />
           <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <NavigationProperty Name="TagLangs" Relationship="ArtWork.TagTagLang" FromRole="Tag" ToRole="TagLang" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" />
           <NavigationProperty Name="Author" Relationship="ArtWork.AuthorProduct" FromRole="Product" ToRole="Author" />
           <Property Type="Int32" Name="AuthorId" Nullable="false" />
           <NavigationProperty Name="Tags" Relationship="ArtWork.ProductTag" FromRole="Product" ToRole="Tag" />
           <NavigationProperty Name="ProductLangs" Relationship="ArtWork.ProductProductLang" FromRole="Product" ToRole="ProductLang" />
+          <Property Type="String" Name="Price" Nullable="false" />
         </EntityType>
         <Association Name="AuthorProduct">
           <End Type="ArtWork.Author" Role="Author" Multiplicity="1" />
@@ -136,6 +149,7 @@
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
           <NavigationProperty Name="Author" Relationship="ArtWork.AuthorAuthorLang" FromRole="AuthorLang" ToRole="Author" />
           <Property Type="Int32" Name="AuthorId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductLang">
           <Key>
@@ -146,6 +160,7 @@
           <Property Type="Int32" Name="ProductId" Nullable="false" />
           <NavigationProperty Name="Language" Relationship="ArtWork.LanguageProductLang" FromRole="ProductLang" ToRole="Language" />
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
         </EntityType>
         <Association Name="LanguageAuthorLang">
           <End Type="ArtWork.Language" Role="Language" Multiplicity="1" />
@@ -192,6 +207,41 @@
             </Principal>
             <Dependent Role="ProductLang">
               <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TagLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="ArtWork.LanguageTagLang" FromRole="TagLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="Tag" Relationship="ArtWork.TagTagLang" FromRole="TagLang" ToRole="Tag" />
+          <Property Type="Int32" Name="TagId" Nullable="false" />
+        </EntityType>
+        <Association Name="LanguageTagLang">
+          <End Type="ArtWork.Language" Role="Language" Multiplicity="1" />
+          <End Type="ArtWork.TagLang" Role="TagLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TagLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TagTagLang">
+          <End Type="ArtWork.Tag" Role="Tag" Multiplicity="1" />
+          <End Type="ArtWork.TagLang" Role="TagLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TagLang">
+              <PropertyRef Name="TagId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

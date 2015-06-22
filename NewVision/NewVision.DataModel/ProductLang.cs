@@ -17,6 +17,7 @@ namespace NewVision.DataModel
         public int Id { get; set; }
         public int ProductId { get; set; }
         public int LanguageId { get; set; }
+        public string Title { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Language Language { get; set; }
