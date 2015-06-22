@@ -139,6 +139,9 @@
     <Compile Include="Tag.cs">
       <DependentUpon>ArtWork.tt</DependentUpon>
     </Compile>
+    <Compile Include="TagLang.cs">
+      <DependentUpon>ArtWork.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

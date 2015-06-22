@@ -31,5 +31,6 @@ namespace NewVision.DataModel
         public DbSet<Product> Product { get; set; }
         public DbSet<AuthorLang> AuthorLang { get; set; }
         public DbSet<ProductLang> ProductLang { get; set; }
+        public DbSet<TagLang> TagLang { get; set; }
     }
 }

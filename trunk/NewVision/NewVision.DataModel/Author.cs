@@ -23,7 +23,10 @@ namespace NewVision.DataModel
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Title { get; set; }
+        public string Description { get; set; }
+        public string About { get; set; }
+        public string Photo { get; set; }
+        public string Avatar { get; set; }
     
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }

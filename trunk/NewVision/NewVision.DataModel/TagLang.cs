@@ -12,19 +12,14 @@ namespace NewVision.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Tag
+    public partial class TagLang
     {
-        public Tag()
-        {
-            this.TagLangs = new HashSet<TagLang>();
-        }
-    
         public int Id { get; set; }
-        public int AuthorId { get; set; }
-        public int ProductId { get; set; }
+        public string Title { get; set; }
+        public int LanguageId { get; set; }
+        public int TagId { get; set; }
     
-        public virtual Author Author { get; set; }
-        public virtual Product Product { get; set; }
-        public virtual ICollection<TagLang> TagLangs { get; set; }
+        public virtual Language Language { get; set; }
+        public virtual Tag Tag { get; set; }
     }
 }
