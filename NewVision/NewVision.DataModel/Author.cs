@@ -17,19 +17,18 @@ namespace NewVision.DataModel
         public Author()
         {
             this.Products = new HashSet<Product>();
-            this.Tags = new HashSet<Tag>();
             this.AuthorLangs = new HashSet<AuthorLang>();
+            this.Tags = new HashSet<Tag>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string About { get; set; }
         public string Photo { get; set; }
         public string Avatar { get; set; }
+        public int SortOrder { get; set; }
     
         public virtual ICollection<Product> Products { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<AuthorLang> AuthorLangs { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

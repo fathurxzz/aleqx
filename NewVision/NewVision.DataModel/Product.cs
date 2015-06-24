@@ -16,16 +16,19 @@ namespace NewVision.DataModel
     {
         public Product()
         {
-            this.Tags = new HashSet<Tag>();
             this.ProductLangs = new HashSet<ProductLang>();
+            this.Tags = new HashSet<Tag>();
         }
     
         public int Id { get; set; }
         public int AuthorId { get; set; }
         public string Price { get; set; }
+        public int SortOrder { get; set; }
+        public Nullable<System.DateTime> ViewDate { get; set; }
+        public string ImageSrc { get; set; }
     
         public virtual Author Author { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }
