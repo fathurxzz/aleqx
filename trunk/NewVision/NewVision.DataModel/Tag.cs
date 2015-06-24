@@ -17,14 +17,18 @@ namespace NewVision.DataModel
         public Tag()
         {
             this.TagLangs = new HashSet<TagLang>();
+            this.Authors = new HashSet<Author>();
+            this.Products = new HashSet<Product>();
+            this.AuthorCategories = new HashSet<AuthorCategory>();
+            this.Categories = new HashSet<Category>();
         }
     
         public int Id { get; set; }
-        public int AuthorId { get; set; }
-        public int ProductId { get; set; }
     
-        public virtual Author Author { get; set; }
-        public virtual Product Product { get; set; }
         public virtual ICollection<TagLang> TagLangs { get; set; }
+        public virtual ICollection<Author> Authors { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<AuthorCategory> AuthorCategories { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

@@ -12,25 +12,20 @@ namespace NewVision.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Language
+    public partial class AuthorCategory
     {
-        public Language()
+        public AuthorCategory()
         {
-            this.AuthorLangs = new HashSet<AuthorLang>();
-            this.ProductLangs = new HashSet<ProductLang>();
-            this.TagLangs = new HashSet<TagLang>();
             this.AuthorCategoryLangs = new HashSet<AuthorCategoryLang>();
-            this.CategoryLangs = new HashSet<CategoryLang>();
+            this.Categories = new HashSet<Category>();
+            this.Tags = new HashSet<Tag>();
         }
     
         public int Id { get; set; }
-        public string Code { get; set; }
-        public string Label { get; set; }
+        public int SortOrder { get; set; }
     
-        public virtual ICollection<AuthorLang> AuthorLangs { get; set; }
-        public virtual ICollection<ProductLang> ProductLangs { get; set; }
-        public virtual ICollection<TagLang> TagLangs { get; set; }
         public virtual ICollection<AuthorCategoryLang> AuthorCategoryLangs { get; set; }
-        public virtual ICollection<CategoryLang> CategoryLangs { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

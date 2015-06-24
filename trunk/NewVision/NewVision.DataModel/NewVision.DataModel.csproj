@@ -83,7 +83,19 @@
     <Compile Include="Author.cs">
       <DependentUpon>ArtWork.tt</DependentUpon>
     </Compile>
+    <Compile Include="AuthorCategory.cs">
+      <DependentUpon>ArtWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorCategoryLang.cs">
+      <DependentUpon>ArtWork.tt</DependentUpon>
+    </Compile>
     <Compile Include="AuthorLang.cs">
+      <DependentUpon>ArtWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>ArtWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryLang.cs">
       <DependentUpon>ArtWork.tt</DependentUpon>
     </Compile>
     <Compile Include="Content.cs">
@@ -149,6 +161,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="ArtWork.edmx.sql" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
