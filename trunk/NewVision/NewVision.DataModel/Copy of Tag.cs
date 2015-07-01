@@ -16,6 +16,7 @@ namespace NewVision.DataModel
     {
         public Tag()
         {
+            this.TagLangs = new HashSet<TagLang>();
             this.Authors = new HashSet<Author>();
             this.Products = new HashSet<Product>();
             this.AuthorCategories = new HashSet<AuthorCategory>();
@@ -23,10 +24,8 @@ namespace NewVision.DataModel
         }
     
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string TitleEn { get; set; }
-        public string TitleUa { get; set; }
     
+        public virtual ICollection<TagLang> TagLangs { get; set; }
         public virtual ICollection<Author> Authors { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<AuthorCategory> AuthorCategories { get; set; }

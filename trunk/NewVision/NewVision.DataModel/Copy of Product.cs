@@ -16,6 +16,7 @@ namespace NewVision.DataModel
     {
         public Product()
         {
+            this.ProductLangs = new HashSet<ProductLang>();
             this.Tags = new HashSet<Tag>();
         }
     
@@ -25,11 +26,9 @@ namespace NewVision.DataModel
         public int SortOrder { get; set; }
         public Nullable<System.DateTime> ViewDate { get; set; }
         public string ImageSrc { get; set; }
-        public string Title { get; set; }
-        public string TitleEn { get; set; }
-        public string TitleUa { get; set; }
     
         public virtual Author Author { get; set; }
+        public virtual ICollection<ProductLang> ProductLangs { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
     }
 }

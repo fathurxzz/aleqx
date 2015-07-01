@@ -86,16 +86,7 @@
     <Compile Include="AuthorCategory.cs">
       <DependentUpon>ArtWork.tt</DependentUpon>
     </Compile>
-    <Compile Include="AuthorCategoryLang.cs">
-      <DependentUpon>ArtWork.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AuthorLang.cs">
-      <DependentUpon>ArtWork.tt</DependentUpon>
-    </Compile>
     <Compile Include="Category.cs">
-      <DependentUpon>ArtWork.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CategoryLang.cs">
       <DependentUpon>ArtWork.tt</DependentUpon>
     </Compile>
     <Compile Include="Content.cs">
@@ -112,9 +103,6 @@
     </Compile>
     <Compile Include="EventAnnouncementImage.cs">
       <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Language.cs">
-      <DependentUpon>ArtWork.tt</DependentUpon>
     </Compile>
     <Compile Include="MainBanner.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -137,21 +125,46 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleImage.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\AuthorCategory.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\ContentImage.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventAnnouncement.cs" />
+    <Compile Include="Models\EventAnnouncementImage.cs" />
+    <Compile Include="Models\gbua_new_visionContext.cs" />
+    <Compile Include="Models\MainBanner.cs" />
+    <Compile Include="Models\Mapping\ArticleImageMap.cs" />
+    <Compile Include="Models\Mapping\ArticleMap.cs" />
+    <Compile Include="Models\Mapping\AuthorCategoryMap.cs" />
+    <Compile Include="Models\Mapping\AuthorMap.cs" />
+    <Compile Include="Models\Mapping\CategoryMap.cs" />
+    <Compile Include="Models\Mapping\ContentImageMap.cs" />
+    <Compile Include="Models\Mapping\ContentMap.cs" />
+    <Compile Include="Models\Mapping\EventAnnouncementImageMap.cs" />
+    <Compile Include="Models\Mapping\EventAnnouncementMap.cs" />
+    <Compile Include="Models\Mapping\EventMap.cs" />
+    <Compile Include="Models\Mapping\MainBannerMap.cs" />
+    <Compile Include="Models\Mapping\MediumMap.cs" />
+    <Compile Include="Models\Mapping\PreviewContentImageMap.cs" />
+    <Compile Include="Models\Mapping\ProductMap.cs" />
+    <Compile Include="Models\Mapping\TagMap.cs" />
+    <Compile Include="Models\Medium.cs" />
+    <Compile Include="Models\PreviewContentImage.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="PreviewContentImage.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>ArtWork.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductLang.cs">
-      <DependentUpon>ArtWork.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs">
-      <DependentUpon>ArtWork.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TagLang.cs">
       <DependentUpon>ArtWork.tt</DependentUpon>
     </Compile>
   </ItemGroup>
