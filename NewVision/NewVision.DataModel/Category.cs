@@ -17,15 +17,16 @@ namespace NewVision.DataModel
         public Category()
         {
             this.AuthorCategories = new HashSet<AuthorCategory>();
-            this.CategoryLangs = new HashSet<CategoryLang>();
             this.Tags = new HashSet<Tag>();
         }
     
         public int Id { get; set; }
         public int SortOrder { get; set; }
+        public string Title { get; set; }
+        public string TitleEn { get; set; }
+        public string TitleUa { get; set; }
     
         public virtual ICollection<AuthorCategory> AuthorCategories { get; set; }
-        public virtual ICollection<CategoryLang> CategoryLangs { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
     }
 }

@@ -1,18 +1,18 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using NewVision.UI.Models.Mapping;
+using NewVision.DataModel.Models.Mapping;
 
-namespace NewVision.UI.Models
+namespace NewVision.DataModel.Models
 {
-    public partial class SiteContext : DbContext
+    public partial class gbua_new_visionContext : DbContext
     {
-        static SiteContext()
+        static gbua_new_visionContext()
         {
-            Database.SetInitializer<SiteContext>(null);
+            Database.SetInitializer<gbua_new_visionContext>(null);
         }
 
-        public SiteContext()
-            : base("Name=SiteContext")
+        public gbua_new_visionContext()
+            : base("Name=gbua_new_visionContext")
         {
         }
 
@@ -27,7 +27,7 @@ namespace NewVision.UI.Models
         public DbSet<EventAnnouncement> EventAnnouncements { get; set; }
         public DbSet<EventAnnouncementImage> EventAnnouncementImages { get; set; }
         public DbSet<MainBanner> MainBanners { get; set; }
-        public DbSet<Media> Media { get; set; }
+        public DbSet<Medium> Media { get; set; }
         public DbSet<PreviewContentImage> PreviewContentImages { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Tag> Tags { get; set; }
@@ -45,7 +45,7 @@ namespace NewVision.UI.Models
             modelBuilder.Configurations.Add(new EventAnnouncementMap());
             modelBuilder.Configurations.Add(new EventAnnouncementImageMap());
             modelBuilder.Configurations.Add(new MainBannerMap());
-            modelBuilder.Configurations.Add(new MediaMap());
+            modelBuilder.Configurations.Add(new MediumMap());
             modelBuilder.Configurations.Add(new PreviewContentImageMap());
             modelBuilder.Configurations.Add(new ProductMap());
             modelBuilder.Configurations.Add(new TagMap());

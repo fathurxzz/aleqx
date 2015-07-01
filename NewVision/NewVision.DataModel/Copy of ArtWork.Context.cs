@@ -25,10 +25,16 @@ namespace NewVision.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Language> Language { get; set; }
         public DbSet<Author> Author { get; set; }
         public DbSet<Tag> Tag { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<AuthorLang> AuthorLang { get; set; }
+        public DbSet<ProductLang> ProductLang { get; set; }
+        public DbSet<TagLang> TagLang { get; set; }
         public DbSet<AuthorCategory> AuthorCategory { get; set; }
+        public DbSet<AuthorCategoryLang> AuthorCategoryLang { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<CategoryLang> CategoryLang { get; set; }
     }
 }
