@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NewVision.UI.Helpers;
 using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
@@ -57,8 +59,31 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     DescriptionUa = model.DescriptionUa,
                     About = model.About,
                     AboutEn = model.AboutEn,
-                    AboutUa = model.AboutUa
+                    AboutUa = model.AboutUa,
                 };
+
+                if (photo != null)
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images/author", photo.FileName);
+                    string filePath = Server.MapPath("~/Content/Images/author");
+                    string filePathThumb = Server.MapPath("~/Content/Images/author/thumb");
+                    filePath = Path.Combine(filePath, fileName);
+                    filePathThumb = Path.Combine(filePathThumb, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, photo, 670);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, photo, 670, 670, ScaleMode.Crop);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePathThumb, fileName, photo, 324, 324, ScaleMode.Crop);
+                    author.Photo = fileName;
+                }
+
+                if (avatar != null)
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images/author", avatar.FileName);
+                    string filePath = Server.MapPath("~/Content/Images/author");
+                    filePath = Path.Combine(filePath, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, photo, 670);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, avatar, 150, 150, ScaleMode.Crop);
+                    author.Avatar = fileName;
+                }
 
                 _context.Authors.Add(author);
                 _context.SaveChanges();
@@ -76,18 +101,45 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var author = _context.Authors.First(a => a.Id == id);
+            return View(author);
         }
 
         //
         // POST: /Admin/Author/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Author model, HttpPostedFileBase photo, HttpPostedFileBase avatar)
         {
             try
             {
-                // TODO: Add update logic here
+                var author = _context.Authors.First(a => a.Id == id);
+
+                TryUpdateModel(author, new[] { "Name", "Title", "TitleEn", "TitleUa", "Description", "DescriptionEn", "DescriptionUa", "About", "AboutEn", "AboutUa", });
+
+                if (photo != null)
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images/author", photo.FileName);
+                    string filePath = Server.MapPath("~/Content/Images/author");
+                    string filePathThumb = Server.MapPath("~/Content/Images/author/thumb");
+                    filePath = Path.Combine(filePath, fileName);
+                    filePathThumb = Path.Combine(filePathThumb, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, photo, 670);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, photo, 670, 670, ScaleMode.Crop);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePathThumb, fileName, photo, 324, 324, ScaleMode.Crop);
+                    author.Photo = fileName;
+                }
+
+                if (avatar != null)
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images/author", avatar.FileName);
+                    string filePath = Server.MapPath("~/Content/Images/author");
+                    filePath = Path.Combine(filePath, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, photo, 670);
+                    GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, avatar, 150, 150, ScaleMode.Crop);
+                    author.Avatar = fileName;
+                }
+
 
                 return RedirectToAction("Index");
             }
@@ -96,31 +148,18 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 return View();
             }
         }
-
-        //
-        // GET: /Admin/Author/Delete/5
 
         public ActionResult Delete(int id)
         {
-            return View();
+            var author = _context.Authors.First(e => e.Id == id);
+            ImageHelper.DeleteImage(author.Photo, "~/Content/Images/author");
+            ImageHelper.DeleteImage(author.Photo, "~/Content/Images/author/thumb");
+            ImageHelper.DeleteImage(author.Avatar);
+
+            _context.Authors.Remove(author);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        //
-        // POST: /Admin/Author/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
