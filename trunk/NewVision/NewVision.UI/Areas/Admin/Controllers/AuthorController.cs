@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -37,30 +38,43 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+
+            ViewBag.Tags = _context.Tags.ToList();
+
             return View(new Author { SortOrder = (_context.Authors.Max(c => (int?)c.SortOrder) ?? 0)+1 });
+
+
+
         }
 
         //
         // POST: /Admin/Author/Create
 
         [HttpPost]
-        public ActionResult Create(Author model, HttpPostedFileBase photo, HttpPostedFileBase avatar)
+        public ActionResult Create(Author model, HttpPostedFileBase photo, HttpPostedFileBase avatar, FormCollection form)
         {
             try
             {
+                ViewBag.Tags = _context.Tags.ToList();
                 var author = new Author
                 {
                     Name = model.Name,
-                    Title = model.Title,
-                    TitleEn = model.TitleEn,
-                    TitleUa = model.TitleUa,
-                    Description = model.Description,
-                    DescriptionEn = model.DescriptionEn,
-                    DescriptionUa = model.DescriptionUa,
-                    About = model.About,
-                    AboutEn = model.AboutEn,
-                    AboutUa = model.AboutUa,
                 };
+
+                author.Title = model.Title == null ? "" : HttpUtility.HtmlDecode(model.Title);
+                author.TitleEn = model.TitleEn == null ? "" : HttpUtility.HtmlDecode(model.TitleEn);
+                author.TitleUa = model.TitleUa == null ? "" : HttpUtility.HtmlDecode(model.TitleUa);
+
+                author.Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description);
+                author.DescriptionEn = model.DescriptionEn == null ? "" : HttpUtility.HtmlDecode(model.DescriptionEn);
+                author.DescriptionUa = model.DescriptionUa == null ? "" : HttpUtility.HtmlDecode(model.DescriptionUa);
+
+                author.About = model.About == null ? "" : HttpUtility.HtmlDecode(model.About);
+                author.AboutEn = model.AboutEn == null ? "" : HttpUtility.HtmlDecode(model.AboutEn);
+                author.AboutUa = model.AboutUa == null ? "" : HttpUtility.HtmlDecode(model.AboutUa);
+
+
+
 
                 if (photo != null)
                 {
@@ -85,14 +99,38 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     author.Avatar = fileName;
                 }
 
+
+                PostCheckboxesData attrData = form.ProcessPostCheckboxesData("tag");
+
+                foreach (var kvp in attrData)
+                {
+                    var tagId = kvp.Key;
+                    bool tagValue = kvp.Value;
+
+                    //author.Tags.Clear();
+
+                    if (tagValue)
+                    {
+                        var tag = _context.Tags.First(t => t.Id == tagId);
+                        author.Tags.Add(tag);
+                    }
+                }
+
+
                 _context.Authors.Add(author);
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                TempData["errorMessage"] = ex.GetEntityValidationException();
+
+                if (string.IsNullOrEmpty((string)TempData["errorMessage"]))
+                {
+                    TempData["errorMessage"] = ex.Message;
+                }
+                return View(model);
             }
         }
 
@@ -101,6 +139,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
+            ViewBag.Tags = _context.Tags.ToList();
             var author = _context.Authors.First(a => a.Id == id);
             return View(author);
         }
@@ -109,16 +148,35 @@ namespace NewVision.UI.Areas.Admin.Controllers
         // POST: /Admin/Author/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, Author model, HttpPostedFileBase photo, HttpPostedFileBase avatar)
+        public ActionResult Edit(int id, Author model, HttpPostedFileBase photo, HttpPostedFileBase avatar, FormCollection form)
         {
             try
             {
+                ViewBag.Tags = _context.Tags.ToList();
                 var author = _context.Authors.First(a => a.Id == id);
 
-                TryUpdateModel(author, new[] { "Name", "Title", "TitleEn", "TitleUa", "Description", "DescriptionEn", "DescriptionUa", "About", "AboutEn", "AboutUa", });
+                TryUpdateModel(author, new[] { "Name"});
+
+                author.Title = model.Title == null ? "" : HttpUtility.HtmlDecode(model.Title);
+                author.TitleEn = model.TitleEn == null ? "" : HttpUtility.HtmlDecode(model.TitleEn);
+                author.TitleUa = model.TitleUa == null ? "" : HttpUtility.HtmlDecode(model.TitleUa);
+
+                author.Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description);
+                author.DescriptionEn = model.DescriptionEn == null ? "" : HttpUtility.HtmlDecode(model.DescriptionEn);
+                author.DescriptionUa = model.DescriptionUa == null ? "" : HttpUtility.HtmlDecode(model.DescriptionUa);
+
+                author.About = model.About == null ? "" : HttpUtility.HtmlDecode(model.About);
+                author.AboutEn = model.AboutEn == null ? "" : HttpUtility.HtmlDecode(model.AboutEn);
+                author.AboutUa = model.AboutUa == null ? "" : HttpUtility.HtmlDecode(model.AboutUa);
 
                 if (photo != null)
                 {
+                    if (!string.IsNullOrEmpty(author.Photo))
+                    {
+                        ImageHelper.DeleteImage(author.Photo, "~/Content/Images/author");
+                        ImageHelper.DeleteImage(author.Photo, "~/Content/Images/author/thumb");
+                    }
+
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images/author", photo.FileName);
                     string filePath = Server.MapPath("~/Content/Images/author");
                     string filePathThumb = Server.MapPath("~/Content/Images/author/thumb");
@@ -132,6 +190,11 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
                 if (avatar != null)
                 {
+                    if (!string.IsNullOrEmpty(author.Avatar))
+                    {
+                        ImageHelper.DeleteImage(author.Avatar, "~/Content/Images/author");
+                    }
+
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images/author", avatar.FileName);
                     string filePath = Server.MapPath("~/Content/Images/author");
                     filePath = Path.Combine(filePath, fileName);
@@ -141,24 +204,67 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 }
 
 
+                PostCheckboxesData attrData = form.ProcessPostCheckboxesData("tag");
+
+
+                author.Tags.Clear();
+
+                foreach (var kvp in attrData)
+                {
+                    var tagId = kvp.Key;
+                    bool tagValue = kvp.Value;
+
+                    if (tagValue)
+                    {
+                        var tag = _context.Tags.First(t => t.Id == tagId);
+                        author.Tags.Add(tag);
+                    }
+                }
+
+                _context.SaveChanges();
+
+
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                TempData["errorMessage"] = ex.GetEntityValidationException();
+
+                if (string.IsNullOrEmpty((string)TempData["errorMessage"]))
+                {
+                    TempData["errorMessage"] = ex.Message;
+                }
+                return View(model);
             }
         }
 
         public ActionResult Delete(int id)
         {
-            var author = _context.Authors.First(e => e.Id == id);
-            ImageHelper.DeleteImage(author.Photo, "~/Content/Images/author");
-            ImageHelper.DeleteImage(author.Photo, "~/Content/Images/author/thumb");
-            ImageHelper.DeleteImage(author.Avatar);
+            try
+            {
+                var author = _context.Authors.First(e => e.Id == id);
+                ImageHelper.DeleteImage(author.Photo, "~/Content/Images/author");
+                ImageHelper.DeleteImage(author.Photo, "~/Content/Images/author/thumb");
+                ImageHelper.DeleteImage(author.Avatar);
 
-            _context.Authors.Remove(author);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
+                author.Tags.Clear();
+
+                _context.Authors.Remove(author);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.GetEntityValidationException();
+
+                if (string.IsNullOrEmpty((string)TempData["errorMessage"]))
+                {
+                    TempData["errorMessage"] = ex.Message;
+                }
+                return RedirectToAction("Index");
+            }
+
+            
         }
 
     }

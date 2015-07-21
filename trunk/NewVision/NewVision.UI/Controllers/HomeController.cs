@@ -36,6 +36,7 @@ namespace NewVision.UI.Controllers
                 result.Add(new { id = content.Id, title = content.MenuTitle, selected = activeMenuItemId == content.Id, active = activeMenuItemId == content.Id && active, url = "/" + CurrentLangCode + "/" + content.Name });
             }
 
+            result.Add(new { id = 5, title = GlobalRes.Authors, selected = activeMenuItemId == 5, active = activeMenuItemId == 5 && active, url = "/" + CurrentLangCode + "/artists" });
             result.Add(new { id = 4, title = GlobalRes.Contacts, selected = activeMenuItemId == 4, active = activeMenuItemId == 4 && active, url = "/" + CurrentLangCode + "/contacts" });
             return "dataModels.mainMenu = " + JsonConvert.SerializeObject(result);
 
@@ -272,6 +273,27 @@ namespace NewVision.UI.Controllers
             ViewBag.MainMenu = GenerateMainMenu(4);
             return View();
         }
+
+
+        public ActionResult Authors()
+        {
+            ViewBag.MainMenu = GenerateMainMenu(5);
+            var result = new List<object>();
+            var authors = _context.Authors.ToList();
+            foreach (var author in authors)
+            {
+                result.Add(new
+                {
+                    name = author.Name,
+                    title = CurrentLang == SiteLanguage.en ? author.TitleEn : CurrentLang == SiteLanguage.ua ? author.TitleUa : author.Title,
+                    tags = CurrentLang == SiteLanguage.en ? author.Tags.Select(t => t.TitleEn).ToArray() : CurrentLang == SiteLanguage.ua ? author.Tags.Select(t => t.TitleUa).ToArray() : author.Tags.Select(t => t.Title).ToArray(),
+                    photo = author.Photo
+                });
+                ViewBag.Authors = "dataModels.authors = " + JsonConvert.SerializeObject(result);
+            }
+            return View();
+        }
+
 
         [HttpPost]
         public JsonResult Feedback(string name, string email, string question)

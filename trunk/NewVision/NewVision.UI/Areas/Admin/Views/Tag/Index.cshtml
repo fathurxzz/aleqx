@@ -1,0 +1,49 @@
+﻿@model IEnumerable<NewVision.UI.Models.Tag>
+
+@{
+    ViewBag.Title = "Тэги";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Tags")
+}
+
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleUa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleEn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleUa)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+        </td>
+    </tr>
+}
+
+</table>
