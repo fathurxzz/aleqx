@@ -1,0 +1,123 @@
+﻿@using System.Linq
+@using NewVision.UI
+@using NewVision.UI.Helpers
+@model System.Collections.Generic.IEnumerable<NewVision.UI.Models.Author>
+@{
+    ViewBag.Title = "Мастера и работы";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Authors")
+}
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleUa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionUa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.About)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AboutEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AboutUa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avatar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tags)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.OrderByDescending(e => e.SortOrder))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleEn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleUa)
+            </td>
+            <td>
+                @Html.Raw(item.Description)
+            </td>
+            <td>
+                @Html.Raw(item.DescriptionEn)
+            </td>
+            <td>
+                @Html.Raw(item.DescriptionUa)
+            </td>
+            <td>
+                @Html.Raw(item.About)
+            </td>
+            <td>
+                @Html.Raw(item.AboutEn)
+            </td>
+            <td>
+                @Html.Raw(item.AboutUa)
+            </td>
+            <td style="min-width: 200px">
+                <div style="float: left; padding-bottom: 5px">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/author/", item.Photo, SiteSettings.GetThumbnail("authorThumb")))
+                </div>
+            </td>
+            <td style="min-width: 200px">
+                <div style="float: left; padding-bottom: 5px">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/author/", item.Avatar, SiteSettings.GetThumbnail("authorAvatar")))
+                </div>
+            </td>
+            <td>
+                @foreach (var tag in item.Tags)
+                {
+                     @Html.Raw(tag.Title+" ")
+                    
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+            </td>
+        </tr>
+    }
+
+</table>
