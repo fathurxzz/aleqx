@@ -38,6 +38,10 @@ namespace Shop.Api.DataSynchronization.Import
             {
                 source = source.Substring(1, source.Length - 2).Replace("\"\"", "\"");
             }
+            if (!string.IsNullOrEmpty(source))
+            {
+                source = source.Replace("\n", " ").Replace(";","");
+            }
             return source;
         }
 
@@ -97,13 +101,7 @@ namespace Shop.Api.DataSynchronization.Import
                                 IsDiscount = ConvertToBooleanValue(x[fieldMapping["IsDiscount"]]),
                                 IsTopSale = ConvertToBooleanValue(x[fieldMapping["IsTopSale"]]),
                                 //IsActive = ConvertToBooleanValue(x[fieldMapping["IsActive"]]),
-
-                                //SeoDescription = x[fieldMapping["SeoDescription"]],
-                                //SeoKeywords = x[fieldMapping["SeoKeywords"]],
-                                //SeoText = x[fieldMapping["SeoText"]],
-
                                 ImportedProductStocks = new List<ImportedProductStock>(),
-                                //ImportedProductAttibutes = new Dictionary<string, string>()
                                 ImportedProductAttibutes = new List<ImportedProductAttribute>()
                             };
 
@@ -119,6 +117,11 @@ namespace Shop.Api.DataSynchronization.Import
                             {
                                 product.SeoText = ParseStringValue(x[fieldMapping["SeoText"]]);
                             }
+                            if (fieldMapping.ContainsKey("Description"))
+                            {
+                                product.Description = ParseStringValue(x[fieldMapping["Description"]]);
+                            }
+
 
                             if (!string.IsNullOrEmpty(x[fieldMapping["ProductStock.StockNumber"]]))
                             {

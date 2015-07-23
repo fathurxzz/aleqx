@@ -22,6 +22,7 @@ namespace Shop.Api.DataSynchronization.Model
             {"SeoDescription", "Описание для поисковиков"},
             {"SeoKeywords", "Ключевые слова для поисковиков"},
             {"SeoText", "Текст для поисковиков"},
+            {"Description", "Описание"},
             {"ProductStock.StockNumber", "Артикул"},
             {"ProductStock.Size", "Размер"},
             {"ProductStock.Color", "Цвет"},

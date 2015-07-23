@@ -93,6 +93,11 @@ namespace Shop.Api.DataSynchronization.Export
                 sb.Append(";");
                 sb.Append(product.SeoText);
                 sb.Append(";");
+                sb.Append(!string.IsNullOrEmpty(product.Description)
+                        ? product.Description.Replace("\n", " ").Replace(";","")
+                        : product.Description);
+                sb.Append(";");
+
 
 
 
@@ -171,6 +176,10 @@ namespace Shop.Api.DataSynchronization.Export
                     sb.Append(product.SeoKeywords);
                     sb.Append(";");
                     sb.Append(product.SeoText);
+                    sb.Append(";");
+                    sb.Append(!string.IsNullOrEmpty(product.Description)
+                        ? product.Description.Replace("\n", " ").Replace(";", "")
+                        : product.Description);
                     sb.Append(";");
 
 
