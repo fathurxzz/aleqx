@@ -25,6 +25,7 @@ namespace NewVision.UI
                                     {"author",new ThumbnailPicture{ PictureSize =new PictureSize {Height =670 ,Width = 670 }, CacheFolder = "author", ScaleMode = ScaleMode.Crop}},
                                     {"authorThumb",new ThumbnailPicture{ PictureSize =new PictureSize {Height =324 ,Width = 324 }, CacheFolder = "authorThumb", ScaleMode = ScaleMode.Crop}},
                                     {"authorAvatar",new ThumbnailPicture{ PictureSize =new PictureSize {Height =150 ,Width = 150 }, CacheFolder = "authorAvatar", ScaleMode = ScaleMode.Crop}},
+                                    {"productThumb",new ThumbnailPicture{ PictureSize =new PictureSize {Height =324 ,Width = 324 }, CacheFolder = "productThumb", ScaleMode = ScaleMode.Crop}},
                                     //{"siteProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =215 ,Width = 268 }, CacheFolder = "siteProductPreview", ScaleMode = ScaleMode.Insert}},
                                     //{"siteProductDetailsMainImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =344 ,Width = 597 }, CacheFolder = "siteProductDetailsMainImage", ScaleMode = ScaleMode.Insert}},
                                     //{"siteProductDetailsThumbnail",new ThumbnailPicture{ PictureSize =new PictureSize {Height =90 ,Width = 90 }, CacheFolder = "siteProductDetailsThumbnail", ScaleMode = ScaleMode.Insert}},

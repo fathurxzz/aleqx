@@ -1,0 +1,105 @@
+﻿@using System.Collections
+@using NewVision.UI.Models
+@model NewVision.UI.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Products")
+}
+
+
+<div class="container">
+    <h3>Добавление продукта</h3>
+    @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" })){
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model=>model.Id)
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Author, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @*@Html.DropDownList("AuthorId", (from item in (IEnumerable<Author>) ViewBag.Authors select new SelectListItem {Text = item.Title, Value = item.Id.ToString(), Selected = item.Id == ViewBag.AuthorId}).ToList())*@
+                @Html.DropDownListFor( model=>model.AuthorId,(from item in (IEnumerable<Author>) ViewBag.Authors select new SelectListItem {Text = item.Title, Value = item.Id.ToString(), Selected = item.Id == ViewBag.AuthorId}).ToList())
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Title" placeholder="Введите название" value="@Model.Title">
+            </div>
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TitleEn, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="TitleEn" placeholder="Введите название" value="@Model.TitleEn">
+            </div>
+            @Html.ValidationMessageFor(model => model.TitleEn)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TitleUa, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="TitleUa" placeholder="Введите название" value="@Model.TitleUa">
+            </div>
+            @Html.ValidationMessageFor(model => model.TitleUa)
+        </div>
+        
+       
+         <div class="form-group">
+            @Html.LabelFor(model => model.Price, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Price" placeholder="Введите цену" value="@Model.Price">
+            </div>
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+           
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageSrc, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="file" name="photo"/>
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.SortOrder, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="SortOrder" placeholder="Введите порядок отображения" value="@Model.SortOrder">
+            </div>
+            @Html.ValidationMessageFor(model => model.SortOrder)
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tags, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+            @foreach (var tag in ((IEnumerable<Tag>)ViewBag.Tags))
+            {
+                @Html.CheckBox("tag_" + tag.Id, Model.Tags.Contains(tag))
+                @tag.Title
+                @Html.Raw("&nbsp;&nbsp;&nbsp;")
+            }    
+            </div>
+            
+        </div>
+          
+ <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "Product", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
