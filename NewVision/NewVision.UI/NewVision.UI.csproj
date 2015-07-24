@@ -179,6 +179,7 @@
     <Compile Include="Areas\Admin\Controllers\MainBannerController.cs" />
     <Compile Include="Areas\Admin\Controllers\MediaController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Models\Validation\MainBannerValidation.cs" />
     <Compile Include="Models\Validation\MediaValidation.cs" />
     <Compile Include="Models\Validation\ContentValidation.cs" />
+    <Compile Include="Models\Validation\ProductValidation.cs" />
     <Compile Include="Models\Validation\TagValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSettings.cs" />
@@ -304,6 +306,8 @@
     <Content Include="Areas\Admin\Views\Tag\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Tag\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Author\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <None Include="Properties\PublishProfiles\dev.pubxml" />
     <None Include="Properties\PublishProfiles\service.pubxml" />
     <Content Include="images\arrow-left.png" />

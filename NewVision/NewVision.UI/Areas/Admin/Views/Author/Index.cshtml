@@ -1,9 +1,9 @@
 ﻿@using System.Linq
 @using NewVision.UI
 @using NewVision.UI.Helpers
-@model System.Collections.Generic.IEnumerable<NewVision.UI.Models.Author>
+@model IEnumerable<NewVision.UI.Models.Author>
 @{
-    ViewBag.Title = "Мастера и работы";
+    ViewBag.Title = "Мастера";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -115,7 +115,8 @@
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" }) |
+                @Html.ActionLink("Добавить работу", "Create","Product",new{id = item.Id}, new { id = item.Id }) 
             </td>
         </tr>
     }

@@ -1,0 +1,83 @@
+﻿@using System.Linq
+@using NewVision.UI
+@using NewVision.UI.Helpers
+@model IEnumerable<NewVision.UI.Models.Product>
+
+@{
+    ViewBag.Title = "Работы";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Products")
+}
+
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleEn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleUa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(p=>p.SortOrder)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SortOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ViewDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageSrc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleEn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleUa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
