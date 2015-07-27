@@ -102,7 +102,12 @@
 
                         authors_subMenu_authors: 'Мастера',
                         authors_subMenu_products: 'Работы',
-                        authors_subMenu_search: 'Расширенный поиск'
+                        authors_subMenu_search: 'Расширенный поиск',
+
+                        authors_subMenu_aboutAuthor: 'Об артисте',
+                        authors_subMenu_authorProducts: 'Работы артиста',
+                        authors_subMenu_authorEvents: 'События с артистом',
+                        artists_and_arts: 'Мастера и работы'
                     },
                     ua: {
                         copyright: '&copy; {year} New Vision Productions',
@@ -131,7 +136,12 @@
 
                         authors_subMenu_authors: 'Майстри',
                         authors_subMenu_products: 'Роботи',
-                        authors_subMenu_search: 'Розширений пошук'
+                        authors_subMenu_search: 'Розширений пошук',
+
+                        authors_subMenu_aboutAuthor: 'Про майстра',
+                        authors_subMenu_authorProducts: 'Роботи майстра',
+                        authors_subMenu_authorEvents: 'Події з майстром',
+                        artists_and_arts: 'Майстри та роботи'
                     },
                     en: {
                         copyright: '&copy; {year} New Vision Productions',
@@ -160,7 +170,12 @@
 
                         authors_subMenu_authors: 'Artists',
                         authors_subMenu_products: 'Arts',
-                        authors_subMenu_search: 'Extended search'
+                        authors_subMenu_search: 'Extended search',
+
+                        authors_subMenu_aboutAuthor: 'About artist',
+                        authors_subMenu_authorProducts: 'Artist\'s works',
+                        authors_subMenu_authorEvents: 'Events with artist',
+                        artists_and_arts: 'Artists and arts'
                     }
                     
                 }
@@ -196,7 +211,11 @@
                 authorsPageUrl: '/' + settings.locale + '/artists',
                 productsPageUrl: '/' + settings.locale + '/arts',
                 joinUsUrl: '#',
-                antiSpamAnswer: '321'
+                antiSpamAnswer: '321',
+                authorProductItemsInRowCount: 4,
+
+                authorAboutPageUrl: '/' + settings.locale + '/about/{artist}',
+                authorProductsPageUrl:'/' + settings.locale + '/arts/{artist}'
             };
 
         }(NV, A9));

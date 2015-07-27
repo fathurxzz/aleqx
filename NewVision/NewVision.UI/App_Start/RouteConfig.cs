@@ -91,6 +91,22 @@ namespace NewVision.UI
           );
 
             routes.MapRoute(
+              "authorsAbout",
+              "{lang}/about/{id}",
+              new { controller = "Home", action = "ArtistAbout" },
+              new { lang = @"ru|ua|en" },
+              new[] { "NewVision.UI.Controllers" }
+          );
+
+            routes.MapRoute(
+              "artistProducts",
+              "{lang}/arts/{id}",
+              new { controller = "Home", action = "ArtistProducts" },
+              new { lang = @"ru|ua|en" },
+              new[] { "NewVision.UI.Controllers" }
+          );
+
+            routes.MapRoute(
               "products",
               "{lang}/arts",
               new { controller = "Home", action = "Products" },

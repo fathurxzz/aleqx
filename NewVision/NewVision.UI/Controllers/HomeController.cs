@@ -27,7 +27,7 @@ namespace NewVision.UI.Controllers
 
             var result = new List<object>();
 
-            result.Add(new { id = 1, title = GlobalRes.MainMenuSchedule, selected = activeMenuItemId == 1, active = activeMenuItemId == 1 && active, url ="/" + CurrentLangCode+ "/events" });
+            result.Add(new { id = 1, title = GlobalRes.MainMenuSchedule, selected = activeMenuItemId == 1, active = activeMenuItemId == 1 && active, url = "/" + CurrentLangCode + "/events" });
             result.Add(new { id = 2, title = GlobalRes.MainMenuNews, selected = activeMenuItemId == 2, active = activeMenuItemId == 2 && active, url = "/" + CurrentLangCode + "/news" });
             result.Add(new { id = 3, title = GlobalRes.Media, selected = activeMenuItemId == 3, active = activeMenuItemId == 3 && active, url = "/" + CurrentLangCode + "/media" });
 
@@ -225,8 +225,9 @@ namespace NewVision.UI.Controllers
                     size = "1x1",
                     titlePosition = SiteContentHelper.TitlePositionKeys[article.TitlePosition]
                 });
-                ViewBag.News = "dataModels.news = " + JsonConvert.SerializeObject(result);
             }
+
+            ViewBag.News = "dataModels.news = " + JsonConvert.SerializeObject(result);
 
             return View();
         }
@@ -263,8 +264,9 @@ namespace NewVision.UI.Controllers
                     mediaType = article.ContentType == 0 ? "image" : "video",
                     mediaSrc = article.ContentType == 0 ? article.ImageSrc : article.VideoSrc
                 });
-                ViewBag.Media = "dataModels.media = " + JsonConvert.SerializeObject(result);
             }
+
+            ViewBag.Media = "dataModels.media = " + JsonConvert.SerializeObject(result);
             return View();
         }
 
@@ -289,8 +291,8 @@ namespace NewVision.UI.Controllers
                     tags = CurrentLang == SiteLanguage.en ? author.Tags.Select(t => t.TitleEn).ToArray() : CurrentLang == SiteLanguage.ua ? author.Tags.Select(t => t.TitleUa).ToArray() : author.Tags.Select(t => t.Title).ToArray(),
                     photo = author.Photo
                 });
-                ViewBag.Authors = "dataModels.authors = " + JsonConvert.SerializeObject(result);
             }
+            ViewBag.Authors = "dataModels.authors = " + JsonConvert.SerializeObject(result);
             return View();
         }
 
@@ -308,9 +310,53 @@ namespace NewVision.UI.Controllers
                     photo = product.ImageSrc,
                     author = new { name = product.Author.Name, title = CurrentLang == SiteLanguage.en ? product.Author.TitleEn : CurrentLang == SiteLanguage.ua ? product.Author.TitleUa : product.Author.Title }
                 });
-                ViewBag.Products = "dataModels.products = " + JsonConvert.SerializeObject(result);
             }
+            ViewBag.Products = "dataModels.products = " + JsonConvert.SerializeObject(result);
             return View();
+        }
+
+        public ActionResult ArtistAbout(string id)
+        {
+            ViewBag.MainMenu = GenerateMainMenu(5, true);
+            var author = _context.Authors.First(a => a.Name == id);
+
+            ViewBag.Author = "dataModels.author = " + JsonConvert.SerializeObject(new
+            {
+                name = author.Name,
+                title = CurrentLang == SiteLanguage.en ? author.TitleEn : CurrentLang == SiteLanguage.ua ? author.TitleUa : author.Title,
+                photo = author.Photo,
+                description = CurrentLang == SiteLanguage.en ? author.AboutEn : CurrentLang == SiteLanguage.ua ? author.AboutUa : author.About
+            });
+            return View();
+        }
+
+        public ActionResult ArtistProducts(string id)
+        {
+            ViewBag.MainMenu = GenerateMainMenu(5, true);
+            var author = _context.Authors.First(a => a.Name == id);
+            var result = new List<object>();
+            var products = author.Products.ToList();
+            foreach (var product in products)
+            {
+                result.Add(new
+                {
+                    title = CurrentLang == SiteLanguage.en ? product.TitleEn : CurrentLang == SiteLanguage.ua ? product.TitleUa : product.Title,
+                    tags = CurrentLang == SiteLanguage.en ? product.Tags.Select(t => t.TitleEn).ToArray() : CurrentLang == SiteLanguage.ua ? product.Tags.Select(t => t.TitleUa).ToArray() : product.Tags.Select(t => t.Title).ToArray(),
+                    photo = product.ImageSrc,
+                    author = new { name = product.Author.Name, title = CurrentLang == SiteLanguage.en ? product.Author.TitleEn : CurrentLang == SiteLanguage.ua ? product.Author.TitleUa : product.Author.Title }
+                });
+            }
+
+            ViewBag.Products = "dataModels.products = " + JsonConvert.SerializeObject(result);
+            ViewBag.Author = "dataModels.author = " + JsonConvert.SerializeObject(new
+            {
+                name = author.Name,
+                title = CurrentLang == SiteLanguage.en ? author.TitleEn : CurrentLang == SiteLanguage.ua ? author.TitleUa : author.Title,
+                photo = author.Photo,
+                description = CurrentLang == SiteLanguage.en ? author.AboutEn : CurrentLang == SiteLanguage.ua ? author.AboutUa : author.About
+            });
+            return View();
+
         }
 
 

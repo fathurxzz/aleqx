@@ -386,6 +386,8 @@
     <Content Include="Views\Home\NewsDetails.cshtml" />
     <Content Include="Views\Home\Authors.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Home\ArtistAbout.cshtml" />
+    <Content Include="Views\Home\ArtistProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -408,6 +410,7 @@
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\GlobalRes.uk.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
