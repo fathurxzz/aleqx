@@ -10,5 +10,7 @@
         <li class="@(Model == "Authors" ? "active" : "")">@Html.ActionLink("Мастера", "Index", "Author", new { area = "Admin" }, null)</li>
         <li class="@(Model == "Products" ? "active" : "")">@Html.ActionLink("Работы", "Index", "Product", new { area = "Admin" }, null)</li>
         <li class="@(Model == "Tags" ? "active" : "")">@Html.ActionLink("Тэги", "Index", "Tag", new { area = "Admin" }, null)</li>
+        <li class="@(Model == "AuthorCategories" ? "active" : "")">@Html.ActionLink("Тип артиста", "Index", "AuthorCategory", new { area = "Admin" }, null)</li>
+        <li class="@(Model == "Categories" ? "active" : "")">@Html.ActionLink("Категории артиста", "Index", "Category", new { area = "Admin" }, null)</li>
     </ul>
 </div>
