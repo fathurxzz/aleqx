@@ -196,15 +196,14 @@ namespace NewVision.UI.Areas.Admin.Controllers
         {
             try
             {
-                //var tag = _context.Tags.FirstOrDefault(t => t.Id == id);
-                //if (tag != null)
-                //{
-                //    tag.Categories.Clear();
-                //    tag.Products.Clear();
-                //    tag.Authors.Clear();
-                //    _context.Tags.Remove(tag);
-                //    _context.SaveChanges();
-                //}
+                var cat = _context.Categories.FirstOrDefault(t => t.Id == id);
+                if (cat != null)
+                {
+                    cat.Tags.Clear();
+                    cat.AuthorCategories.Clear();
+                    _context.Categories.Remove(cat);
+                    _context.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
