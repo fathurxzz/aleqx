@@ -8,7 +8,7 @@ using NewVision.UI.Models;
 
 namespace NewVision.UI.Areas.Admin.Controllers
 {
-    public class TagController : Controller
+    public class TagController : AdminController
     {
 
         private readonly SiteContext _context;
@@ -27,7 +27,6 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-
             return View(new Tag());
         }
 

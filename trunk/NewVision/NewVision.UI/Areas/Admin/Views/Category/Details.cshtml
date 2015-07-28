@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Categories")
+}
+
+
+
+@using (Html.BeginForm("Details", "Category", FormMethod.Post, new {role = "form", @class = "form-horizontal", enctype = "multipart/form-data"}))
+{
+    
+    @Html.Hidden("categoryId",((NewVision.UI.Models.Category) ViewBag.Category).Id)
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Типы артистов
+            </th>
+        </tr>
+
+        @foreach (var item in (IEnumerable<NewVision.UI.Models.AuthorCategory>)ViewBag.AuthorCategories)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBox("category_" + item.Id, ((NewVision.UI.Models.Category) ViewBag.Category).AuthorCategories.Contains(item)) @item.Title
+                </td>
+            </tr>
+        }
+        
+        
+
+    </table>
+    
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Тэги
+            </th>
+        </tr>
+
+         @foreach (var item in (IEnumerable<NewVision.UI.Models.Tag>)ViewBag.Tags)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBox("tag_" + item.Id, ((NewVision.UI.Models.Category) ViewBag.Category).Tags.Contains(item)) @item.Title
+                </td>
+            </tr>
+        }
+        
+        
+
+    </table>
+    
+    
+    
+   
+    
+    <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "Category", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </div>
+}

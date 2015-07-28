@@ -1,0 +1,62 @@
+﻿@model IEnumerable<NewVision.UI.Models.Category>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "AuthorCategories")
+}
+
+
+
+@using (Html.BeginForm("Details", "AuthorCategory", FormMethod.Post, new {role = "form", @class = "form-horizontal", enctype = "multipart/form-data"}))
+{
+    
+    @Html.Hidden("categoryId",((NewVision.UI.Models.AuthorCategory) ViewBag.AuthorCategory).Id)
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Категории артиста
+            </th>
+        </tr>
+
+        @foreach (var item in (IEnumerable<NewVision.UI.Models.Category>)ViewBag.Categories)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBox("category_" + item.Id, ((NewVision.UI.Models.AuthorCategory) ViewBag.AuthorCategory).Categories.Contains(item)) @item.Title
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br/>
+    <br/>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Тэги
+            </th>
+        </tr>
+
+        @foreach (var item in (IEnumerable<NewVision.UI.Models.Tag>)ViewBag.Tags)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBox("tag_" + item.Id, ((NewVision.UI.Models.AuthorCategory) ViewBag.AuthorCategory).Tags.Contains(item)) @item.Title
+                </td>
+            </tr>
+        }
+
+    </table>
+    
+    <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "AuthorCategory", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </div>
+}

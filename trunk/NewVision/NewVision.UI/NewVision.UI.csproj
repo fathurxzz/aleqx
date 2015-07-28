@@ -173,7 +173,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthorCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventAnnouncementController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainBannerController.cs" />
@@ -234,7 +236,9 @@
     <Compile Include="Models\SiteViewModels\mainPage.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Validation\ArticleValidation.cs" />
+    <Compile Include="Models\Validation\AuthorCategoryValidation.cs" />
     <Compile Include="Models\Validation\AuthorValidation.cs" />
+    <Compile Include="Models\Validation\CategoryValidation.cs" />
     <Compile Include="Models\Validation\EventValidation.cs" />
     <Compile Include="Models\Validation\MainBannerValidation.cs" />
     <Compile Include="Models\Validation\MediaValidation.cs" />
@@ -309,6 +313,14 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AuthorCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AuthorCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AuthorCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AuthorCategory\Details.cshtml" />
     <None Include="Properties\PublishProfiles\dev.pubxml" />
     <None Include="Properties\PublishProfiles\service.pubxml" />
     <Content Include="images\arrow-left.png" />
