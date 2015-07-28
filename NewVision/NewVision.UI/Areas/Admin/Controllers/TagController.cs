@@ -110,6 +110,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     tag.Categories.Clear();
                     tag.Products.Clear();
                     tag.Authors.Clear();
+                    tag.AuthorCategories.Clear();
                     _context.Tags.Remove(tag);
                     _context.SaveChanges();
                 }
