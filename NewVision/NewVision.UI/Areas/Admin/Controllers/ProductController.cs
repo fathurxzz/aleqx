@@ -77,9 +77,11 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images/product", photo.FileName);
                     string filePath = Server.MapPath("~/Content/Images/product");
                     string filePathThumb = Server.MapPath("~/Content/Images/product/thumb");
+                    string filePathOrigSize = Server.MapPath("~/Content/Images/product/orig");
                     filePath = Path.Combine(filePath, fileName);
                     filePathThumb = Path.Combine(filePathThumb, fileName);
-                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, photo, 670);
+                    filePathOrigSize = Path.Combine(filePathOrigSize, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePathOrigSize, fileName, photo,2000);
                     GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePath, fileName, photo, 1440, 960, ScaleMode.Crop);
                     GraphicsHelper.SaveOriginalImageWithDefinedDimentions(filePathThumb, fileName, photo, 324, 324, ScaleMode.Crop);
                     product.ImageSrc = fileName;
@@ -216,6 +218,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 var product = _context.Products.First(e => e.Id == id);
                 ImageHelper.DeleteImage(product.ImageSrc, "~/Content/Images/product");
                 ImageHelper.DeleteImage(product.ImageSrc, "~/Content/Images/product/thumb");
+                ImageHelper.DeleteImage(product.ImageSrc, "~/Content/Images/product/orig");
 
                 product.Tags.Clear();
 

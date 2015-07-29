@@ -359,6 +359,35 @@ namespace NewVision.UI.Controllers
 
         }
 
+        public ActionResult ArtistProductsDetails(string id)
+        {
+            ViewBag.MainMenu = GenerateMainMenu(5, true);
+            var author = _context.Authors.First(a => a.Name == id);
+            var result = new List<object>();
+            var products = author.Products.ToList();
+            foreach (var product in products)
+            {
+                result.Add(new
+                {
+                    title = CurrentLang == SiteLanguage.en ? product.TitleEn : CurrentLang == SiteLanguage.ua ? product.TitleUa : product.Title,
+                    tags = CurrentLang == SiteLanguage.en ? product.Tags.Select(t => t.TitleEn).ToArray() : CurrentLang == SiteLanguage.ua ? product.Tags.Select(t => t.TitleUa).ToArray() : product.Tags.Select(t => t.Title).ToArray(),
+                    photo = product.ImageSrc,
+                    author = new { name = product.Author.Name, title = CurrentLang == SiteLanguage.en ? product.Author.TitleEn : CurrentLang == SiteLanguage.ua ? product.Author.TitleUa : product.Author.Title }
+                });
+            }
+
+            ViewBag.Products = "dataModels.products = " + JsonConvert.SerializeObject(result);
+            ViewBag.Author = "dataModels.author = " + JsonConvert.SerializeObject(new
+            {
+                name = author.Name,
+                title = CurrentLang == SiteLanguage.en ? author.TitleEn : CurrentLang == SiteLanguage.ua ? author.TitleUa : author.Title,
+                photo = author.Photo,
+                description = CurrentLang == SiteLanguage.en ? author.AboutEn : CurrentLang == SiteLanguage.ua ? author.AboutUa : author.About,
+                images=products.Select(image => image.ImageSrc).ToList()
+            });
+            return View();
+        }
+
 
         [HttpPost]
         public JsonResult Feedback(string name, string email, string question)
