@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title += " — Artists and arts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts
+{
+    <script type="text/javascript">
+        (function (nv, a9) {
+            var settings = nv.settings,
+                dataModels = settings.dataModels;
+            @Html.Raw(ViewBag.Author);
+            @Html.Raw(ViewBag.Products);
+        }(NV, A9));
+    </script>
+}
+<div class="page">
+    <div id="authorProductsDetails" class="authors-products">
+    </div>
+</div>
