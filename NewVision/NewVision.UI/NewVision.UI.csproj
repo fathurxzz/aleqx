@@ -357,6 +357,8 @@
     <Content Include="images\logo.png" />
     <Content Include="images\main-page-details-arrow.png" />
     <Content Include="images\more-less-btn.png" />
+    <Content Include="images\product-details-arrow-left.png" />
+    <Content Include="images\product-details-arrow-right.png" />
     <Content Include="images\right-wave-grey.png" />
     <Content Include="images\right-wave.png" />
     <Content Include="images\site-bg.png" />
