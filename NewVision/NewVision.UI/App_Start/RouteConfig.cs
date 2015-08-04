@@ -83,6 +83,14 @@ namespace NewVision.UI
           );
 
             routes.MapRoute(
+             "artistSearch",
+             "{lang}/artists/tags/{tagsId}",
+             new { controller = "Home", action = "Authors" },
+             new { lang = @"ru|ua|en" },
+             new[] { "NewVision.UI.Controllers" }
+         );
+
+            routes.MapRoute(
               "authors",
               "{lang}/artists",
               new { controller = "Home", action = "Authors" },
@@ -106,6 +114,14 @@ namespace NewVision.UI
              new { lang = @"ru|ua|en" },
              new[] { "NewVision.UI.Controllers" }
          );
+
+            routes.MapRoute(
+              "artistProductsSearch",
+              "{lang}/arts/tags/{tagsId}",
+              new { controller = "Home", action = "Products" },
+              new { lang = @"ru|ua|en" },
+              new[] { "NewVision.UI.Controllers" }
+          );
 
             routes.MapRoute(
               "artistProducts",

@@ -361,6 +361,7 @@
     <Content Include="images\product-details-arrow-right.png" />
     <Content Include="images\right-wave-grey.png" />
     <Content Include="images\right-wave.png" />
+    <Content Include="images\search-form-bg.png" />
     <Content Include="images\site-bg.png" />
     <Content Include="images\stripe-center-bg.png" />
     <Content Include="images\stripe-left-bg.png" />
