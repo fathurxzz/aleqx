@@ -20,6 +20,14 @@ namespace NewVision.UI.Controllers
             _context = context;
         }
 
+        private string GenerateSearchFormData()
+        {
+            var result = new List<object>();
+
+
+            return "dataModels.searchForm = " + JsonConvert.SerializeObject(result);
+        }
+
         private string GenerateMainMenu(int activeMenuItemId, bool active = false)
         {
 
@@ -277,8 +285,10 @@ namespace NewVision.UI.Controllers
         }
 
 
-        public ActionResult Authors()
+        public ActionResult Authors(string tagsId)
         {
+
+            ViewBag.SearchFormData = GenerateSearchFormData();
             ViewBag.MainMenu = GenerateMainMenu(5);
             var result = new List<object>();
             var authors = _context.Authors.ToList();
@@ -296,8 +306,9 @@ namespace NewVision.UI.Controllers
             return View();
         }
 
-        public ActionResult Products()
+        public ActionResult Products(string tagsId)
         {
+            ViewBag.SearchFormData = GenerateSearchFormData();
             ViewBag.MainMenu = GenerateMainMenu(5);
             var result = new List<object>();
             var products = _context.Products.ToList();
