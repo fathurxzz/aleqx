@@ -109,7 +109,9 @@
                         authors_subMenu_authorEvents: 'События с артистом',
                         artists_and_arts: 'Мастера и работы',
                         searchFormTitle: 'Расширенный поиск',
-                        searchFormSubmitButtonTitle: 'показать'
+                        searchFormSubmitButtonTitle: 'показать',
+                        tagsFilterShowOnly: 'отображается только:',
+                        tagsFilterReset: 'сбросить'
                     },
                     ua: {
                         copyright: '&copy; {year} New Vision Productions',
@@ -145,7 +147,9 @@
                         authors_subMenu_authorEvents: 'Події з майстром',
                         artists_and_arts: 'Майстри та роботи',
                         searchFormTitle: 'розширений пошук',
-                        searchFormSubmitButtonTitle: 'показати'
+                        searchFormSubmitButtonTitle: 'показати',
+                        tagsFilterShowOnly: 'отображается только:',
+                        tagsFilterReset: 'сбросить'
                     },
                     en: {
                         copyright: '&copy; {year} New Vision Productions',
@@ -181,7 +185,9 @@
                         authors_subMenu_authorEvents: 'Events with artist',
                         artists_and_arts: 'Artists and arts',
                         searchFormTitle: 'extended search',
-                        searchFormSubmitButtonTitle: 'show'
+                        searchFormSubmitButtonTitle: 'show',
+                        tagsFilterShowOnly: 'show only:',
+                        tagsFilterReset: 'reset'
                     }
                     
                 }
@@ -236,125 +242,9 @@
         (function (nv, a9) {
             var settings = nv.settings,
                 dataModels = settings.dataModels;
-
             @Html.Raw(ViewBag.MainMenu);
-            @*@Html.Raw(ViewBag.SearchFormData);*@
-            dataModels.searchForm =
-        {
-            authorCategories: [
-                {
-                    title: 'test',
-                    value: 5,
-                    categories: [
-                        {
-                            title: 'test',
-                            value: 15,
-                            tags: [
-                                {
-                                    text: 'test',
-                                    value: 0
-                                },
-                                {
-                                    text: 'test',
-                                    value: 1
-                                }
-
-                            ]
-                        },
-                        {
-                            title: 'test',
-                            value: 1,
-                            tags: [
-                                {
-                                    text: 'test',
-                                    value: 0
-                                },
-                                {
-                                    text: 'test',
-                                    value: 1
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    title: 'test',
-                    value: 1,
-                    categories: [
-                        {
-                            title: 'test',
-                            value: 0,
-                            tags: [
-                                {
-                                    text: 'test',
-                                    value: 0
-                                },
-                                {
-                                    text: 'test',
-                                    value: 1
-                                }
-                            ]
-                        },
-                        {
-                            title: 'test',
-                            value: 1,
-                            tags: [
-                                {
-                                    text: 'test',
-                                    value: 0
-                                },
-                                {
-                                    text: 'test',
-                                    value: 1
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-
-
-
-            //dataModels.mainMenu = [
-            //    {
-            //        id:1,
-            //        title: 'расписание проектов',
-            //        selected: false,
-            //        active: false,
-            //        url: settings.controlsDescriptors.site.eventsPageUrl
-
-            //    },
-            //    {
-            //        id: 2,
-            //        title: 'новости и события',
-            //        selected: false,
-            //        active: false,
-            //        url: settings.controlsDescriptors.site.newsPageUrl
-            //    },
-            //    {
-            //        id: 3,
-            //        title: 'медиа',
-            //        selected: false,
-            //        active: false,
-            //        url: settings.controlsDescriptors.site.mediaPageUrl
-            //    },
-            //    {
-            //        id: 4,
-            //        title: 'спонсорство и партнерство',
-            //        selected: false,
-            //        active: false,
-            //        url: settings.controlsDescriptors.site.partnershipPageUrl
-            //    },
-            //    {
-            //        id: 5,
-            //        title: 'контактная информация',
-            //        selected: false,
-            //        active: false,
-            //        url: settings.controlsDescriptors.site.contactsPageUrl
-            //    }
-            //];
-
+            @Html.Raw(ViewBag.SearchFormData);
+            @Html.Raw(ViewBag.CurrentTags);
         }(NV, A9));
     </script>
     @RenderSection("scripts", required: false)
