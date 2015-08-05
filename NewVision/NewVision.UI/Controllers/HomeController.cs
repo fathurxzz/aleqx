@@ -23,9 +23,48 @@ namespace NewVision.UI.Controllers
         private string GenerateSearchFormData()
         {
             var result = new List<object>();
+            
+            var authorCategories = _context.AuthorCategories.ToList();
+            foreach (var authorCategory in authorCategories)
+            {
+                var resultAuthorCategory = new
+                {
+                    title = CurrentLang == SiteLanguage.en ? authorCategory.TitleEn : CurrentLang == SiteLanguage.ua ? authorCategory.TitleUa : authorCategory.Title,
+                    value= authorCategory.Id,
+                    categories = new List<object>()
+                };
+                foreach (var category in authorCategory.Categories)
+                {
+                    var resultCategory = new
+                    {
+                        title = CurrentLang == SiteLanguage.en ? category.TitleEn : CurrentLang == SiteLanguage.ua ? category.TitleUa : category.Title,
+                        value = category.Id,
+                        tags = new List<object>()
+                    };
+
+                    foreach (var categoryTag in category.Tags)
+                    {
+                        if (authorCategory.Tags.Contains(categoryTag))
+                        {
+                            resultCategory.tags.Add(new
+                            {
+                                text = CurrentLang == SiteLanguage.en ? categoryTag.TitleEn : CurrentLang == SiteLanguage.ua ? categoryTag.TitleUa : categoryTag.Title,
+                                value = categoryTag.Id
+                            });
+                        }
+                    }
+                    resultAuthorCategory.categories.Add(resultCategory);
+                }
+                result.Add(resultAuthorCategory);
+            }
+            var model  = new
+            {
+                authorCategories = result
+            };
 
 
-            return "dataModels.searchForm = " + JsonConvert.SerializeObject(result);
+
+            return "dataModels.searchForm = " + JsonConvert.SerializeObject(model);
         }
 
         private string GenerateMainMenu(int activeMenuItemId, bool active = false)
@@ -287,6 +326,25 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Authors(string tagsId)
         {
+            int[] tagsIds = new int[0];
+            if (tagsId != null)
+            {
+                tagsIds = tagsId.Split(new[] {"-"}, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            }
+
+            var stags = new List<object>();
+            var selectedTags = _context.Tags.Where(t => tagsIds.Contains(t.Id));
+            foreach (var sTag in selectedTags)
+            {
+                stags.Add(new
+                {
+                    id = sTag .Id,
+                    title = CurrentLang == SiteLanguage.en ? sTag.TitleEn : CurrentLang == SiteLanguage.ua ? sTag.TitleUa : sTag.Title
+                });
+            }
+            ViewBag.CurrentTags = "dataModels.currentTags = " + JsonConvert.SerializeObject(stags);
+
+
 
             ViewBag.SearchFormData = GenerateSearchFormData();
             ViewBag.MainMenu = GenerateMainMenu(5);
@@ -294,13 +352,26 @@ namespace NewVision.UI.Controllers
             var authors = _context.Authors.ToList();
             foreach (var author in authors)
             {
-                result.Add(new
+                if (tagsIds.Length > 0 && author.Tags.Select(t => t.Id).Intersect(tagsIds).ToArray().Length == tagsIds.Length || tagsIds.Length == 0)
                 {
-                    name = author.Name,
-                    title = CurrentLang == SiteLanguage.en ? author.TitleEn : CurrentLang == SiteLanguage.ua ? author.TitleUa : author.Title,
-                    tags = CurrentLang == SiteLanguage.en ? author.Tags.Select(t => t.TitleEn).ToArray() : CurrentLang == SiteLanguage.ua ? author.Tags.Select(t => t.TitleUa).ToArray() : author.Tags.Select(t => t.Title).ToArray(),
-                    photo = author.Photo
-                });
+                    var tags  = new List<object>();
+                    foreach (var tag in author.Tags)
+                    {
+                        tags.Add(new
+                        {
+                            id = tag.Id,
+                            title = CurrentLang == SiteLanguage.en ? tag.TitleEn : CurrentLang == SiteLanguage.ua ? tag.TitleUa : tag.Title
+                        });
+                    }
+
+                    result.Add(new
+                    {
+                        name = author.Name,
+                        title = CurrentLang == SiteLanguage.en ? author.TitleEn : CurrentLang == SiteLanguage.ua ? author.TitleUa : author.Title,
+                        tags = tags,
+                        photo = author.Photo
+                    });
+                }
             }
             ViewBag.Authors = "dataModels.authors = " + JsonConvert.SerializeObject(result);
             return View();
@@ -308,19 +379,51 @@ namespace NewVision.UI.Controllers
 
         public ActionResult Products(string tagsId)
         {
+            int[] tagsIds = new int[0];
+            if (tagsId != null)
+            {
+                tagsIds = tagsId.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            }
+
+            var stags = new List<object>();
+            var selectedTags = _context.Tags.Where(t => tagsIds.Contains(t.Id));
+            foreach (var sTag in selectedTags)
+            {
+                stags.Add(new
+                {
+                    id = sTag.Id,
+                    title = CurrentLang == SiteLanguage.en ? sTag.TitleEn : CurrentLang == SiteLanguage.ua ? sTag.TitleUa : sTag.Title
+                });
+            }
+            ViewBag.CurrentTags = "dataModels.currentTags = " + JsonConvert.SerializeObject(stags);
+
             ViewBag.SearchFormData = GenerateSearchFormData();
             ViewBag.MainMenu = GenerateMainMenu(5);
             var result = new List<object>();
             var products = _context.Products.ToList();
             foreach (var product in products)
             {
-                result.Add(new
+                if (tagsIds.Length > 0 && product.Tags.Select(t => t.Id).Intersect(tagsIds).ToArray().Length == tagsIds.Length ||
+                    tagsIds.Length == 0)
                 {
-                    title = CurrentLang == SiteLanguage.en ? product.TitleEn : CurrentLang == SiteLanguage.ua ? product.TitleUa : product.Title,
-                    tags = CurrentLang == SiteLanguage.en ? product.Tags.Select(t => t.TitleEn).ToArray() : CurrentLang == SiteLanguage.ua ? product.Tags.Select(t => t.TitleUa).ToArray() : product.Tags.Select(t => t.Title).ToArray(),
-                    photo = product.ImageSrc,
-                    author = new { name = product.Author.Name, title = CurrentLang == SiteLanguage.en ? product.Author.TitleEn : CurrentLang == SiteLanguage.ua ? product.Author.TitleUa : product.Author.Title }
-                });
+                    var tags = new List<object>();
+                    foreach (var tag in product.Tags)
+                    {
+                        tags.Add(new
+                        {
+                            id=tag.Id,
+                            title = CurrentLang == SiteLanguage.en ? tag.TitleEn : CurrentLang == SiteLanguage.ua ? tag.TitleUa : tag.Title
+                        });
+                    }
+
+                    result.Add(new
+                    {
+                        title = CurrentLang == SiteLanguage.en ? product.TitleEn : CurrentLang == SiteLanguage.ua ? product.TitleUa : product.Title,
+                        tags = tags,
+                        photo = product.ImageSrc,
+                        author = new { name = product.Author.Name, title = CurrentLang == SiteLanguage.en ? product.Author.TitleEn : CurrentLang == SiteLanguage.ua ? product.Author.TitleUa : product.Author.Title }
+                    });
+                }
             }
             ViewBag.Products = "dataModels.products = " + JsonConvert.SerializeObject(result);
             return View();
