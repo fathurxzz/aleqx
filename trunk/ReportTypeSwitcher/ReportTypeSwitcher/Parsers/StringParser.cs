@@ -8,16 +8,29 @@ namespace ReportTypeSwitcher.Parsers
 {
     class StringParser : ArgsParser<string>
     {
-        public StringParser(object defaultValue = null)
-            : base(defaultValue)
-        {
+        private int _argsCount = 1;
 
+        private readonly ArgsParserOptions<string> _options;
+        public StringParser(ArgsParserOptions<string> options = null)
+        {
+            _options = options;
         }
+
+        public override int ArgsCount { get { return _argsCount; } }
 
         public override string ParseArgs(IList<string> args)
         {
-            var result = args[0];
-            return result;
+            if (args.Count > 0)
+            {
+                var result = args[0];
+                return result;
+            }
+            else
+            {
+                _argsCount = 0;
+            }
+            return _options.DefaultValue;
+
         }
     }
 }
