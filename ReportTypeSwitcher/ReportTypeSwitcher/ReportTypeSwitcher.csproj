@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgsParser.cs" />
+    <Compile Include="ArgsParserOptions.cs" />
     <Compile Include="Helpers\DatesHelper.cs" />
+    <Compile Include="IArgsParser.cs" />
     <Compile Include="IReport.cs" />
     <Compile Include="Parsers\ArgsParserSequence.cs" />
     <Compile Include="Parsers\BondAttributionDateRangeParser.cs" />
