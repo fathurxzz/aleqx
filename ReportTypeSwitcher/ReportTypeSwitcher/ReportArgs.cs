@@ -13,6 +13,9 @@ namespace ReportTypeSwitcher
         public string Portfolio { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public string HistLag { get; set; }
+        public string Tenor { get; set; }
+        public string Region { get; set; }
 
         public ReportArgs(IDictionary<string, object> parsedArgs)
         {
@@ -21,12 +24,17 @@ namespace ReportTypeSwitcher
             var range = (DateRange) parsedArgs["daterange"];
             StartDate = range.StartDate;
             EndDate = range.EndDate;
+            HistLag = (string)parsedArgs["histLag"];
+            Tenor = (string)parsedArgs["tenor"];
+            Region = (string)parsedArgs["region"];
         }
 
         public override string ToString()
         {
-            return String.Format("Overwrite: {0}, Portfolio: {1}, StartDate: {2}, EndDate: {3}", Overwrite, Portfolio,
-                StartDate, EndDate);
+            return
+                String.Format(
+                    "Overwrite: {0}, Portfolio: {1}, StartDate: {2}, EndDate: {3}, HistLag:{4}, Tenor:{5}, Region:{6}",
+                    Overwrite, Portfolio, StartDate, EndDate, HistLag, Tenor, Region);
         }
     }
 }

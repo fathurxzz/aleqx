@@ -17,18 +17,20 @@ namespace ReportTypeSwitcher
         TArgs ParseArgs(IList<string> args);
     }
 
+    class ArgsParserOptions<T>
+    {
+        public T DefaultValue { get; set; }
+    }
+
     abstract class ArgsParser<TArgs>:IArgsParser<TArgs>
     {
-        protected ArgsParser(object defaultValue = null)
-        {
-            
-        }
-
         public virtual int ArgsCount { get { return 1; } }
         object IArgsParser.ParseArgs(IList<string> args)
         {
             return ParseArgs(args);
         }
+
+        public TArgs DefaultValue { get; set; }
 
         public abstract TArgs ParseArgs(IList<string> args);
     }

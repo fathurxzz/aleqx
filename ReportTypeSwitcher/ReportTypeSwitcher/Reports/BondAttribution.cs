@@ -16,7 +16,10 @@ namespace ReportTypeSwitcher.Reports
             _sequence.AddParser("overwrite", new BoolParser());
             _sequence.AddParser("portfolio", new StringParser());
             _sequence.AddParser("daterange", new BondAttributionDateRangeParser(new DateTimeParser()));
-            _sequence.AddParser("histLag", new StringParser("6M"));
+            _sequence.AddParser("histLag", new StringParser(new ArgsParserOptions<string> { DefaultValue = "6M" }));
+            _sequence.AddParser("tenor", new StringParser(new ArgsParserOptions<string> { DefaultValue = "1D" }));
+            _sequence.AddParser("region", new StringParser(new ArgsParserOptions<string> { DefaultValue = "All" }));
+
         }
 
         public string ReportType
