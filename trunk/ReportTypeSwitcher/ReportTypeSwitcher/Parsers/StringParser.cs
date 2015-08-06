@@ -22,15 +22,15 @@ namespace ReportTypeSwitcher.Parsers
         {
             if (args.Count > 0)
             {
-                var result = args[0];
-                return result;
+                return args[0];
             }
-            else
+            if (_options != null && _options.DefaultValue != null)
             {
                 _argsCount = 0;
+                return _options.DefaultValue;
             }
-            return _options.DefaultValue;
 
+            throw new Exception("Default value for StringParser is not set");
         }
     }
 }
