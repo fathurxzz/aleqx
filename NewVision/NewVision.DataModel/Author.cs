@@ -18,6 +18,7 @@ namespace NewVision.DataModel
         {
             this.Products = new HashSet<Product>();
             this.Tags = new HashSet<Tag>();
+            this.Events = new HashSet<Event>();
         }
     
         public int Id { get; set; }
@@ -37,5 +38,6 @@ namespace NewVision.DataModel
     
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

@@ -248,6 +248,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
                 ImageHelper.DeleteImage(author.Avatar);
 
                 author.Tags.Clear();
+                author.Events.Clear();
 
                 _context.Authors.Remove(author);
                 _context.SaveChanges();

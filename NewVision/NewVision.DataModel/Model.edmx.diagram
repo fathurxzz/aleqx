@@ -19,6 +19,16 @@
         <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="17" PointY="2" />
         <EntityTypeShape EntityType="Model.ArticleImage" Width="1.5" PointX="6.875" PointY="5.625" />
         <AssociationConnector Association="Model.ArticleArticleImage" />
+        <EntityTypeShape EntityType="Model.Author" Width="1.5" PointX="0.75" PointY="7.625" />
+        <EntityTypeShape EntityType="Model.Tag" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="Model.AuthorCategory" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="3" PointY="15.5" />
+        <AssociationConnector Association="Model.AuthorProduct" />
+        <AssociationConnector Association="Model.AuthorTag" />
+        <AssociationConnector Association="Model.AuthorCategoryCategory" />
+        <AssociationConnector Association="Model.AuthorCategoryTag" />
+        <AssociationConnector Association="Model.AuthorEvent" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

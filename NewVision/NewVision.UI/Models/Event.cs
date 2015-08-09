@@ -51,5 +51,6 @@ namespace NewVision.UI.Models
         public string LocationAddressMapUrl { get; set; }
         public virtual ICollection<ContentImage> ContentImages { get; set; }
         public virtual ICollection<PreviewContentImage> PreviewContentImages { get; set; }
+        public virtual ICollection<Author> Authors { get; set; }
     }
 }

@@ -35,5 +35,10 @@ namespace NewVision.DataModel
         public DbSet<Media> Media { get; set; }
         public DbSet<Content> Content { get; set; }
         public DbSet<ArticleImage> ArticleImage { get; set; }
+        public DbSet<Author> Author { get; set; }
+        public DbSet<Tag> Tag { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<AuthorCategory> AuthorCategory { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

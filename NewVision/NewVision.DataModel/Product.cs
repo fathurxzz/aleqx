@@ -14,11 +14,6 @@ namespace NewVision.DataModel
     
     public partial class Product
     {
-        public Product()
-        {
-            this.Tags = new HashSet<Tag>();
-        }
-    
         public int Id { get; set; }
         public int AuthorId { get; set; }
         public string Price { get; set; }
@@ -30,6 +25,5 @@ namespace NewVision.DataModel
         public string TitleUa { get; set; }
     
         public virtual Author Author { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
     }
 }
