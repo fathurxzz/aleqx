@@ -9,6 +9,7 @@ namespace NewVision.DataModel.Models
         {
             this.ContentImages = new List<ContentImage>();
             this.PreviewContentImages = new List<PreviewContentImage>();
+            this.Authors = new List<Author>();
         }
 
         public int Id { get; set; }
@@ -51,5 +52,6 @@ namespace NewVision.DataModel.Models
         public string ActionEn { get; set; }
         public virtual ICollection<ContentImage> ContentImages { get; set; }
         public virtual ICollection<PreviewContentImage> PreviewContentImages { get; set; }
+        public virtual ICollection<Author> Authors { get; set; }
     }
 }

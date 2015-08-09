@@ -17,7 +17,6 @@ namespace NewVision.DataModel
         public Category()
         {
             this.AuthorCategories = new HashSet<AuthorCategory>();
-            this.Tags = new HashSet<Tag>();
         }
     
         public int Id { get; set; }
@@ -27,6 +26,5 @@ namespace NewVision.DataModel
         public string TitleUa { get; set; }
     
         public virtual ICollection<AuthorCategory> AuthorCategories { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

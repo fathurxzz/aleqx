@@ -18,6 +18,7 @@ namespace NewVision.DataModel
         {
             this.PreviewContentImages = new HashSet<PreviewContentImage>();
             this.ContentImages = new HashSet<ContentImage>();
+            this.Authors = new HashSet<Author>();
         }
     
         public int Id { get; set; }
@@ -61,5 +62,6 @@ namespace NewVision.DataModel
     
         public virtual ICollection<PreviewContentImage> PreviewContentImages { get; set; }
         public virtual ICollection<ContentImage> ContentImages { get; set; }
+        public virtual ICollection<Author> Authors { get; set; }
     }
 }

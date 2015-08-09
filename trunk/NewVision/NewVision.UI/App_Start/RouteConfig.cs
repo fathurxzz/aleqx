@@ -105,6 +105,13 @@ namespace NewVision.UI
               new { lang = @"ru|ua|en" },
               new[] { "NewVision.UI.Controllers" }
           );
+            routes.MapRoute(
+              "authorsEvents",
+              "{lang}/artist-events/{id}",
+              new { controller = "Home", action = "ArtistEvents" },
+              new { lang = @"ru|ua|en" },
+              new[] { "NewVision.UI.Controllers" }
+          );
 
 
             routes.MapRoute(

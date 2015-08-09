@@ -8,6 +8,7 @@ namespace NewVision.DataModel.Models
         public Author()
         {
             this.Products = new List<Product>();
+            this.Events = new List<Event>();
             this.Tags = new List<Tag>();
         }
 
@@ -26,6 +27,7 @@ namespace NewVision.DataModel.Models
         public string DescriptionEn { get; set; }
         public string DescriptionUa { get; set; }
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
     }
 }

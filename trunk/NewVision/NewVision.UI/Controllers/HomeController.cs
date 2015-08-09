@@ -23,14 +23,14 @@ namespace NewVision.UI.Controllers
         private string GenerateSearchFormData()
         {
             var result = new List<object>();
-            
+
             var authorCategories = _context.AuthorCategories.ToList();
             foreach (var authorCategory in authorCategories)
             {
                 var resultAuthorCategory = new
                 {
                     title = CurrentLang == SiteLanguage.en ? authorCategory.TitleEn : CurrentLang == SiteLanguage.ua ? authorCategory.TitleUa : authorCategory.Title,
-                    value= authorCategory.Id,
+                    value = authorCategory.Id,
                     categories = new List<object>()
                 };
                 foreach (var category in authorCategory.Categories)
@@ -57,7 +57,7 @@ namespace NewVision.UI.Controllers
                 }
                 result.Add(resultAuthorCategory);
             }
-            var model  = new
+            var model = new
             {
                 authorCategories = result
             };
@@ -329,7 +329,7 @@ namespace NewVision.UI.Controllers
             int[] tagsIds = new int[0];
             if (tagsId != null)
             {
-                tagsIds = tagsId.Split(new[] {"-"}, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+                tagsIds = tagsId.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
             }
 
             var stags = new List<object>();
@@ -338,7 +338,7 @@ namespace NewVision.UI.Controllers
             {
                 stags.Add(new
                 {
-                    id = sTag .Id,
+                    id = sTag.Id,
                     title = CurrentLang == SiteLanguage.en ? sTag.TitleEn : CurrentLang == SiteLanguage.ua ? sTag.TitleUa : sTag.Title
                 });
             }
@@ -354,7 +354,7 @@ namespace NewVision.UI.Controllers
             {
                 if (tagsIds.Length > 0 && author.Tags.Select(t => t.Id).Intersect(tagsIds).ToArray().Length == tagsIds.Length || tagsIds.Length == 0)
                 {
-                    var tags  = new List<object>();
+                    var tags = new List<object>();
                     foreach (var tag in author.Tags)
                     {
                         tags.Add(new
@@ -411,7 +411,7 @@ namespace NewVision.UI.Controllers
                     {
                         tags.Add(new
                         {
-                            id=tag.Id,
+                            id = tag.Id,
                             title = CurrentLang == SiteLanguage.en ? tag.TitleEn : CurrentLang == SiteLanguage.ua ? tag.TitleUa : tag.Title
                         });
                     }
@@ -473,6 +473,48 @@ namespace NewVision.UI.Controllers
 
         }
 
+        public ActionResult ArtistEvents(string id)
+        {
+            ViewBag.MainMenu = GenerateMainMenu(5, true);
+            var author = _context.Authors.First(a => a.Name == id);
+            var result = new List<object>();
+            var products = author.Products.ToList();
+            foreach (var product in products)
+            {
+                result.Add(new
+                {
+                    title = CurrentLang == SiteLanguage.en ? product.TitleEn : CurrentLang == SiteLanguage.ua ? product.TitleUa : product.Title,
+                    tags = CurrentLang == SiteLanguage.en ? product.Tags.Select(t => t.TitleEn).ToArray() : CurrentLang == SiteLanguage.ua ? product.Tags.Select(t => t.TitleUa).ToArray() : product.Tags.Select(t => t.Title).ToArray(),
+                    photo = product.ImageSrc,
+                    author = new { name = product.Author.Name, title = CurrentLang == SiteLanguage.en ? product.Author.TitleEn : CurrentLang == SiteLanguage.ua ? product.Author.TitleUa : product.Author.Title }
+                });
+            }
+            var authorEvents = new List<object>();
+
+            foreach (var aEvent in author.Events)
+            {
+                authorEvents.Add(new
+                {
+                    date = aEvent.Date.ToShortDateString(),
+                    title = CurrentLang == SiteLanguage.en ? aEvent.TitleEn : CurrentLang == SiteLanguage.ua ? aEvent.TitleUa : aEvent.Title,
+                    url = string.Format("/{0}/event-details/{1}", CurrentLang, aEvent.Id)
+                });
+            }
+
+
+            ViewBag.Products = "dataModels.products = " + JsonConvert.SerializeObject(result);
+            ViewBag.Author = "dataModels.author = " + JsonConvert.SerializeObject(new
+            {
+                name = author.Name,
+                title = CurrentLang == SiteLanguage.en ? author.TitleEn : CurrentLang == SiteLanguage.ua ? author.TitleUa : author.Title,
+                photo = author.Photo,
+                description = CurrentLang == SiteLanguage.en ? author.AboutEn : CurrentLang == SiteLanguage.ua ? author.AboutUa : author.About,
+                events = authorEvents
+            });
+            return View();
+
+        }
+
         public ActionResult ArtistProductsDetails(string id)
         {
             ViewBag.MainMenu = GenerateMainMenu(5, true);
@@ -498,7 +540,7 @@ namespace NewVision.UI.Controllers
                 title = CurrentLang == SiteLanguage.en ? author.TitleEn : CurrentLang == SiteLanguage.ua ? author.TitleUa : author.Title,
                 photo = author.Photo,
                 description = CurrentLang == SiteLanguage.en ? author.AboutEn : CurrentLang == SiteLanguage.ua ? author.AboutUa : author.About,
-                images=products.Select(image => image.ImageSrc).ToList()
+                images = products.Select(image => image.ImageSrc).ToList()
             });
             return View();
         }

@@ -404,6 +404,7 @@
     <Content Include="Views\Home\ArtistAbout.cshtml" />
     <Content Include="Views\Home\ArtistProducts.cshtml" />
     <Content Include="Views\Home\ArtistProductsDetails.cshtml" />
+    <Content Include="Views\Home\ArtistEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

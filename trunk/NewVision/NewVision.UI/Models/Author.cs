@@ -27,5 +27,6 @@ namespace NewVision.UI.Models
         public string DescriptionUa { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

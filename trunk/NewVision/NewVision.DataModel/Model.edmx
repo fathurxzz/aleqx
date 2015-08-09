@@ -16,6 +16,15 @@
     <EntitySet Name="Media" EntityType="Model.Store.Media" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Model.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArticleImage" EntityType="Model.Store.ArticleImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Author" EntityType="Model.Store.Author" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag" EntityType="Model.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Model.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AuthorCategory" EntityType="Model.Store.AuthorCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="Model.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AuthorTag" EntityType="Model.Store.AuthorTag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AuthorCategoryCategory" EntityType="Model.Store.AuthorCategoryCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AuthorCategoryTag" EntityType="Model.Store.AuthorCategoryTag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AuthorEvent" EntityType="Model.Store.AuthorEvent" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="EventAnnouncementEventAnnouncementImage" Association="Model.Store.EventAnnouncementEventAnnouncementImage">
       <End Role="EventAnnouncement" EntitySet="EventAnnouncement" />
       <End Role="EventAnnouncementImage" EntitySet="EventAnnouncementImage" />
@@ -31,6 +40,42 @@
     <AssociationSet Name="ArticleArticleImage" Association="Model.Store.ArticleArticleImage">
       <End Role="Article" EntitySet="Article" />
       <End Role="ArticleImage" EntitySet="ArticleImage" />
+    </AssociationSet>
+    <AssociationSet Name="AuthorProduct" Association="Model.Store.AuthorProduct">
+      <End Role="Author" EntitySet="Author" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorTag_Author" Association="Model.Store.FK_AuthorTag_Author">
+      <End Role="Author" EntitySet="Author" />
+      <End Role="AuthorTag" EntitySet="AuthorTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorTag_Tag" Association="Model.Store.FK_AuthorTag_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="AuthorTag" EntitySet="AuthorTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorCategoryCategory_AuthorCategory" Association="Model.Store.FK_AuthorCategoryCategory_AuthorCategory">
+      <End Role="AuthorCategory" EntitySet="AuthorCategory" />
+      <End Role="AuthorCategoryCategory" EntitySet="AuthorCategoryCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorCategoryCategory_Category" Association="Model.Store.FK_AuthorCategoryCategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="AuthorCategoryCategory" EntitySet="AuthorCategoryCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorCategoryTag_AuthorCategory" Association="Model.Store.FK_AuthorCategoryTag_AuthorCategory">
+      <End Role="AuthorCategory" EntitySet="AuthorCategory" />
+      <End Role="AuthorCategoryTag" EntitySet="AuthorCategoryTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorCategoryTag_Tag" Association="Model.Store.FK_AuthorCategoryTag_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="AuthorCategoryTag" EntitySet="AuthorCategoryTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorEvent_Author" Association="Model.Store.FK_AuthorEvent_Author">
+      <End Role="Author" EntitySet="Author" />
+      <End Role="AuthorEvent" EntitySet="AuthorEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorEvent_Event" Association="Model.Store.FK_AuthorEvent_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="AuthorEvent" EntitySet="AuthorEvent" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="MainBanner">
@@ -75,12 +120,12 @@
     <Property Name="Title" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="TitleEn" Type="varchar" Nullable="false" MaxLength="500" />
     <Property Name="TitleUa" Type="varchar" Nullable="false" MaxLength="500" />
-    <Property Name="TitleDescription" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="TitleDescription" Type="varchar" Nullable="true" MaxLength="5000" />
     <Property Name="HighlightedText" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="IsHighlighted" Type="bool" Nullable="false" />
     <Property Name="LocationAddress" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="LocationTitle" Type="varchar" Nullable="true" MaxLength="1000" />
-    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="5000" />
     <Property Name="TicketOrderType" Type="int" Nullable="false" />
     <Property Name="PreviewContentType" Type="int" Nullable="false" />
     <Property Name="PreviewContentImageSrc" Type="varchar" Nullable="true" MaxLength="1000" />
@@ -92,16 +137,16 @@
     <Property Name="Price" Type="varchar" Nullable="true" MaxLength="100" />
     <Property Name="PreviewContentVideoSrc" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="LocationAddressMapUrl" Type="varchar" Nullable="true" MaxLength="500" />
-    <Property Name="TitleDescriptionEn" Type="varchar" Nullable="true" MaxLength="10000" />
-    <Property Name="TitleDescriptionUa" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="TitleDescriptionEn" Type="varchar" Nullable="true" MaxLength="5000" />
+    <Property Name="TitleDescriptionUa" Type="varchar" Nullable="true" MaxLength="5000" />
     <Property Name="HighlightedTextEn" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="HighlightedTextUa" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="LocationAddressEn" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="LocationAddressUa" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="LocationTitleEn" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="LocationTitleUa" Type="varchar" Nullable="true" MaxLength="1000" />
-    <Property Name="DescriptionEn" Type="varchar" Nullable="true" MaxLength="10000" />
-    <Property Name="DescriptionUa" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="DescriptionEn" Type="varchar" Nullable="true" MaxLength="5000" />
+    <Property Name="DescriptionUa" Type="varchar" Nullable="true" MaxLength="5000" />
     <Property Name="ActionEn" Type="longtext" Nullable="true" />
     <Property Name="ActionUa" Type="longtext" Nullable="true" />
     <Property Name="LocationEn" Type="longtext" Nullable="true" />
@@ -184,6 +229,100 @@
     <Property Name="ImageSrc" Type="varchar" Nullable="true" MaxLength="500" />
     <Property Name="ArticleId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Photo" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="Avatar" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleEn" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="TitleUa" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="About" Type="longtext" Nullable="true" />
+    <Property Name="AboutEn" Type="longtext" Nullable="false" />
+    <Property Name="AboutUa" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="DescriptionEn" Type="longtext" Nullable="true" />
+    <Property Name="DescriptionUa" Type="longtext" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthorId" Type="int" Nullable="false" />
+    <Property Name="Price" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="ViewDate" Type="datetime" Nullable="true" />
+    <Property Name="ImageSrc" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="AuthorCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleEn" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="TitleUa" Type="varchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="AuthorTag">
+    <Key>
+      <PropertyRef Name="Authors_Id" />
+      <PropertyRef Name="Tags_Id" />
+    </Key>
+    <Property Name="Authors_Id" Type="int" Nullable="false" />
+    <Property Name="Tags_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuthorCategoryCategory">
+    <Key>
+      <PropertyRef Name="AuthorCategories_Id" />
+      <PropertyRef Name="Categories_Id" />
+    </Key>
+    <Property Name="AuthorCategories_Id" Type="int" Nullable="false" />
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuthorCategoryTag">
+    <Key>
+      <PropertyRef Name="AuthorCategories_Id" />
+      <PropertyRef Name="Tags_Id" />
+    </Key>
+    <Property Name="AuthorCategories_Id" Type="int" Nullable="false" />
+    <Property Name="Tags_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuthorEvent">
+    <Key>
+      <PropertyRef Name="Authors_Id" />
+      <PropertyRef Name="Events_Id" />
+    </Key>
+    <Property Name="Authors_Id" Type="int" Nullable="false" />
+    <Property Name="Events_Id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="EventAnnouncementEventAnnouncementImage">
     <End Role="EventAnnouncement" Type="Model.Store.EventAnnouncement" Multiplicity="1" />
     <End Role="EventAnnouncementImage" Type="Model.Store.EventAnnouncementImage" Multiplicity="*" />
@@ -232,6 +371,114 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="AuthorProduct">
+    <End Role="Author" Type="Model.Store.Author" Multiplicity="1" />
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorTag_Author">
+    <End Role="Author" Type="Model.Store.Author" Multiplicity="1" />
+    <End Role="AuthorTag" Type="Model.Store.AuthorTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuthorTag">
+        <PropertyRef Name="Authors_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorTag_Tag">
+    <End Role="AuthorTag" Type="Model.Store.AuthorTag" Multiplicity="*" />
+    <End Role="Tag" Type="Model.Store.Tag" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuthorTag">
+        <PropertyRef Name="Tags_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorCategoryCategory_AuthorCategory">
+    <End Role="AuthorCategory" Type="Model.Store.AuthorCategory" Multiplicity="1" />
+    <End Role="AuthorCategoryCategory" Type="Model.Store.AuthorCategoryCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AuthorCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuthorCategoryCategory">
+        <PropertyRef Name="AuthorCategories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorCategoryCategory_Category">
+    <End Role="AuthorCategoryCategory" Type="Model.Store.AuthorCategoryCategory" Multiplicity="*" />
+    <End Role="Category" Type="Model.Store.Category" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuthorCategoryCategory">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorCategoryTag_AuthorCategory">
+    <End Role="AuthorCategory" Type="Model.Store.AuthorCategory" Multiplicity="1" />
+    <End Role="AuthorCategoryTag" Type="Model.Store.AuthorCategoryTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AuthorCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuthorCategoryTag">
+        <PropertyRef Name="AuthorCategories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorCategoryTag_Tag">
+    <End Role="AuthorCategoryTag" Type="Model.Store.AuthorCategoryTag" Multiplicity="*" />
+    <End Role="Tag" Type="Model.Store.Tag" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuthorCategoryTag">
+        <PropertyRef Name="Tags_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorEvent_Author">
+    <End Role="Author" Type="Model.Store.Author" Multiplicity="1" />
+    <End Role="AuthorEvent" Type="Model.Store.AuthorEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuthorEvent">
+        <PropertyRef Name="Authors_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorEvent_Event">
+    <End Role="AuthorEvent" Type="Model.Store.AuthorEvent" Multiplicity="*" />
+    <End Role="Event" Type="Model.Store.Event" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuthorEvent">
+        <PropertyRef Name="Events_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -262,6 +509,31 @@
           <AssociationSet Name="ArticleArticleImage" Association="Model.ArticleArticleImage">
             <End Role="Article" EntitySet="Article" />
             <End Role="ArticleImage" EntitySet="ArticleImage" />
+          </AssociationSet>
+          <EntitySet Name="Author" EntityType="Model.Author" />
+          <EntitySet Name="Tag" EntityType="Model.Tag" />
+          <EntitySet Name="Product" EntityType="Model.Product" />
+          <EntitySet Name="AuthorCategory" EntityType="Model.AuthorCategory" />
+          <EntitySet Name="Category" EntityType="Model.Category" />
+          <AssociationSet Name="AuthorProduct" Association="Model.AuthorProduct">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="AuthorTag" Association="Model.AuthorTag">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="AuthorCategoryCategory" Association="Model.AuthorCategoryCategory">
+            <End Role="AuthorCategory" EntitySet="AuthorCategory" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="AuthorCategoryTag" Association="Model.AuthorCategoryTag">
+            <End Role="AuthorCategory" EntitySet="AuthorCategory" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="AuthorEvent" Association="Model.AuthorEvent">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Event" EntitySet="Event" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="MainBanner">
@@ -355,6 +627,7 @@
           <Property Type="String" Name="LocationUa" />
           <Property Type="String" Name="ArtGroupEn" />
           <Property Type="String" Name="ArtGroupUa" />
+          <NavigationProperty Name="Authors" Relationship="Model.AuthorEvent" FromRole="Event" ToRole="Author" />
         </EntityType>
         <EntityType Name="PreviewContentImage">
           <Key>
@@ -470,6 +743,105 @@
               <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Photo" MaxLength="500" />
+          <Property Type="String" Name="Avatar" MaxLength="500" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="100" />
+          <Property Type="String" Name="TitleEn" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TitleUa" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="About" MaxLength="Max" />
+          <Property Type="String" Name="AboutEn" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="AboutUa" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Description" MaxLength="Max" />
+          <Property Type="String" Name="DescriptionEn" MaxLength="Max" />
+          <Property Type="String" Name="DescriptionUa" MaxLength="Max" />
+          <NavigationProperty Name="Products" Relationship="Model.AuthorProduct" FromRole="Author" ToRole="Product" />
+          <NavigationProperty Name="Tags" Relationship="Model.AuthorTag" FromRole="Author" ToRole="Tag" />
+          <NavigationProperty Name="Events" Relationship="Model.AuthorEvent" FromRole="Author" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" MaxLength="100" />
+          <Property Type="String" Name="TitleEn" MaxLength="100" />
+          <Property Type="String" Name="TitleUa" MaxLength="100" />
+          <NavigationProperty Name="Authors" Relationship="Model.AuthorTag" FromRole="Tag" ToRole="Author" />
+          <NavigationProperty Name="AuthorCategories" Relationship="Model.AuthorCategoryTag" FromRole="Tag" ToRole="AuthorCategory" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AuthorId" Nullable="false" />
+          <Property Type="String" Name="Price" MaxLength="10" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="DateTime" Name="ViewDate" Nullable="true" />
+          <Property Type="String" Name="ImageSrc" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Title" MaxLength="100" />
+          <Property Type="String" Name="TitleEn" MaxLength="100" />
+          <Property Type="String" Name="TitleUa" MaxLength="100" />
+          <NavigationProperty Name="Author" Relationship="Model.AuthorProduct" FromRole="Product" ToRole="Author" />
+        </EntityType>
+        <EntityType Name="AuthorCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="100" />
+          <Property Type="String" Name="TitleEn" MaxLength="100" />
+          <Property Type="String" Name="TitleUa" MaxLength="100" />
+          <NavigationProperty Name="Categories" Relationship="Model.AuthorCategoryCategory" FromRole="AuthorCategory" ToRole="Category" />
+          <NavigationProperty Name="Tags" Relationship="Model.AuthorCategoryTag" FromRole="AuthorCategory" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="100" />
+          <Property Type="String" Name="TitleEn" MaxLength="100" />
+          <Property Type="String" Name="TitleUa" MaxLength="100" />
+          <NavigationProperty Name="AuthorCategories" Relationship="Model.AuthorCategoryCategory" FromRole="Category" ToRole="AuthorCategory" />
+        </EntityType>
+        <Association Name="AuthorProduct">
+          <End Type="Model.Author" Role="Author" Multiplicity="1" />
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AuthorTag">
+          <End Type="Model.Author" Role="Author" Multiplicity="*" />
+          <End Type="Model.Tag" Role="Tag" Multiplicity="*" />
+        </Association>
+        <Association Name="AuthorCategoryCategory">
+          <End Type="Model.AuthorCategory" Role="AuthorCategory" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <Association Name="AuthorCategoryTag">
+          <End Type="Model.AuthorCategory" Role="AuthorCategory" Multiplicity="*" />
+          <End Type="Model.Tag" Role="Tag" Multiplicity="*" />
+        </Association>
+        <Association Name="AuthorEvent">
+          <End Type="Model.Author" Role="Author" Multiplicity="*" />
+          <End Type="Model.Event" Role="Event" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -638,6 +1010,105 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Author">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Author)">
+        <MappingFragment StoreEntitySet="Author">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+          <ScalarProperty Name="About" ColumnName="About" />
+          <ScalarProperty Name="AboutEn" ColumnName="AboutEn" />
+          <ScalarProperty Name="AboutUa" ColumnName="AboutUa" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+          <ScalarProperty Name="DescriptionUa" ColumnName="DescriptionUa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tag">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Tag)">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Product)">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ViewDate" ColumnName="ViewDate" />
+          <ScalarProperty Name="ImageSrc" ColumnName="ImageSrc" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthorCategory">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.AuthorCategory)">
+        <MappingFragment StoreEntitySet="AuthorCategory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleUa" ColumnName="TitleUa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AuthorTag" TypeName="Model.AuthorTag" StoreEntitySet="AuthorTag">
+      <EndProperty Name="Author">
+        <ScalarProperty Name="Id" ColumnName="Authors_Id" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="Id" ColumnName="Tags_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AuthorCategoryCategory" TypeName="Model.AuthorCategoryCategory" StoreEntitySet="AuthorCategoryCategory">
+      <EndProperty Name="AuthorCategory">
+        <ScalarProperty Name="Id" ColumnName="AuthorCategories_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AuthorCategoryTag" TypeName="Model.AuthorCategoryTag" StoreEntitySet="AuthorCategoryTag">
+      <EndProperty Name="AuthorCategory">
+        <ScalarProperty Name="Id" ColumnName="AuthorCategories_Id" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="Id" ColumnName="Tags_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AuthorEvent" TypeName="Model.AuthorEvent" StoreEntitySet="AuthorEvent">
+      <EndProperty Name="Author">
+        <ScalarProperty Name="Id" ColumnName="Authors_Id" />
+      </EndProperty>
+      <EndProperty Name="Event">
+        <ScalarProperty Name="Id" ColumnName="Events_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

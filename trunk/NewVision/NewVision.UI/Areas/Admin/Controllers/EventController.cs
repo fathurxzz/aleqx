@@ -32,6 +32,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Authors = _context.Authors.ToList();
             return View(new Event { Date = DateTime.Now });
         }
 
@@ -39,7 +40,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
         // POST: /Admin/Event/Create
 
         [HttpPost]
-        public ActionResult Create(Event model, IEnumerable<HttpPostedFileBase> files, IEnumerable<HttpPostedFileBase> filesAnother)
+        public ActionResult Create(Event model, IEnumerable<HttpPostedFileBase> files, IEnumerable<HttpPostedFileBase> filesAnother, FormCollection form)
         {
             try
             {
@@ -122,6 +123,22 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     ev.PreviewContentImages.Add(ci);
                 }
 
+                PostCheckboxesData attrData = form.ProcessPostCheckboxesData("author");
+
+                foreach (var kvp in attrData)
+                {
+                    var tagId = kvp.Key;
+                    bool tagValue = kvp.Value;
+
+                    //author.Tags.Clear();
+
+                    if (tagValue)
+                    {
+                        var author = _context.Authors.First(t => t.Id == tagId);
+                        ev.Authors.Add(author);
+                    }
+                }
+
 
                 _context.Events.Add(ev);
                 _context.SaveChanges();
@@ -139,6 +156,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
+            ViewBag.Authors = _context.Authors.ToList();
             var ev = _context.Events.First(e => e.Id == id);
             return View(ev);
         }
@@ -147,7 +165,7 @@ namespace NewVision.UI.Areas.Admin.Controllers
         // POST: /Admin/Event/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, IEnumerable<HttpPostedFileBase> files, IEnumerable<HttpPostedFileBase> filesAnother)
+        public ActionResult Edit(int id, IEnumerable<HttpPostedFileBase> files, IEnumerable<HttpPostedFileBase> filesAnother, FormCollection form)
         {
             try
             {
@@ -236,6 +254,24 @@ namespace NewVision.UI.Areas.Admin.Controllers
                     ev.PreviewContentImages.Add(ci);
                 }
 
+                PostCheckboxesData attrData = form.ProcessPostCheckboxesData("author");
+
+                ev.Authors.Clear();
+
+                foreach (var kvp in attrData)
+                {
+                    var tagId = kvp.Key;
+                    bool tagValue = kvp.Value;
+
+                    //author.Tags.Clear();
+
+                    if (tagValue)
+                    {
+                        var author = _context.Authors.First(t => t.Id == tagId);
+                        ev.Authors.Add(author);
+                    }
+                }
+
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -261,6 +297,8 @@ namespace NewVision.UI.Areas.Admin.Controllers
             {
                 ImageHelper.DeleteImage(image.ImageSrc);
             }
+
+            ev.Authors.Clear();
 
             _context.Events.Remove(ev);
             _context.SaveChanges();

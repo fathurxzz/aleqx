@@ -66,6 +66,15 @@ namespace NewVision.UI.Models.Mapping
             this.Property(t => t.DescriptionUa).HasColumnName("DescriptionUa");
 
             // Relationships
+            this.HasMany(t => t.Events)
+                .WithMany(t => t.Authors)
+                .Map(m =>
+                {
+                    m.ToTable("AuthorEvent", "gbua_new_vision");
+                    m.MapLeftKey("Authors_Id");
+                    m.MapRightKey("Events_Id");
+                });
+
             this.HasMany(t => t.Tags)
                 .WithMany(t => t.Authors)
                 .Map(m =>
