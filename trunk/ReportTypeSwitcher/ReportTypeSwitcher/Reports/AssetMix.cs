@@ -7,27 +7,23 @@ using ReportTypeSwitcher.Parsers;
 
 namespace ReportTypeSwitcher.Reports
 {
-    class Pnl :  IReport
+    class AssetMix : IReport
     {
         readonly ArgsParserSequence _sequence = new ArgsParserSequence();
-        public Pnl()
+
+        public AssetMix()
         {
             _sequence.AddParser(ReportArguments.Overwrite, new BoolParser());
             _sequence.AddParser(ReportArguments.Portfolio, new StringParser());
-            _sequence.AddParser(ReportArguments.Token, new GuidParser());
-            _sequence.AddParser(ReportArguments.DateRange, new BondAttributionDateRangeParser(new DateTimeParser()));
+            _sequence.AddParser(ReportArguments.Date, new AssetMixDateTimeParser());
+            _sequence.AddParser(ReportArguments.Strategy, new StringParser(new ArgsParserOptions<string> { DefaultValue = "" }));
+            _sequence.AddParser(ReportArguments.SubStrategy, new StringParser(new ArgsParserOptions<string> { DefaultValue = "" }));
         }
 
-        public string ReportType
-        {
-            get { return "PNL"; }
-        }
-        
-
+        public string ReportType { get { return "ASSETMIX"; } }
         public void Execute(string[] args)
         {
             Console.WriteLine(ReportType + "|" + new ReportArgs(_sequence.ParseArgs(args)));
         }
-
     }
 }

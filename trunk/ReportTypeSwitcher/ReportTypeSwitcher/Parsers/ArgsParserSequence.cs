@@ -8,31 +8,42 @@ namespace ReportTypeSwitcher.Parsers
 {
     class ArgsParserSequence
     {
-        private readonly IDictionary<string, IArgsParser> _parsers;
+        private readonly IDictionary<ReportArguments, IArgsParser> _parsers;
 
         public ArgsParserSequence()
         {
-            _parsers = new Dictionary<string, IArgsParser>();
+            _parsers = new Dictionary<ReportArguments, IArgsParser>();
         }
 
-        public ArgsParserSequence(IDictionary<string, IArgsParser> parsers)
+        public ArgsParserSequence(IDictionary<ReportArguments, IArgsParser> parsers)
         {
             _parsers = parsers;
         }
 
-        public void AddParser(string name, IArgsParser parser)
+        public void AddParser(ReportArguments name, IArgsParser parser)
         {
             _parsers.Add(name, parser);
         }
 
-        public IDictionary<string, object> ParseArgs(string[] args)
+        public IDictionary<ReportArguments, object> ParseArgs(string[] args)
         {
-            var result = new Dictionary<string, object>();
+            var result = new Dictionary<ReportArguments, object>();
             var argsToParse = args.ToList();
             foreach (var parser in _parsers)
             {
                 result.Add(parser.Key, parser.Value.ParseArgs(argsToParse));
-                argsToParse.RemoveRange(0, parser.Value.ArgsCount);
+                if (parser.Value is GuidParser)
+                {
+                    if (argsToParse.Count != 0)
+                    {
+                        argsToParse.RemoveRange(argsToParse.Count - 1, parser.Value.ArgsCount);
+                    }
+                }
+                else
+                {
+                    argsToParse.RemoveRange(0, parser.Value.ArgsCount);
+                }
+                
             }
             return result;
         }

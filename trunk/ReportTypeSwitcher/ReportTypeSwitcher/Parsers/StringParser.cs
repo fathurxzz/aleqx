@@ -22,8 +22,17 @@ namespace ReportTypeSwitcher.Parsers
         {
             if (args.Count > 0)
             {
+                if ( _options!=null && _options.AcceptedValues.Any())
+                {
+                    if (!_options.AcceptedValues.Contains(args[0]))
+                    {
+                        throw new Exception("value must be in [" + _options.AcceptedValues.Aggregate((a, b) => a + ", " + b)+"]");
+                    }
+                }
+
                 return args[0];
             }
+
             if (_options != null && _options.DefaultValue != null)
             {
                 _argsCount = 0;
