@@ -13,12 +13,12 @@ namespace ReportTypeSwitcher.Reports
 
         public BondAttribution()
         {
-            _sequence.AddParser("overwrite", new BoolParser());
-            _sequence.AddParser("portfolio", new StringParser());
-            _sequence.AddParser("daterange", new BondAttributionDateRangeParser(new DateTimeParser()));
-            _sequence.AddParser("histLag", new StringParser(new ArgsParserOptions<string> { DefaultValue = "6M" }));
-            _sequence.AddParser("tenor", new StringParser(new ArgsParserOptions<string> { DefaultValue = "1D" }));
-            _sequence.AddParser("region", new StringParser(new ArgsParserOptions<string> { DefaultValue = "All" }));
+            _sequence.AddParser(ReportArguments.Overwrite, new BoolParser());
+            _sequence.AddParser(ReportArguments.Portfolio, new StringParser());
+            _sequence.AddParser(ReportArguments.DateRange, new BondAttributionDateRangeParser(new DateTimeParser()));
+            _sequence.AddParser(ReportArguments.HistLag, new StringParser(new ArgsParserOptions<string> { DefaultValue = "6M" }));
+            _sequence.AddParser(ReportArguments.Tenor, new StringParser(new ArgsParserOptions<string> { DefaultValue = "1D" }));
+            _sequence.AddParser(ReportArguments.Region, new StringParser(new ArgsParserOptions<string> { DefaultValue = "All" }));
 
         }
 

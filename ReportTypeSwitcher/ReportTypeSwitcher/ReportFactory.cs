@@ -18,6 +18,12 @@ namespace ReportTypeSwitcher
                     (IReport)new PortAttribution(), 
                     new BondAttribution(),
                     new Pnl(),
+                    new AssetMix(),
+                    new AssetMixDetail(),
+                    new AssetMixHistory(),
+                    new Carry(),
+                    new CoreAnalytics(),
+                    new DailyPnl(),
                 };
             }
         }
