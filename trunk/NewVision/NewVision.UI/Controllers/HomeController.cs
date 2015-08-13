@@ -261,7 +261,7 @@ namespace NewVision.UI.Controllers
             var result = new List<object>();
 
             var articles = _context.Articles.ToList();
-            foreach (var article in articles)
+            foreach (var article in articles.OrderByDescending(a=>a.Date))
             {
                 result.Add(new
                 {
